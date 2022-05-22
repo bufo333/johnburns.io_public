@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>The Colour of My Thoughts</title>
+    <title>Welcome on The Colour of My Thoughts</title>
     <link>https://johnburns.io/</link>
-    <description>Recent content on The Colour of My Thoughts</description>
+    <description>Recent content in Welcome on The Colour of My Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 21 May 2022 22:36:23 -0400</lastBuildDate><atom:link href="https://johnburns.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Mypost</title>
-      <link>https://johnburns.io/posts/mypost/</link>
+      <title>Lora Ipsum...</title>
+      <link>https://johnburns.io/posts/post1/</link>
       <pubDate>Sat, 21 May 2022 22:36:23 -0400</pubDate>
       
-      <guid>https://johnburns.io/posts/mypost/</guid>
-      <description>test 123</description>
+      <guid>https://johnburns.io/posts/post1/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et pellentesque nunc. Pellentesque et bibendum ex. Nulla mattis leo id lacus dignissim vulputate. Integer ac mauris consectetur, condimentum elit tincidunt, tincidunt odio. Nulla non orci at orci facilisis tempus id et mauris. Vivamus feugiat, ligula id aliquet ullamcorper, tortor lectus luctus risus, et ornare odio massa ut leo. Nulla iaculis placerat condimentum. Sed condimentum, sem ut dignissim posuere, massa metus porta diam, sit amet pretium risus neque malesuada purus.</description>
+    </item>
+    
+    <item>
+      <title>Lora Ipsum...</title>
+      <link>https://johnburns.io/posts/post2/</link>
+      <pubDate>Sat, 21 May 2022 22:36:23 -0400</pubDate>
+      
+      <guid>https://johnburns.io/posts/post2/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et pellentesque nunc. Pellentesque et bibendum ex. Nulla mattis leo id lacus dignissim vulputate. Integer ac mauris consectetur, condimentum elit tincidunt, tincidunt odio. Nulla non orci at orci facilisis tempus id et mauris. Vivamus feugiat, ligula id aliquet ullamcorper, tortor lectus luctus risus, et ornare odio massa ut leo. Nulla iaculis placerat condimentum. Sed condimentum, sem ut dignissim posuere, massa metus porta diam, sit amet pretium risus neque malesuada purus.</description>
+    </item>
+    
+    <item>
+      <title>Lora Ipsum...</title>
+      <link>https://johnburns.io/posts/post3/</link>
+      <pubDate>Sat, 21 May 2022 22:36:23 -0400</pubDate>
+      
+      <guid>https://johnburns.io/posts/post3/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et pellentesque nunc. Pellentesque et bibendum ex. Nulla mattis leo id lacus dignissim vulputate. Integer ac mauris consectetur, condimentum elit tincidunt, tincidunt odio. Nulla non orci at orci facilisis tempus id et mauris. Vivamus feugiat, ligula id aliquet ullamcorper, tortor lectus luctus risus, et ornare odio massa ut leo. Nulla iaculis placerat condimentum. Sed condimentum, sem ut dignissim posuere, massa metus porta diam, sit amet pretium risus neque malesuada purus.</description>
     </item>
     
     <item>
