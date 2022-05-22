@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on The Colour of My Thoughts</title>
+    <link>https://johnburns.io/posts/</link>
+    <description>Recent content in Posts on The Colour of My Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 21 May 2022 22:36:23 -0400</lastBuildDate><atom:link href="https://johnburns.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mypost</title>
+      <link>https://johnburns.io/posts/mypost/</link>
+      <pubDate>Sat, 21 May 2022 22:36:23 -0400</pubDate>
+      
+      <guid>https://johnburns.io/posts/mypost/</guid>
+      <description>test 123</description>
+    </item>
+    
+  </channel>
+</rss>
