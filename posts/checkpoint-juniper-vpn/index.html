@@ -61,13 +61,11 @@
 <div class="container">
     <h2 id="checkpoint-----juniper-vpn">Checkpoint &mdash;&gt; juniper VPN</h2>
 <p>Recently at work we had a remote site go down. The site was on an ancient pix 506e vpn firewall router. We were in the proccess of switching to a different vpn solution. because of this we had a new Juniper ssg20 firewall device on site.</p>
-<p>Now I thought this would be an easy job, configure the Juniper to connect to our checkpoint r55 box the same as the pix had done before! Man was I surprised to realize that the Juniper did not like the r55. The r55 sends proxy id&rsquo;s through the tunnel for every device connecting. Now the interesting this is that the r55 uses the supernet for the address requesting access through the vpn. On the cisco pix and asa devices, this does not much matter. So for instance if you hav 10.0.0.0/24, 172.16.2.0/23 and 192.168.0.0/24 on 1 side all trying to access a remote site through the Juniper, the checkpoint send the juniper proxy id&rsquo;s for each of those networks. Now like I said the cisco determines what traffic matches the tunnel with access-lists and doesn&rsquo;t much care what the proxy ID says. The juniper on the other hand does! If it sees a proxy id for say a host that is not part of the tunnel, it will tear down the tunnel!!!!  </p>
-<p> </p>
+<p>Now I thought this would be an easy job, configure the Juniper to connect to our checkpoint r55 box the same as the pix had done before! Man was I surprised to realize that the Juniper did not like the r55. The r55 sends proxy id&rsquo;s through the tunnel for every device connecting. Now the interesting this is that the r55 uses the supernet for the address requesting access through the vpn. On the cisco pix and asa devices, this does not much matter. So for instance if you hav 10.0.0.0/24, 172.16.2.0/23 and 192.168.0.0/24 on 1 side all trying to access a remote site through the Juniper, the checkpoint send the juniper proxy id&rsquo;s for each of those networks. Now like I said the cisco determines what traffic matches the tunnel with access-lists and doesn&rsquo;t much care what the proxy ID says. The juniper on the other hand does! If it sees a proxy id for say a host that is not part of the tunnel, it will tear down the tunnel!!!!</p>
 <p>You can imagine this is a big problem. So what has to be done is that you have to go to autoike and add a gateway for each network that is on the other side. Make sure you also go to advanced and select the checkbox for proxy ID. Once this box is checked enter the information for source and destination. the best way to do this is to check the event logs on the junipers and put in exactly what it says the received proxy ID is.</p>
-<p> </p>
 <p>Once you do this the tunnel will come up. the only other issue is to go to the network &ndash;&gt; routing __&gt; destination tab and add a route for each network that you need to go to the tunnel interface.</p>
-<p> </p>
 <p>Thats it, 6 hours of work and the answer was very simple once you figure it out.</p>
+
 </div>
 
         </div><div id="footer" class="mb-5">

@@ -59,80 +59,137 @@
 <hr>
 <div id="content">
 <div class="container">
-    <h2 id="encrypting-gre-tunnels">Encrypting GRE tunnels!</h2>
-<p class="MsoNormal" style="margin: 0in 0in 0pt;"><span style="font-size: 10pt;"><span style="font-family: Lucida Sans Unicode;">In our Last article we looked at creating GRE tunnels between networks to allow non-routable traffic to pass between remote offices.  GRE tunnels are a great solution however the traffic passing inside these tunnels is not encrypted and thus could be intercepted by unauthorized parties. In this article we are going to look at tunneling GRE inside of IPSEC. This will allow us to get the benefits of GRE and the security of IPSEC.
-</span></span>
-<p class="MsoNormal" style="margin: 0in 0in 0pt;"> </p>
-<p class="MsoNormal" style="margin: 0in 0in 0pt;"><span style="font-size: 10pt;">
-<p></span></p></p>
-<p class="MsoNormal" style="margin: 0in 0in 0pt;"><span style="font-size: 10pt;"><span style="font-family: Times New Roman;"> </span></span></p>
-<p class="MsoNormal" style="margin: 0in 0in 0pt;"> </p>
-<pre class="prettyprint">!
-crypto isakmp policy 10        #create crypto policy file
-authentication pre-share      #use pre shared key
-crypto isakmp key integer address 192.168.1.2 #address of remote tunnel
-!
-!
-!
-#use aes encryption and comp-lzs conpression. use transport mode.
-crypto ipsec transform-set myset esp-aes esp-md5-hmac comp-lzs
-!
-mode transport   # transport mode tells IPSEC not to create a tunnel,
-                       # this is used when you are using IPSEC for
-                       # encryption only and not for tunneling.
-!
-crypto map mymap 10 ipsec-isakmp   # create the crypto map
-set peer 192.168.1.2                      # the peer must match the ISAKMP statement
-set transform-set myset                  # use the encyption we defined above
-match address match-gre                # encrypt only packets in GRE tunnel
-!
-!
-!
-!
-interface Tunnel0
-ip address 172.20.1.1 255.255.255.252
-keepalive 10 3
-tunnel source FastEthernet0/0
-tunnel destination 192.168.1.2
-tunnel path-mtu-discovery
-crypto map mymap              # crypto map must be applied to tunnel
-!
-!
-!
-!
-interface FastEthernet0/1
-description LAN INTERFACE
-ip address 10.0.0.254 255.255.255.0
-ip nat inside
-duplex auto
-speed auto
-!
-!
-!
-!
-interface FastEthernet0/0
-description Internet Interface
-ip address 192.168.1.1 255.255.255.0
-ip access-group allow-gre in
-ip nat inside
-duplex auto
-speed auto
-crypto map mymap   # crypto map must be applied to tunnel and public interface
-!
-!
-!
-!
-ip access-list extended allow-gre
-permit gre any any               # allow gre through the firewall
-permit esp any any              #allow esp for ipsec through the firewall
-permit udp any any eq 500    #allow udp port 500 through which ipsec also uses
-!
-!
-#access-list to match tunnel traffic.
-#This access list must be in the form (my public ip) (destination public ip)
-ip access-list extended match-gre
- permit gre host 192.168.1.1 host 192.168.1.2 log</pre><blockquote>
-</blockquote>
+    <h2 id="encrypting-gre-tunnels">Encrypting GRE tunnels</h2>
+<p>In our Last article we looked at creating GRE tunnels between networks to allow non routable traffic to pass between remote offices.ï¿½ GRE tunnels are a great solution however the traffic passing inside these tunnels is not encrypted and thus could be intercepted by unauthorized parties. In this article we are going to look at tunneling GRE inside of IPSEC. This will allow us to get the benefits of GRE and the security of IPSEC.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">isakmp</span> <span style="color:#a6e22e">policy</span> <span style="color:#ae81ff">10</span>        <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">create</span> <span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">policy</span> <span style="color:#a6e22e">file</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">authentication</span> <span style="color:#a6e22e">pre</span><span style="color:#f92672">-</span><span style="color:#a6e22e">share</span>      <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">use</span> <span style="color:#a6e22e">pre</span> <span style="color:#a6e22e">shared</span> <span style="color:#a6e22e">key</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">isakmp</span> <span style="color:#a6e22e">key</span> <span style="color:#a6e22e">integer</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.2</span> <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">address</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">remote</span> <span style="color:#a6e22e">tunnel</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">use</span> <span style="color:#a6e22e">aes</span> <span style="color:#a6e22e">encryption</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">comp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lzs</span> <span style="color:#a6e22e">conpression</span>. <span style="color:#a6e22e">use</span> <span style="color:#a6e22e">transport</span> <span style="color:#a6e22e">mode</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">ipsec</span> <span style="color:#a6e22e">transform</span><span style="color:#f92672">-</span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">myset</span> <span style="color:#a6e22e">esp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">aes</span> <span style="color:#a6e22e">esp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">md5</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hmac</span> <span style="color:#a6e22e">comp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lzs</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">transport</span>   <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">transport</span> <span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">tells</span> <span style="color:#a6e22e">IPSEC</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">tunnel</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">used</span> <span style="color:#a6e22e">when</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">are</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">IPSEC</span> <span style="color:#66d9ef">for</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">encryption</span> <span style="color:#a6e22e">only</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">not</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">tunneling</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">map</span> <span style="color:#a6e22e">mymap</span> <span style="color:#ae81ff">10</span> <span style="color:#a6e22e">ipsec</span><span style="color:#f92672">-</span><span style="color:#a6e22e">isakmp</span>   <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">map</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">peer</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.2</span>                      <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">peer</span> <span style="color:#a6e22e">must</span> <span style="color:#a6e22e">match</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">ISAKMP</span> <span style="color:#a6e22e">statement</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">transform</span><span style="color:#f92672">-</span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">myset</span>                  <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">use</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">encyption</span> <span style="color:#a6e22e">we</span> <span style="color:#a6e22e">defined</span> <span style="color:#a6e22e">above</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">match</span> <span style="color:#a6e22e">address</span> <span style="color:#a6e22e">match</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gre</span>                <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">encrypt</span> <span style="color:#a6e22e">only</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">GRE</span> <span style="color:#a6e22e">tunnel</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Tunnel0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">172.20</span>.<span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.252</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">keepalive</span> <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">source</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">destination</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mtu</span><span style="color:#f92672">-</span><span style="color:#a6e22e">discovery</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">map</span> <span style="color:#a6e22e">mymap</span>              <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">map</span> <span style="color:#a6e22e">must</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">applied</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">tunnel</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">description</span> <span style="color:#a6e22e">LAN</span> <span style="color:#a6e22e">INTERFACE</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.254</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">duplex</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">speed</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">description</span> <span style="color:#a6e22e">Internet</span> <span style="color:#a6e22e">Interface</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">group</span> <span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gre</span> <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">duplex</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">speed</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">map</span> <span style="color:#a6e22e">mymap</span>   <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">map</span> <span style="color:#a6e22e">must</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">applied</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">and</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">extended</span> <span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gre</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">gre</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span>               <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">allow</span> <span style="color:#a6e22e">gre</span> <span style="color:#a6e22e">through</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">firewall</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">esp</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span>              <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">allow</span> <span style="color:#a6e22e">esp</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">ipsec</span> <span style="color:#a6e22e">through</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">firewall</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">udp</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">eq</span> <span style="color:#ae81ff">500</span>    <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">allow</span> <span style="color:#a6e22e">udp</span> <span style="color:#a6e22e">port</span> <span style="color:#ae81ff">500</span> <span style="color:#a6e22e">through</span> <span style="color:#a6e22e">which</span> <span style="color:#a6e22e">ipsec</span> <span style="color:#a6e22e">also</span> <span style="color:#a6e22e">uses</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">match</span> <span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">traffic</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">This</span> <span style="color:#a6e22e">access</span> <span style="color:#a6e22e">list</span> <span style="color:#a6e22e">must</span> <span style="color:#a6e22e">be</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">form</span> (<span style="color:#a6e22e">my</span> <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ip</span>) (<span style="color:#a6e22e">destination</span> <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ip</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">extended</span> <span style="color:#a6e22e">match</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gre</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">gre</span> <span style="color:#a6e22e">host</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.1</span> <span style="color:#a6e22e">host</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.2</span> <span style="color:#a6e22e">log</span>
+</span></span></code></pre></div>
 </div>
 
         </div><div id="footer" class="mb-5">
