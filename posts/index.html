@@ -60,19 +60,41 @@
 <hr>
 <div id="content">
 <div class="container">
+
     <h1></h1>
     <ul>
         
-            <li><a href="https://johnburns.io/posts/post1/">2022-05-21 | Lora Ipsum...</a><p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et pellentesque nunc. Pellentesque et bibendum ex. Nulla mattis leo id lacus dignissim vulputate. Integer ac mauris consectetur, condimentum elit tincidunt, tincidunt odio. Nulla non orci at orci facilisis tempus id et mauris. Vivamus feugiat, ligula id aliquet ullamcorper, tortor lectus luctus risus, et ornare odio massa ut leo. Nulla iaculis placerat condimentum. Sed condimentum, sem ut dignissim posuere, massa metus porta diam, sit amet pretium risus neque malesuada purus.</p></li>
+            <li><a href="https://johnburns.io/posts/rename-accounts-in-freebsd/">2018-03-14 | rename-accounts-in-freebsd</a>
+                <p></p><p>
+            Rename accounts in FreeBSD pw usermod -n oldname -l newname -d /usr/home/newnamepw groupmod -n oldname -l newnamemv /usr/home/oldname /usr/home/newnamechown -R newname:newname /usr/home/newname</p></li>
         
-            <li><a href="https://johnburns.io/posts/post2/">2022-05-21 | Lora Ipsum...</a><p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et pellentesque nunc. Pellentesque et bibendum ex. Nulla mattis leo id lacus dignissim vulputate. Integer ac mauris consectetur, condimentum elit tincidunt, tincidunt odio. Nulla non orci at orci facilisis tempus id et mauris. Vivamus feugiat, ligula id aliquet ullamcorper, tortor lectus luctus risus, et ornare odio massa ut leo. Nulla iaculis placerat condimentum. Sed condimentum, sem ut dignissim posuere, massa metus porta diam, sit amet pretium risus neque malesuada purus.</p></li>
+            <li><a href="https://johnburns.io/posts/bhyve-on-freebsd-10-1/">2015-05-15 | bhyve-on-freebsd-10-1</a>
+                <p></p><p>
+            Bhyve on FreeBSD 10.1 I recently started a new series of videos on YouTube about my favorite operating system FreeBSD. Below are the commands used in the video to setup the bhyve hypervisor on FreeBSD 10.1 with a virtualized Ubuntu 15 server.
+ ######## prerequisites for bhyve on FreeBSD ##########pkg install grub2-bhyvemkdir /virtual_machinescd /virtual_machinesmkdir isocd isofetch http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso
+######��� Load kernel modules and set sysctl values ######kldload if_tapkldload if_bridgekldload vmmkldload nmdm</p></li>
         
-            <li><a href="https://johnburns.io/posts/post3/">2022-05-21 | Lora Ipsum...</a><p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et pellentesque nunc. Pellentesque et bibendum ex. Nulla mattis leo id lacus dignissim vulputate. Integer ac mauris consectetur, condimentum elit tincidunt, tincidunt odio. Nulla non orci at orci facilisis tempus id et mauris. Vivamus feugiat, ligula id aliquet ullamcorper, tortor lectus luctus risus, et ornare odio massa ut leo. Nulla iaculis placerat condimentum. Sed condimentum, sem ut dignissim posuere, massa metus porta diam, sit amet pretium risus neque malesuada purus.</p></li>
+            <li><a href="https://johnburns.io/posts/poem/">2013-10-20 | poem</a>
+                <p></p><p>
+            poem So live your life that the fear of death can never enter your heart.Trouble no one about their religionRespect others in their viewAnd demand that they respect yoursLove your life, perfect your life, beautify all things in your lifeSeek to make your life long and its purpose in the service of your peoplePrepare a noble death song for the day when you go over the great divideAlways give a word or a sign of salute when meeting or passing a friendEven a stranger when in a lonely placeShow respect to all people and grovel to noneWhen you arise in the morning give thanks for the food and for the joy of livingIf you see no reason for giving thanks, the fault lies only in yourselfAbuse no one and nothingFor abuse turns the wise ones to fools and robs the spirit of its visionWhen it comes your time to dieBe not like those whose hearts are filled with the fear of deathSo that when their time comesThey weep and pray for a little more timeTo live their lives over again in a different waySing your death songAnd die like a hero going home</p></li>
         
+            <li><a href="https://johnburns.io/posts/slow-downloads-in-itunes/">2012-11-11 | slow-downloads-in-itunes</a>
+                <p></p><p>
+            Slow Downloads in Itunes If you are experiencing slow downloads in iTunes try this:
+Shut down iTunes
+Disable antivirus/internet security suite
+Open itunes and resume downloads.
+This is most often caused by the internet security suite which is not capable of scanning large files in real time. If this fixes your problem, you can usually make the fix permanent by disabling the piece of the antivirus that filters web traffic.</p></li>
+        
+            <li><a href="https://johnburns.io/posts/new-route-server-available/">2010-09-03 | new-route-server-available</a>
+                <p></p><p>
+            New route-server available! I have been working on a new project which is to provide a service that would allow you to peer with my router over BGP. My router would then advertise a list of bogons and known malicious networks including botnet command and control networks. You can then drop these networks at your border router thus protecting your network from attacks and saving precious router and firewall resources.</p></li>
+                   
     </ul>
+    
+
+    <a href="/posts/page/2/">  Next </a>
+
 </div>
 
         </div><div id="footer" class="mb-5">

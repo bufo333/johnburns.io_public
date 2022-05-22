@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang=""><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>cisco-config-wic-1adsl</title>
+    <meta name="description" content="The desk of my mind.">
+    <meta name="author" content='John Burns'>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" href="/sass/researcher.min.css">
+
+    
+        <link rel="icon" type="image/ico" href="https://johnburns.io/favicon.ico">
+    
+
+    
+        
+    
+</head>
+
+    <body><div class="container mt-5">
+    <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
+        <a class="navbar-brand mx-0 mr-sm-auto" href="https://johnburns.io/" title="The Colour of My Thoughts">
+          
+          The Colour of My Thoughts
+        </a>
+        <div class="navbar-nav flex-row flex-wrap justify-content-center">
+            
+                
+                
+                    <a class="nav-item nav-link" href="/about/" title="About">
+                        About
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/resume.pdf" title="Resume">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755S12 12 8 12s-5 1.755-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/></svg> Resume
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/contact/" title="Contact">
+                        Contact
+                    </a>
+                    
+                
+            
+        </div>
+    </nav>
+</div>
+<hr>
+<div id="content">
+<div class="container">
+    <h2 id="configuring-wic-1adsl-on-cisco-2600-with-pppoa-and-pppoe">Configuring WIC-1ADSL on Cisco 2600 with PPPOA and PPPOE</h2>
+<p>Configuring a Cisco router to use the WIC-1ADSL card is one of the most commonly asked question by people in the Cisco forums. There are some interesting and compelling reasons to use a WIC card instead of connecting PPPOE through the ADSL modem in bridged mode. One of the most compelling reasons is the ability to use advanced QOS features such as interleaving and fragmentation. Because the DSL WIC card shows up as an ATM WAN interface, the router is able to perform those advanced Quality of Service features.  The overhead of encapsulating a packet in PPPOE and sending it to the modem over some length of cable is also a reason to use a WIC card instead of the modem.</p>
+<p>It is important to realize that with most ISP&rsquo;s you can configure the connection to use either PPPOA or PPPOE, the difference in configuration is very subtle however it can save you a couple of bits of overhead as PPPOE is encapsulated more time Than PPPOA.  So without further a due:</p>
+<p>First the PPPOE config:</p>
+<p>The below is a complete config</p>
+<p><font color="#ff0000">Red  is directly related to the WIC DSL config</font></p>
+<p><font color="#00ff00">Green is the rest of the config needed for a bare minimum  working config.</font></p>
+<p>##################################################################################</p>
+<p>     Using 5173 out of 29688 bytes</p>
+<p>!</p>
+<p>version 12.3</p>
+<p>service timestamps debug datetime msec</p>
+<p>service timestamps log datetime msec</p>
+<p>service password-encryption</p>
+<p>!</p>
+<p>hostname Lord_Yu</p>
+<p>!</p>
+<p>boot-start-marker</p>
+<p>boot-end-marker</p>
+<p>!</p>
+<p>logging buffered 56000 debugging</p>
+<p>no logging console</p>
+<p>enable password 7 xxxxxxxxxxxxxxx</p>
+<p>!</p>
+<p>memory-size iomem 15</p>
+<p>clock timezone est -5</p>
+<p>clock summer-time est recurring 4 Sun Mar 1:00 4 Sat Oct 1:00</p>
+<p>no aaa new-model</p>
+<p>ip subnet-zero</p>
+<p>ip cef</p>
+<p>!</p>
+<p>!</p>
+<p>no ip domain lookup</p>
+<p>ip domain name techinvasion.net</p>
+<p>!</p>
+<p>no ip bootp server</p>
+<p><font color="#ff0000">vpdn enable</font></p>
+<p><font color="#ff0000">vpdn-group 1</font></p>
+<p><font color="#ff0000"> request-dialin</font></p>
+<p><font color="#ffff00"> </font><font color="#ff0000"> protocol pppoe</font></p>
+<p>!</p>
+<p><font color="#ff0000">interface ATM0/0</font></p>
+<p><font color="#ff0000"> no ip address</font></p>
+<p><font color="#ff0000"> ip route-cache flow</font></p>
+<p><font color="#ffff00"> </font><font color="#ff0000">no atm ilmi-keepalive</font></p>
+<p><font color="#ff0000"> bundle enable</font></p>
+<p><font color="#ff0000"> !</font></p>
+<p><font color="#ff0000"> dsl operating-mode auto</font></p>
+<p><font color="#ff0000"> pvc 8/35</font></p>
+<p><font color="#ff0000">  encapsulation aal5mux ppp dialer</font></p>
+<p><font color="#ff0000">  dialer pool-member 1</font></p>
+<p><font color="#ff0000"> !</font></p>
+<p>!</p>
+<p>interface FastEthernet0/0</p>
+<p> description LAN INTERFACE</p>
+<p> ip address 10.0.0.254 255.255.255.0</p>
+<p> ip nat inside</p>
+<p> ip tcp adjust-mss 1460</p>
+<p> duplex auto</p>
+<p> speed auto</p>
+<p>!</p>
+<p>interface Ethernet1/0</p>
+<p> no ip address</p>
+<p> shutdown</p>
+<p> half-duplex</p>
+<p>!</p>
+<p>interface Dialer1</p>
+<p> description ADSL WAN DIALER</p>
+<p> ip address negotiated</p>
+<p>ip mtu 1492</p>
+<p> ip nat outside</p>
+<p> <font color="#ff0000">encapsulation ppp</font></p>
+<p> ip route-cache flow</p>
+<p> ip tcp adjust-mss 1452</p>
+<p><font color="#ffff00"> </font><font color="#ff0000">dialer pool 1</font></p>
+<p><font color="#ff0000"> dialer-group 1</font></p>
+<p> no cdp enable</p>
+<p><font color="#ffff00"> </font><font color="#ff0000">ppp authentication chap pap callin</font></p>
+<p><font color="#ff0000"> ppp chap hostname <a href="mailto:xxxxxxx@xxxxxxxxxx.net">xxxxxxx@xxxxxxxxxx.net</a></font></p>
+<p><font color="#ff0000"> ppp chap password 7 xxxxxxxxxxxxx</font></p>
+<p><font color="#ffff00"> </font><font color="#ff0000">ppp pap sent-username <a href="mailto:xxxxxxxx@xxxxxxxxxx.net">xxxxxxxx@xxxxxxxxxx.net</a> password 7 xxxxxxxxxxxx</font></p>
+<p><font color="#ff0000"> ppp ipcp dns request</font></p>
+<p>!</p>
+<p>ip nat translation timeout 3600</p>
+<p>ip nat translation tcp-timeout 1200</p>
+<p>ip nat translation finrst-timeout 15</p>
+<p>ip nat translation syn-timeout 45</p>
+<p>ip nat inside source list 10 interface Dialer1 overload</p>
+<p>no ip http server</p>
+<p>no ip http secure-server</p>
+<p>ip flow-export destination 10.0.0.3 2055</p>
+<p>ip classless</p>
+<p>ip route 0.0.0.0 0.0.0.0 Dialer1 permanent</p>
+<p>!</p>
+<p>!</p>
+<p>!</p>
+<p>ip access-list extended inbound</p>
+<p> deny   ip 0.0.0.0 0.255.255.255 any log-input</p>
+<p> deny   ip 10.0.0.0 0.255.255.255 any log-input</p>
+<p> deny   ip 127.0.0.0 0.255.255.255 any log-input</p>
+<p> deny   ip 169.254.0.0 0.0.255.255 any log-input</p>
+<p> deny   ip 172.16.0.0 0.15.255.255 any log-input</p>
+<p> deny   ip 192.168.0.0 0.0.255.255 any log-input</p>
+<p> deny   ip 224.0.0.0 15.255.255.255 any log-input</p>
+<p>logging 10.0.0.3</p>
+<p><font color="#ff0000">access-list 10 permit 10.0.0.0 0.0.0.255</font></p>
+<p>!</p>
+<p>line con 0</p>
+<p> password 7 xxxxxxxxxxx</p>
+<p>line aux 0</p>
+<p>line vty 0 4</p>
+<p> password 7 xxxxxxxxxx</p>
+<p> login</p>
+<p> transport input telnet ssh</p>
+<p>line vty 5</p>
+<p> password 7 xxxxxxxxxxxx</p>
+<p> login</p>
+<p>!</p>
+<p>ntp clock-period 17180335</p>
+<p>ntp server 192.43.244.18</p>
+<p>ntp server 129.6.15.28</p>
+<p>!</p>
+<p>end</p>
+<p>The Following is the PPPOA Config:</p>
+<p>It is not the full config only a partial config.</p>
+<p><font color="#ff0000">The Red text is the differences,</font></p>
+<p>Notice how the dialer access-list is different and notice tha lack of the VPDN commands at the top of the config:</p>
+<p>####################################################################################</p>
+<p>version 12.3</p>
+<p>hostname Lord_Yu</p>
+<p>!</p>
+<p>boot-start-marker</p>
+<p>boot-end-marker</p>
+<p>!</p>
+<p>logging buffered 4096 debugging</p>
+<p>no logging console</p>
+<p>enable password 7</p>
+<p>!</p>
+<p>memory-size iomem 15</p>
+<p>clock timezone est -5</p>
+<p>clock summer-time est recurring 4 Sun Mar 1:00 4 Sat Oct 1:00</p>
+<p>no aaa new-model</p>
+<p>ip subnet-zero</p>
+<p>ip cef</p>
+<p>!</p>
+<p>no ip domain lookup</p>
+<p>ip domain name techinvasion.net</p>
+<p>!</p>
+<p><font color="#ff0000">interface ATM0/0</font></p>
+<p><font color="#ff0000"> no ip address</font></p>
+<p><font color="#ff0000"> ip route-cache flow</font></p>
+<p><font color="#ff0000"> no atm ilmi-keepalive</font></p>
+<p><font color="#ff0000"> bundle enable</font></p>
+<p><font color="#ff0000"> !</font></p>
+<p><font color="#ff0000"> dsl operating-mode auto</font></p>
+<p><font color="#ff0000"> pvc 8/35</font></p>
+<p><font color="#ffff00"> </font><font color="#ff0000"> encapsulation aal5mux ppp dialer</font></p>
+<p><font color="#ff0000">  dialer pool-member 1</font></p>
+<p> !</p>
+<p>!</p>
+<p>interface FastEthernet0/0</p>
+<p> description LAN INTERFACE</p>
+<p> ip address 10.0.0.254 255.255.255.0</p>
+<p> ip nat inside</p>
+<p> ip tcp adjust-mss 1460</p>
+<p> duplex auto</p>
+<p> speed auto</p>
+<p> ipv6 address autoconfig</p>
+<p> ipv6 enable</p>
+<p>!</p>
+<p>interface Ethernet1/0</p>
+<p> no ip address</p>
+<p> shutdown</p>
+<p> half-duplex</p>
+<p>!</p>
+<p><font color="#ff0000">interface Dialer1</font></p>
+<p><font color="#ff0000"> description ADSL WAN DIALER</font></p>
+<p> ip address negotiated</p>
+<p>ip mtu 1492</p>
+<p> ip nat outside</p>
+<p><font color="#ff0000">encapsulation ppp</font></p>
+<p> ip route-cache flow</p>
+<p> ip tcp adjust-mss 1452</p>
+<p><font color="#ff0000"> dialer pool 1</font></p>
+<p>no cdp enable</p>
+<p><font color="#ffff00"> </font><font color="#ff0000">ppp authentication chap pap callin</font></p>
+<p><font color="#ff0000"> ppp chap hostname <a href="mailto:xxxxxxxxx@xxxxxxxx.net">xxxxxxxxx@xxxxxxxx.net</a></font></p>
+<p><font color="#ff0000"> ppp chap password 7 xxxxxxxxx</font></p>
+<p><font color="#ff0000"> ppp pap sent-username <a href="mailto:xxxxxxx@xxxxxxxx.net">xxxxxxx@xxxxxxxx.net</a> password 7 xxxxxxxx</font></p>
+<p><font color="#ff0000"> ppp ipcp dns request</font></p>
+<p><font color="#ff0000">!</font></p>
+<p>ip nat inside source list 10 interface Dialer1 overload</p>
+<p>no ip http server</p>
+<p>no ip http secure-server</p>
+<p>ip flow-export destination 10.0.0.3 2055</p>
+<p>ip classless</p>
+<p>access-list 10 permit 10.0.0.0 0.0.0.255</p>
+<p><font color="#ff0000">dialer-list 1 protocol ip permit</font></p>
+</div>
+
+        </div><div id="footer" class="mb-5">
+    <hr>
+    
+    <div class="container text-center">
+        
+            <a href="https://twitter.com/" class="fab fa-twitter fa-1x" title="Twitter"></a>
+        
+            <a href="mailto:john@techinvasion.net" class="fas fa-envelope fa-1x" title="E-mail"></a>
+        
+    </div>
+    
+    
+        <div class="container text-center">
+            <a href="https://github.com/bufo333/" title="By John Burns"><small>By John Burns</small></a>
+        </div>
+    
+</div>
+</body>
+</html>

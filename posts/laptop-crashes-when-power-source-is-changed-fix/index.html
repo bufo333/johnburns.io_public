@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang=""><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>laptop-crashes-when-power-source-is-changed-fix</title>
+    <meta name="description" content="The desk of my mind.">
+    <meta name="author" content='John Burns'>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" href="/sass/researcher.min.css">
+
+    
+        <link rel="icon" type="image/ico" href="https://johnburns.io/favicon.ico">
+    
+
+    
+        
+    
+</head>
+
+    <body><div class="container mt-5">
+    <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
+        <a class="navbar-brand mx-0 mr-sm-auto" href="https://johnburns.io/" title="The Colour of My Thoughts">
+          
+          The Colour of My Thoughts
+        </a>
+        <div class="navbar-nav flex-row flex-wrap justify-content-center">
+            
+                
+                
+                    <a class="nav-item nav-link" href="/about/" title="About">
+                        About
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/resume.pdf" title="Resume">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755S12 12 8 12s-5 1.755-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/></svg> Resume
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/contact/" title="Contact">
+                        Contact
+                    </a>
+                    
+                
+            
+        </div>
+    </nav>
+</div>
+<hr>
+<div id="content">
+<div class="container">
+    <h2 id="laptop-crashes-when-power-source-is-changed-fix">Laptop crashes when power source is changed fix</h2>
+<p>Like most people who have complained about this problem I had recently upgraded to mandrake 9.2 and was surprised by the lack of problems usually associated with upgrading distro&rsquo;s. My surprise turned to horror when I realized the my laptop a <a href="http://www.linuxquestions.org/questions/#" id="KonaLink0" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">Dell </span><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">Inspiron</span></font></a> 8000 would freeze as soon as I unplugged the a/c adapter or plugged in the a/c adapter.</p>
+<p>After searching for days for the fix and listening to contradictory advice I had finally sorted out the good from the bad information and concluded that a kernel recompile was necessary. Imagine my surprise after recompiling and realizing that the very cool and professional looking graphical boot was gone. This took a whole 8 hours to sort out. This tutorial is geared specifically for Mandrake users, however the information and the steps for recompiling the kernel to fix the power problem will work on any distro. The tutorial will also seek to explain how the frame buffer sections of the kernel source work, so that you&rsquo;re new kernel will have a clean looking high resolution console. The tutorial will also show mandrake users and users of other distro&rsquo;s which use Bootsplash, how to modify their initrd image to boot up with a nice jpeg image.</p>
+<p>First things first, the cause of the freezing is that you&rsquo;re particular <a href="http://www.linuxquestions.org/questions/#" id="KonaLink1" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">laptop</span></font></a> does not implement the apm bios correctly. So when the kernel boots up and uses apm the calls lock your bios. Unlike most posts in forums across the <a href="http://www.linuxquestions.org/questions/#" id="KonaLink2" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="border-bottom: 1px solid blue; color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static; padding-bottom: 1px; background-color: transparent">Internet</span></font></a>, the problem is not the acpi interface but the apm. The problem is also exacerbated by the use of the local apic on uniprocessor <a href="http://www.linuxquestions.org/questions/#" id="KonaLink3" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">systems</span></font></a> and systems with Pentium 4 processors. So if you want to recompile the kernel the first thing to do is to download the kernel sources for your distro. If you have a distro like Mandrake which heavily modifies their kernel with programs like supermount you may want to use their kernel instead of the kernels at <a href="http://www.kernel.org/" target="_blank"><a href="https://www.kernel.org">www.kernel.org</a></a>.</p>
+<p>If you are using mandrake an easy way to get the latest kernel sources is to click on your start menu in either KDE or Gnome then mouse over configuration then mouse over packages and finally click on <a href="http://www.linuxquestions.org/questions/#" id="KonaLink4" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">install </span><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">software</span></font></a>. Once the RPMDrake window comes up you can type kernel into the search field. The search should bring up a number of things click on the latest kernel source file it should be an srpm. For those of you who do not want to use the distro&rsquo;s kernel or for people who do not have an easy way of getting their kernel installed you will have to download either a rpm or a tar ball.</p>
+<p>Once the kernel is installed you will have to switch to the kernel directory you can do this by typing cd /usr/src/linux (the following assumes you are using the root account). This command will take you to the source directory. If you have compiled a kernel previously you can type: make mrproper. Once this command is done you will have to configure the kernel, which you can do in several different ways. The first is to type make xconfig which will let you configure the kernel inside Xwindows. The second way is to type make menuconfig which will give a text based menu to configure the kernel. For the purposes of this tutorial I will be using make xconfig. So now the menu is on the screen in front of you and looking through all those options can seem like a daunting task. I will try to briefly explain hat each of the options is for and which ones we want to set for our purposes.</p>
+<p>The menu is divided into many different sections which at first seem random but actually it is a very ordered system. The kernel is the machine which connects all of your programs to the <a href="http://www.linuxquestions.org/questions/#" id="KonaLink5" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">hardware</span></font></a> to put it in an over simplified way. You will notice that the options are split up with the <a href="http://www.linuxquestions.org/questions/#" id="KonaLink6" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">processor</span></font></a> and motherboard features in once section. Memory and block devices, eg <a href="http://www.linuxquestions.org/questions/#" id="KonaLink7" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">Hard </span><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">drives</span></font></a>, in another. You will also notice a section for all of the networking options and so on. The first section which we need to modify to fix our freezing problem is the processor type and features section. Click on this section. You will notice this brings up another window with more options in it. The first option allows you to select what processor you are using, it is probably set to i386 generic. We are not here to change this setting, but since we are here it wont hurt to set it appropriately which might even give you a slight performance boost. Further on down you will see to options one option is to enable <a href="http://www.linuxquestions.org/questions/#" id="KonaLink8" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">Toshiba </span><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">laptop</span></font></a> support, If you have a Toshiba laptop enable this feature. The next option asks whether you want to enable <a href="http://www.linuxquestions.org/questions/#" id="KonaLink9" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">Dell </span><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">laptop</span></font></a> support, since I have a Dell I enabled this feature.</p>
+<p>A quick note about modules: The debate rages over whether a monolithic or modularized kernel is better. The truth is that each type of kernel has its own advantages and I find myself somewhere in the middle. By using all modules you will find that for instance loading a pcmcia card with module support will take a little longer to load and will use a little more Memory, however if you rarely use this pcmcia card it would be to your advantage to compile it as a module that way you do not have to keep the driver in memory the entire time. I will leave the decision on whether to make a monolithic or modularized kernel up to you, However certain things must be compiled in and not used as a module. For instance the <a href="http://www.linuxquestions.org/questions/#" id="KonaLink10" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">file </span><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">system</span></font></a> that your root partition is on should be compiled into the kernel, compiling as a module will result in a kernel panic during boot.</p>
+<p>Further down you will see an important option it says Local apic support on uniprocessors we want to disable this feature as it is one of the three things that contribute to the lockups. After selecting no to this question we can close this window by clicking main menu. The next section that we need to look at is the general setup section. Click on General Setup to enter this section now. The next thing that we must enable is <a href="http://www.linuxquestions.org/questions/#" id="KonaLink11" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">pci</span></font></a> hotplug support. Click on PCI hotplug Support now to enter the sub menu. Now in the new menu disable the first option Support for PCI Hotplug (experimental) after you have disabled this click main menu to return. Now scroll further down this window we want to disable Advanced Power Management Bios Support. After this is disabled scroll further down until you see acpi support which is the last thing on the list. Click on acpi support which brings up another menu. In this menu acpi support should be enabled and everything else as either a y or a m. Now that you are done with this <a href="http://www.linuxquestions.org/questions/#" id="KonaLink12" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">window </span><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">click</span></font></a> main menu and click main menu again to return to the first menu. Now you have done everything you need to fix the crashing problems. You might also want to check out the file system tab and make sure what ever file system you are using as root is compiled in and not as just a module. After doing all of the following you might want to also go through each menu and turn off the drivers for hardware you don&rsquo;t have or don&rsquo;t plan to get. This will decrease the compiling time and size of your kernel tremendously. After going through the rest of the source code and setting everything to your liking the next step is to click save and exit. The window will disappear and save all your setting. The next step is to go back to the prompt and compile the kernel.</p>
+<p>The kernel can be compile by typing two very simple lines at the prompt. Make sure you are in the source directory /usr/src/linux if you are not then get there.
+[root@localhost Linux]# make dep &amp;&amp; make clean &amp;&amp; make bzImage &amp;&amp; make modules
+after this you will need to type one more thing:
+[root@localhost linux] # make modules_install &amp;&amp; make install</p>
+<p>After this completed which could take anywhere from 15 to 45 minutes you&rsquo;re new kernel will be complete. You next have to edit your lilo.conf file /etc/lilo.conf and add a couple things.
+Your lilo.conf file should have a new entry at the bottom that has your new kernel number eg
+image=/boot/vmlinuz-2.4.xx-xxmdkcustom (or something similar)
+label=(new name)
+root=/dev/hda1 (or your equivilent)
+read-only
+optional
+append=</p>
+</div>
+
+        </div><div id="footer" class="mb-5">
+    <hr>
+    
+    <div class="container text-center">
+        
+            <a href="https://twitter.com/" class="fab fa-twitter fa-1x" title="Twitter"></a>
+        
+            <a href="mailto:john@techinvasion.net" class="fas fa-envelope fa-1x" title="E-mail"></a>
+        
+    </div>
+    
+    
+        <div class="container text-center">
+            <a href="https://github.com/bufo333/" title="By John Burns"><small>By John Burns</small></a>
+        </div>
+    
+</div>
+</body>
+</html>

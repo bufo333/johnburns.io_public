@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang=""><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>create-a-gre-tunnel-between-endpoints</title>
+    <meta name="description" content="The desk of my mind.">
+    <meta name="author" content='John Burns'>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" href="/sass/researcher.min.css">
+
+    
+        <link rel="icon" type="image/ico" href="https://johnburns.io/favicon.ico">
+    
+
+    
+        
+    
+</head>
+
+    <body><div class="container mt-5">
+    <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
+        <a class="navbar-brand mx-0 mr-sm-auto" href="https://johnburns.io/" title="The Colour of My Thoughts">
+          
+          The Colour of My Thoughts
+        </a>
+        <div class="navbar-nav flex-row flex-wrap justify-content-center">
+            
+                
+                
+                    <a class="nav-item nav-link" href="/about/" title="About">
+                        About
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/resume.pdf" title="Resume">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755S12 12 8 12s-5 1.755-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/></svg> Resume
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/contact/" title="Contact">
+                        Contact
+                    </a>
+                    
+                
+            
+        </div>
+    </nav>
+</div>
+<hr>
+<div id="content">
+<div class="container">
+    <h2 id="create-a-gre-tunnel-between-endpoints">Create a GRE tunnel between endpoints!</h2>
+<p><span style="font-size: 10pt; color: #000000;"><span style="font-family: Times New Roman;">Many time it is necessary to link a remote office to your main site and today we have many technologies to accomplish this task. We have IPSEC tunnels, IP-IN-IP tunnels, and GRE or Generic Routing Encapsulation Tunnels.</span></span></p>
+<p class="MsoNormal" style="margin: 0in 0in 0pt;"><span style="font-size: 10pt;"><span style="font-family: Times New Roman;">Each type of connectivity offers advantages and disadvantages. Some of these tunnels can even be overlaid on top of one another. For instance IPSEC can be used in a transport mode, which allows you to use the encryption with other tunnels or protocols. For this article we are going to discuss GRE tunnels. GRE is unique as tunneling technologies go in that is started out as a proprietary protocol developed by Cisco and later adopted as a standard. GRE was invented as a way of encapsulating non routable protocols in IP which is a routable protocol. In this way protocols such as multicast (this include OSPF, EIGRP), and other protocols like IPX could be tunneled across routable links.</span></span></p>
+<p class="MsoNormal" style="margin: 0in 0in 0pt;"><span style="font-size: 10pt;"><span style="font-family: Times New Roman;"> 
+<p></span></span></p></p>
+<p class="MsoNormal" style="margin: 0in 0in 0pt;"><span style="font-size: 10pt;"><span style="font-family: Times New Roman;">GRE offers several advantages today when used as a tunnel to connect private LANs. The main advantages are the ability to carry multicast traffic, i.e. routing protocols across the internet. For instance, lets say you had a main office in London, which has Frame Relay links to 15 offices in Europe, and you have your headquarters in Washington D.C. with a MPLS network of 25 offices across North and South America. Now suppose due to the costs of bandwidth and particularly the cost of private connection such as frame across the pond, you decided to go with a 45mbps T3 line. Between London and D.C.<span style="mso-spacerun: yes;">  </span>Now you could connect these offices with an IPSEC VPN however if you did this you would be limited to building static <span style="mso-spacerun: yes;"> </span>routes for each network on each side of the ocean, this is not a very scalable solution and does not allow you the advantages of a dynamic routing protocol. This solution may even limit you should you decide to add a second T3 later say to an office in Madrid. With dynamic routing protocols, the traffic would automatically swing to the Madrid office if something were to happen to the link between D.C. and London. The solution <span style="mso-spacerun: yes;"> </span>to this problem is to use GRE tunnels, since GRE tunnels pass all types of traffic you can easily run a dynamic routing protocol, like OSPF or EIGRP. These protocols will allow seamless easy route adjustments when a route goes down.</span></span></p>
+<p class="MsoNormal" style="margin: 0in 0in 0pt;"><span style="font-size: 10pt;"><span style="font-family: Times New Roman;"> </span></span></p>
+<p class="MsoNormal" style="margin: 0in 0in 0pt;"><span style="font-size: 10pt;"><span style="font-family: Times New Roman;">Configuring GRE tunnels is easy with a few simple steps you will be on your way. Before we can talk about configuring GRE tunnels we need to discuss exactly what the requirements for GRE are! GRE is a protocol, like IP you need to make sure this protocol is allowed through your firewall if you want to terminate a GRE tunnel. GRE to be more exact is protocol 47. Please be mindful that this is not port 47 but protocol 47. Allowing port 47 through your firewall will not allow GRE to work.</span></span></p>
+<p class="MsoNormal" style="margin: 0in 0in 0pt;"><span style="font-size: 10pt;"><span style="font-family: Times New Roman;"> </span></span></p>
+<p class="MsoNormal" style="margin: 0in 0in 0pt;"><span style="font-size: 10pt;"><span style="font-family: Times New Roman;">Steps to configure a GRE tunnel</span></span></p>
+<p class="MsoNormal" style="margin: 0in 0in 0pt;"><span style="font-size: 10pt;"><span style="font-family: Times New Roman;"> </span></span></p>
+<ol style="margin-top: 0in;" type="1">
+	<li class="MsoNormal" style="margin: 0in 0in 0pt; mso-list: l0 level1 lfo1; tab-stops: list .5in;"><span style="font-size: 10pt;"><span style="font-family: Times New Roman;">create access-list on outside interface to permit GRE</span></span></li>
+	<li class="MsoNormal" style="margin: 0in 0in 0pt; mso-list: l0 level1 lfo1; tab-stops: list .5in;"><span style="font-size: 10pt;"><span style="font-family: Times New Roman;">create tunnel interface</span></span></li>
+</ol>
+<p class="MsoNormal" style="margin: 0in 0in 0pt 0.25in;"><span style="font-size: 10pt;"><span style="font-family: Times New Roman;"> </span></span></p>
+<pre class="prettyprint">
+interface Tunnel0
+ ip address 172.20.1.1 255.255.255.252
+ keepalive 10 3
+ tunnel source FastEthernet0/0
+ tunnel destination 192.168.1.2
+ tunnel path-mtu-discovery
+!
+!
+!
+!
+interface FastEthernet0/1
+ description LAN INTERFACE
+ ip address 10.0.0.254 255.255.255.0
+ ip nat inside
+ duplex auto
+ speed auto
+!
+!
+!
+!
+interface FastEthernet0/0
+ description Internet Interface
+ ip address 192.168.1.1 255.255.255.0
+ ip access-group allow-gre in
+ ip nat inside
+ duplex auto
+ speed auto
+!
+!
+!
+!
+ip access-list extended allow-gre
+ permit gre any any</pre><blockquote>
+</blockquote>
+</div>
+
+        </div><div id="footer" class="mb-5">
+    <hr>
+    
+    <div class="container text-center">
+        
+            <a href="https://twitter.com/" class="fab fa-twitter fa-1x" title="Twitter"></a>
+        
+            <a href="mailto:john@techinvasion.net" class="fas fa-envelope fa-1x" title="E-mail"></a>
+        
+    </div>
+    
+    
+        <div class="container text-center">
+            <a href="https://github.com/bufo333/" title="By John Burns"><small>By John Burns</small></a>
+        </div>
+    
+</div>
+</body>
+</html>

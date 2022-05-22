@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang=""><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>first-production-zfs-server-today</title>
+    <meta name="description" content="The desk of my mind.">
+    <meta name="author" content='John Burns'>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" href="/sass/researcher.min.css">
+
+    
+        <link rel="icon" type="image/ico" href="https://johnburns.io/favicon.ico">
+    
+
+    
+        
+    
+</head>
+
+    <body><div class="container mt-5">
+    <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
+        <a class="navbar-brand mx-0 mr-sm-auto" href="https://johnburns.io/" title="The Colour of My Thoughts">
+          
+          The Colour of My Thoughts
+        </a>
+        <div class="navbar-nav flex-row flex-wrap justify-content-center">
+            
+                
+                
+                    <a class="nav-item nav-link" href="/about/" title="About">
+                        About
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/resume.pdf" title="Resume">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755S12 12 8 12s-5 1.755-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/></svg> Resume
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/contact/" title="Contact">
+                        Contact
+                    </a>
+                    
+                
+            
+        </div>
+    </nav>
+</div>
+<hr>
+<div id="content">
+<div class="container">
+    <h2 id="first-production-zfs-server-today">First Production ZFS server today</h2>
+<p>I have plenty of small business clients and sooner or later they all face one big challenge. They all outgrow the initial 80GB tape drives that we put on their servers. The problem is that most of these are small businesses and most of them could just afford the initial network, and asking them to pony up $2000+ for a new tape drive or worse yet autoloader is out of the question.</p>
+<p>Until recently we would try to switch them from full daily backups to full on Mondays and incremental the rest of the week. The problem with this is that this really only works up until about 120GB. After that you are looking at more than 2 tapes. If someone has to switch tapes on a Monday while users are changing files, it is very hard to get a consistent backup. This problem got me thinking, what is a relatively cheap way to get consistent backups of the server, retain more copies of the backups with less pace consumed, and be able to backup to more then two tapes without having backups run on data users are interacting with, which could stress the system, hurt performance, and cause inconsistent backups.</p>
+<p>My solution was to purchase a low-end server like an HP ML-110. Put 2 500GB sata drives in the system, and 2 40GB drives with hardware raid 1 for the system OS files. I then installed Solaris 10 and made a ZFS pool with the two 500GB drives mirrored. I shared the ZFS pool with NFS and Samba (NFS for Unix and samba for windows 2003 servers). I have the servers do a full backup to the ZFS pool on Monday, which is about 200GB. The incremental backups the rest of the week is about 50GB total. I set the backups to overwrite the data each week, so as not to use up too much disk space. This brings full weeks backups to about 220GB with compression on the ZFS pool. I then take a snapshot of the entire pool on Saturday and keep that snapshot for 4 weeks. This means that even though I am overwriting the backup files each week. The snapshots only take up as much space as the differences, so for about 380GB of disk space I have 1TB worth of backups on this Solaris box. And it gets even better. I set the tape drive to backup from the Solaris box every day after the other servers dump their backups to it the previous night. Since the data is not live data the backups are consistent and also the backups can be done during the day so someone can insert tape after tape while people are in the building.</p>
+<p>This is how ZFS has made life easier for me at one client site. This solution is scalable and priced at one-third the cost of a 400GB auto-loading tape drive. If this solution works out over the next couple of months I fully intend to make this my primary solution for those clients that can&rsquo;t afford bigger tape drives.</p>
+</div>
+
+        </div><div id="footer" class="mb-5">
+    <hr>
+    
+    <div class="container text-center">
+        
+            <a href="https://twitter.com/" class="fab fa-twitter fa-1x" title="Twitter"></a>
+        
+            <a href="mailto:john@techinvasion.net" class="fas fa-envelope fa-1x" title="E-mail"></a>
+        
+    </div>
+    
+    
+        <div class="container text-center">
+            <a href="https://github.com/bufo333/" title="By John Burns"><small>By John Burns</small></a>
+        </div>
+    
+</div>
+</body>
+</html>

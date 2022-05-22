@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang=""><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>things-i-wish-i-knew-about-solaris-when-i-first-started</title>
+    <meta name="description" content="The desk of my mind.">
+    <meta name="author" content='John Burns'>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" href="/sass/researcher.min.css">
+
+    
+        <link rel="icon" type="image/ico" href="https://johnburns.io/favicon.ico">
+    
+
+    
+        
+    
+</head>
+
+    <body><div class="container mt-5">
+    <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
+        <a class="navbar-brand mx-0 mr-sm-auto" href="https://johnburns.io/" title="The Colour of My Thoughts">
+          
+          The Colour of My Thoughts
+        </a>
+        <div class="navbar-nav flex-row flex-wrap justify-content-center">
+            
+                
+                
+                    <a class="nav-item nav-link" href="/about/" title="About">
+                        About
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/resume.pdf" title="Resume">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755S12 12 8 12s-5 1.755-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/></svg> Resume
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/contact/" title="Contact">
+                        Contact
+                    </a>
+                    
+                
+            
+        </div>
+    </nav>
+</div>
+<hr>
+<div id="content">
+<div class="container">
+    <h2 id="things-i-wish-i-knew-about-solaris-when-i-first-started">Things I Wish I Knew About Solaris When I First Started.</h2>
+<p><font face="Calibri"><span></span></font></p>
+<p><font face="Calibri">Solaris 10 is a very powerful scalable operating system that feels tightly integrated and highly responsive. However for those of us with a strong Linux or FreeBSD background Solaris can feel a little unfamiliar and even downright confusing. This post is made up of a few things I wish I knew before I started my Solaris 10 adventure. I hope it will make things a little easier for those of you wanting to take the plunge into a true enterprise operating system.</p>
+<p>More&hellip;</p>
+<p>1.That annoying backspace!!!!</p>
+<p>If you are wondering how to get the backspace key to work in Solaris you can type one simple command. It should make life much easier for you.</p>
+<p>#stty erase ^h</p>
+<p>The (^h) is what is displayed when you use the backspace key.</p>
+<p>2.How do I enable Samba?</p>
+<p>To enable Samba simply issue the following commands:</p>
+<p>#vi /etc/sfw/smb.conf</p>
+<p>Enter your samba config entries here</p>
+<p>#reboot?</p>
+<p>When Solaris 10 boots it will check /etc/sfw for the smb.conf file, If that file is present it will enable samba automatically.</p>
+<ol start="3">
+<li>How do I turn the graphical login on and off on bootup?</li>
+</ol>
+<p>If you want the gui to not start when the system boots you can issue the following commands.</p>
+<p>#/usr/dt/bin/dtconfig –d</p>
+<p>The above command will disable auto gui on boot.</p>
+<p>#/usr/dt/bin/dtconfig –e</p>
+<p>As you can probably guess if –d disables the gui –e enables it.</p>
+<ol start="4">
+<li>How do I scan for a network card and load the driver?</li>
+</ol>
+<p>If you are coming from Linux or FreeBSD the process of loading a network card driver may seem very alien. In order to check for any network cards on the system for which you have drivers you can issue the following commands</p>
+<p>#ifconfig –a plumb</p>
+<p>The plumb part of the command will look for any network cards for which you have drivers and attempt to attach the driver to the hardware. You can check to see if any cards were found by using the following command.</p>
+<p>#ifconfig –a</p>
+<p>If any new network cards were found they will now show in the above command. The trick here is to get the network card to load automatically every time the computer starts in order to do this you must create the following file.</p>
+<p>#vi /etc/hostname.interface-name</p>
+<p>some examples of this are:</p>
+<p>Hostname.rtls0Hostname.vfe0</p>
+<p>Inside this file you need to put the hostname of the computer.</p>
+<p>If the hostname is workstation1.techinvasion.net the file should look like the following:</p>
+<p>#cat /etc/hostname.vfe0Workstation1#</p>
+<p>These Are just some of the things that I have learned that I wish I knew when I started my adventure into Solaris. I will add more little tips to this page as I find more little things to add.</p>
+</font>
+</div>
+
+        </div><div id="footer" class="mb-5">
+    <hr>
+    
+    <div class="container text-center">
+        
+            <a href="https://twitter.com/" class="fab fa-twitter fa-1x" title="Twitter"></a>
+        
+            <a href="mailto:john@techinvasion.net" class="fas fa-envelope fa-1x" title="E-mail"></a>
+        
+    </div>
+    
+    
+        <div class="container text-center">
+            <a href="https://github.com/bufo333/" title="By John Burns"><small>By John Burns</small></a>
+        </div>
+    
+</div>
+</body>
+</html>
