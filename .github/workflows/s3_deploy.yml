@@ -17,7 +17,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Delete github folders
         run: rm -rf ./.git*
-      - name: purge bucket
-        run: aws s3 rm s3://johnburns.io --recursive
       - name: Deploy app build to S3 bucket
         run: aws s3 sync ./ s3://johnburns.io --delete
+      - name: cloudfront invalidate
+        run: aws cloudfront create-invalidation --distribution-id E2DX6K2X7IVSF2 --paths /*
