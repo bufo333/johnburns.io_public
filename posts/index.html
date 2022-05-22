@@ -71,8 +71,7 @@
             <li><a href="https://johnburns.io/posts/bhyve-on-freebsd-10-1/">2015-05-15 | bhyve-on-freebsd-10-1</a>
                 <p></p><p>
             Bhyve on FreeBSD 10.1 I recently started a new series of videos on YouTube about my favorite operating system FreeBSD. Below are the commands used in the video to setup the bhyve hypervisor on FreeBSD 10.1 with a virtualized Ubuntu 15 server.
- ######## prerequisites for bhyve on FreeBSD ##########pkg install grub2-bhyvemkdir /virtual_machinescd /virtual_machinesmkdir isocd isofetch http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso
-######��� Load kernel modules and set sysctl values ######kldload if_tapkldload if_bridgekldload vmmkldload nmdm</p></li>
+ ######## prerequisites for bhyve on FreeBSD ##########  pkg install grub2-bhyve  mkdir /virtual_machines  cd /virtual_machines  mkdir iso  cd iso  fetch http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso    ######��� Load kernel modules and set sysctl values ######  kldload if_tap  kldload if_bridge  kldload vmm  kldload nmdm  ###### set sysctl values� #######3  sysctl net.</p></li>
         
             <li><a href="https://johnburns.io/posts/poem/">2013-10-20 | poem</a>
                 <p></p><p>
