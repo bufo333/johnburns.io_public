@@ -23,6 +23,7 @@
     
 </head>
 
+    <link rel="stylesheet" href="/syntax.css" crossorigin="anonymous">
     <body><div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
         <a class="navbar-brand mx-0 mr-sm-auto" href="https://johnburns.io/" title="The Colour of My Thoughts">
@@ -65,153 +66,153 @@
 <p>The most popular solution today is to use some sort of interception caching mechanism such as WCCP. Now WCCP is a Cisco protocol that has been more or less adopted by many other vendors even though the name is different foundry supports this protocol in their layer 4 switches, juniper supports it although under a different name, as well as HP switch and router products. The way WCCP works is to grab packets matching either an access-list or the built in web-cache group and forward those packets to the proxy, their by intercepting the packets as they reach the routed interface upstream from the end user. Now Cisco routers do this by creating a one-way GRE tunnel while Cisco switches perform this by using L2 redirects. If you are configuring WCCP on a Catalyst 6500 switch you have a choice of using L2 redirects or GRE tunnels.</p>
 <p>The second most popular way to insure inform proxy setting across an enterprise is to use WPAD or (Web Proxy Auto Discovery Protocol) . Wpad works by writing a small JavaScript function in a text file, which tells the browser the proxy settings and what domains or subnets are excluded from the proxy such as local settings. Once you create your text file you save it to a web server on the local LAN in the root directory. An example would be <a href="http://webserver.mycompany.com/wpad.dat"><a href="http://webserver.mycompany.com/wpad.dat">http://webserver.mycompany.com/wpad.dat</a></a> .</p>
 <p>An example of the contents of the above file are as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">FindProxyForURL</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">host</span>) {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// our local URLs from the domains below example.com don&#39;t need a proxy:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">shExpMatch</span>(<span style="color:#a6e22e">url</span>,<span style="color:#e6db74">&#34;*.techinvasion.local/*&#34;</span>))   {<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;DIRECT&#34;</span>;}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// URLs within this network are accessed through
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// port 8080 on fastproxy.example.com:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isInNet</span>(<span style="color:#a6e22e">host</span>, <span style="color:#e6db74">&#34;10.0.0.0&#34;</span>,  <span style="color:#e6db74">&#34;255.255.255.0&#34;</span>))    {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;PROXY proxy.techinvasion.local:3128&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// All other requests go through port 3128 of proxy.example.com.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// should that fail to respond, go directly to the WWW:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;PROXY proxy.techinvasion.local:3128; DIRECT&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">FindProxyForURL</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">host</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// our local URLs from the domains below example.com don&#39;t need a proxy:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">shExpMatch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="s2">&#34;*.techinvasion.local/*&#34;</span><span class="p">))</span>   <span class="p">{</span><span class="k">return</span> <span class="s2">&#34;DIRECT&#34;</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// URLs within this network are accessed through
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// port 8080 on fastproxy.example.com:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">isInNet</span><span class="p">(</span><span class="nx">host</span><span class="p">,</span> <span class="s2">&#34;10.0.0.0&#34;</span><span class="p">,</span>  <span class="s2">&#34;255.255.255.0&#34;</span><span class="p">))</span>    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="s2">&#34;PROXY proxy.techinvasion.local:3128&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// All other requests go through port 3128 of proxy.example.com.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// should that fail to respond, go directly to the WWW:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="s2">&#34;PROXY proxy.techinvasion.local:3128; DIRECT&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>The next step would be to add option 252 to the dhcp scope with an ASCII text entry of the web server path to the wpad.dat file as listed above. On a Cisco router with DHCP the entry would look like the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">dhcp</span> <span style="color:#a6e22e">pool</span> <span style="color:#a6e22e">lan</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">network</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">update</span> <span style="color:#a6e22e">dns</span> <span style="color:#a6e22e">both</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">domain</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span> <span style="color:#a6e22e">techinvasion</span>.<span style="color:#a6e22e">local</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">default</span><span style="color:#f92672">-</span><span style="color:#a6e22e">router</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.254</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">dns</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.9</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.2</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">option</span> <span style="color:#ae81ff">252</span> <span style="color:#a6e22e">ascii</span> <span style="color:#e6db74">&#34;http://stats.techinvasion.local/proxy.pac&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">lease</span> <span style="color:#a6e22e">infinite</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#f92672">!</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">dhcp</span> <span class="nx">pool</span> <span class="nx">lan</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="nx">network</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">255.255</span><span class="p">.</span><span class="mf">255.0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="nx">update</span> <span class="nx">dns</span> <span class="nx">both</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="nx">domain</span><span class="o">-</span><span class="nx">name</span> <span class="nx">techinvasion</span><span class="p">.</span><span class="nx">local</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="k">default</span><span class="o">-</span><span class="nx">router</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.254</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="nx">dns</span><span class="o">-</span><span class="nx">server</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.9</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="nx">option</span> <span class="mi">252</span> <span class="nx">ascii</span> <span class="s2">&#34;http://stats.techinvasion.local/proxy.pac&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="nx">lease</span> <span class="nx">infinite</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="o">!</span>
 </span></span></code></pre></div><p>After this is done you should be in business. The only problem with this approach is that if you do not have active directory to force enable automatic proxy detection in internet explorer you really have no way to force users to look for this pac file. This can create uniformity problems and generate more calls to the help desk.</p>
 <pre><code>        The final way we can configure the proxy is to use route-maps to redirect all web traffic to the proxy. The only problem with this approach is that if for some reason the proxy Is to go down the route-map will be directing traffic to a black hole!  To remedy this we can use the IP-SLA feature to monitor the proxy and deactivate the route-map if the proxy is unavailable.
 </code></pre>
 <p>Now some things to remember, the route-map is only sending the traffic on port 80 to the proxy on port 80, if your proxy runs on a different port you will need to do a port redirect using ipfilter on FreeBSD based proxies, or ipchains on Linux based proxies to change the traffic to the correct port. Ok let get started with our configuration.</p>
 <p>Step one create a http monitor that will use your proxy to pull an outside site like yahoo.com.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">sla</span> <span style="color:#a6e22e">monitor</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">http</span> <span style="color:#a6e22e">operation</span> <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">url</span> <span style="color:#a6e22e">http</span><span style="color:#f92672">:</span><span style="color:#75715e">//www.yahoo.com name-server 10.0.0.9 proxy http://10.0.0.8/
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">timeout</span> <span style="color:#ae81ff">5000</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">sla</span> <span style="color:#a6e22e">monitor</span> <span style="color:#a6e22e">schedule</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">start</span><span style="color:#f92672">-</span><span style="color:#a6e22e">time</span> <span style="color:#a6e22e">now</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">sla</span> <span class="nx">monitor</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">type</span> <span class="nx">http</span> <span class="nx">operation</span> <span class="nx">get</span> <span class="nx">url</span> <span class="nx">http</span><span class="o">:</span><span class="c1">//www.yahoo.com name-server 10.0.0.9 proxy http://10.0.0.8/
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"> <span class="nx">timeout</span> <span class="mi">5000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">sla</span> <span class="nx">monitor</span> <span class="nx">schedule</span> <span class="mi">1</span> <span class="nx">start</span><span class="o">-</span><span class="nx">time</span> <span class="nx">now</span>
 </span></span></code></pre></div><p>The above code polls yahoo.com every 60 seconds to verify that the proxy server is working. Once you have that turned on you can issue the following commands to test it.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">sh</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">sla</span> <span style="color:#a6e22e">monitor</span> <span style="color:#a6e22e">statistics</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Round</span> <span style="color:#a6e22e">trip</span> <span style="color:#a6e22e">time</span> (<span style="color:#a6e22e">RTT</span>)            <span style="color:#a6e22e">Index</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Latest</span> <span style="color:#a6e22e">RTT</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">266</span> <span style="color:#a6e22e">ms</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Latest</span> <span style="color:#a6e22e">operation</span> <span style="color:#a6e22e">start</span> <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">04</span><span style="color:#f92672">:</span><span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">13.020</span> <span style="color:#a6e22e">edt</span> <span style="color:#a6e22e">Mon</span> <span style="color:#a6e22e">Jul</span> <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">2009</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Latest</span> <span style="color:#a6e22e">operation</span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">OK</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Latest</span> <span style="color:#a6e22e">DNS</span> <span style="color:#a6e22e">RTT</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span> <span style="color:#a6e22e">ms</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Latest</span> <span style="color:#a6e22e">TCP</span> <span style="color:#a6e22e">Connection</span> <span style="color:#a6e22e">RTT</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">18</span> <span style="color:#a6e22e">ms</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Latest</span> <span style="color:#a6e22e">HTTP</span> <span style="color:#a6e22e">Transaction</span> <span style="color:#a6e22e">RTT</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">248</span> <span style="color:#a6e22e">ms</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Number <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">successes</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">55</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Number <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">failures</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Operation</span> <span style="color:#a6e22e">time</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">live</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">If</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">see</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Last</span> <span style="color:#a6e22e">operation</span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">OK</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="err">#</span><span class="nx">sh</span> <span class="nx">ip</span> <span class="nx">sla</span> <span class="nx">monitor</span> <span class="nx">statistics</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Round</span> <span class="nx">trip</span> <span class="nx">time</span> <span class="p">(</span><span class="nx">RTT</span><span class="p">)</span>            <span class="nx">Index</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">Latest</span> <span class="nx">RTT</span><span class="o">:</span> <span class="mi">266</span> <span class="nx">ms</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Latest</span> <span class="nx">operation</span> <span class="nx">start</span> <span class="nx">time</span><span class="o">:</span> <span class="mi">04</span><span class="o">:</span><span class="mi">19</span><span class="o">:</span><span class="mf">13.020</span> <span class="nx">edt</span> <span class="nx">Mon</span> <span class="nx">Jul</span> <span class="mi">13</span> <span class="mi">2009</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Latest</span> <span class="nx">operation</span> <span class="k">return</span> <span class="nx">code</span><span class="o">:</span> <span class="nx">OK</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Latest</span> <span class="nx">DNS</span> <span class="nx">RTT</span><span class="o">:</span> <span class="mi">0</span> <span class="nx">ms</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Latest</span> <span class="nx">TCP</span> <span class="nx">Connection</span> <span class="nx">RTT</span><span class="o">:</span> <span class="mi">18</span> <span class="nx">ms</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Latest</span> <span class="nx">HTTP</span> <span class="nx">Transaction</span> <span class="nx">RTT</span><span class="o">:</span> <span class="mi">248</span> <span class="nx">ms</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">Number</span> <span class="k">of</span> <span class="nx">successes</span><span class="o">:</span> <span class="mi">55</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">Number</span> <span class="k">of</span> <span class="nx">failures</span><span class="o">:</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Operation</span> <span class="nx">time</span> <span class="nx">to</span> <span class="nx">live</span><span class="o">:</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">If</span> <span class="nx">you</span> <span class="nx">see</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Last</span> <span class="nx">operation</span> <span class="k">return</span> <span class="nx">code</span><span class="o">:</span> <span class="nx">OK</span>
 </span></span></code></pre></div><p>Then that means everything is ok, it will say timeout if the proxy is down. Now I do the proxy test on port 80 because I want to verify that the ipchains port redirection rule is working as well, however you could specify a different port such as 3128 or 8080 if you wanted to.</p>
 <p>The next step is to build the route-map and the track object. The track object is what the route map references to check availability of the next hop, in this case the next hop is the proxy. You setup as track object as follows.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">Track</span> <span style="color:#a6e22e">option1</span> <span style="color:#a6e22e">option2</span> <span style="color:#a6e22e">option3</span> 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Option</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">lt</span>;<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#ae81ff">500</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">gt</span>;     <span style="color:#a6e22e">Tracked</span> <span style="color:#a6e22e">object</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Option</span> <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">interface</span>  <span style="color:#a6e22e">Select</span> <span style="color:#a6e22e">an</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">track</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">ip</span>         <span style="color:#a6e22e">IP</span> <span style="color:#a6e22e">protocol</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">list</span>       <span style="color:#a6e22e">Group</span> <span style="color:#a6e22e">objects</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">list</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">rtr</span>        <span style="color:#a6e22e">Response</span> <span style="color:#a6e22e">Time</span> <span style="color:#a6e22e">Reporter</span> (<span style="color:#a6e22e">RTR</span>) <span style="color:#a6e22e">entry</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Option</span> <span style="color:#ae81ff">3</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">lt</span>;<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2147483647</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">gt</span>;  <span style="color:#a6e22e">Entry</span> <span style="color:#a6e22e">number</span>)  <span style="color:#960050;background-color:#1e0010">�</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">refers</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">monitor</span> <span style="color:#a6e22e">number</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">IP</span> <span style="color:#a6e22e">SLA</span> <span style="color:#a6e22e">command</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">Track</span> <span class="nx">option1</span> <span class="nx">option2</span> <span class="nx">option3</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Option</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="mi">1</span><span class="o">-</span><span class="mi">500</span> <span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span>     <span class="nx">Tracked</span> <span class="nx">object</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Option</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="kr">interface</span>  <span class="nx">Select</span> <span class="nx">an</span> <span class="kr">interface</span> <span class="nx">to</span> <span class="nx">track</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nx">ip</span>         <span class="nx">IP</span> <span class="nx">protocol</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nx">list</span>       <span class="nx">Group</span> <span class="nx">objects</span> <span class="k">in</span> <span class="nx">a</span> <span class="nx">list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nx">rtr</span>        <span class="nx">Response</span> <span class="nx">Time</span> <span class="nx">Reporter</span> <span class="p">(</span><span class="nx">RTR</span><span class="p">)</span> <span class="nx">entry</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Option</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="mi">1</span><span class="o">-</span><span class="mi">2147483647</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span>  <span class="nx">Entry</span> <span class="nx">number</span><span class="p">)</span>  <span class="err">�</span> <span class="k">this</span> <span class="nx">refers</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">monitor</span> <span class="nx">number</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">IP</span> <span class="nx">SLA</span> <span class="nx">command</span>
 </span></span></code></pre></div><p>In our case we want a response time reporter because we are interested in up/down information about the proxy.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">track</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">rtr</span> <span style="color:#ae81ff">1</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">track</span> <span class="mi">1</span> <span class="nx">rtr</span> <span class="mi">1</span>
 </span></span></code></pre></div><p>Now we need to build and apply the route-map.  First we need to build an access-list to specify the interesting traffic the route-map will be forwarding.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">extended</span> <span style="color:#a6e22e">proxy</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span> <span style="color:#a6e22e">deny</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">host</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.8</span> <span style="color:#a6e22e">any</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span> <span style="color:#a6e22e">Block</span> <span style="color:#a6e22e">proxy</span> <span style="color:#a6e22e">traffic</span>, <span style="color:#a6e22e">we</span> <span style="color:#66d9ef">do</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">want</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">routing</span> <span style="color:#a6e22e">loop</span>.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">20</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">tcp</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.255</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">eq</span> <span style="color:#ae81ff">80</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="nx">extended</span> <span class="nx">proxy</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">10</span> <span class="nx">deny</span> <span class="nx">ip</span> <span class="nx">host</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.8</span> <span class="nx">any</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span> <span class="nx">Block</span> <span class="nx">proxy</span> <span class="nx">traffic</span><span class="p">,</span> <span class="nx">we</span> <span class="k">do</span> <span class="nx">not</span> <span class="nx">want</span> <span class="nx">to</span> <span class="nx">create</span> <span class="nx">a</span> <span class="nx">routing</span> <span class="nx">loop</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">20</span> <span class="nx">permit</span> <span class="nx">tcp</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.255</span> <span class="nx">any</span> <span class="nx">eq</span> <span class="mi">80</span>
 </span></span></code></pre></div><p>Here is the appropriate route-map below</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">route</span><span style="color:#f92672">-</span><span style="color:#a6e22e">map</span> <span style="color:#a6e22e">proxy</span> <span style="color:#a6e22e">permit</span> <span style="color:#ae81ff">10</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">match</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#a6e22e">proxy</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">next</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hop</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">-</span><span style="color:#a6e22e">availability</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.8</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">track</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/pre&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">route</span><span class="o">-</span><span class="nx">map</span> <span class="nx">proxy</span> <span class="nx">permit</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">match</span> <span class="nx">ip</span> <span class="nx">address</span> <span class="nx">proxy</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">set</span> <span class="nx">ip</span> <span class="nx">next</span><span class="o">-</span><span class="nx">hop</span> <span class="nx">verify</span><span class="o">-</span><span class="nx">availability</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.8</span> <span class="mi">1</span> <span class="nx">track</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="err">/pre&gt;</span>
 </span></span></code></pre></div><p>To test this we can issue the command</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">show</span> <span style="color:#a6e22e">route</span><span style="color:#f92672">-</span><span style="color:#a6e22e">map</span> <span style="color:#a6e22e">proxy</span>                                       
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">route</span><span style="color:#f92672">-</span><span style="color:#a6e22e">map</span> <span style="color:#a6e22e">proxy</span>, <span style="color:#a6e22e">permit</span>, <span style="color:#a6e22e">sequence</span> <span style="color:#ae81ff">10</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">clauses</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> (<span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lists</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">proxy</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Set</span> <span style="color:#a6e22e">clauses</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">next</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hop</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">-</span><span style="color:#a6e22e">availability</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.8</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">track</span> <span style="color:#ae81ff">1</span>  [<span style="color:#a6e22e">up</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Policy</span> <span style="color:#a6e22e">routing</span> <span style="color:#a6e22e">matches</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">41673</span> <span style="color:#a6e22e">packets</span>, <span style="color:#ae81ff">6145267</span> <span style="color:#a6e22e">bytes</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span><span class="nx">show</span> <span class="nx">route</span><span class="o">-</span><span class="nx">map</span> <span class="nx">proxy</span>                                       
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">route</span><span class="o">-</span><span class="nx">map</span> <span class="nx">proxy</span><span class="p">,</span> <span class="nx">permit</span><span class="p">,</span> <span class="nx">sequence</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">Match</span> <span class="nx">clauses</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">ip</span> <span class="nx">address</span> <span class="p">(</span><span class="nx">access</span><span class="o">-</span><span class="nx">lists</span><span class="p">)</span><span class="o">:</span> <span class="nx">proxy</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">Set</span> <span class="nx">clauses</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">ip</span> <span class="nx">next</span><span class="o">-</span><span class="nx">hop</span> <span class="nx">verify</span><span class="o">-</span><span class="nx">availability</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.8</span> <span class="mi">1</span> <span class="nx">track</span> <span class="mi">1</span>  <span class="p">[</span><span class="nx">up</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">Policy</span> <span class="nx">routing</span> <span class="nx">matches</span><span class="o">:</span> <span class="mi">41673</span> <span class="nx">packets</span><span class="p">,</span> <span class="mi">6145267</span> <span class="nx">bytes</span>
 </span></span></code></pre></div><p>You will notice the �UP� this means that it sees our track object and it is getting th response time code from the ip sla monitor that we setup.</p>
 
 </div>

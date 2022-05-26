@@ -23,6 +23,7 @@
     
 </head>
 
+    <link rel="stylesheet" href="/syntax.css" crossorigin="anonymous">
     <body><div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
         <a class="navbar-brand mx-0 mr-sm-auto" href="https://johnburns.io/" title="The Colour of My Thoughts">
@@ -65,193 +66,193 @@
 <p>To facilitate out discussion of Filter-Lists let�s take a look at a standard anti-spoofing access list which would be applied to most edge routers. First let�s talk about what a vanilla anti-spoofing ACL should contain! A standard ACL at a minimum should block all RFC-1918 address space from the internet, it should also block undesirable types of ICMP traffic, and depending on the setup should block packets with illegal combinations of TCP flags set, for example packets with the SYN-FIN flag set at the same time or FIN-URG-PSH or URG-ACK-PSH-RST-SYN-FIN at the same time. All of these combinations of TCP flags are illegal and should never be together as part of a legitimate packet. So without further ado lets talk about Filter Lists.</p>
 <p>Filter Lists are defined under the Firewall section of the JUNOS configuration. Prefix Lists which are groups of networks, IP address ranges, or single hosts such as 1.1.1.1/32 are defined in these lists. These lists can later be used in as many Filter Lists as you define.</p>
 <p>Below I will show you the actual Filter Lists as it looks in the configuration and some of the commands to create the list. For brevity I have opted to only show some of the commands used in creating the list as they are basically repetitive. The important thing to remember is that like all Access-Lists the terms in the Filter List are evaluated from top to bottom so it is important that the last term be an allow all statement otherwise the anti-spoofing filter will block all communication even legitimate communication.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>[<span style="color:#a6e22e">edit</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">john</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">policy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">options</span> <span style="color:#a6e22e">prefix</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">rfc1918</span><span style="color:#f92672">-</span><span style="color:#a6e22e">prefix</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">0.0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">16</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">edit</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">john</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">policy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">options</span> <span style="color:#a6e22e">prefix</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">rfc1918</span><span style="color:#f92672">-</span><span style="color:#a6e22e">prefix</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">172.16</span>.<span style="color:#ae81ff">0.0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">12</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">edit</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">john</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">policy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">options</span> <span style="color:#a6e22e">prefix</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">rfc1918</span><span style="color:#f92672">-</span><span style="color:#a6e22e">prefix</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">8</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">edit</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">john</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">edit</span> <span style="color:#a6e22e">firewall</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">edit</span> <span style="color:#a6e22e">firewall</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">john</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">edit</span> <span style="color:#a6e22e">filter</span> <span style="color:#a6e22e">anti</span><span style="color:#f92672">-</span><span style="color:#a6e22e">spoofing</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">edit</span> <span style="color:#a6e22e">firewall</span> <span style="color:#a6e22e">filter</span> <span style="color:#a6e22e">anti</span><span style="color:#f92672">-</span><span style="color:#a6e22e">spoofing</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">john</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">edit</span> <span style="color:#a6e22e">term</span> <span style="color:#a6e22e">block</span><span style="color:#f92672">-</span><span style="color:#a6e22e">rfc1918</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">edit</span> <span style="color:#a6e22e">firewall</span> <span style="color:#a6e22e">filter</span> <span style="color:#a6e22e">anti</span><span style="color:#f92672">-</span><span style="color:#a6e22e">spoofing</span> <span style="color:#a6e22e">term</span> <span style="color:#a6e22e">block</span><span style="color:#f92672">-</span><span style="color:#a6e22e">rfc1918</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">john</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">source</span><span style="color:#f92672">-</span><span style="color:#a6e22e">prefix</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">rfc1918</span><span style="color:#f92672">-</span><span style="color:#a6e22e">prefix</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">edit</span> <span style="color:#a6e22e">firewall</span> <span style="color:#a6e22e">filter</span> <span style="color:#a6e22e">anti</span><span style="color:#f92672">-</span><span style="color:#a6e22e">spoofing</span> <span style="color:#a6e22e">term</span> <span style="color:#a6e22e">block</span><span style="color:#f92672">-</span><span style="color:#a6e22e">rfc1918</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">john</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">then</span> <span style="color:#a6e22e">log</span> <span style="color:#a6e22e">discard</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">edit</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">john</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">show</span> <span style="color:#a6e22e">policy</span><span style="color:#f92672">-</span><span style="color:#a6e22e">options</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">prefix</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">rfc1918</span><span style="color:#f92672">-</span><span style="color:#a6e22e">prefix</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">8</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">172.16</span>.<span style="color:#ae81ff">0.0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">12</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">0.0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">16</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">edit</span> <span style="color:#a6e22e">firewall</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">john</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">show</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">filter</span> <span style="color:#a6e22e">anti</span><span style="color:#f92672">-</span><span style="color:#a6e22e">spoofing</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">term</span> <span style="color:#a6e22e">block</span><span style="color:#f92672">-</span><span style="color:#a6e22e">rfc1918</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">from</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">source</span><span style="color:#f92672">-</span><span style="color:#a6e22e">prefix</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">rfc1918</span><span style="color:#f92672">-</span><span style="color:#a6e22e">prefix</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span>; <span style="color:#960050;background-color:#1e0010">##</span> <span style="color:#e6db74">&#39;rfc1918-prefix-list&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">defined</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">then</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">log</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">discard</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">term</span> <span style="color:#a6e22e">block</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fin</span><span style="color:#f92672">-</span><span style="color:#a6e22e">urg</span><span style="color:#f92672">-</span><span style="color:#a6e22e">psh</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">from</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">protocol</span> <span style="color:#a6e22e">tcp</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">tcp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">flags</span> <span style="color:#a6e22e">fin</span>,<span style="color:#a6e22e">psh</span>,<span style="color:#a6e22e">urg</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">then</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">log</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">discard</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">term</span> <span style="color:#a6e22e">block</span><span style="color:#f92672">-</span><span style="color:#a6e22e">syn</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fin</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">from</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">protocol</span> <span style="color:#a6e22e">tcp</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">tcp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">flags</span> <span style="color:#a6e22e">fin</span>,<span style="color:#a6e22e">syn</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">then</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">log</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">discard</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">term</span> <span style="color:#a6e22e">block</span><span style="color:#f92672">-</span><span style="color:#a6e22e">urg</span><span style="color:#f92672">-</span><span style="color:#a6e22e">ack</span><span style="color:#f92672">-</span><span style="color:#a6e22e">syn</span><span style="color:#f92672">-</span><span style="color:#a6e22e">fin</span><span style="color:#f92672">-</span><span style="color:#a6e22e">rst</span><span style="color:#f92672">-</span><span style="color:#a6e22e">psh</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">from</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">protocol</span> <span style="color:#a6e22e">tcp</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">tcp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">flags</span> <span style="color:#a6e22e">urg</span>,<span style="color:#a6e22e">ack</span>,<span style="color:#a6e22e">psh</span>,<span style="color:#a6e22e">rst</span>,<span style="color:#a6e22e">fin</span>,<span style="color:#a6e22e">syn</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">then</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">log</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">discard</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">term</span> <span style="color:#a6e22e">block</span><span style="color:#f92672">-</span><span style="color:#a6e22e">icmp</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">from</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">protocol</span> <span style="color:#a6e22e">icmp</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">icmp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">type</span><span style="color:#f92672">-</span><span style="color:#a6e22e">except</span> <span style="color:#a6e22e">echo</span><span style="color:#f92672">-</span><span style="color:#a6e22e">reply</span>,<span style="color:#a6e22e">unreachable</span>,<span style="color:#a6e22e">source</span><span style="color:#f92672">-</span><span style="color:#a6e22e">quench</span>,<span style="color:#a6e22e">time</span><span style="color:#f92672">-</span><span style="color:#a6e22e">exceeded</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">then</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">log</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">discard</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">term</span> <span style="color:#a6e22e">accept</span><span style="color:#f92672">-</span><span style="color:#a6e22e">all</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">then</span> <span style="color:#a6e22e">accept</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">edit</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">john</span><span class="err">#</span><span class="nx">set</span> <span class="nx">policy</span><span class="o">-</span><span class="nx">options</span> <span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span> <span class="nx">rfc1918</span><span class="o">-</span><span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">16</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">edit</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">john</span><span class="err">#</span><span class="nx">set</span> <span class="nx">policy</span><span class="o">-</span><span class="nx">options</span> <span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span> <span class="nx">rfc1918</span><span class="o">-</span><span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span> <span class="mf">172.16</span><span class="p">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">12</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">edit</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">john</span><span class="err">#</span><span class="nx">set</span> <span class="nx">policy</span><span class="o">-</span><span class="nx">options</span> <span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span> <span class="nx">rfc1918</span><span class="o">-</span><span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">8</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">edit</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">john</span><span class="err">#</span> <span class="nx">edit</span> <span class="nx">firewall</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">edit</span> <span class="nx">firewall</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">john</span><span class="err">#</span> <span class="nx">edit</span> <span class="nx">filter</span> <span class="nx">anti</span><span class="o">-</span><span class="nx">spoofing</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">edit</span> <span class="nx">firewall</span> <span class="nx">filter</span> <span class="nx">anti</span><span class="o">-</span><span class="nx">spoofing</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">john</span><span class="err">#</span> <span class="nx">edit</span> <span class="nx">term</span> <span class="nx">block</span><span class="o">-</span><span class="nx">rfc1918</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">edit</span> <span class="nx">firewall</span> <span class="nx">filter</span> <span class="nx">anti</span><span class="o">-</span><span class="nx">spoofing</span> <span class="nx">term</span> <span class="nx">block</span><span class="o">-</span><span class="nx">rfc1918</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">john</span><span class="err">#</span> <span class="nx">set</span> <span class="nx">from</span> <span class="nx">source</span><span class="o">-</span><span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span> <span class="nx">rfc1918</span><span class="o">-</span><span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">edit</span> <span class="nx">firewall</span> <span class="nx">filter</span> <span class="nx">anti</span><span class="o">-</span><span class="nx">spoofing</span> <span class="nx">term</span> <span class="nx">block</span><span class="o">-</span><span class="nx">rfc1918</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">john</span><span class="err">#</span> <span class="nx">set</span> <span class="nx">then</span> <span class="nx">log</span> <span class="nx">discard</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">edit</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">john</span><span class="err">#</span> <span class="nx">show</span> <span class="nx">policy</span><span class="o">-</span><span class="nx">options</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span> <span class="nx">rfc1918</span><span class="o">-</span><span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="mf">172.16</span><span class="p">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">12</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="mf">192.168</span><span class="p">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">16</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">edit</span> <span class="nx">firewall</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">john</span><span class="err">#</span> <span class="nx">show</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">filter</span> <span class="nx">anti</span><span class="o">-</span><span class="nx">spoofing</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">term</span> <span class="nx">block</span><span class="o">-</span><span class="nx">rfc1918</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">from</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">source</span><span class="o">-</span><span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="nx">rfc1918</span><span class="o">-</span><span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span><span class="p">;</span> <span class="err">##</span> <span class="s1">&#39;rfc1918-prefix-list&#39;</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">defined</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">then</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">log</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">discard</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">term</span> <span class="nx">block</span><span class="o">-</span><span class="nx">fin</span><span class="o">-</span><span class="nx">urg</span><span class="o">-</span><span class="nx">psh</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">from</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">protocol</span> <span class="nx">tcp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">tcp</span><span class="o">-</span><span class="nx">flags</span> <span class="nx">fin</span><span class="p">,</span><span class="nx">psh</span><span class="p">,</span><span class="nx">urg</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">then</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">log</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">discard</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">term</span> <span class="nx">block</span><span class="o">-</span><span class="nx">syn</span><span class="o">-</span><span class="nx">fin</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">from</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">protocol</span> <span class="nx">tcp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">tcp</span><span class="o">-</span><span class="nx">flags</span> <span class="nx">fin</span><span class="p">,</span><span class="nx">syn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">then</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">log</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">discard</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">term</span> <span class="nx">block</span><span class="o">-</span><span class="nx">urg</span><span class="o">-</span><span class="nx">ack</span><span class="o">-</span><span class="nx">syn</span><span class="o">-</span><span class="nx">fin</span><span class="o">-</span><span class="nx">rst</span><span class="o">-</span><span class="nx">psh</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">from</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">protocol</span> <span class="nx">tcp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">tcp</span><span class="o">-</span><span class="nx">flags</span> <span class="nx">urg</span><span class="p">,</span><span class="nx">ack</span><span class="p">,</span><span class="nx">psh</span><span class="p">,</span><span class="nx">rst</span><span class="p">,</span><span class="nx">fin</span><span class="p">,</span><span class="nx">syn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">then</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">log</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">discard</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">term</span> <span class="nx">block</span><span class="o">-</span><span class="nx">icmp</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">from</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">protocol</span> <span class="nx">icmp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">icmp</span><span class="o">-</span><span class="nx">type</span><span class="o">-</span><span class="nx">except</span> <span class="nx">echo</span><span class="o">-</span><span class="nx">reply</span><span class="p">,</span><span class="nx">unreachable</span><span class="p">,</span><span class="nx">source</span><span class="o">-</span><span class="nx">quench</span><span class="p">,</span><span class="nx">time</span><span class="o">-</span><span class="nx">exceeded</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">then</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">log</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">discard</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">term</span> <span class="nx">accept</span><span class="o">-</span><span class="nx">all</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">then</span> <span class="nx">accept</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Remember to apply the Filter-List to the interface with the following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>[<span style="color:#a6e22e">edit</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">john</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">interfaces</span> <span style="color:#a6e22e">fe</span><span style="color:#f92672">-</span><span style="color:#ae81ff">0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0.0</span> <span style="color:#a6e22e">family</span> <span style="color:#a6e22e">inet</span> <span style="color:#a6e22e">filter</span> <span style="color:#a6e22e">input</span> <span style="color:#a6e22e">anti</span><span style="color:#f92672">-</span><span style="color:#a6e22e">spoofing</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">edit</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">john</span><span class="err">#</span><span class="nx">set</span> <span class="nx">interfaces</span> <span class="nx">fe</span><span class="o">-</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mf">0.0</span> <span class="nx">family</span> <span class="nx">inet</span> <span class="nx">filter</span> <span class="nx">input</span> <span class="nx">anti</span><span class="o">-</span><span class="nx">spoofing</span>
 </span></span></code></pre></div><p><a href="http://www.alltimedefense.com/uncategorized/time-based-access-control-lists/" target="_blank">Here is a related Article on ACL&rsquo;s</a></p>
 
 </div>

@@ -23,6 +23,7 @@
     
 </head>
 
+    <link rel="stylesheet" href="/syntax.css" crossorigin="anonymous">
     <body><div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
         <a class="navbar-brand mx-0 mr-sm-auto" href="https://johnburns.io/" title="The Colour of My Thoughts">
@@ -69,72 +70,72 @@
 <li>create access-list on outside interface to permit GRE</li>
 <li>create tunnel interface</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Tunnel0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">172.20</span>.<span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.252</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">keepalive</span> <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">3</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">source</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">destination</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.2</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mtu</span><span style="color:#f92672">-</span><span style="color:#a6e22e">discovery</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">description</span> <span style="color:#a6e22e">LAN</span> <span style="color:#a6e22e">INTERFACE</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.254</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">duplex</span> <span style="color:#a6e22e">auto</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">speed</span> <span style="color:#a6e22e">auto</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">description</span> <span style="color:#a6e22e">Internet</span> <span style="color:#a6e22e">Interface</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">group</span> <span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gre</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">duplex</span> <span style="color:#a6e22e">auto</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">speed</span> <span style="color:#a6e22e">auto</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">extended</span> <span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gre</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">gre</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Tunnel0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">ip</span> <span class="nx">address</span> <span class="mf">172.20</span><span class="p">.</span><span class="mf">1.1</span> <span class="mf">255.255</span><span class="p">.</span><span class="mf">255.252</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">keepalive</span> <span class="mi">10</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">tunnel</span> <span class="nx">source</span> <span class="nx">FastEthernet0</span><span class="o">/</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">tunnel</span> <span class="nx">destination</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">1.2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">tunnel</span> <span class="nx">path</span><span class="o">-</span><span class="nx">mtu</span><span class="o">-</span><span class="nx">discovery</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">FastEthernet0</span><span class="o">/</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">description</span> <span class="nx">LAN</span> <span class="nx">INTERFACE</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">ip</span> <span class="nx">address</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.254</span> <span class="mf">255.255</span><span class="p">.</span><span class="mf">255.0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">duplex</span> <span class="nx">auto</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">speed</span> <span class="nx">auto</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">FastEthernet0</span><span class="o">/</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">description</span> <span class="nx">Internet</span> <span class="nx">Interface</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">ip</span> <span class="nx">address</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">1.1</span> <span class="mf">255.255</span><span class="p">.</span><span class="mf">255.0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">ip</span> <span class="nx">access</span><span class="o">-</span><span class="nx">group</span> <span class="nx">allow</span><span class="o">-</span><span class="nx">gre</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">duplex</span> <span class="nx">auto</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">speed</span> <span class="nx">auto</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="nx">extended</span> <span class="nx">allow</span><span class="o">-</span><span class="nx">gre</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">permit</span> <span class="nx">gre</span> <span class="nx">any</span> <span class="nx">any</span>
 </span></span></code></pre></div>
 </div>
 

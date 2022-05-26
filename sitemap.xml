@@ -3,13 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://johnburns.io/posts/</loc>
-    <lastmod>2018-03-14T13:53:12+00:00</lastmod>
+    <lastmod>2022-05-26T13:00:00+00:00</lastmod>
     <priority>0</priority>
   </url><url>
-    <loc>https://johnburns.io/posts/rename-accounts-in-freebsd/</loc>
-    <lastmod>2018-03-14T13:53:12+00:00</lastmod>
+    <loc>https://johnburns.io/posts/beginner-network-templating/</loc>
+    <lastmod>2022-05-26T13:00:00+00:00</lastmod>
   </url><url>
     <loc>https://johnburns.io/</loc>
+    <lastmod>2022-05-26T13:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://johnburns.io/posts/rename-accounts-in-freebsd/</loc>
     <lastmod>2018-03-14T13:53:12+00:00</lastmod>
   </url><url>
     <loc>https://johnburns.io/posts/bhyve-on-freebsd-10-1/</loc>

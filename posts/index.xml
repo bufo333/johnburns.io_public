@@ -5,14 +5,29 @@
     <link>https://johnburns.io/posts/</link>
     <description>Recent content on The Colour of My Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 14 Mar 2018 13:53:12 +0000</lastBuildDate><atom:link href="https://johnburns.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 May 2022 13:00:00 +0000</lastBuildDate><atom:link href="https://johnburns.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>beginner-network-templating</title>
+      <link>https://johnburns.io/posts/beginner-network-templating/</link>
+      <pubDate>Thu, 26 May 2022 13:00:00 +0000</pubDate>
+      
+      <guid>https://johnburns.io/posts/beginner-network-templating/</guid>
+      <description>Develope and Deploy Network Templates Before Automating Date: 2022-05-26
+Subject: Network Templating
+Version 1.0
+Automation is the number one topic in networking today. Automation allows a team to lean left, moving simple troubleshooting to the NOC, it allows the team to do more with less, and it allows for repeatable deployments. A good place to start is to think about many of the day to day work that gets done, how much of this work is simply applying the same changes over and over.</description>
+    </item>
+    
     <item>
       <title>rename-accounts-in-freebsd</title>
       <link>https://johnburns.io/posts/rename-accounts-in-freebsd/</link>
       <pubDate>Wed, 14 Mar 2018 13:53:12 +0000</pubDate>
       
       <guid>https://johnburns.io/posts/rename-accounts-in-freebsd/</guid>
-      <description>Rename accounts in FreeBSD pw usermod -n oldname -l newname -d /usr/home/newnamepw groupmod -n oldname -l newnamemv /usr/home/oldname /usr/home/newnamechown -R newname:newname /usr/home/newname</description>
+      <description>Rename accounts in FreeBSD pw usermod -n oldname -l newname -d /usr/home/newname
+pw groupmod -n oldname -l newname
+mv /usr/home/oldname /usr/home/newname
+chown -R newname:newname /usr/home/newname</description>
     </item>
     
     <item>
@@ -22,7 +37,7 @@
       
       <guid>https://johnburns.io/posts/bhyve-on-freebsd-10-1/</guid>
       <description>Bhyve on FreeBSD 10.1 I recently started a new series of videos on YouTube about my favorite operating system FreeBSD. Below are the commands used in the video to setup the bhyve hypervisor on FreeBSD 10.1 with a virtualized Ubuntu 15 server.
- ######## prerequisites for bhyve on FreeBSD ##########  pkg install grub2-bhyve  mkdir /virtual_machines  cd /virtual_machines  mkdir iso  cd iso  fetch http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso    ######��� Load kernel modules and set sysctl values ######  kldload if_tap  kldload if_bridge  kldload vmm  kldload nmdm  ###### set sysctl values� #######3  sysctl net.</description>
+ ######## prerequisites for bhyve on FreeBSD ########## pkg install grub2-bhyve mkdir /virtual_machines cd /virtual_machines mkdir iso cd iso fetch http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso  ######��� Load kernel modules and set sysctl values ###### kldload if_tap kldload if_bridge kldload vmm kldload nmdm ###### set sysctl values� #######3 sysctl net.</description>
     </item>
     
     <item>
@@ -329,7 +344,7 @@ We are also looking for writers to post relevant articles such as the ones that 
       
       <guid>https://johnburns.io/posts/cisco-config-wic-1adsl-2/</guid>
       <description>Cisco WIC-1ADSL config for 1800 series router and ios 12.4 This config is for the Cisco 1800 series router running IOS 12.4. IOS 12.4 has some command and syntax changes in reguards to interfaces and configuration commands for PPPOE. This config was submitted by my good friend Pedro Rivera.
-version 12.4  service timestamps debug datetime msec  service timestamps log datetime msec  no service password-encryption  !  hostname Router  !</description>
+version 12.4 service timestamps debug datetime msec service timestamps log datetime msec no service password-encryption ! hostname Router ! boot-start-marker boot-end-marker !</description>
     </item>
     
     <item>

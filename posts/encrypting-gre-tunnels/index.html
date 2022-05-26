@@ -23,6 +23,7 @@
     
 </head>
 
+    <link rel="stylesheet" href="/syntax.css" crossorigin="anonymous">
     <body><div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
         <a class="navbar-brand mx-0 mr-sm-auto" href="https://johnburns.io/" title="The Colour of My Thoughts">
@@ -61,134 +62,134 @@
 <div class="container">
     <h2 id="encrypting-gre-tunnels">Encrypting GRE tunnels</h2>
 <p>In our Last article we looked at creating GRE tunnels between networks to allow non routable traffic to pass between remote offices.� GRE tunnels are a great solution however the traffic passing inside these tunnels is not encrypted and thus could be intercepted by unauthorized parties. In this article we are going to look at tunneling GRE inside of IPSEC. This will allow us to get the benefits of GRE and the security of IPSEC.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">isakmp</span> <span style="color:#a6e22e">policy</span> <span style="color:#ae81ff">10</span>        <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">create</span> <span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">policy</span> <span style="color:#a6e22e">file</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">authentication</span> <span style="color:#a6e22e">pre</span><span style="color:#f92672">-</span><span style="color:#a6e22e">share</span>      <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">use</span> <span style="color:#a6e22e">pre</span> <span style="color:#a6e22e">shared</span> <span style="color:#a6e22e">key</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">isakmp</span> <span style="color:#a6e22e">key</span> <span style="color:#a6e22e">integer</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.2</span> <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">address</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">remote</span> <span style="color:#a6e22e">tunnel</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">use</span> <span style="color:#a6e22e">aes</span> <span style="color:#a6e22e">encryption</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">comp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lzs</span> <span style="color:#a6e22e">conpression</span>. <span style="color:#a6e22e">use</span> <span style="color:#a6e22e">transport</span> <span style="color:#a6e22e">mode</span>.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">ipsec</span> <span style="color:#a6e22e">transform</span><span style="color:#f92672">-</span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">myset</span> <span style="color:#a6e22e">esp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">aes</span> <span style="color:#a6e22e">esp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">md5</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hmac</span> <span style="color:#a6e22e">comp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lzs</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">transport</span>   <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">transport</span> <span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">tells</span> <span style="color:#a6e22e">IPSEC</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">tunnel</span>,
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                       <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">used</span> <span style="color:#a6e22e">when</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">are</span> <span style="color:#a6e22e">using</span> <span style="color:#a6e22e">IPSEC</span> <span style="color:#66d9ef">for</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                       <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">encryption</span> <span style="color:#a6e22e">only</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">not</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">tunneling</span>.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">map</span> <span style="color:#a6e22e">mymap</span> <span style="color:#ae81ff">10</span> <span style="color:#a6e22e">ipsec</span><span style="color:#f92672">-</span><span style="color:#a6e22e">isakmp</span>   <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">map</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">peer</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.2</span>                      <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">peer</span> <span style="color:#a6e22e">must</span> <span style="color:#a6e22e">match</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">ISAKMP</span> <span style="color:#a6e22e">statement</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">transform</span><span style="color:#f92672">-</span><span style="color:#a6e22e">set</span> <span style="color:#a6e22e">myset</span>                  <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">use</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">encyption</span> <span style="color:#a6e22e">we</span> <span style="color:#a6e22e">defined</span> <span style="color:#a6e22e">above</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">match</span> <span style="color:#a6e22e">address</span> <span style="color:#a6e22e">match</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gre</span>                <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">encrypt</span> <span style="color:#a6e22e">only</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">GRE</span> <span style="color:#a6e22e">tunnel</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Tunnel0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">172.20</span>.<span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.252</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">keepalive</span> <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">3</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">source</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">destination</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.2</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mtu</span><span style="color:#f92672">-</span><span style="color:#a6e22e">discovery</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">map</span> <span style="color:#a6e22e">mymap</span>              <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">map</span> <span style="color:#a6e22e">must</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">applied</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">tunnel</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">description</span> <span style="color:#a6e22e">LAN</span> <span style="color:#a6e22e">INTERFACE</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.254</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">duplex</span> <span style="color:#a6e22e">auto</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">speed</span> <span style="color:#a6e22e">auto</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">description</span> <span style="color:#a6e22e">Internet</span> <span style="color:#a6e22e">Interface</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">group</span> <span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gre</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">duplex</span> <span style="color:#a6e22e">auto</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">speed</span> <span style="color:#a6e22e">auto</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">map</span> <span style="color:#a6e22e">mymap</span>   <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">crypto</span> <span style="color:#a6e22e">map</span> <span style="color:#a6e22e">must</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">applied</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">and</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">extended</span> <span style="color:#a6e22e">allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gre</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">gre</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span>               <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">allow</span> <span style="color:#a6e22e">gre</span> <span style="color:#a6e22e">through</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">firewall</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">esp</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span>              <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">allow</span> <span style="color:#a6e22e">esp</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">ipsec</span> <span style="color:#a6e22e">through</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">firewall</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">udp</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">eq</span> <span style="color:#ae81ff">500</span>    <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">allow</span> <span style="color:#a6e22e">udp</span> <span style="color:#a6e22e">port</span> <span style="color:#ae81ff">500</span> <span style="color:#a6e22e">through</span> <span style="color:#a6e22e">which</span> <span style="color:#a6e22e">ipsec</span> <span style="color:#a6e22e">also</span> <span style="color:#a6e22e">uses</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">match</span> <span style="color:#a6e22e">tunnel</span> <span style="color:#a6e22e">traffic</span>.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">This</span> <span style="color:#a6e22e">access</span> <span style="color:#a6e22e">list</span> <span style="color:#a6e22e">must</span> <span style="color:#a6e22e">be</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">form</span> (<span style="color:#a6e22e">my</span> <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ip</span>) (<span style="color:#a6e22e">destination</span> <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ip</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">extended</span> <span style="color:#a6e22e">match</span><span style="color:#f92672">-</span><span style="color:#a6e22e">gre</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">gre</span> <span style="color:#a6e22e">host</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.1</span> <span style="color:#a6e22e">host</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">1.2</span> <span style="color:#a6e22e">log</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">crypto</span> <span class="nx">isakmp</span> <span class="nx">policy</span> <span class="mi">10</span>        <span class="err">#</span><span class="nx">create</span> <span class="nx">crypto</span> <span class="nx">policy</span> <span class="nx">file</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">authentication</span> <span class="nx">pre</span><span class="o">-</span><span class="nx">share</span>      <span class="err">#</span><span class="nx">use</span> <span class="nx">pre</span> <span class="nx">shared</span> <span class="nx">key</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">crypto</span> <span class="nx">isakmp</span> <span class="nx">key</span> <span class="nx">integer</span> <span class="nx">address</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">1.2</span> <span class="err">#</span><span class="nx">address</span> <span class="k">of</span> <span class="nx">remote</span> <span class="nx">tunnel</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span><span class="nx">use</span> <span class="nx">aes</span> <span class="nx">encryption</span> <span class="nx">and</span> <span class="nx">comp</span><span class="o">-</span><span class="nx">lzs</span> <span class="nx">conpression</span><span class="p">.</span> <span class="nx">use</span> <span class="nx">transport</span> <span class="nx">mode</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">crypto</span> <span class="nx">ipsec</span> <span class="nx">transform</span><span class="o">-</span><span class="nx">set</span> <span class="nx">myset</span> <span class="nx">esp</span><span class="o">-</span><span class="nx">aes</span> <span class="nx">esp</span><span class="o">-</span><span class="nx">md5</span><span class="o">-</span><span class="nx">hmac</span> <span class="nx">comp</span><span class="o">-</span><span class="nx">lzs</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">mode</span> <span class="nx">transport</span>   <span class="err">#</span> <span class="nx">transport</span> <span class="nx">mode</span> <span class="nx">tells</span> <span class="nx">IPSEC</span> <span class="nx">not</span> <span class="nx">to</span> <span class="nx">create</span> <span class="nx">a</span> <span class="nx">tunnel</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                       <span class="err">#</span> <span class="k">this</span> <span class="nx">is</span> <span class="nx">used</span> <span class="nx">when</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">using</span> <span class="nx">IPSEC</span> <span class="k">for</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                       <span class="err">#</span> <span class="nx">encryption</span> <span class="nx">only</span> <span class="nx">and</span> <span class="nx">not</span> <span class="k">for</span> <span class="nx">tunneling</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">crypto</span> <span class="nx">map</span> <span class="nx">mymap</span> <span class="mi">10</span> <span class="nx">ipsec</span><span class="o">-</span><span class="nx">isakmp</span>   <span class="err">#</span> <span class="nx">create</span> <span class="nx">the</span> <span class="nx">crypto</span> <span class="nx">map</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">set</span> <span class="nx">peer</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">1.2</span>                      <span class="err">#</span> <span class="nx">the</span> <span class="nx">peer</span> <span class="nx">must</span> <span class="nx">match</span> <span class="nx">the</span> <span class="nx">ISAKMP</span> <span class="nx">statement</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">set</span> <span class="nx">transform</span><span class="o">-</span><span class="nx">set</span> <span class="nx">myset</span>                  <span class="err">#</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">encyption</span> <span class="nx">we</span> <span class="nx">defined</span> <span class="nx">above</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">match</span> <span class="nx">address</span> <span class="nx">match</span><span class="o">-</span><span class="nx">gre</span>                <span class="err">#</span> <span class="nx">encrypt</span> <span class="nx">only</span> <span class="nx">packets</span> <span class="k">in</span> <span class="nx">GRE</span> <span class="nx">tunnel</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Tunnel0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">address</span> <span class="mf">172.20</span><span class="p">.</span><span class="mf">1.1</span> <span class="mf">255.255</span><span class="p">.</span><span class="mf">255.252</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">keepalive</span> <span class="mi">10</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">tunnel</span> <span class="nx">source</span> <span class="nx">FastEthernet0</span><span class="o">/</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">tunnel</span> <span class="nx">destination</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">1.2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">tunnel</span> <span class="nx">path</span><span class="o">-</span><span class="nx">mtu</span><span class="o">-</span><span class="nx">discovery</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">crypto</span> <span class="nx">map</span> <span class="nx">mymap</span>              <span class="err">#</span> <span class="nx">crypto</span> <span class="nx">map</span> <span class="nx">must</span> <span class="nx">be</span> <span class="nx">applied</span> <span class="nx">to</span> <span class="nx">tunnel</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">FastEthernet0</span><span class="o">/</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">description</span> <span class="nx">LAN</span> <span class="nx">INTERFACE</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">address</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.254</span> <span class="mf">255.255</span><span class="p">.</span><span class="mf">255.0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">duplex</span> <span class="nx">auto</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">speed</span> <span class="nx">auto</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">FastEthernet0</span><span class="o">/</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">description</span> <span class="nx">Internet</span> <span class="nx">Interface</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">address</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">1.1</span> <span class="mf">255.255</span><span class="p">.</span><span class="mf">255.0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">access</span><span class="o">-</span><span class="nx">group</span> <span class="nx">allow</span><span class="o">-</span><span class="nx">gre</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">duplex</span> <span class="nx">auto</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">speed</span> <span class="nx">auto</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">crypto</span> <span class="nx">map</span> <span class="nx">mymap</span>   <span class="err">#</span> <span class="nx">crypto</span> <span class="nx">map</span> <span class="nx">must</span> <span class="nx">be</span> <span class="nx">applied</span> <span class="nx">to</span> <span class="nx">tunnel</span> <span class="nx">and</span> <span class="kr">public</span> <span class="kr">interface</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="nx">extended</span> <span class="nx">allow</span><span class="o">-</span><span class="nx">gre</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">permit</span> <span class="nx">gre</span> <span class="nx">any</span> <span class="nx">any</span>               <span class="err">#</span> <span class="nx">allow</span> <span class="nx">gre</span> <span class="nx">through</span> <span class="nx">the</span> <span class="nx">firewall</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">permit</span> <span class="nx">esp</span> <span class="nx">any</span> <span class="nx">any</span>              <span class="err">#</span><span class="nx">allow</span> <span class="nx">esp</span> <span class="k">for</span> <span class="nx">ipsec</span> <span class="nx">through</span> <span class="nx">the</span> <span class="nx">firewall</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">permit</span> <span class="nx">udp</span> <span class="nx">any</span> <span class="nx">any</span> <span class="nx">eq</span> <span class="mi">500</span>    <span class="err">#</span><span class="nx">allow</span> <span class="nx">udp</span> <span class="nx">port</span> <span class="mi">500</span> <span class="nx">through</span> <span class="nx">which</span> <span class="nx">ipsec</span> <span class="nx">also</span> <span class="nx">uses</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span><span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="nx">to</span> <span class="nx">match</span> <span class="nx">tunnel</span> <span class="nx">traffic</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span><span class="nx">This</span> <span class="nx">access</span> <span class="nx">list</span> <span class="nx">must</span> <span class="nx">be</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">form</span> <span class="p">(</span><span class="nx">my</span> <span class="kr">public</span> <span class="nx">ip</span><span class="p">)</span> <span class="p">(</span><span class="nx">destination</span> <span class="kr">public</span> <span class="nx">ip</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="nx">extended</span> <span class="nx">match</span><span class="o">-</span><span class="nx">gre</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">permit</span> <span class="nx">gre</span> <span class="nx">host</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">1.1</span> <span class="nx">host</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">1.2</span> <span class="nx">log</span>
 </span></span></code></pre></div>
 </div>
 

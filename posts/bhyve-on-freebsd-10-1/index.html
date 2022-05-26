@@ -23,6 +23,7 @@
     
 </head>
 
+    <link rel="stylesheet" href="/syntax.css" crossorigin="anonymous">
     <body><div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
         <a class="navbar-brand mx-0 mr-sm-auto" href="https://johnburns.io/" title="The Colour of My Thoughts">
@@ -62,106 +63,106 @@
     <h2 id="bhyve-on-freebsd-101">Bhyve on FreeBSD 10.1</h2>
 <p>I recently started a new series of videos on YouTube about my favorite operating system FreeBSD. Below are the commands used in the video to setup the bhyve hypervisor on FreeBSD 10.1 with a virtualized Ubuntu 15 server.</p>
 <p> </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">########</span> <span style="color:#a6e22e">prerequisites</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">bhyve</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">FreeBSD</span> <span style="color:#960050;background-color:#1e0010">##########</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">pkg</span> <span style="color:#a6e22e">install</span> <span style="color:#a6e22e">grub2</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bhyve</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mkdir</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">virtual_machines</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">cd</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">virtual_machines</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mkdir</span> <span style="color:#a6e22e">iso</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">cd</span> <span style="color:#a6e22e">iso</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span> <span style="color:#a6e22e">http</span><span style="color:#f92672">:</span><span style="color:#75715e">//releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">######���</span> <span style="color:#a6e22e">Load</span> <span style="color:#a6e22e">kernel</span> <span style="color:#a6e22e">modules</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">sysctl</span> <span style="color:#a6e22e">values</span> <span style="color:#960050;background-color:#1e0010">######</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">kldload</span> <span style="color:#a6e22e">if_tap</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">kldload</span> <span style="color:#a6e22e">if_bridge</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">kldload</span> <span style="color:#a6e22e">vmm</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">kldload</span> <span style="color:#a6e22e">nmdm</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">######</span> <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">sysctl</span> <span style="color:#a6e22e">values</span><span style="color:#960050;background-color:#1e0010">�</span> <span style="color:#960050;background-color:#1e0010">#######</span><span style="color:#ae81ff">3</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sysctl</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">link</span>.<span style="color:#a6e22e">tap</span>.<span style="color:#a6e22e">up_on_open</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sysctl</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">inet</span>.<span style="color:#a6e22e">ip</span>.<span style="color:#a6e22e">forwarding</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">echo</span> <span style="color:#e6db74">&#34;net.link.tap.up_on_open=1&#34;</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">gt</span>;<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">gt</span>; <span style="color:#960050;background-color:#1e0010">/etc/sysctl.conf</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">echo</span> <span style="color:#e6db74">&#34;vm1:dv=/dev/nmdm1B:br#9600:pa=none:&#34;</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">gt</span>;<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">gt</span>; <span style="color:#960050;background-color:#1e0010">/etc/remote</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#####</span> <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">interfaces</span> <span style="color:#a6e22e">needed</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">vm</span><span style="color:#960050;background-color:#1e0010">�</span> <span style="color:#960050;background-color:#1e0010">########</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ifconfig</span> <span style="color:#a6e22e">tap1</span> <span style="color:#a6e22e">create</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ifconfig</span> <span style="color:#a6e22e">bridge0</span> <span style="color:#a6e22e">create</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ifconfig</span> <span style="color:#a6e22e">bridge0</span> <span style="color:#a6e22e">addm</span> <span style="color:#a6e22e">tap1</span> <span style="color:#a6e22e">addm</span> <span style="color:#a6e22e">em0</span> <span style="color:#a6e22e">up</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#####</span> <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">files</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">virtual</span> <span style="color:#a6e22e">disk</span><span style="color:#960050;background-color:#1e0010">�</span> <span style="color:#960050;background-color:#1e0010">########</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">truncate</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">10</span><span style="color:#a6e22e">g</span> <span style="color:#a6e22e">vm1</span>.<span style="color:#a6e22e">img</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">vi</span> <span style="color:#a6e22e">device</span>.<span style="color:#a6e22e">map</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">hd0</span>) <span style="color:#f92672">/</span><span style="color:#a6e22e">virtual_machines</span><span style="color:#f92672">/</span><span style="color:#a6e22e">ubuntu_server</span><span style="color:#f92672">/</span><span style="color:#a6e22e">vm1</span>.<span style="color:#a6e22e">img</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">cd0</span>) <span style="color:#f92672">/</span><span style="color:#a6e22e">virtual_machines</span><span style="color:#f92672">/</span><span style="color:#a6e22e">iso</span><span style="color:#f92672">/</span><span style="color:#a6e22e">ubuntu15server</span>.<span style="color:#a6e22e">iso</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#######</span> <span style="color:#a6e22e">Boot</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">virtual</span> <span style="color:#a6e22e">machines</span> <span style="color:#960050;background-color:#1e0010">###########</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">grub</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bhyve</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">r</span> <span style="color:#a6e22e">cd0</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">m</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">virtual_machines</span><span style="color:#f92672">/</span><span style="color:#a6e22e">ubuntu_server</span><span style="color:#f92672">/</span><span style="color:#a6e22e">device</span>.<span style="color:#a6e22e">map</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">M</span> <span style="color:#ae81ff">1024</span> <span style="color:#a6e22e">vm1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bhyve</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">c</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">m</span> <span style="color:#ae81ff">1024</span><span style="color:#a6e22e">M</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">H</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">P</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">A</span> <span style="color:#f92672">\</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">l</span> <span style="color:#a6e22e">com1</span>,<span style="color:#960050;background-color:#1e0010">/dev/nmdm0A \</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">hostbridge</span> <span style="color:#f92672">\</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">lpc</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">virtio</span><span style="color:#f92672">-</span><span style="color:#a6e22e">net</span>,<span style="color:#a6e22e">tap1</span> <span style="color:#f92672">\</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">3</span>,<span style="color:#a6e22e">ahci</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cd</span>,<span style="color:#960050;background-color:#1e0010">/virtual_machines/iso/ubuntu15server.iso \</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">4</span>,<span style="color:#a6e22e">virtio</span><span style="color:#f92672">-</span><span style="color:#a6e22e">blk</span>,<span style="color:#960050;background-color:#1e0010">/virtual_machines/ubuntu_server/vm1.img vm1 &amp;amp;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="err">########</span> <span class="nx">prerequisites</span> <span class="k">for</span> <span class="nx">bhyve</span> <span class="nx">on</span> <span class="nx">FreeBSD</span> <span class="err">##########</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">pkg</span> <span class="nx">install</span> <span class="nx">grub2</span><span class="o">-</span><span class="nx">bhyve</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">mkdir</span> <span class="o">/</span><span class="nx">virtual_machines</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">cd</span> <span class="o">/</span><span class="nx">virtual_machines</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">mkdir</span> <span class="nx">iso</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">cd</span> <span class="nx">iso</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">fetch</span> <span class="nx">http</span><span class="o">:</span><span class="c1">//releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">######���</span> <span class="nx">Load</span> <span class="nx">kernel</span> <span class="nx">modules</span> <span class="nx">and</span> <span class="nx">set</span> <span class="nx">sysctl</span> <span class="nx">values</span> <span class="err">######</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">kldload</span> <span class="nx">if_tap</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">kldload</span> <span class="nx">if_bridge</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">kldload</span> <span class="nx">vmm</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">kldload</span> <span class="nx">nmdm</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">######</span> <span class="nx">set</span> <span class="nx">sysctl</span> <span class="nx">values</span><span class="err">�</span> <span class="err">#######</span><span class="mi">3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">sysctl</span> <span class="nx">net</span><span class="p">.</span><span class="nx">link</span><span class="p">.</span><span class="nx">tap</span><span class="p">.</span><span class="nx">up_on_open</span><span class="o">=</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">sysctl</span> <span class="nx">net</span><span class="p">.</span><span class="nx">inet</span><span class="p">.</span><span class="nx">ip</span><span class="p">.</span><span class="nx">forwarding</span><span class="o">=</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">echo</span> <span class="s2">&#34;net.link.tap.up_on_open=1&#34;</span> <span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="err">/etc/sysctl.conf</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">echo</span> <span class="s2">&#34;vm1:dv=/dev/nmdm1B:br#9600:pa=none:&#34;</span> <span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="err">/etc/remote</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#####</span> <span class="nx">create</span> <span class="nx">interfaces</span> <span class="nx">needed</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">vm</span><span class="err">�</span> <span class="err">########</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ifconfig</span> <span class="nx">tap1</span> <span class="nx">create</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ifconfig</span> <span class="nx">bridge0</span> <span class="nx">create</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ifconfig</span> <span class="nx">bridge0</span> <span class="nx">addm</span> <span class="nx">tap1</span> <span class="nx">addm</span> <span class="nx">em0</span> <span class="nx">up</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#####</span> <span class="nx">create</span> <span class="nx">the</span> <span class="nx">config</span> <span class="nx">files</span> <span class="nx">and</span> <span class="nx">virtual</span> <span class="nx">disk</span><span class="err">�</span> <span class="err">########</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">truncate</span> <span class="o">-</span><span class="nx">s</span> <span class="mi">10</span><span class="nx">g</span> <span class="nx">vm1</span><span class="p">.</span><span class="nx">img</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">vi</span> <span class="nx">device</span><span class="p">.</span><span class="nx">map</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nx">hd0</span><span class="p">)</span> <span class="o">/</span><span class="nx">virtual_machines</span><span class="o">/</span><span class="nx">ubuntu_server</span><span class="o">/</span><span class="nx">vm1</span><span class="p">.</span><span class="nx">img</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nx">cd0</span><span class="p">)</span> <span class="o">/</span><span class="nx">virtual_machines</span><span class="o">/</span><span class="nx">iso</span><span class="o">/</span><span class="nx">ubuntu15server</span><span class="p">.</span><span class="nx">iso</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#######</span> <span class="nx">Boot</span> <span class="nx">the</span> <span class="nx">virtual</span> <span class="nx">machines</span> <span class="err">###########</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">grub</span><span class="o">-</span><span class="nx">bhyve</span> <span class="o">-</span><span class="nx">r</span> <span class="nx">cd0</span> <span class="o">-</span><span class="nx">m</span> <span class="o">/</span><span class="nx">virtual_machines</span><span class="o">/</span><span class="nx">ubuntu_server</span><span class="o">/</span><span class="nx">device</span><span class="p">.</span><span class="nx">map</span> <span class="o">-</span><span class="nx">M</span> <span class="mi">1024</span> <span class="nx">vm1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">bhyve</span> <span class="o">-</span><span class="nx">c</span> <span class="mi">1</span> <span class="o">-</span><span class="nx">m</span> <span class="mi">1024</span><span class="nx">M</span> <span class="o">-</span><span class="nx">H</span> <span class="o">-</span><span class="nx">P</span> <span class="o">-</span><span class="nx">A</span> <span class="o">\</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="nx">l</span> <span class="nx">com1</span><span class="p">,</span><span class="err">/dev/nmdm0A \</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="nx">s</span> <span class="mi">0</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span><span class="nx">hostbridge</span> <span class="o">\</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="nx">s</span> <span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span><span class="nx">lpc</span> <span class="o">-</span><span class="nx">s</span> <span class="mi">2</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span><span class="nx">virtio</span><span class="o">-</span><span class="nx">net</span><span class="p">,</span><span class="nx">tap1</span> <span class="o">\</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="nx">s</span> <span class="mi">3</span><span class="p">,</span><span class="nx">ahci</span><span class="o">-</span><span class="nx">cd</span><span class="p">,</span><span class="err">/virtual_machines/iso/ubuntu15server.iso \</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="nx">s</span> <span class="mi">4</span><span class="p">,</span><span class="nx">virtio</span><span class="o">-</span><span class="nx">blk</span><span class="p">,</span><span class="err">/virtual_machines/ubuntu_server/vm1.img vm1 &amp;amp;</span>
 </span></span></code></pre></div><p>########### boot into newly installed vm ################333</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">rub</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bhyve</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">r</span> <span style="color:#a6e22e">hd0</span>,<span style="color:#a6e22e">msdos1</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">m</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">virtual_machines</span><span style="color:#f92672">/</span><span style="color:#a6e22e">ubuntu_server</span><span style="color:#f92672">/</span><span style="color:#a6e22e">device</span>.<span style="color:#a6e22e">map</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">M</span> <span style="color:#ae81ff">1024</span> <span style="color:#a6e22e">vm1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bhyve</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">c</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">m</span> <span style="color:#ae81ff">1024</span><span style="color:#a6e22e">M</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">H</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">P</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">A</span> <span style="color:#f92672">\</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">l</span> <span style="color:#a6e22e">com1</span>,<span style="color:#960050;background-color:#1e0010">/dev/nmdm0A \</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">hostbridge</span> <span style="color:#f92672">\</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">lpc</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">virtio</span><span style="color:#f92672">-</span><span style="color:#a6e22e">net</span>,<span style="color:#a6e22e">tap1</span> <span style="color:#f92672">\</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">4</span>,<span style="color:#a6e22e">virtio</span><span style="color:#f92672">-</span><span style="color:#a6e22e">blk</span>,<span style="color:#960050;background-color:#1e0010">/virtual_machines/ubuntu_server/vm1.img vm1 &amp;amp;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">rub</span><span class="o">-</span><span class="nx">bhyve</span> <span class="o">-</span><span class="nx">r</span> <span class="nx">hd0</span><span class="p">,</span><span class="nx">msdos1</span> <span class="o">-</span><span class="nx">m</span> <span class="o">/</span><span class="nx">virtual_machines</span><span class="o">/</span><span class="nx">ubuntu_server</span><span class="o">/</span><span class="nx">device</span><span class="p">.</span><span class="nx">map</span> <span class="o">-</span><span class="nx">M</span> <span class="mi">1024</span> <span class="nx">vm1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">bhyve</span> <span class="o">-</span><span class="nx">c</span> <span class="mi">1</span> <span class="o">-</span><span class="nx">m</span> <span class="mi">1024</span><span class="nx">M</span> <span class="o">-</span><span class="nx">H</span> <span class="o">-</span><span class="nx">P</span> <span class="o">-</span><span class="nx">A</span> <span class="o">\</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="nx">l</span> <span class="nx">com1</span><span class="p">,</span><span class="err">/dev/nmdm0A \</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="nx">s</span> <span class="mi">0</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span><span class="nx">hostbridge</span> <span class="o">\</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="nx">s</span> <span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span><span class="nx">lpc</span> <span class="o">-</span><span class="nx">s</span> <span class="mi">2</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span><span class="nx">virtio</span><span class="o">-</span><span class="nx">net</span><span class="p">,</span><span class="nx">tap1</span> <span class="o">\</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="nx">s</span> <span class="mi">4</span><span class="p">,</span><span class="nx">virtio</span><span class="o">-</span><span class="nx">blk</span><span class="p">,</span><span class="err">/virtual_machines/ubuntu_server/vm1.img vm1 &amp;amp;</span>
 </span></span></code></pre></div><p>#################3 bhyve commands and nice to haves ##########</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">kill</span> <span style="color:#a6e22e">running</span> <span style="color:#a6e22e">bhyve</span> <span style="color:#a6e22e">machines</span> 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bhyvectl</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">destroy</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">vm</span><span style="color:#f92672">=</span><span style="color:#a6e22e">name_of_vm</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">kill</span> <span class="nx">running</span> <span class="nx">bhyve</span> <span class="nx">machines</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">bhyvectl</span> <span class="o">--</span><span class="nx">destroy</span> <span class="o">--</span><span class="nx">vm</span><span class="o">=</span><span class="nx">name_of_vm</span>
 </span></span></code></pre></div><p>create bridge and tap interfaces to provision at system boot</p>
 
 </div>

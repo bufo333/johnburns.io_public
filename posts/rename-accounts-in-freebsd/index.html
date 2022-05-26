@@ -23,6 +23,7 @@
     
 </head>
 
+    <link rel="stylesheet" href="/syntax.css" crossorigin="anonymous">
     <body><div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
         <a class="navbar-brand mx-0 mr-sm-auto" href="https://johnburns.io/" title="The Colour of My Thoughts">
@@ -60,10 +61,10 @@
 <div id="content">
 <div class="container">
     <h2 id="rename-accounts-in-freebsd">Rename accounts in FreeBSD</h2>
-<p>pw usermod -n oldname -l newname -d /usr/home/newname
-pw groupmod -n oldname -l newname
-mv /usr/home/oldname /usr/home/newname
-chown -R newname:newname /usr/home/newname</p>
+<p>pw usermod -n oldname -l newname -d /usr/home/newname</p>
+<p>pw groupmod -n oldname -l newname</p>
+<p>mv /usr/home/oldname /usr/home/newname</p>
+<p>chown -R newname:newname /usr/home/newname</p>
 
 </div>
 
