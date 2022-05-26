@@ -12,7 +12,7 @@
       <pubDate>Thu, 26 May 2022 13:00:00 +0000</pubDate>
       
       <guid>https://johnburns.io/posts/beginner-network-templating/</guid>
-      <description>Develope and Deploy Network Templates Before Automating Date: 2022-05-26
+      <description>Develop and Deploy Network Templates Before Automating Date: 2022-05-26
 Subject: Network Templating
 Version 1.0
 Automation is the number one topic in networking today. Automation allows a team to lean left, moving simple troubleshooting to the NOC, it allows the team to do more with less, and it allows for repeatable deployments. A good place to start is to think about many of the day to day work that gets done, how much of this work is simply applying the same changes over and over.</description>
