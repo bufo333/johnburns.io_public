@@ -5,7 +5,20 @@
     <link>https://johnburns.io/posts/</link>
     <description>Recent content on The Colour of My Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 21 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://johnburns.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Aug 2022 14:13:46 -0400</lastBuildDate><atom:link href="https://johnburns.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Store dotfile with git</title>
+      <link>https://johnburns.io/posts/store-dotfile-with-git/</link>
+      <pubDate>Sun, 21 Aug 2022 14:13:46 -0400</pubDate>
+      
+      <guid>https://johnburns.io/posts/store-dotfile-with-git/</guid>
+      <description>Date: &amp;lt;2022-08-23 Tue&amp;gt;
+Subject: Store dotfile with git
+Version: 1.1
+Store all DotFiles in a bare git repository Setup git init &amp;ndash;bare $HOME/.cfg alias config=&amp;rsquo;usr/bin/git &amp;ndash;git-dir=$HOME.cfg/ &amp;ndash;work-tree=$HOME&#39; echo &amp;ldquo;alias config=&amp;rsquo;usr/local/bin/git &amp;ndash;git-dir=$HOME.cfg/ &amp;ndash;work-tree=$HOME&amp;rsquo;&amp;rdquo; &amp;gt;&amp;gt; $HOME/.zsh/aliases config config &amp;ndash;local status.showUntrackedFiles no Adding files Manually add files to repository by using config add &amp;lt;filename&amp;gt;. Use this to add all your files manually, this way only updates to your tracked files will show
+Add the github repository config remote add origin &amp;lt;remote-url&amp;gt; config push -u origin main Restore files from github echo &amp;ldquo;.</description>
+    </item>
+    
     <item>
       <title>GnuPG Cheat Sheet</title>
       <link>https://johnburns.io/posts/gnupg-cheat-sheet/</link>

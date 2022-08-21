@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title></title>
+    <title>Store dotfile with git</title>
     <meta name="description" content="The desk of my mind.">
     <meta name="author" content='John Burns'>
 
@@ -18,7 +18,6 @@
         <link rel="icon" type="image/ico" href="https://johnburns.io/favicon.ico">
     
 
-    <link rel="alternate" type="application/rss+xml" href="https://johnburns.io/posts/index.xml" title="The Colour of My Thoughts" />
     
         
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LQNL2E5MEL"></script>
@@ -71,72 +70,36 @@ if (!doNotTrack) {
 <hr>
 <div id="content">
 <div class="container">
-    <h1></h1>
-    <ul>
-        
-            <li>
-                <a href="https://johnburns.io/posts/iphone-fun/">2007-10-29 | iphone-fun</a>
-                <p></p><p>
-                    
-                    
-                    Iphone Fun I have spent the last couple weeks breaking the Iphone in every way possible. I Now have it running as a mail server. One of the great things about the iphone is that it is running mac os x leopard, which is just version 9 of the darwin kernel. That means that once you get out of the ch-rooted environment on the phone, you can install …
-                    
-                </p>
-            </li>
+    <p>Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2022-08-23 Tue&gt;</span></span></p>
+<p>Subject: Store dotfile with git</p>
+<p>Version: 1.1</p>
+<!--start-summary-->
+<h2 id="store-all-dotfiles-in-a-bare-git-repository">Store all DotFiles in a bare git repository</h2>
+<!--nomore-->
+<h3 id="setup">Setup</h3>
+<ol>
+<li>git init &ndash;bare $HOME/.cfg</li>
+<li>alias config=&rsquo;<em>usr/bin/git &ndash;git-dir=$HOME</em>.cfg/ &ndash;work-tree=$HOME'</li>
+<li>echo &ldquo;alias config=&rsquo;<em>usr/local/bin/git &ndash;git-dir=$HOME</em>.cfg/ &ndash;work-tree=$HOME&rsquo;&rdquo; &gt;&gt; $HOME/.zsh/aliases</li>
+<li>config config &ndash;local status.showUntrackedFiles no</li>
+</ol>
+<h3 id="adding-files">Adding files</h3>
+<p>Manually add files to repository by using config add &lt;filename&gt;.
+Use this to add all your files manually, this way only updates to your tracked files will show</p>
+<h3 id="add-the-github-repository">Add the github repository</h3>
+<ol>
+<li>config remote add origin &lt;remote-url&gt;</li>
+<li>config push -u origin main</li>
+</ol>
+<h3 id="restore-files-from-github">Restore files from github</h3>
+<ol>
+<li>echo &ldquo;.cfg&rdquo; &gt;&gt; .gitignore</li>
+<li>git clone &lt;remote-git-repo-url&gt; $HOME/.cfg</li>
+<li>alias config=&rsquo;/usr/local/bin/git &ndash;git-dir=&lt;path to .cfg’s Git directory&gt; &ndash;work-tree=$HOME'</li>
+<li>config config &ndash;local status.showUntrackedFiles no</li>
+<li>config checkout</li>
+</ol>
 
-        
-            <li>
-                <a href="https://johnburns.io/posts/mit-student-arrested-for-fake-bomb/">2007-09-22 | mit-student-arrested-for-fake-bomb</a>
-                <p></p><p>
-                    
-                    
-                    MIT student arrested for fake bomb An MIT student was arrested in Logan intl Airport for wearing a sweatshirt with a prototyping board on it and a 9 volt battery which lit up some led�s that said MIT course VI which is the numerical designation for computer and electrical engineering majors. The shirt which she has and has been wearing for a long …
-                    
-                </p>
-            </li>
-
-        
-            <li>
-                <a href="https://johnburns.io/posts/2-m-moxon-project/">2007-09-19 | 2-m-moxon-project</a>
-                <p></p><p>
-                    
-                    
-                    2 m Moxon project. I�am in the process of designing a 20m moxon antenna. I like the moxon so much I decided to make a quick moxon for 2m tonight. I built it out of twine and 2 dowel rods. I wanted to see how cheap I could build one, and the total cost of this antenna is $4.28. Not bad for an antenna on the cheap. The moxon is a great antenna and …
-                    
-                </p>
-            </li>
-
-        
-            <li>
-                <a href="https://johnburns.io/posts/call-of-duty-4/">2007-07-22 | call-of-duty-4</a>
-                <p></p><p>
-                    
-                    
-                    Call of Duty 4 
-                    
-                </p>
-            </li>
-
-        
-            <li>
-                <a href="https://johnburns.io/posts/life-the-universe-and-everything/">2007-07-09 | life-the-universe-and-everything</a>
-                <p></p><p>
-                    
-                    
-                    Life the Universe and Everything Today I realized that even though the world is cruel and unfair, irony is not lost. I realized this while I was sitting on hold with my ISP, and the rep came back on the line and told me the reason why I had to hold a little longer was because he himself was on hold&hellip;&hellip; 5 minutes later he hung up on me …
-                    
-                </p>
-            </li>
-
-        
-
-    </ul>
-          
-    <a href="/posts/page/8/">  Prev </a>
-
-
-    <a href="/posts/page/10/">  Next </a>
-    
 </div>
 
         </div><div id="footer" class="mb-5">
