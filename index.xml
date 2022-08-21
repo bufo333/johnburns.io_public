@@ -15,7 +15,7 @@
       <description>Develop and Deploy Network Templates Before Automating Date: 2022-05-26
 Subject: Network Templating
 Version 1.0
-Automation is the number one topic in networking today. Automation allows a team to lean left, moving simple troubleshooting to the NOC, it allows the team to do more with less, and it allows for repeatable deployments. A good place to start is to think about many of the day to day work that gets done, how much of this work is simply applying the same changes over and over.</description>
+Automation is the number one topic in networking today. Automation allows a team to lean left, moving simple troubleshooting to the NOC, it allows the team to do more with less, and it allows for repeatable deployments. A good place to start is to think about many of the day to day work that gets done, how much of this work is simply applying the same changes over and over.</description>
     </item>
     
     <item>
@@ -37,7 +37,7 @@ chown -R newname:newname /usr/home/newname</description>
       
       <guid>https://johnburns.io/posts/bhyve-on-freebsd-10-1/</guid>
       <description>Bhyve on FreeBSD 10.1 I recently started a new series of videos on YouTube about my favorite operating system FreeBSD. Below are the commands used in the video to setup the bhyve hypervisor on FreeBSD 10.1 with a virtualized Ubuntu 15 server.
- ######## prerequisites for bhyve on FreeBSD ########## pkg install grub2-bhyve mkdir /virtual_machines cd /virtual_machines mkdir iso cd iso fetch http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso  ######��� Load kernel modules and set sysctl values ###### kldload if_tap kldload if_bridge kldload vmm kldload nmdm ###### set sysctl values� #######3 sysctl net.</description>
+######## prerequisites for bhyve on FreeBSD ########## pkg install grub2-bhyve mkdir /virtual_machines cd /virtual_machines mkdir iso cd iso fetch http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso ######��� Load kernel modules and set sysctl values ###### kldload if_tap kldload if_bridge kldload vmm kldload nmdm ###### set sysctl values� #######3 sysctl net.</description>
     </item>
     
     <item>
@@ -68,7 +68,7 @@ This is most often caused by the internet security suite which is not capable of
       <pubDate>Fri, 03 Sep 2010 21:02:43 +0000</pubDate>
       
       <guid>https://johnburns.io/posts/new-route-server-available/</guid>
-      <description>New route-server available! I have been working on a new project which is to provide a service that would allow you to peer with my router over BGP. My router would then advertise a list of bogons and known malicious networks including botnet command and control networks. You can then drop these networks at your border router thus protecting your network from attacks and saving precious router and firewall resources.</description>
+      <description>New route-server available! I have been working on a new project which is to provide a service that would allow you to peer with my router over BGP. My router would then advertise a list of bogons and known malicious networks including botnet command and control networks. You can then drop these networks at your border router thus protecting your network from attacks and saving precious router and firewall resources. Right now I am not offering the peering service but I do have a route-view server available that allows you to login and get a full list of the malicious ip networks for ipv6 and ipv4.</description>
     </item>
     
     <item>
@@ -88,7 +88,7 @@ http://lists.techinvasion.net</description>
       <pubDate>Mon, 28 Jun 2010 18:05:35 +0000</pubDate>
       
       <guid>https://johnburns.io/posts/found-this-funny-banner-today/</guid>
-      <description>Found This Funny Banner Today!</description>
+      <description>Found This Funny Banner Today! </description>
     </item>
     
     <item>
@@ -181,8 +181,7 @@ Until Next time</description>
       <pubDate>Mon, 22 Dec 2008 16:23:41 +0000</pubDate>
       
       <guid>https://johnburns.io/posts/rotary-pools-for-semi-static-nat-port-range-forwarding/</guid>
-      <description>Rotary Pools for Semi-Static NAT / Port range Forwarding 
-Cisco routers have a very robust network address translation feature set.The NAT software allows you to control translation with access-list, route-maps, and destination pools.With the wide array of commands, it is sometimes difficult for beginners and experts to figure out how to combine these elements to solve a problem.
+      <description>Rotary Pools for Semi-Static NAT / Port range Forwarding Cisco routers have a very robust network address translation feature set.The NAT software allows you to control translation with access-list, route-maps, and destination pools.With the wide array of commands, it is sometimes difficult for beginners and experts to figure out how to combine these elements to solve a problem.
 I have a small network at home for the computers in my house, and I find that some of the strangest configurations and explorations come about because I try to solve problems in a way that is cost affective with the limited broadband available to consumers.</description>
     </item>
     
@@ -229,7 +228,7 @@ I have a small network at home for the computers in my house, and I find that so
       
       <guid>https://johnburns.io/posts/working-a-lot/</guid>
       <description>Working a lot! I have been working a lot lately, we are in the proccess of designing a new data center with all the ifs ands and buts included in that ordeal. I am in the proccess of writing several write ups. On spanning tree:
- &amp;ldquo;load balancing spanning tree using different trunks&amp;rdquo; BGP implementation and design considerations. IGP routing protocol deep dive.  </description>
+&amp;ldquo;load balancing spanning tree using different trunks&amp;rdquo; BGP implementation and design considerations. IGP routing protocol deep dive. </description>
     </item>
     
     <item>
@@ -286,7 +285,7 @@ Now I thought this would be an easy job, configure the Juniper to connect to our
       <pubDate>Thu, 15 May 2008 15:47:58 +0000</pubDate>
       
       <guid>https://johnburns.io/posts/video-tutorial-on-ipv6/</guid>
-      <description>Video tutorial on IPV6 You can download or watch the full video at IPV6&amp;lt;embed bgcolor=&amp;quot;#FFFFFF&amp;quot;</description>
+      <description>Video tutorial on IPV6 You can download or watch the full video at IPV6&amp;lt;embed bgcolor=&amp;quot;#FFFFFF&amp;quot; </description>
     </item>
     
     <item>
@@ -371,7 +370,7 @@ version 12.4 service timestamps debug datetime msec service timestamps log datet
       <pubDate>Tue, 30 Oct 2007 20:05:32 +0000</pubDate>
       
       <guid>https://johnburns.io/posts/hacked-iphone-goodness/</guid>
-      <description>Hacked Iphone goodness As promised here is some iPhone screenshots!</description>
+      <description>Hacked Iphone goodness As promised here is some iPhone screenshots!!!.��</description>
     </item>
     
     <item>
@@ -407,7 +406,7 @@ version 12.4 service timestamps debug datetime msec service timestamps log datet
       <pubDate>Sun, 22 Jul 2007 19:21:23 +0000</pubDate>
       
       <guid>https://johnburns.io/posts/call-of-duty-4/</guid>
-      <description>Call of Duty 4</description>
+      <description>Call of Duty 4 </description>
     </item>
     
     <item>
@@ -452,8 +451,7 @@ version 12.4 service timestamps debug datetime msec service timestamps log datet
       <pubDate>Mon, 02 Jul 2007 00:33:49 +0000</pubDate>
       
       <guid>https://johnburns.io/posts/things-i-wish-i-knew-about-solaris-when-i-first-started/</guid>
-      <description>Things I Wish I Knew About Solaris When I First Started. 
-Solaris 10 is a very powerful scalable operating system that feels tightly integrated and highly responsive. However for those of us with a strong Linux or FreeBSD background Solaris can feel a little unfamiliar and even downright confusing. This post is made up of a few things I wish I knew before I started my Solaris 10 adventure. I hope it will make things a little easier for those of you wanting to take the plunge into a true enterprise operating system.</description>
+      <description>Things I Wish I Knew About Solaris When I First Started. Solaris 10 is a very powerful scalable operating system that feels tightly integrated and highly responsive. However for those of us with a strong Linux or FreeBSD background Solaris can feel a little unfamiliar and even downright confusing. This post is made up of a few things I wish I knew before I started my Solaris 10 adventure. I hope it will make things a little easier for those of you wanting to take the plunge into a true enterprise operating system.</description>
     </item>
     
     <item>
@@ -491,9 +489,7 @@ A zone is analogous to a VMware machine but with some distinct advantages as wel
       <pubDate>Sun, 24 Jun 2007 03:30:14 +0000</pubDate>
       
       <guid>https://johnburns.io/posts/solaris-zones/</guid>
-      <description>ZFS filesystem on Solaris Here is a flash video thanks to http://www.opensolaris.org, which I think explains some of the features of zfs very well. This video should have you wanting more! I am working on a comprehensive tutorial about zfs which should cover this great file system in more detail.
-
- </description>
+      <description>ZFS filesystem on Solaris Here is a flash video thanks to http://www.opensolaris.org, which I think explains some of the features of zfs very well. This video should have you wanting more! I am working on a comprehensive tutorial about zfs which should cover this great file system in more detail.</description>
     </item>
     
     <item>
@@ -522,7 +518,7 @@ After searching for days for the fix and listening to contradictory advice I had
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://johnburns.io/about/</guid>
-      <description>About Me  An enthusiastic troubleshooter, engineer, technologist, and team leader. I find myself constantly looking for the next challenge. I enjoy complex technological and social problem solving. Navigating the complexities of large organizations to create progress and forward momentum on complex projects are just some of the things I spend my days doing for organizations.
+      <description>About Me An enthusiastic troubleshooter, engineer, technologist, and team leader. I find myself constantly looking for the next challenge. I enjoy complex technological and social problem solving. Navigating the complexities of large organizations to create progress and forward momentum on complex projects are just some of the things I spend my days doing for organizations.
 Standard IT services to cloud first cutting edge organizations, leading teams to achieve excellence is a requirement for leaders in todays market.</description>
     </item>
     
@@ -532,7 +528,7 @@ Standard IT services to cloud first cutting edge organizations, leading teams to
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://johnburns.io/contact/</guid>
-      <description> Email: John@techinvasion.net Phone: +01-3058783067   Websites Address  hammap.org 2bit.pro www.techinvasion.net   Social  Linkedin QRZ Youtube  </description>
+      <description> Email: John@techinvasion.net Phone: +01-3058783067 Websites Address hammap.org 2bit.pro www.techinvasion.net Social Linkedin QRZ Youtube </description>
     </item>
     
   </channel>
