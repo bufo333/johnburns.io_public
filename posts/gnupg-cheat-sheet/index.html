@@ -71,6 +71,7 @@ if (!doNotTrack) {
 <div id="content">
 <div class="container">
     <h2 id="gnupg-cheatsheet">GnuPG Cheatsheet</h2>
+<p>Quick list of the most common GnuPG commands that I need most often. Encrypt, decrypt, signing, key management, key servers, and special features.</p>
 <h3 id="encrypt-and-decrypt">Encrypt and decrypt</h3>
 <h4 id="encrypt-a-file-with-your-key">Encrypt a file with your key</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">gpg -er me@example.org diary.txt
@@ -209,7 +210,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">gpg --delete-secret-key A767285029E8882A
 </span></span><span class="line"><span class="cl">gpg --delete-key A767285029E8882A
 </span></span></code></pre></div><p>Make sure you have published a revocation certificate, if your key was uploaded to a key server!</p>
-<h3 id="signing-partys">Signing partys</h3>
+<h3 id="signing-parties">Signing parties</h3>
 <h4 id="show-the-public-key-fingerprint">Show the public key fingerprint</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">gpg --fingerprint 00AA11BB22CC33DD
 </span></span></code></pre></div><h4 id="sign-a-public-key">Sign a public key</h4>
