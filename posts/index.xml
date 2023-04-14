@@ -20,18 +20,6 @@ Add the github repository config remote add origin &amp;lt;remote-url&amp;gt; co
     </item>
     
     <item>
-      <title>GnuPG Cheat Sheet</title>
-      <link>https://johnburns.io/posts/gnupg-cheat-sheet/</link>
-      <pubDate>Sun, 21 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://johnburns.io/posts/gnupg-cheat-sheet/</guid>
-      <description>GnuPG Cheatsheet Quick list of the most common GnuPG commands that I need most often. Encrypt, decrypt, signing, key management, key servers, and special features.
-Encrypt and decrypt Encrypt a file with your key gpg -er me@example.org diary.txt Options
--r encrypts the file for the user specified as argument. The output is written to diary.txt.gpg.
-Encrypt a file for another person gpg -er alice@example.org diary.txt Encrypt a file with passphrase gpg -c diary.</description>
-    </item>
-    
-    <item>
       <title>beginner-network-templating</title>
       <link>https://johnburns.io/posts/beginner-network-templating/</link>
       <pubDate>Thu, 26 May 2022 13:00:00 +0000</pubDate>
@@ -71,7 +59,7 @@ chown -R newname:newname /usr/home/newname</description>
       <pubDate>Sun, 20 Oct 2013 18:10:50 +0000</pubDate>
       
       <guid>https://johnburns.io/posts/poem/</guid>
-      <description>poem So live your life that the fear of death can never enter your heart.Trouble no one about their religionRespect others in their viewAnd demand that they respect yoursLove your life, perfect your life, beautify all things in your lifeSeek to make your life long and its purpose in the service of your peoplePrepare a noble death song for the day when you go over the great divideAlways give a word or a sign of salute when meeting or passing a friendEven a stranger when in a lonely placeShow respect to all people and grovel to noneWhen you arise in the morning give thanks for the food and for the joy of livingIf you see no reason for giving thanks, the fault lies only in yourselfAbuse no one and nothingFor abuse turns the wise ones to fools and robs the spirit of its visionWhen it comes your time to dieBe not like those whose hearts are filled with the fear of deathSo that when their time comesThey weep and pray for a little more timeTo live their lives over again in a different waySing your death songAnd die like a hero going home</description>
+      <description>poem So live your life that the fear of death can never enter your heart. Trouble no one about their religion Respect others in their view And demand that they respect yours Love your life, perfect your life, beautify all things in your life Seek to make your life long and its purpose in the service of your people Prepare a noble death song for the day when you go over the great divide Always give a word or a sign of salute when meeting or passing a friend Even a stranger when in a lonely place Show respect to all people and grovel to none When you arise in the morning give thanks for the food and for the joy of living If you see no reason for giving thanks, the fault lies only in yourself Abuse no one and nothing For abuse turns the wise ones to fools and robs the spirit of its vision When it comes your time to die Be not like those whose hearts are filled with the fear of death So that when their time comes They weep and pray for a little more time To live their lives over again in a different way Sing your death song And die like a hero going home</description>
     </item>
     
     <item>

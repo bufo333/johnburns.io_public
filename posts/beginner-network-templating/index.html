@@ -230,7 +230,7 @@ Version 1.0</p>
 </span></span><span class="line"><span class="cl">  
 </span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="err">{{ </span><span class="nc">tunnel_interface</span><span class="o">}}</span>
 </span></span><span class="line"><span class="cl">  <span class="n">no</span> <span class="n">shutdown</span>
-</span></span><span class="line"><span class="cl">  <span class="n">ip</span> <span class="n">address</span> <span class="n">10</span><span class="o">.</span><span class="na">10</span><span class="o">.</span><span class="na">100</span><span class="o">.</span><span class="na">1</span> <span class="n">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ip</span> <span class="n">address</span> <span class="mf">10.10.100.1</span> <span class="mf">255.255.255.0</span>
 </span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">source</span> <span class="o">{{</span><span class="n">loopback_interface</span> <span class="o">}}</span>
 </span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">destination</span> <span class="o">{{</span> <span class="n">tunnel_destination</span> <span class="o">}}</span>
 </span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">path</span><span class="o">-</span><span class="n">mtu</span><span class="o">-</span><span class="n">discovery</span>
@@ -270,14 +270,14 @@ Version 1.0</p>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">map</span> <span class="o">{{</span> <span class="n">cryptomap_name</span> <span class="o">}}</span> <span class="n">ipsec</span><span class="o">-</span><span class="n">isakmp</span>
 </span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">peer</span> <span class="o">{{</span> <span class="n">cryptomap_peer</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">security</span><span class="o">-</span><span class="n">association</span> <span class="n">lifetime</span> <span class="n">seconds</span> <span class="n">3600</span>
+</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">security</span><span class="o">-</span><span class="n">association</span> <span class="n">lifetime</span> <span class="n">seconds</span> <span class="mi">3600</span>
 </span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">transform</span><span class="o">-</span><span class="n">set</span> <span class="o">{{</span> <span class="n">cryptomap_tset</span> <span class="o">}}</span>
 </span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">pfs</span> <span class="o">{{</span> <span class="n">cryptomap_group</span> <span class="o">}}</span>
 </span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">ikev2</span><span class="o">-</span><span class="n">profile</span> <span class="o">{{</span> <span class="n">cryptomap_profile</span> <span class="o">}}</span>
 </span></span><span class="line"><span class="cl"> <span class="n">match</span> <span class="n">address</span> <span class="o">{{</span> <span class="n">cryptomap_match</span> <span class="o">}}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="err">{{ </span><span class="nc">interface_name</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">ip</span> <span class="n">address</span> <span class="n">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span> <span class="n">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">224</span>
+</span></span><span class="line"><span class="cl"> <span class="n">ip</span> <span class="n">address</span> <span class="mf">1.1.1.1</span> <span class="mf">255.255.255.224</span>
 </span></span><span class="line"><span class="cl"> <span class="n">negotiation</span> <span class="n">auto</span>
 </span></span><span class="line"><span class="cl"> <span class="o">{{</span> <span class="n">interface_crypto</span> <span class="o">}}</span>
 </span></span></code></pre></div><ul>
@@ -339,13 +339,13 @@ Version 1.0</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">!</span><span class="n">Configure</span> <span class="n">GRE</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="nc">Loopback0</span>
-</span></span><span class="line"><span class="cl"> <span class="n">ip</span> <span class="n">address</span> <span class="n">10</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span> <span class="n">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">0</span>
+</span></span><span class="line"><span class="cl"> <span class="n">ip</span> <span class="n">address</span> <span class="mf">10.1.1.1</span> <span class="mf">255.255.255.0</span>
 </span></span><span class="line"><span class="cl">  
 </span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="nc">Tunnel100</span>
 </span></span><span class="line"><span class="cl">  <span class="n">no</span> <span class="n">shutdown</span>
-</span></span><span class="line"><span class="cl">  <span class="n">ip</span> <span class="n">address</span> <span class="n">10</span><span class="o">.</span><span class="na">10</span><span class="o">.</span><span class="na">100</span><span class="o">.</span><span class="na">1</span> <span class="n">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">0</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ip</span> <span class="n">address</span> <span class="mf">10.10.100.1</span> <span class="mf">255.255.255.0</span>
 </span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">source</span> <span class="n">Loopback0</span>
-</span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">destination</span> <span class="n">10</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">destination</span> <span class="mf">10.2.2.2</span>
 </span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">path</span><span class="o">-</span><span class="n">mtu</span><span class="o">-</span><span class="n">discovery</span>
 </span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">protection</span> <span class="n">ipsec</span> <span class="n">profile</span> <span class="n">ikev2_TP</span>
 </span></span><span class="line"><span class="cl">  <span class="n">exit</span>
@@ -356,16 +356,16 @@ Version 1.0</p>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ikev2</span> <span class="n">keyring</span> <span class="n">HQ</span>
 </span></span><span class="line"><span class="cl"> <span class="n">peer</span> <span class="n">HQ</span>
-</span></span><span class="line"><span class="cl">  <span class="n">address</span> <span class="n">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span>
+</span></span><span class="line"><span class="cl">  <span class="n">address</span> <span class="mf">2.2.2.2</span>
 </span></span><span class="line"><span class="cl">  <span class="n">pre</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">key</span> <span class="n">cisco1234</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ikev2</span> <span class="n">proposal</span> <span class="n">Prop</span><span class="o">-</span><span class="n">HQ</span>
-</span></span><span class="line"><span class="cl"> <span class="n">encryption</span> <span class="n">aes</span><span class="o">-</span><span class="n">cbc</span><span class="o">-</span><span class="n">256</span>
+</span></span><span class="line"><span class="cl"> <span class="n">encryption</span> <span class="n">aes</span><span class="o">-</span><span class="n">cbc</span><span class="o">-</span><span class="mi">256</span>
 </span></span><span class="line"><span class="cl"> <span class="n">integrity</span> <span class="n">sha256</span>
-</span></span><span class="line"><span class="cl"> <span class="n">group</span> <span class="n">19</span>
+</span></span><span class="line"><span class="cl"> <span class="n">group</span> <span class="mi">19</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ikev2</span> <span class="n">profile</span> <span class="n">PROFILE</span><span class="o">-</span><span class="n">HQ</span>
-</span></span><span class="line"><span class="cl"> <span class="n">match</span> <span class="n">identity</span> <span class="n">remote</span> <span class="n">address</span> <span class="n">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span> <span class="n">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span>
+</span></span><span class="line"><span class="cl"> <span class="n">match</span> <span class="n">identity</span> <span class="n">remote</span> <span class="n">address</span> <span class="mf">2.2.2.2</span> <span class="mf">255.255.255.255</span>
 </span></span><span class="line"><span class="cl"> <span class="n">authentication</span> <span class="n">local</span> <span class="n">pre</span><span class="o">-</span><span class="n">share</span>
 </span></span><span class="line"><span class="cl"> <span class="n">authentication</span> <span class="n">remote</span> <span class="n">pre</span><span class="o">-</span><span class="n">share</span>
 </span></span><span class="line"><span class="cl"> <span class="n">keyring</span> <span class="n">local</span> <span class="n">HQ</span>
@@ -374,23 +374,23 @@ Version 1.0</p>
 </span></span><span class="line"><span class="cl"> <span class="n">proposal</span> <span class="n">Prop</span><span class="o">-</span><span class="n">HQ</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">ip</span> <span class="n">access</span><span class="o">-</span><span class="n">list</span> <span class="n">extended</span> <span class="n">VPNACL</span><span class="o">-</span><span class="n">HQ</span>
-</span></span><span class="line"><span class="cl"> <span class="n">permit</span> <span class="n">ip</span> <span class="n">host</span> <span class="n">10</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span> <span class="n">host</span> <span class="n">10</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span>
-</span></span><span class="line"><span class="cl"> <span class="n">permit</span> <span class="n">ip</span> <span class="n">host</span> <span class="n">10</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span> <span class="n">host</span> <span class="n">10</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span>
+</span></span><span class="line"><span class="cl"> <span class="n">permit</span> <span class="n">ip</span> <span class="n">host</span> <span class="mf">10.2.2.2</span> <span class="n">host</span> <span class="mf">10.1.1.1</span>
+</span></span><span class="line"><span class="cl"> <span class="n">permit</span> <span class="n">ip</span> <span class="n">host</span> <span class="mf">10.1.1.1</span> <span class="n">host</span> <span class="mf">10.2.2.2</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ipsec</span> <span class="n">transform</span><span class="o">-</span><span class="n">set</span> <span class="n">TS</span><span class="o">-</span><span class="n">HQ</span> <span class="n">esp</span><span class="o">-</span><span class="n">aes</span> <span class="n">256</span> <span class="n">esp</span><span class="o">-</span><span class="n">sha256</span><span class="o">-</span><span class="n">hmac</span>
+</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ipsec</span> <span class="n">transform</span><span class="o">-</span><span class="n">set</span> <span class="n">TS</span><span class="o">-</span><span class="n">HQ</span> <span class="n">esp</span><span class="o">-</span><span class="n">aes</span> <span class="mi">256</span> <span class="n">esp</span><span class="o">-</span><span class="n">sha256</span><span class="o">-</span><span class="n">hmac</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="o">!</span> <span class="n">Define</span> <span class="n">Crypto</span> <span class="n">map</span> <span class="n">and</span> <span class="n">Ipsec</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">map</span> <span class="n">CMAP</span><span class="o">-</span><span class="n">HQ</span> <span class="n">10</span> <span class="n">ipsec</span><span class="o">-</span><span class="n">isakmp</span>
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">peer</span> <span class="n">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span>
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">security</span><span class="o">-</span><span class="n">association</span> <span class="n">lifetime</span> <span class="n">seconds</span> <span class="n">3600</span>
+</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">map</span> <span class="n">CMAP</span><span class="o">-</span><span class="n">HQ</span> <span class="mi">10</span> <span class="n">ipsec</span><span class="o">-</span><span class="n">isakmp</span>
+</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">peer</span> <span class="mf">2.2.2.2</span>
+</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">security</span><span class="o">-</span><span class="n">association</span> <span class="n">lifetime</span> <span class="n">seconds</span> <span class="mi">3600</span>
 </span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">transform</span><span class="o">-</span><span class="n">set</span> <span class="n">TS</span><span class="o">-</span><span class="n">HQ</span>
 </span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">pfs</span> 
 </span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">ikev2</span><span class="o">-</span><span class="n">profile</span> <span class="n">PROFILE</span><span class="o">-</span><span class="n">HQ</span>
 </span></span><span class="line"><span class="cl"> <span class="n">match</span> <span class="n">address</span> <span class="n">VPNACL</span><span class="o">-</span><span class="n">HQ</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="nc">GigabitEthernet0</span><span class="o">/</span><span class="n">0</span><span class="o">/</span><span class="n">0</span>
-</span></span><span class="line"><span class="cl"> <span class="n">ip</span> <span class="n">address</span> <span class="n">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span> <span class="n">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">224</span>
+</span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="nc">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl"> <span class="n">ip</span> <span class="n">address</span> <span class="mf">1.1.1.1</span> <span class="mf">255.255.255.224</span>
 </span></span><span class="line"><span class="cl"> <span class="n">negotiation</span> <span class="n">auto</span>
 </span></span><span class="line"><span class="cl"> <span class="n">crypto</span> <span class="n">map</span> <span class="n">CMAP</span><span class="o">-</span><span class="n">HQ</span>
 </span></span></code></pre></div>
