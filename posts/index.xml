@@ -6,33 +6,26 @@
     <description>Recent content on The Colour of My Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 28 Jan 2024 04:25:25 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 05 Apr 2024 01:02:52 -0400</lastBuildDate>
     <atom:link href="https://johnburns.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Store dotfile with git</title>
       <link>https://johnburns.io/posts/store-dotfile-with-git/</link>
-      <pubDate>Sun, 28 Jan 2024 04:21:15 -0500</pubDate>
+      <pubDate>Fri, 05 Apr 2024 01:02:52 -0400</pubDate>
       <guid>https://johnburns.io/posts/store-dotfile-with-git/</guid>
-      <description>Date: &amp;lt;2022-08-23 Tue&amp;gt;&#xA;Subject: Store dotfile with git&#xA;Version: 1.1&#xA;Store all DotFiles in a bare git repository Setup git init &amp;ndash;bare $HOME/.cfg alias config=&amp;rsquo;usr/bin/git &amp;ndash;git-dir=$HOME.cfg/ &amp;ndash;work-tree=$HOME&#39; echo &amp;ldquo;alias config=&amp;rsquo;usr/local/bin/git &amp;ndash;git-dir=$HOME.cfg/ &amp;ndash;work-tree=$HOME&amp;rsquo;&amp;rdquo; &amp;gt;&amp;gt; $HOME/.zsh/aliases config config &amp;ndash;local status.showUntrackedFiles no Adding files Manually add files to repository by using config add &amp;lt;filename&amp;gt;. Use this to add all your files manually, this way only updates to your tracked files will show&#xA;Add the github repository config remote add origin &amp;lt;remote-url&amp;gt; config push -u origin main Restore files from github echo &amp;ldquo;.</description>
+      <description>Date: &amp;lt;2022-08-23 Tue&amp;gt;&#xA;Version: 1.2&#xA;Store all DotFiles in a bare git repository&#xA;Setup git init &amp;ndash;bare $HOME/.cfg alias config=&amp;rsquo;usr/bin/git &amp;ndash;git-dir=$HOME.cfg/ &amp;ndash;work-tree=$HOME&#39; echo &amp;ldquo;alias config=&amp;rsquo;usr/local/bin/git &amp;ndash;git-dir=$HOME.cfg/ &amp;ndash;work-tree=$HOME&amp;rsquo;&amp;rdquo; &amp;gt;&amp;gt; $HOME/.zsh/aliases config config &amp;ndash;local status.showUntrackedFiles no Adding files Manually add files to repository by using config add &amp;lt;filename&amp;gt;. Use this to add all your files manually, this way only updates to your tracked files will show&#xA;Add the github repository config remote add origin &amp;lt;remote-url&amp;gt; config push -u origin main Restore files from github echo &amp;ldquo;.</description>
     </item>
     <item>
       <title>Top Networking Trends of 2024: A Network Engineer&#39;s Perspective</title>
       <link>https://johnburns.io/posts/top-networking-trends-of-2024-a-network-engineer-s-perspective/</link>
-      <pubDate>Sun, 28 Jan 2024 04:25:25 -0500</pubDate>
+      <pubDate>Fri, 05 Apr 2024 01:02:52 -0400</pubDate>
       <guid>https://johnburns.io/posts/top-networking-trends-of-2024-a-network-engineer-s-perspective/</guid>
       <description>Date: &amp;lt;2024-01-28 Sun&amp;gt;&#xA;Version: 1.0&#xA;Welcome to 2024, a year that continues to witness revolutionary changes in the world of networking. As a network engineer, I&amp;rsquo;ve seen firsthand the rapid evolution of technology in our field. This year is no exception, with several trends emerging that are reshaping how we think about and implement network infrastructure. Let&amp;rsquo;s dive into some of the top trends in networking for 2024.&#xA;1. The Rise of 6G Technology Although 5G has just recently become mainstream, the buzz around 6G technology is already gaining momentum.</description>
     </item>
     <item>
-      <title>Store all DotFiles in a bare git repository</title>
-      <link>https://johnburns.io/posts/all-posts/</link>
-      <pubDate>Sun, 28 Jan 2024 03:46:59 -0500</pubDate>
-      <guid>https://johnburns.io/posts/all-posts/</guid>
-      <description> </description>
-    </item>
-    <item>
       <title>Transforming Enterprise Networking: The Impact of AI Technologies</title>
       <link>https://johnburns.io/posts/transforming-enterprise-networking-the-impact-of-ai-technologies/</link>
-      <pubDate>Sun, 28 Jan 2024 04:24:20 -0500</pubDate>
+      <pubDate>Fri, 05 Apr 2024 01:02:52 -0400</pubDate>
       <guid>https://johnburns.io/posts/transforming-enterprise-networking-the-impact-of-ai-technologies/</guid>
       <description>Date: &amp;lt;2024-01-28 Sun&amp;gt;&#xA;Transforming Enterprise Networking: In the ever-evolving realm of enterprise networking, the integration of Artificial Intelligence (AI) technologies has become a game-changer. One of the most notable advancements in this area is Juniper Mist, a platform that leverages AI to revolutionize how networks are managed and operated. This article delves into how AI, particularly through solutions like Juniper Mist, is reshaping the enterprise networking landscape.&#xA;Understanding Juniper Mist and Its AI-Driven Approach Juniper Mist is an AI-driven network solution that offers a unique combination of cloud management, advanced AI capabilities, and programmable APIs to deliver a full-stack solution for wireless, wired, and WAN networks.</description>
     </item>
