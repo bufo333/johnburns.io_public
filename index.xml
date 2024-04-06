@@ -5,414 +5,580 @@
     <link>https://johnburns.io/</link>
     <description>Recent content in Welcome on The Colour of My Thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 05 Apr 2024 01:02:52 -0400</lastBuildDate>
-    <atom:link href="https://johnburns.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Apr 2024 21:13:00 -0400</lastBuildDate><atom:link href="https://johnburns.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Store dotfile with git</title>
       <link>https://johnburns.io/posts/store-dotfile-with-git/</link>
-      <pubDate>Fri, 05 Apr 2024 01:02:52 -0400</pubDate>
+      <pubDate>Thu, 04 Apr 2024 21:14:30 -0400</pubDate>
+      
       <guid>https://johnburns.io/posts/store-dotfile-with-git/</guid>
-      <description>Date: &amp;lt;2022-08-23 Tue&amp;gt;&#xA;Version: 1.2&#xA;Store all DotFiles in a bare git repository&#xA;Setup git init &amp;ndash;bare $HOME/.cfg alias config=&amp;rsquo;usr/bin/git &amp;ndash;git-dir=$HOME.cfg/ &amp;ndash;work-tree=$HOME&#39; echo &amp;ldquo;alias config=&amp;rsquo;usr/local/bin/git &amp;ndash;git-dir=$HOME.cfg/ &amp;ndash;work-tree=$HOME&amp;rsquo;&amp;rdquo; &amp;gt;&amp;gt; $HOME/.zsh/aliases config config &amp;ndash;local status.showUntrackedFiles no Adding files Manually add files to repository by using config add &amp;lt;filename&amp;gt;. Use this to add all your files manually, this way only updates to your tracked files will show&#xA;Add the github repository config remote add origin &amp;lt;remote-url&amp;gt; config push -u origin main Restore files from github echo &amp;ldquo;.</description>
+      <description>Date: &amp;lt;2022-08-23 Tue&amp;gt;
+Version: 1.2
+Store all DotFiles in a bare git repository
+Setup git init &amp;ndash;bare $HOME/.cfg alias config=&amp;rsquo;usr/bin/git &amp;ndash;git-dir=$HOME.cfg/ &amp;ndash;work-tree=$HOME&#39; echo &amp;ldquo;alias config=&amp;rsquo;usr/local/bin/git &amp;ndash;git-dir=$HOME.cfg/ &amp;ndash;work-tree=$HOME&amp;rsquo;&amp;rdquo; &amp;gt;&amp;gt; $HOME/.zsh/aliases config config &amp;ndash;local status.showUntrackedFiles no Adding files Manually add files to repository by using config add &amp;lt;filename&amp;gt;. Use this to add all your files manually, this way only updates to your tracked files will show
+Add the github repository config remote add origin &amp;lt;remote-url&amp;gt; config push -u origin main Restore files from github echo &amp;ldquo;.</description>
     </item>
+    
     <item>
       <title>Top Networking Trends of 2024: A Network Engineer&#39;s Perspective</title>
       <link>https://johnburns.io/posts/top-networking-trends-of-2024-a-network-engineer-s-perspective/</link>
-      <pubDate>Fri, 05 Apr 2024 01:02:52 -0400</pubDate>
+      <pubDate>Tue, 05 Mar 2024 01:02:52 -0400</pubDate>
+      
       <guid>https://johnburns.io/posts/top-networking-trends-of-2024-a-network-engineer-s-perspective/</guid>
-      <description>Date: &amp;lt;2024-01-28 Sun&amp;gt;&#xA;Version: 1.0&#xA;Welcome to 2024, a year that continues to witness revolutionary changes in the world of networking. As a network engineer, I&amp;rsquo;ve seen firsthand the rapid evolution of technology in our field. This year is no exception, with several trends emerging that are reshaping how we think about and implement network infrastructure. Let&amp;rsquo;s dive into some of the top trends in networking for 2024.&#xA;1. The Rise of 6G Technology Although 5G has just recently become mainstream, the buzz around 6G technology is already gaining momentum.</description>
+      <description>Date: &amp;lt;2024-01-28 Sun&amp;gt;
+Version: 1.0
+Welcome to 2024, a year that continues to witness revolutionary changes in the world of networking. As a network engineer, I&amp;rsquo;ve seen firsthand the rapid evolution of technology in our field. This year is no exception, with several trends emerging that are reshaping how we think about and implement network infrastructure. Let&amp;rsquo;s dive into some of the top trends in networking for 2024.
+1. The Rise of 6G Technology Although 5G has just recently become mainstream, the buzz around 6G technology is already gaining momentum.</description>
     </item>
+    
     <item>
       <title>Transforming Enterprise Networking: The Impact of AI Technologies</title>
       <link>https://johnburns.io/posts/transforming-enterprise-networking-the-impact-of-ai-technologies/</link>
-      <pubDate>Fri, 05 Apr 2024 01:02:52 -0400</pubDate>
+      <pubDate>Wed, 03 Apr 2024 21:22:42 -0400</pubDate>
+      
       <guid>https://johnburns.io/posts/transforming-enterprise-networking-the-impact-of-ai-technologies/</guid>
-      <description>Date: &amp;lt;2024-01-28 Sun&amp;gt;&#xA;Transforming Enterprise Networking: In the ever-evolving realm of enterprise networking, the integration of Artificial Intelligence (AI) technologies has become a game-changer. One of the most notable advancements in this area is Juniper Mist, a platform that leverages AI to revolutionize how networks are managed and operated. This article delves into how AI, particularly through solutions like Juniper Mist, is reshaping the enterprise networking landscape.&#xA;Understanding Juniper Mist and Its AI-Driven Approach Juniper Mist is an AI-driven network solution that offers a unique combination of cloud management, advanced AI capabilities, and programmable APIs to deliver a full-stack solution for wireless, wired, and WAN networks.</description>
+      <description>Date: &amp;lt;2024-04-03 Wed&amp;gt;
+Transforming Enterprise Networking: In the ever-evolving realm of enterprise networking, the integration of Artificial Intelligence (AI) technologies has become a game-changer. One of the most notable advancements in this area is Juniper Mist, a platform that leverages AI to revolutionize how networks are managed and operated. This article delves into how AI, particularly through solutions like Juniper Mist, is reshaping the enterprise networking landscape.
+Understanding Juniper Mist and Its AI-Driven Approach Juniper Mist is an AI-driven network solution that offers a unique combination of cloud management, advanced AI capabilities, and programmable APIs to deliver a full-stack solution for wireless, wired, and WAN networks.</description>
     </item>
+    
+    <item>
+      <title>Understanding the crystal Ball Function</title>
+      <link>https://johnburns.io/posts/understanding-the-crystal-ball-function/</link>
+      <pubDate>Fri, 05 Apr 2024 21:13:00 -0400</pubDate>
+      
+      <guid>https://johnburns.io/posts/understanding-the-crystal-ball-function/</guid>
+      <description>Date: &amp;lt;2024-04-07 Sun&amp;gt;
+Subject: Understanding the crystal Ball Function
+Version: 1.0
+Exploring the intricacies of the Crystal Ball Problem as it applies to arrays, this piece delves into the challenge of predicting future elements based on current sequences. It underscores the significance of pattern recognition and algorithmic forecasting in computational analysis and real-world applications.
+Introduction to the Crystal Ball Problem with Arrays The &amp;ldquo;Crystal Ball Problem&amp;rdquo; in the context of arrays is a metaphorical representation of the challenge of predicting future elements or trends based on a current sequence of data.</description>
+    </item>
+    
     <item>
       <title>beginner-network-templating</title>
       <link>https://johnburns.io/posts/beginner-network-templating/</link>
       <pubDate>Thu, 26 May 2022 13:00:00 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/beginner-network-templating/</guid>
-      <description>Develop and Deploy Network Templates Before Automating Date: 2022-05-26&#xA;Subject: Network Templating&#xA;Version 1.0&#xA;Automation is the number one topic in networking today. Automation allows a team to lean left, moving simple troubleshooting to the NOC, it allows the team to do more with less, and it allows for repeatable deployments. A good place to start is to think about many of the day to day work that gets done, how much of this work is simply applying the same changes over and over.</description>
+      <description>Develop and Deploy Network Templates Before Automating Date: 2022-05-26
+Subject: Network Templating
+Version 1.0
+Automation is the number one topic in networking today. Automation allows a team to lean left, moving simple troubleshooting to the NOC, it allows the team to do more with less, and it allows for repeatable deployments. A good place to start is to think about many of the day to day work that gets done, how much of this work is simply applying the same changes over and over.</description>
     </item>
+    
     <item>
       <title>rename-accounts-in-freebsd</title>
       <link>https://johnburns.io/posts/rename-accounts-in-freebsd/</link>
       <pubDate>Wed, 14 Mar 2018 13:53:12 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/rename-accounts-in-freebsd/</guid>
-      <description>Rename accounts in FreeBSD pw usermod -n oldname -l newname -d /usr/home/newname&#xA;pw groupmod -n oldname -l newname&#xA;mv /usr/home/oldname /usr/home/newname&#xA;chown -R newname:newname /usr/home/newname</description>
+      <description>Rename accounts in FreeBSD pw usermod -n oldname -l newname -d /usr/home/newname
+pw groupmod -n oldname -l newname
+mv /usr/home/oldname /usr/home/newname
+chown -R newname:newname /usr/home/newname</description>
     </item>
+    
     <item>
       <title>bhyve-on-freebsd-10-1</title>
       <link>https://johnburns.io/posts/bhyve-on-freebsd-10-1/</link>
       <pubDate>Fri, 15 May 2015 00:43:24 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/bhyve-on-freebsd-10-1/</guid>
-      <description>Bhyve on FreeBSD 10.1 I recently started a new series of videos on YouTube about my favorite operating system FreeBSD. Below are the commands used in the video to setup the bhyve hypervisor on FreeBSD 10.1 with a virtualized Ubuntu 15 server.&#xA;######## prerequisites for bhyve on FreeBSD ########## pkg install grub2-bhyve mkdir /virtual_machines cd /virtual_machines mkdir iso cd iso fetch http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso ######��� Load kernel modules and set sysctl values ###### kldload if_tap kldload if_bridge kldload vmm kldload nmdm ###### set sysctl values� #######3 sysctl net.</description>
+      <description>Bhyve on FreeBSD 10.1 I recently started a new series of videos on YouTube about my favorite operating system FreeBSD. Below are the commands used in the video to setup the bhyve hypervisor on FreeBSD 10.1 with a virtualized Ubuntu 15 server.
+######## prerequisites for bhyve on FreeBSD ########## pkg install grub2-bhyve mkdir /virtual_machines cd /virtual_machines mkdir iso cd iso fetch http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso ######��� Load kernel modules and set sysctl values ###### kldload if_tap kldload if_bridge kldload vmm kldload nmdm ###### set sysctl values� #######3 sysctl net.</description>
     </item>
+    
     <item>
       <title>poem</title>
       <link>https://johnburns.io/posts/poem/</link>
       <pubDate>Sun, 20 Oct 2013 18:10:50 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/poem/</guid>
       <description>poem So live your life that the fear of death can never enter your heart. Trouble no one about their religion Respect others in their view And demand that they respect yours Love your life, perfect your life, beautify all things in your life Seek to make your life long and its purpose in the service of your people Prepare a noble death song for the day when you go over the great divide Always give a word or a sign of salute when meeting or passing a friend Even a stranger when in a lonely place Show respect to all people and grovel to none When you arise in the morning give thanks for the food and for the joy of living If you see no reason for giving thanks, the fault lies only in yourself Abuse no one and nothing For abuse turns the wise ones to fools and robs the spirit of its vision When it comes your time to die Be not like those whose hearts are filled with the fear of death So that when their time comes They weep and pray for a little more time To live their lives over again in a different way Sing your death song And die like a hero going home</description>
     </item>
+    
     <item>
       <title>slow-downloads-in-itunes</title>
       <link>https://johnburns.io/posts/slow-downloads-in-itunes/</link>
       <pubDate>Sun, 11 Nov 2012 19:34:15 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/slow-downloads-in-itunes/</guid>
-      <description>Slow Downloads in Itunes If you are experiencing slow downloads in iTunes try this:&#xA;Shut down iTunes&#xA;Disable antivirus/internet security suite&#xA;Open itunes and resume downloads.&#xA;This is most often caused by the internet security suite which is not capable of scanning large files in real time. If this fixes your problem, you can usually make the fix permanent by disabling the piece of the antivirus that filters web traffic.</description>
+      <description>Slow Downloads in Itunes If you are experiencing slow downloads in iTunes try this:
+Shut down iTunes
+Disable antivirus/internet security suite
+Open itunes and resume downloads.
+This is most often caused by the internet security suite which is not capable of scanning large files in real time. If this fixes your problem, you can usually make the fix permanent by disabling the piece of the antivirus that filters web traffic.</description>
     </item>
+    
     <item>
       <title>new-route-server-available</title>
       <link>https://johnburns.io/posts/new-route-server-available/</link>
       <pubDate>Fri, 03 Sep 2010 21:02:43 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/new-route-server-available/</guid>
       <description>New route-server available! I have been working on a new project which is to provide a service that would allow you to peer with my router over BGP. My router would then advertise a list of bogons and known malicious networks including botnet command and control networks. You can then drop these networks at your border router thus protecting your network from attacks and saving precious router and firewall resources. Right now I am not offering the peering service but I do have a route-view server available that allows you to login and get a full list of the malicious ip networks for ipv6 and ipv4.</description>
     </item>
+    
     <item>
       <title>new-mailing-list</title>
       <link>https://johnburns.io/posts/new-mailing-list/</link>
       <pubDate>Tue, 13 Jul 2010 10:44:15 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/new-mailing-list/</guid>
-      <description>New mailing List I started a new mailing list. this list is for anyone to ask questions about networking design and implimentation. We can help with configuration questions of all gear Juniper, cisco, hp, fortinet&amp;hellip;..&#xA;Also questions reguarding Linux, Solaris �and BSD are welcome as well&#xA;http://lists.techinvasion.net</description>
+      <description>New mailing List I started a new mailing list. this list is for anyone to ask questions about networking design and implimentation. We can help with configuration questions of all gear Juniper, cisco, hp, fortinet&amp;hellip;..
+Also questions reguarding Linux, Solaris �and BSD are welcome as well
+http://lists.techinvasion.net</description>
     </item>
+    
     <item>
       <title>found-this-funny-banner-today</title>
       <link>https://johnburns.io/posts/found-this-funny-banner-today/</link>
       <pubDate>Mon, 28 Jun 2010 18:05:35 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/found-this-funny-banner-today/</guid>
       <description>Found This Funny Banner Today! </description>
     </item>
+    
     <item>
       <title>mpls-vpn-services</title>
       <link>https://johnburns.io/posts/mpls-vpn-services/</link>
       <pubDate>Tue, 09 Feb 2010 21:04:40 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/mpls-vpn-services/</guid>
-      <description>MPLS VPN Services This article with aim to take a in depth look at MPLS and explain how your packets get from one side of the MPLS cloud to another. Hopefully this will give you some perspective that will prove useful in troubleshooting issues in your own MPLS implementations.&#xA;Most enterprise engineers MPLS experience goes something like this: The company needs to connect the office in Miami and the office in London with the corporate headquarters office in Chicago.</description>
+      <description>MPLS VPN Services This article with aim to take a in depth look at MPLS and explain how your packets get from one side of the MPLS cloud to another. Hopefully this will give you some perspective that will prove useful in troubleshooting issues in your own MPLS implementations.
+Most enterprise engineers MPLS experience goes something like this: The company needs to connect the office in Miami and the office in London with the corporate headquarters office in Chicago.</description>
     </item>
+    
     <item>
       <title>ssh-brute-force-mitigation-in-junos</title>
       <link>https://johnburns.io/posts/ssh-brute-force-mitigation-in-junos/</link>
       <pubDate>Wed, 11 Nov 2009 20:20:38 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/ssh-brute-force-mitigation-in-junos/</guid>
       <description>SSH Brute Force Mitigation in Junos I have several Juniper SRX-210 devices configured in remote offices. One of the biggest problems I have is that there are a lot of people that are constantly running scripts against the ssh daemon. Now I could lock it down to only a specified list of allowed IP addresses. This would be the most secure method but i have a business requirement of being able to connect to this device from many different location.</description>
     </item>
+    
     <item>
       <title>public-dmvpn-network</title>
       <link>https://johnburns.io/posts/public-dmvpn-network/</link>
       <pubDate>Sat, 03 Oct 2009 22:10:04 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/public-dmvpn-network/</guid>
-      <description>Public DMVPN network. I was thinking about a new project idea. I was thinking of setting up a dynamic multipoint VPN concentrator. Put a small LAN behind it with a couple of servers. Put the configuration instructions on a webpage for Juniper and Cisco devices. I was thinking to run BGP routing protocol over the interface as it scales reasonably well.&#xA;The important part here is I wanted to create a web form which requests the internal and external address ranges of anyones network.</description>
+      <description>Public DMVPN network. I was thinking about a new project idea. I was thinking of setting up a dynamic multipoint VPN concentrator. Put a small LAN behind it with a couple of servers. Put the configuration instructions on a webpage for Juniper and Cisco devices. I was thinking to run BGP routing protocol over the interface as it scales reasonably well.
+The important part here is I wanted to create a web form which requests the internal and external address ranges of anyones network.</description>
     </item>
+    
     <item>
       <title>send-me-questions-and-feedback</title>
       <link>https://johnburns.io/posts/send-me-questions-and-feedback/</link>
       <pubDate>Mon, 20 Jul 2009 15:57:31 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/send-me-questions-and-feedback/</guid>
       <description>Send me questions and feedback! I see a lot of you out there find this site through various search engines and many of you are searching for information on gre tunnels. I just wanted to say how much I appreciate the traffic and I want to let everyone know that creating an account is free and I would love to hear your feedback on articles and any questions you might have.</description>
     </item>
+    
     <item>
       <title>using-ip-sla-with-route-maps</title>
       <link>https://johnburns.io/posts/using-ip-sla-with-route-maps/</link>
       <pubDate>Sun, 19 Jul 2009 09:38:07 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/using-ip-sla-with-route-maps/</guid>
       <description>Using IP SLA with Route-maps I recently came across a problem that is not an uncommon problem that small businesses face. I came up with several solutions to their problems and I thought I would take a minute to discuss one of those solutions. This customer has a business requirement to use a proxy server for all outgoing web traffic. This on the face of it seems like a simple problem, there are many good proxy vendors out their such as my favorite vendor Blue Coat.</description>
     </item>
+    
     <item>
       <title>introduction-to-filter-list-for-junos</title>
       <link>https://johnburns.io/posts/introduction-to-filter-list-for-junos/</link>
       <pubDate>Sun, 14 Jun 2009 21:10:02 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/introduction-to-filter-list-for-junos/</guid>
       <description>Introduction to Filter list for JUNOS Junipers JUNOS is a very robust operating system, not only is the OS very advanced but the ASIC heavy design of Juniper hardware is akin to calorie free chocolate bars! Juniper Filter Lists which are non-stateful packet filters similar to Cisco Access-Lists are compiled and processed using hardware, what this means is that you can have as many Filter-Lists as you want and as long as you want without degrading performance.</description>
     </item>
+    
     <item>
       <title>new-techcast-posted</title>
       <link>https://johnburns.io/posts/new-techcast-posted/</link>
       <pubDate>Sat, 13 Jun 2009 01:51:42 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/new-techcast-posted/</guid>
-      <description>New TechCast Posted I have been busy lately, I am in the middle of a Data Center migration at work, which is eating up hours of my personal time, and I have a million other projects on the burner. I have fresh content coming but in the mean time, I did a TechCast on Junos, please view the video at http://www.exiletv.com.&#xA;Until Next time</description>
+      <description>New TechCast Posted I have been busy lately, I am in the middle of a Data Center migration at work, which is eating up hours of my personal time, and I have a million other projects on the burner. I have fresh content coming but in the mean time, I did a TechCast on Junos, please view the video at http://www.exiletv.com.
+Until Next time</description>
     </item>
+    
     <item>
       <title>gopher</title>
       <link>https://johnburns.io/posts/gopher/</link>
       <pubDate>Wed, 04 Feb 2009 14:19:14 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/gopher/</guid>
       <description>gopher I have been continuing to setup the bbs software on bbs.techinvasion.net. I have added irc, gopher, finger, and ident functionality. I encourage all of you to drop by and experience this neat software. The really neat thing about this BBS software is that it connects you to a world of forums and message boards that can only be accessed using BBS software. If you are running firefox I encourage you all to go to gopher://bbs.</description>
     </item>
+    
     <item>
       <title>blast-from-the-past-bbs-and-door-games</title>
       <link>https://johnburns.io/posts/blast-from-the-past-bbs-and-door-games/</link>
       <pubDate>Mon, 02 Feb 2009 11:12:17 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/blast-from-the-past-bbs-and-door-games/</guid>
       <description>Blast From the Past - BBS.Techinvasion.net Recently as a project cleaning up some old files and software, I came across a software disk for an old BBS I used to run. This got my interest peaked as I wondered if there were still BBS systems Alive and well on the internet. Information on BBS systems was few and far between in my research and it took me a while to make some headway.</description>
     </item>
+    
     <item>
       <title>rotary-pools-for-semi-static-nat-port-range-forwarding</title>
       <link>https://johnburns.io/posts/rotary-pools-for-semi-static-nat-port-range-forwarding/</link>
       <pubDate>Mon, 22 Dec 2008 16:23:41 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/rotary-pools-for-semi-static-nat-port-range-forwarding/</guid>
-      <description>Rotary Pools for Semi-Static NAT / Port range Forwarding Cisco routers have a very robust network address translation feature set.The NAT software allows you to control translation with access-list, route-maps, and destination pools.With the wide array of commands, it is sometimes difficult for beginners and experts to figure out how to combine these elements to solve a problem.&#xA;I have a small network at home for the computers in my house, and I find that some of the strangest configurations and explorations come about because I try to solve problems in a way that is cost affective with the limited broadband available to consumers.</description>
+      <description>Rotary Pools for Semi-Static NAT / Port range Forwarding Cisco routers have a very robust network address translation feature set.The NAT software allows you to control translation with access-list, route-maps, and destination pools.With the wide array of commands, it is sometimes difficult for beginners and experts to figure out how to combine these elements to solve a problem.
+I have a small network at home for the computers in my house, and I find that some of the strangest configurations and explorations come about because I try to solve problems in a way that is cost affective with the limited broadband available to consumers.</description>
     </item>
+    
     <item>
       <title>content-based-access-control-cbac</title>
       <link>https://johnburns.io/posts/content-based-access-control-cbac/</link>
       <pubDate>Tue, 21 Oct 2008 09:56:28 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/content-based-access-control-cbac/</guid>
       <description>Content Based Access Control &amp;ldquo;CBAC&amp;rdquo; In the beginning God created heaven and earth, and then he created routers, so packets could flow from one part of the earth to the other. As he rested he looked down on his creation and smiled for all was good. Packets were flowing from one interface to another. Then as he beheld his creation he watches as some pad packets decided to flow where they didn&amp;rsquo;t belong!</description>
     </item>
+    
     <item>
       <title>introduction-to-access-lists-part-2</title>
       <link>https://johnburns.io/posts/introduction-to-access-lists-part-2/</link>
       <pubDate>Thu, 16 Oct 2008 12:47:21 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/introduction-to-access-lists-part-2/</guid>
       <description>Introduction to access-lists part 2 In the second installment of our guide to access-lists we are going to talk a little about named access-lists, how they work, what the benefits are, and how using them allows us to create reflexive access-lists. Named access-lists are exactly what they sound like, they are an extended access-list that has a name instead of a number. One of the nice features of named access-lists is that each line of the access-list has a number.</description>
     </item>
+    
     <item>
       <title>introduction-to-access-lists-part-1</title>
       <link>https://johnburns.io/posts/introduction-to-access-lists-part-1/</link>
       <pubDate>Wed, 15 Oct 2008 21:12:35 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/introduction-to-access-lists-part-1/</guid>
       <description>Introduction to access-lists part 1 Today I would like to take some time and talk about security. I want to discuss access-lists, extended access-lists, reflexive access-lists, and CBAC or content based access control. Learning how to properly use access-lists is so crucial to becoming a good network administrator. They are vital to securing your network and as you progress with your studies you will find that access-lists are used quite extensively in routing, QoS, and other important things.</description>
     </item>
+    
     <item>
       <title>replace-a-running-config-without-reloading</title>
       <link>https://johnburns.io/posts/replace-a-running-config-without-reloading/</link>
       <pubDate>Sat, 04 Oct 2008 12:03:20 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/replace-a-running-config-without-reloading/</guid>
       <description>Replace a running config without reloading The new Cisco IOS 12.4 train has many new features that any engineer will find useful; one of the features that fix a pain point for me is the new config options available in 12.4. Have you ever been in a situation where an entered configuration does not work as expected? Now usually you have to back out the configuration one command at a time and hope for the best.</description>
     </item>
+    
     <item>
       <title>working-a-lot</title>
       <link>https://johnburns.io/posts/working-a-lot/</link>
       <pubDate>Mon, 29 Sep 2008 15:52:09 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/working-a-lot/</guid>
-      <description>Working a lot! I have been working a lot lately, we are in the proccess of designing a new data center with all the ifs ands and buts included in that ordeal. I am in the proccess of writing several write ups. On spanning tree:&#xA;&amp;ldquo;load balancing spanning tree using different trunks&amp;rdquo; BGP implementation and design considerations. IGP routing protocol deep dive. </description>
+      <description>Working a lot! I have been working a lot lately, we are in the proccess of designing a new data center with all the ifs ands and buts included in that ordeal. I am in the proccess of writing several write ups. On spanning tree:
+&amp;ldquo;load balancing spanning tree using different trunks&amp;rdquo; BGP implementation and design considerations. IGP routing protocol deep dive. </description>
     </item>
+    
     <item>
       <title>encrypting-gre-tunnels</title>
       <link>https://johnburns.io/posts/encrypting-gre-tunnels/</link>
       <pubDate>Mon, 08 Sep 2008 14:21:11 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/encrypting-gre-tunnels/</guid>
       <description>Encrypting GRE tunnels In our Last article we looked at creating GRE tunnels between networks to allow non routable traffic to pass between remote offices.� GRE tunnels are a great solution however the traffic passing inside these tunnels is not encrypted and thus could be intercepted by unauthorized parties. In this article we are going to look at tunneling GRE inside of IPSEC. This will allow us to get the benefits of GRE and the security of IPSEC.</description>
     </item>
+    
     <item>
       <title>create-a-gre-tunnel-between-endpoints</title>
       <link>https://johnburns.io/posts/create-a-gre-tunnel-between-endpoints/</link>
       <pubDate>Mon, 08 Sep 2008 13:20:02 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/create-a-gre-tunnel-between-endpoints/</guid>
-      <description>Create a GRE tunnel between endpoints Many time it is necessary to link a remote office to your main site and today we have many technologies to accomplish this task. We have IPSEC tunnels, IP-IN-IP tunnels, and GRE or Generic Routing Encapsulation Tunnels.&#xA;Each type of connectivity offers advantages and disadvantages. Some of these tunnels can even be overlaid on top of one another. For instance IPSEC can be used in a transport mode, which allows you to use the encryption with other tunnels or protocols.</description>
+      <description>Create a GRE tunnel between endpoints Many time it is necessary to link a remote office to your main site and today we have many technologies to accomplish this task. We have IPSEC tunnels, IP-IN-IP tunnels, and GRE or Generic Routing Encapsulation Tunnels.
+Each type of connectivity offers advantages and disadvantages. Some of these tunnels can even be overlaid on top of one another. For instance IPSEC can be used in a transport mode, which allows you to use the encryption with other tunnels or protocols.</description>
     </item>
+    
     <item>
       <title>cisco-3750-switches-now-include-a-time-domain-reflectometer</title>
       <link>https://johnburns.io/posts/cisco-3750-switches-now-include-a-time-domain-reflectometer/</link>
       <pubDate>Mon, 08 Sep 2008 10:43:11 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/cisco-3750-switches-now-include-a-time-domain-reflectometer/</guid>
-      <description>Cisco 3750 Switches now include a time domain reflectometer! How many time have�you wanted to know how long a cable run was? Now if you are running cisco 3750 switches you can find out by issuing the following commands you can see how long that cable run really is.&#xA;Switch# test cable-diagnostics tdr interface gigabitethernet0/2&#xD;TDR test started on interface Gi0/2&#xD;A TDR test can take a few seconds to run on an interface.</description>
+      <description>Cisco 3750 Switches now include a time domain reflectometer! How many time have�you wanted to know how long a cable run was? Now if you are running cisco 3750 switches you can find out by issuing the following commands you can see how long that cable run really is.
+Switch# test cable-diagnostics tdr interface gigabitethernet0/2TDR test started on interface Gi0/2A TDR test can take a few seconds to run on an interface.</description>
     </item>
+    
     <item>
       <title>checkpoint-juniper-vpn</title>
       <link>https://johnburns.io/posts/checkpoint-juniper-vpn/</link>
       <pubDate>Thu, 04 Sep 2008 10:46:51 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/checkpoint-juniper-vpn/</guid>
-      <description>Checkpoint &amp;mdash;&amp;gt; juniper VPN Recently at work we had a remote site go down. The site was on an ancient pix 506e vpn firewall router. We were in the proccess of switching to a different vpn solution. because of this we had a new Juniper ssg20 firewall device on site.&#xA;Now I thought this would be an easy job, configure the Juniper to connect to our checkpoint r55 box the same as the pix had done before!</description>
+      <description>Checkpoint &amp;mdash;&amp;gt; juniper VPN Recently at work we had a remote site go down. The site was on an ancient pix 506e vpn firewall router. We were in the proccess of switching to a different vpn solution. because of this we had a new Juniper ssg20 firewall device on site.
+Now I thought this would be an easy job, configure the Juniper to connect to our checkpoint r55 box the same as the pix had done before!</description>
     </item>
+    
     <item>
       <title>cisco-3640-and-wic-1adsl-speed-problems</title>
       <link>https://johnburns.io/posts/cisco-3640-and-wic-1adsl-speed-problems/</link>
       <pubDate>Tue, 02 Sep 2008 14:03:39 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/cisco-3640-and-wic-1adsl-speed-problems/</guid>
       <description>Cisco 3640 and wic-1adsl speed problems I recently decided to plug my wic-1adsl card into a 3640 router because my 2620 had a power supply failure. I noticed that the cisco 3640 ran very slow, and speed tests topped out at 2.6mbps downlink speeds. For a while I couldn&amp;rsquo;t figure out why a router that is faster with more memory would run slower than my 2620 router. I later discovered the reason for the slowness was because of a bandwidth limit on the nm-1fe1r2w card I was using to give me wic slots.</description>
     </item>
+    
     <item>
       <title>video-tutorial-on-ipv6</title>
       <link>https://johnburns.io/posts/video-tutorial-on-ipv6/</link>
       <pubDate>Thu, 15 May 2008 15:47:58 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/video-tutorial-on-ipv6/</guid>
       <description>Video tutorial on IPV6 You can download or watch the full video at IPV6&amp;lt;embed bgcolor=&amp;quot;#FFFFFF&amp;quot; </description>
     </item>
+    
     <item>
       <title>liveplasmacom</title>
       <link>https://johnburns.io/posts/liveplasmacom/</link>
       <pubDate>Sat, 09 Feb 2008 22:16:44 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/liveplasmacom/</guid>
       <description>liveplasma.com I found a really cool site that displays related content in a visual way, so if for instance you type in an Artist name like Pinback, it will show all related artists in a very cool visual way, very similar to some of the visual displays for Digg.com</description>
     </item>
+    
     <item>
       <title>outlook-2003-error-setting-up-profile-after-uninstalling-office-2007</title>
       <link>https://johnburns.io/posts/outlook-2003-error-setting-up-profile-after-uninstalling-office-2007/</link>
       <pubDate>Wed, 06 Feb 2008 16:12:19 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/outlook-2003-error-setting-up-profile-after-uninstalling-office-2007/</guid>
-      <description>Outlook 2003 error setting up profile after uninstalling office 2007 This is a problem that I run into quite alot as most new PCs come with the Office 2007 trial pre-installed. When you try to setup Outlook 2003 for the first time you get the following error&#xA;&amp;ldquo;There was an error locating one of the items needed to complete this operation. It might have been deleted&amp;rdquo;&#xA;In order to fix this error you have to rename &amp;lsquo;mapisvc.</description>
+      <description>Outlook 2003 error setting up profile after uninstalling office 2007 This is a problem that I run into quite alot as most new PCs come with the Office 2007 trial pre-installed. When you try to setup Outlook 2003 for the first time you get the following error
+&amp;ldquo;There was an error locating one of the items needed to complete this operation. It might have been deleted&amp;rdquo;
+In order to fix this error you have to rename &amp;lsquo;mapisvc.</description>
     </item>
+    
     <item>
       <title>new-forums</title>
       <link>https://johnburns.io/posts/new-forums/</link>
       <pubDate>Thu, 31 Jan 2008 18:33:19 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/new-forums/</guid>
-      <description>New Forums We have added a new forums section to techinvasion.net. We hope these forums will�become a big part of the site and allow all the users to participate, ask questions, and get answers. The link to the forums is along the left hand side of the page in the categories section. You can also go directly to the forums by going to /forum.&#xA;We are also looking for writers to post relevant articles such as the ones that have been posted by our 3 writers�so far.</description>
+      <description>New Forums We have added a new forums section to techinvasion.net. We hope these forums will�become a big part of the site and allow all the users to participate, ask questions, and get answers. The link to the forums is along the left hand side of the page in the categories section. You can also go directly to the forums by going to /forum.
+We are also looking for writers to post relevant articles such as the ones that have been posted by our 3 writers�so far.</description>
     </item>
+    
     <item>
       <title>fixing-the-sku01acab-and-other-office-cab-file-issues</title>
       <link>https://johnburns.io/posts/fixing-the-sku01acab-and-other-office-cab-file-issues/</link>
       <pubDate>Wed, 30 Jan 2008 21:47:43 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/fixing-the-sku01acab-and-other-office-cab-file-issues/</guid>
       <description>Fixing the SKU01A.CAB and other office cab file issues Anyone who has used office 2003 has noticed that when switching domains or logging in as a new user Microsoft Office ask you to insert the cd to cache files needed to start. In some cases it asks for files from older office versions that have been upgraded, sometimes you don&amp;rsquo;t even have the original cd. To solve this problem you can make a simple change to the registry that tells office not to expect cached files off the installation cd.</description>
     </item>
+    
     <item>
       <title>cisco-ios-firewall-security</title>
       <link>https://johnburns.io/posts/cisco-ios-firewall-security/</link>
       <pubDate>Tue, 29 Jan 2008 22:30:27 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/cisco-ios-firewall-security/</guid>
       <description>An overview of CISCO IOS Security features as related to packet filtering. �The Cisco IOS has many powerful security features that enable network engineers to protect their internal network. The Cisco IOS is capable of intrusion detection, deep packet inspection, and stateful firewall features. Setting up IPS allows the admin to push intrusion detection to the network edge. The Cisco IPS feature set can scan for spyware, viruses, worms, Trojans, and network intrusions by receiving updated signature files from Cisco.</description>
     </item>
+    
     <item>
       <title>cisco-config-wic-1adsl-2</title>
       <link>https://johnburns.io/posts/cisco-config-wic-1adsl-2/</link>
       <pubDate>Mon, 28 Jan 2008 21:50:46 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/cisco-config-wic-1adsl-2/</guid>
-      <description>Cisco WIC-1ADSL config for 1800 series router and ios 12.4 This config is for the Cisco 1800 series router running IOS 12.4. IOS 12.4 has some command and syntax changes in reguards to interfaces and configuration commands for PPPOE. This config was submitted by my good friend Pedro Rivera.&#xA;version 12.4 service timestamps debug datetime msec service timestamps log datetime msec no service password-encryption ! hostname Router ! boot-start-marker boot-end-marker !</description>
+      <description>Cisco WIC-1ADSL config for 1800 series router and ios 12.4 This config is for the Cisco 1800 series router running IOS 12.4. IOS 12.4 has some command and syntax changes in reguards to interfaces and configuration commands for PPPOE. This config was submitted by my good friend Pedro Rivera.
+version 12.4 service timestamps debug datetime msec service timestamps log datetime msec no service password-encryption ! hostname Router ! boot-start-marker boot-end-marker !</description>
     </item>
+    
     <item>
       <title>cisco-config-wic-1adsl</title>
       <link>https://johnburns.io/posts/cisco-config-wic-1adsl/</link>
       <pubDate>Mon, 28 Jan 2008 20:59:12 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/cisco-config-wic-1adsl/</guid>
       <description>Configuring WIC-1ADSL on Cisco 2600 with PPPOA and PPPOE Configuring a Cisco router to use the WIC-1ADSL card is one of the most commonly asked question by people in the Cisco forums. There are some interesting and compelling reasons to use a WIC card instead of connecting PPPOE through the ADSL modem in bridged mode. One of the most compelling reasons is the ability to use advanced QOS features such as interleaving and fragmentation.</description>
     </item>
+    
     <item>
       <title>vista-complete-pc-backup-to-network-share</title>
       <link>https://johnburns.io/posts/vista-complete-pc-backup-to-network-share/</link>
       <pubDate>Mon, 12 Nov 2007 23:42:07 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/vista-complete-pc-backup-to-network-share/</guid>
       <description>Vista Complete-PC backup to network share The real magic of the new Vista backup tool is the second option Complete-PC backup. This feature takes advantage of the HAL independence of Vista and allows you to backup your entire system at one time using the magic of volume shadow copies to backup open files. The backup is also stored in a virtual machine file which means that you can boot, run, and extract files from your backup using Microsoft Virtual PC.</description>
     </item>
+    
     <item>
       <title>hacked-iphone-goodness</title>
       <link>https://johnburns.io/posts/hacked-iphone-goodness/</link>
       <pubDate>Tue, 30 Oct 2007 20:05:32 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/hacked-iphone-goodness/</guid>
       <description>Hacked Iphone goodness As promised here is some iPhone screenshots!!!.��</description>
     </item>
+    
     <item>
       <title>iphone-fun</title>
       <link>https://johnburns.io/posts/iphone-fun/</link>
       <pubDate>Mon, 29 Oct 2007 15:37:38 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/iphone-fun/</guid>
       <description>Iphone Fun I have spent the last couple weeks breaking the Iphone in every way possible. I Now have it running as a mail server. One of the great things about the iphone is that it is running mac os x leopard, which is just version 9 of the darwin kernel. That means that once you get out of the ch-rooted environment on the phone, you can install the BSD subsystem.</description>
     </item>
+    
     <item>
       <title>mit-student-arrested-for-fake-bomb</title>
       <link>https://johnburns.io/posts/mit-student-arrested-for-fake-bomb/</link>
       <pubDate>Sat, 22 Sep 2007 13:20:18 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/mit-student-arrested-for-fake-bomb/</guid>
       <description>MIT student arrested for fake bomb An MIT student was arrested in Logan intl Airport for wearing a sweatshirt with a prototyping board on it and a 9 volt battery which lit up some led�s that said MIT course VI which is the numerical designation for computer and electrical engineering majors. The shirt which she has and has been wearing for a long time, was something that a class of students made as a project.</description>
     </item>
+    
     <item>
       <title>2-m-moxon-project</title>
       <link>https://johnburns.io/posts/2-m-moxon-project/</link>
       <pubDate>Wed, 19 Sep 2007 22:34:35 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/2-m-moxon-project/</guid>
       <description>2 m Moxon project. I�am in the process of designing a 20m moxon antenna. I like the moxon so much I decided to make a quick moxon for 2m tonight. I built it out of twine and 2 dowel rods. I wanted to see how cheap I could build one, and the total cost of this antenna is $4.28. Not bad for an antenna on the cheap. The moxon is a great antenna and the reason why it is well liked on�HF is because it exhibits the gain of a 2 element yagi antenna with the s/n rejection of a 3 element yagi!</description>
     </item>
+    
     <item>
       <title>call-of-duty-4</title>
       <link>https://johnburns.io/posts/call-of-duty-4/</link>
       <pubDate>Sun, 22 Jul 2007 19:21:23 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/call-of-duty-4/</guid>
       <description>Call of Duty 4 </description>
     </item>
+    
     <item>
       <title>life-the-universe-and-everything</title>
       <link>https://johnburns.io/posts/life-the-universe-and-everything/</link>
       <pubDate>Mon, 09 Jul 2007 17:47:25 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/life-the-universe-and-everything/</guid>
       <description>Life the Universe and Everything Today I realized that even though the world is cruel and unfair, irony is not lost. I realized this while I was sitting on hold with my ISP, and the rep came back on the line and told me the reason why I had to hold a little longer was because he himself was on hold&amp;hellip;&amp;hellip; 5 minutes later he hung up on me while transferring my call&amp;hellip;.</description>
     </item>
+    
     <item>
       <title>open-solaris-10-sandbox</title>
       <link>https://johnburns.io/posts/open-solaris-10-sandbox/</link>
       <pubDate>Mon, 02 Jul 2007 21:54:50 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/open-solaris-10-sandbox/</guid>
       <description>Open Solaris 10 sandbox Thanks to those friendly people from Digg.com who decided it would be fun to bring my Solaris box to its knees by forking and other things to DDOS my Solaris zone. I have learned many ways of enhancing the security of Solaris zones. I have limited the Sandbox zone to 1% of total CPU usage. I have limited the total number of processes to 1000 and I have installed the Solaris Jass security hardening script.</description>
     </item>
+    
     <item>
       <title>first-production-zfs-server-today</title>
       <link>https://johnburns.io/posts/first-production-zfs-server-today/</link>
       <pubDate>Mon, 02 Jul 2007 21:43:15 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/first-production-zfs-server-today/</guid>
       <description>First Production ZFS server today I have plenty of small business clients and sooner or later they all face one big challenge. They all outgrow the initial 80GB tape drives that we put on their servers. The problem is that most of these are small businesses and most of them could just afford the initial network, and asking them to pony up $2000+ for a new tape drive or worse yet autoloader is out of the question.</description>
     </item>
+    
     <item>
       <title>tv-networks-just-dont-get-it</title>
       <link>https://johnburns.io/posts/tv-networks-just-dont-get-it/</link>
       <pubDate>Mon, 02 Jul 2007 20:11:52 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/tv-networks-just-dont-get-it/</guid>
       <description>TV Networks Just Don&amp;rsquo;t Get it I t seems to me that the big four tv network either don&amp;rsquo;t understand what people want or simply don&amp;rsquo;t care. If you look at the cable networks you have stimulating things to watch like Nip Tuck, Dexter, Sleeper Cell, Battlestar Galactica, Monk, and too many other good dramas to mention. However when you turn to the major networks they simply show one copied worn out reality show after another.</description>
     </item>
+    
     <item>
       <title>things-i-wish-i-knew-about-solaris-when-i-first-started</title>
       <link>https://johnburns.io/posts/things-i-wish-i-knew-about-solaris-when-i-first-started/</link>
       <pubDate>Mon, 02 Jul 2007 00:33:49 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/things-i-wish-i-knew-about-solaris-when-i-first-started/</guid>
       <description>Things I Wish I Knew About Solaris When I First Started. Solaris 10 is a very powerful scalable operating system that feels tightly integrated and highly responsive. However for those of us with a strong Linux or FreeBSD background Solaris can feel a little unfamiliar and even downright confusing. This post is made up of a few things I wish I knew before I started my Solaris 10 adventure. I hope it will make things a little easier for those of you wanting to take the plunge into a true enterprise operating system.</description>
     </item>
+    
     <item>
       <title>freaking-awesome-linux-distro-os-tan-wallpapers</title>
       <link>https://johnburns.io/posts/freaking-awesome-linux-distro-os-tan-wallpapers/</link>
       <pubDate>Tue, 26 Jun 2007 02:21:09 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/freaking-awesome-linux-distro-os-tan-wallpapers/</guid>
-      <description>Linux Distro OS-tan Wallpapers An OS-tan is an anime character representing a particular OS. Here is one artists rendition of a dozen Linux distro OS-tan made for desktop background use, including Linux-tan. The sizes are up to 1600X1200. The Ubuntu-tan is amazing!&#xA;read more | digg story</description>
+      <description>Linux Distro OS-tan Wallpapers An OS-tan is an anime character representing a particular OS. Here is one artists rendition of a dozen Linux distro OS-tan made for desktop background use, including Linux-tan. The sizes are up to 1600X1200. The Ubuntu-tan is amazing!
+read more | digg story</description>
     </item>
+    
     <item>
       <title>ip-filter-and-freebsd</title>
       <link>https://johnburns.io/posts/ip-filter-and-freebsd/</link>
       <pubDate>Mon, 25 Jun 2007 00:27:21 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/ip-filter-and-freebsd/</guid>
       <description>IP Filter and FreeBSD IPF is a very robust firewall included in FreeBSD by default. This is a statefull firewall with logging capabilities that can also be used to NAT a local network in situations where the FreeBSD box is the router. The best way to get IPF working is to compile the kernel with support built in. Although the default kernel has support through the use of loadable modules, compiling the options into the kernel provide a more flexible and robust system.</description>
     </item>
+    
     <item>
       <title>solaris-zones-part-1</title>
       <link>https://johnburns.io/posts/solaris-zones-part-1/</link>
       <pubDate>Sun, 24 Jun 2007 16:25:52 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/solaris-zones-part-1/</guid>
-      <description>Solaris Zones Part 1 So what is a zone?&#xA;A zone is analogous to a VMware machine but with some distinct advantages as well as some disadvantages. To start explaining zones lets start by comparing it to VMware since most people are familiar with VMware. VMware is a software program that runs on a host operating system,. This could be Windows, Linux, or a custom kernel in the VMware ESX series.</description>
+      <description>Solaris Zones Part 1 So what is a zone?
+A zone is analogous to a VMware machine but with some distinct advantages as well as some disadvantages. To start explaining zones lets start by comparing it to VMware since most people are familiar with VMware. VMware is a software program that runs on a host operating system,. This could be Windows, Linux, or a custom kernel in the VMware ESX series.</description>
     </item>
+    
     <item>
       <title>solaris-zones</title>
       <link>https://johnburns.io/posts/solaris-zones/</link>
       <pubDate>Sun, 24 Jun 2007 03:30:14 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/solaris-zones/</guid>
       <description>ZFS filesystem on Solaris Here is a flash video thanks to http://www.opensolaris.org, which I think explains some of the features of zfs very well. This video should have you wanting more! I am working on a comprehensive tutorial about zfs which should cover this great file system in more detail.</description>
     </item>
+    
     <item>
       <title>blog-migrated</title>
       <link>https://johnburns.io/posts/blog-migrated/</link>
       <pubDate>Sun, 24 Jun 2007 03:15:01 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/blog-migrated/</guid>
-      <description>Blog Migrated I just upgraded the blog, It has been migrated from a 800mhz FreeBSD based system to a 2ghz Sun Solaris 10 based system with ZFS storage. The web server is also running in its own isolated container/zone. In migrating I have decided not to import all of the old articles, Instead? I will go through them and pick the best ones to include here.&#xA;Stay Tuned More to come!</description>
+      <description>Blog Migrated I just upgraded the blog, It has been migrated from a 800mhz FreeBSD based system to a 2ghz Sun Solaris 10 based system with ZFS storage. The web server is also running in its own isolated container/zone. In migrating I have decided not to import all of the old articles, Instead? I will go through them and pick the best ones to include here.
+Stay Tuned More to come!</description>
     </item>
+    
     <item>
       <title>laptop-crashes-when-power-source-is-changed-fix</title>
       <link>https://johnburns.io/posts/laptop-crashes-when-power-source-is-changed-fix/</link>
       <pubDate>Sat, 31 Jan 2004 21:40:22 +0000</pubDate>
+      
       <guid>https://johnburns.io/posts/laptop-crashes-when-power-source-is-changed-fix/</guid>
-      <description>Laptop crashes when power source is changed fix Like most people who have complained about this problem I had recently upgraded to mandrake 9.2 and was surprised by the lack of problems usually associated with upgrading distro&amp;rsquo;s. My surprise turned to horror when I realized the my laptop a Dell Inspiron 8000 would freeze as soon as I unplugged the a/c adapter or plugged in the a/c adapter.&#xA;After searching for days for the fix and listening to contradictory advice I had finally sorted out the good from the bad information and concluded that a kernel recompile was necessary.</description>
+      <description>Laptop crashes when power source is changed fix Like most people who have complained about this problem I had recently upgraded to mandrake 9.2 and was surprised by the lack of problems usually associated with upgrading distro&amp;rsquo;s. My surprise turned to horror when I realized the my laptop a Dell Inspiron 8000 would freeze as soon as I unplugged the a/c adapter or plugged in the a/c adapter.
+After searching for days for the fix and listening to contradictory advice I had finally sorted out the good from the bad information and concluded that a kernel recompile was necessary.</description>
     </item>
+    
     <item>
       <title>About</title>
       <link>https://johnburns.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://johnburns.io/about/</guid>
-      <description>About Me An enthusiastic troubleshooter, engineer, technologist, and team leader. I find myself constantly looking for the next challenge. I enjoy complex technological and social problem solving. Navigating the complexities of large organizations to create progress and forward momentum on complex projects are just some of the things I spend my days doing for organizations.&#xA;Standard IT services to cloud first cutting edge organizations, leading teams to achieve excellence is a requirement for leaders in todays market.</description>
+      <description>About Me An enthusiastic troubleshooter, engineer, technologist, and team leader. I find myself constantly looking for the next challenge. I enjoy complex technological and social problem solving. Navigating the complexities of large organizations to create progress and forward momentum on complex projects are just some of the things I spend my days doing for organizations.
+Standard IT services to cloud first cutting edge organizations, leading teams to achieve excellence is a requirement for leaders in todays market.</description>
     </item>
+    
     <item>
       <title>Contact</title>
       <link>https://johnburns.io/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://johnburns.io/contact/</guid>
       <description> Email: John@techinvasion.net Phone: +01-3058783067 Websites Address hammap.org 2bit.pro www.techinvasion.net Social Linkedin QRZ Youtube </description>
     </item>
+    
   </channel>
 </rss>

@@ -75,6 +75,20 @@ if (!doNotTrack) {
     <ul>
         
             <li>
+                <a href="https://johnburns.io/posts/rename-accounts-in-freebsd/">2018-03-14 | rename-accounts-in-freebsd</a>
+                <p></p><p>
+                    
+                    
+                    Rename accounts in FreeBSD pw usermod -n oldname -l newname -d /usr/home/newname
+pw groupmod -n oldname -l newname
+mv /usr/home/oldname /usr/home/newname
+chown -R newname:newname /usr/home/newname
+                    
+                </p>
+            </li>
+
+        
+            <li>
                 <a href="https://johnburns.io/posts/bhyve-on-freebsd-10-1/">2015-05-15 | bhyve-on-freebsd-10-1</a>
                 <p></p><p>
                     
@@ -123,19 +137,6 @@ This is most often caused by the internet security suite which is not capable of
             </li>
 
         
-            <li>
-                <a href="https://johnburns.io/posts/new-mailing-list/">2010-07-13 | new-mailing-list</a>
-                <p></p><p>
-                    
-                    
-                    New mailing List I started a new mailing list. this list is for anyone to ask questions about networking design and implimentation. We can help with configuration questions of all gear Juniper, cisco, hp, fortinet&hellip;..
-Also questions reguarding Linux, Solaris �and BSD are welcome as well
-http://lists.techinvasion.net
-                    
-                </p>
-            </li>
-
-        
 
     </ul>
           
@@ -161,7 +162,23 @@ http://lists.techinvasion.net
         <div class="container text-center">
             <a href="https://github.com/bufo333/" title="By John Burns"><small>By John Burns</small></a>
         </div>
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+        });
+    });
+</script>
 </div>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329465157209102"
     crossorigin="anonymous"></script>
