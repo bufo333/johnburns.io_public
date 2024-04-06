@@ -8,31 +8,32 @@
     <meta name="author" content='John Burns'>
 
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
-
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.3/css/academicons.min.css" integrity="sha512-vaoopdl+FJahyY2ddhsbDj8yDiRuyUYH/vIjF3z+cBg0sKc07NAQmUYli8volCGlW9OwlQyjVsr7Lh6qAManlw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/sass/researcher.min.css">
-
     
         <link rel="icon" type="image/ico" href="https://johnburns.io/favicon.ico">
     
 
-    
-        
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LQNL2E5MEL"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-LQNL2E5MEL', { 'anonymize_ip': false });
-}
-</script>
+    </head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" integrity="sha512-t2ALGTyUR6g1HJiHCmSTge2yGseGofdO88Q+zOWQx/N0ikecVw0YuyOet9xZDV8+Vx0Y0n1a3f3Qx3V9CcnsKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js" integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js" integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    
-</head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+        });
+    });
+</script>
 
     <body><div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
@@ -77,745 +78,745 @@ if (!doNotTrack) {
 <p>The below is a complete config</p>
 <p>Red is directly related to the WIC DSL config</p>
 <p><font color="#00ff00">Green is the rest of the config needed for a bare minimum working config.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">##################################################################################</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="nx">Using</span> <span class="mi">5173</span> <span class="nx">out</span> <span class="k">of</span> <span class="mi">29688</span> <span class="nx">bytes</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">version</span> <span class="mf">12.3</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">service</span> <span class="nx">timestamps</span> <span class="nx">debug</span> <span class="nx">datetime</span> <span class="nx">msec</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">service</span> <span class="nx">timestamps</span> <span class="nx">log</span> <span class="nx">datetime</span> <span class="nx">msec</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">service</span> <span class="nx">password</span><span class="o">-</span><span class="nx">encryption</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">hostname</span> <span class="nx">Lord_Yu</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">boot</span><span class="o">-</span><span class="nx">start</span><span class="o">-</span><span class="nx">marker</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">boot</span><span class="o">-</span><span class="nx">end</span><span class="o">-</span><span class="nx">marker</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">logging</span> <span class="nx">buffered</span> <span class="mi">56000</span> <span class="nx">debugging</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">logging</span> <span class="nx">console</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">enable</span> <span class="nx">password</span> <span class="mi">7</span> <span class="nx">xxxxxxxxxxxxxxx</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">memory</span><span class="o">-</span><span class="nx">size</span> <span class="nx">iomem</span> <span class="mi">15</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">clock</span> <span class="nx">timezone</span> <span class="nx">est</span> <span class="o">-</span><span class="mi">5</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">clock</span> <span class="nx">summer</span><span class="o">-</span><span class="nx">time</span> <span class="nx">est</span> <span class="nx">recurring</span> <span class="mi">4</span> <span class="nx">Sun</span> <span class="nx">Mar</span> <span class="mi">1</span><span class="o">:</span><span class="mi">00</span> <span class="mi">4</span> <span class="nx">Sat</span> <span class="nx">Oct</span> <span class="mi">1</span><span class="o">:</span><span class="mi">00</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">aaa</span> <span class="k">new</span><span class="o">-</span><span class="nx">model</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">subnet</span><span class="o">-</span><span class="nx">zero</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">cef</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">ip</span> <span class="nx">domain</span> <span class="nx">lookup</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">domain</span> <span class="nx">name</span> <span class="nx">techinvasion</span><span class="p">.</span><span class="nx">net</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">ip</span> <span class="nx">bootp</span> <span class="nx">server</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">vpdn</span> <span class="nx">enable</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">vpdn</span><span class="o">-</span><span class="nx">group</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">request</span><span class="o">-</span><span class="nx">dialin</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="nx">protocol</span> <span class="nx">pppoe</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">ATM0</span><span class="o">/</span><span class="mi">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">ip</span> <span class="nx">address</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">route</span><span class="o">-</span><span class="nx">cache</span> <span class="nx">flow</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">atm</span> <span class="nx">ilmi</span><span class="o">-</span><span class="nx">keepalive</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">bundle</span> <span class="nx">enable</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">dsl</span> <span class="nx">operating</span><span class="o">-</span><span class="nx">mode</span> <span class="nx">auto</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">pvc</span> <span class="mi">8</span><span class="o">/</span><span class="mi">35</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="nx">encapsulation</span> <span class="nx">aal5mux</span> <span class="nx">ppp</span> <span class="nx">dialer</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="nx">dialer</span> <span class="nx">pool</span><span class="o">-</span><span class="nx">member</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">FastEthernet0</span><span class="o">/</span><span class="mi">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">description</span> <span class="nx">LAN</span> <span class="nx">INTERFACE</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">address</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.254</span> <span class="mf">255.255</span><span class="p">.</span><span class="mf">255.0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">tcp</span> <span class="nx">adjust</span><span class="o">-</span><span class="nx">mss</span> <span class="mi">1460</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">duplex</span> <span class="nx">auto</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">speed</span> <span class="nx">auto</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Ethernet1</span><span class="o">/</span><span class="mi">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">ip</span> <span class="nx">address</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">shutdown</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">half</span><span class="o">-</span><span class="nx">duplex</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Dialer1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">description</span> <span class="nx">ADSL</span> <span class="nx">WAN</span> <span class="nx">DIALER</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">address</span> <span class="nx">negotiated</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">mtu</span> <span class="mi">1492</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">outside</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">encapsulation</span> <span class="nx">ppp</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">route</span><span class="o">-</span><span class="nx">cache</span> <span class="nx">flow</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">tcp</span> <span class="nx">adjust</span><span class="o">-</span><span class="nx">mss</span> <span class="mi">1452</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">dialer</span> <span class="nx">pool</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">dialer</span><span class="o">-</span><span class="nx">group</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">cdp</span> <span class="nx">enable</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ppp</span> <span class="nx">authentication</span> <span class="nx">chap</span> <span class="nx">pap</span> <span class="nx">callin</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ppp</span> <span class="nx">chap</span> <span class="nx">hostname</span> <span class="nx">xxxxxxx</span><span class="err">@</span><span class="nx">xxxxxxxxxx</span><span class="p">.</span><span class="nx">net</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ppp</span> <span class="nx">chap</span> <span class="nx">password</span> <span class="mi">7</span> <span class="nx">xxxxxxxxxxxxx</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ppp</span> <span class="nx">pap</span> <span class="nx">sent</span><span class="o">-</span><span class="nx">username</span> <span class="nx">xxxxxxxx</span><span class="err">@</span><span class="nx">xxxxxxxxxx</span><span class="p">.</span><span class="nx">net</span> <span class="nx">password</span> <span class="mi">7</span> <span class="nx">xxxxxxxxxxxx</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ppp</span> <span class="nx">ipcp</span> <span class="nx">dns</span> <span class="nx">request</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">translation</span> <span class="nx">timeout</span> <span class="mi">3600</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">translation</span> <span class="nx">tcp</span><span class="o">-</span><span class="nx">timeout</span> <span class="mi">1200</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">translation</span> <span class="nx">finrst</span><span class="o">-</span><span class="nx">timeout</span> <span class="mi">15</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">translation</span> <span class="nx">syn</span><span class="o">-</span><span class="nx">timeout</span> <span class="mi">45</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span> <span class="nx">source</span> <span class="nx">list</span> <span class="mi">10</span> <span class="kr">interface</span> <span class="nx">Dialer1</span> <span class="nx">overload</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">ip</span> <span class="nx">http</span> <span class="nx">server</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">ip</span> <span class="nx">http</span> <span class="nx">secure</span><span class="o">-</span><span class="nx">server</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">flow</span><span class="o">-</span><span class="kr">export</span> <span class="nx">destination</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.3</span> <span class="mi">2055</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">classless</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">route</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.0</span> <span class="nx">Dialer1</span> <span class="nx">permanent</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="nx">extended</span> <span class="nx">inbound</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">deny</span> <span class="nx">ip</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.255</span><span class="p">.</span><span class="mf">255.255</span> <span class="nx">any</span> <span class="nx">log</span><span class="o">-</span><span class="nx">input</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">deny</span> <span class="nx">ip</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.255</span><span class="p">.</span><span class="mf">255.255</span> <span class="nx">any</span> <span class="nx">log</span><span class="o">-</span><span class="nx">input</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">deny</span> <span class="nx">ip</span> <span class="mf">127.0</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.255</span><span class="p">.</span><span class="mf">255.255</span> <span class="nx">any</span> <span class="nx">log</span><span class="o">-</span><span class="nx">input</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">deny</span> <span class="nx">ip</span> <span class="mf">169.254</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">255.255</span> <span class="nx">any</span> <span class="nx">log</span><span class="o">-</span><span class="nx">input</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">deny</span> <span class="nx">ip</span> <span class="mf">172.16</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.15</span><span class="p">.</span><span class="mf">255.255</span> <span class="nx">any</span> <span class="nx">log</span><span class="o">-</span><span class="nx">input</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">deny</span> <span class="nx">ip</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">255.255</span> <span class="nx">any</span> <span class="nx">log</span><span class="o">-</span><span class="nx">input</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">deny</span> <span class="nx">ip</span> <span class="mf">224.0</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">15.255</span><span class="p">.</span><span class="mf">255.255</span> <span class="nx">any</span> <span class="nx">log</span><span class="o">-</span><span class="nx">input</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">logging</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.3</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="mi">10</span> <span class="nx">permit</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.255</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">line</span> <span class="nx">con</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">password</span> <span class="mi">7</span> <span class="nx">xxxxxxxxxxx</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">line</span> <span class="nx">aux</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">line</span> <span class="nx">vty</span> <span class="mi">0</span> <span class="mi">4</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">password</span> <span class="mi">7</span> <span class="nx">xxxxxxxxxx</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">login</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">transport</span> <span class="nx">input</span> <span class="nx">telnet</span> <span class="nx">ssh</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">line</span> <span class="nx">vty</span> <span class="mi">5</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">password</span> <span class="mi">7</span> <span class="nx">xxxxxxxxxxxx</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">login</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ntp</span> <span class="nx">clock</span><span class="o">-</span><span class="nx">period</span> <span class="mi">17180335</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ntp</span> <span class="nx">server</span> <span class="mf">192.43</span><span class="p">.</span><span class="mf">244.18</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ntp</span> <span class="nx">server</span> <span class="mf">129.6</span><span class="p">.</span><span class="mf">15.28</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">##################################################################################</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">Using</span> <span style="color:#ae81ff">5173</span> <span style="color:#a6e22e">out</span> <span style="color:#66d9ef">of</span> <span style="color:#ae81ff">29688</span> <span style="color:#a6e22e">bytes</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">version</span> <span style="color:#ae81ff">12.3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">service</span> <span style="color:#a6e22e">timestamps</span> <span style="color:#a6e22e">debug</span> <span style="color:#a6e22e">datetime</span> <span style="color:#a6e22e">msec</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">service</span> <span style="color:#a6e22e">timestamps</span> <span style="color:#a6e22e">log</span> <span style="color:#a6e22e">datetime</span> <span style="color:#a6e22e">msec</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">service</span> <span style="color:#a6e22e">password</span><span style="color:#f92672">-</span><span style="color:#a6e22e">encryption</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hostname</span> <span style="color:#a6e22e">Lord_Yu</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">boot</span><span style="color:#f92672">-</span><span style="color:#a6e22e">start</span><span style="color:#f92672">-</span><span style="color:#a6e22e">marker</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">boot</span><span style="color:#f92672">-</span><span style="color:#a6e22e">end</span><span style="color:#f92672">-</span><span style="color:#a6e22e">marker</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">logging</span> <span style="color:#a6e22e">buffered</span> <span style="color:#ae81ff">56000</span> <span style="color:#a6e22e">debugging</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">logging</span> <span style="color:#a6e22e">console</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">enable</span> <span style="color:#a6e22e">password</span> <span style="color:#ae81ff">7</span> <span style="color:#a6e22e">xxxxxxxxxxxxxxx</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">memory</span><span style="color:#f92672">-</span><span style="color:#a6e22e">size</span> <span style="color:#a6e22e">iomem</span> <span style="color:#ae81ff">15</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">clock</span> <span style="color:#a6e22e">timezone</span> <span style="color:#a6e22e">est</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">clock</span> <span style="color:#a6e22e">summer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">time</span> <span style="color:#a6e22e">est</span> <span style="color:#a6e22e">recurring</span> <span style="color:#ae81ff">4</span> <span style="color:#a6e22e">Sun</span> <span style="color:#a6e22e">Mar</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">00</span> <span style="color:#ae81ff">4</span> <span style="color:#a6e22e">Sat</span> <span style="color:#a6e22e">Oct</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">00</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">aaa</span> <span style="color:#66d9ef">new</span><span style="color:#f92672">-</span><span style="color:#a6e22e">model</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">subnet</span><span style="color:#f92672">-</span><span style="color:#a6e22e">zero</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">cef</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">domain</span> <span style="color:#a6e22e">lookup</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">domain</span> <span style="color:#a6e22e">name</span> <span style="color:#a6e22e">techinvasion</span>.<span style="color:#a6e22e">net</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">bootp</span> <span style="color:#a6e22e">server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">vpdn</span> <span style="color:#a6e22e">enable</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">vpdn</span><span style="color:#f92672">-</span><span style="color:#a6e22e">group</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">request</span><span style="color:#f92672">-</span><span style="color:#a6e22e">dialin</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">protocol</span> <span style="color:#a6e22e">pppoe</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ATM0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">route</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cache</span> <span style="color:#a6e22e">flow</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">atm</span> <span style="color:#a6e22e">ilmi</span><span style="color:#f92672">-</span><span style="color:#a6e22e">keepalive</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bundle</span> <span style="color:#a6e22e">enable</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dsl</span> <span style="color:#a6e22e">operating</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">pvc</span> <span style="color:#ae81ff">8</span><span style="color:#f92672">/</span><span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">encapsulation</span> <span style="color:#a6e22e">aal5mux</span> <span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">dialer</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">dialer</span> <span style="color:#a6e22e">pool</span><span style="color:#f92672">-</span><span style="color:#a6e22e">member</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">description</span> <span style="color:#a6e22e">LAN</span> <span style="color:#a6e22e">INTERFACE</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.254</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">adjust</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mss</span> <span style="color:#ae81ff">1460</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">duplex</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">speed</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Ethernet1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">shutdown</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">half</span><span style="color:#f92672">-</span><span style="color:#a6e22e">duplex</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Dialer1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">description</span> <span style="color:#a6e22e">ADSL</span> <span style="color:#a6e22e">WAN</span> <span style="color:#a6e22e">DIALER</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#a6e22e">negotiated</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">mtu</span> <span style="color:#ae81ff">1492</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">outside</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">encapsulation</span> <span style="color:#a6e22e">ppp</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">route</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cache</span> <span style="color:#a6e22e">flow</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">adjust</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mss</span> <span style="color:#ae81ff">1452</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dialer</span> <span style="color:#a6e22e">pool</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dialer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">group</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">cdp</span> <span style="color:#a6e22e">enable</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">authentication</span> <span style="color:#a6e22e">chap</span> <span style="color:#a6e22e">pap</span> <span style="color:#a6e22e">callin</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">chap</span> <span style="color:#a6e22e">hostname</span> <span style="color:#a6e22e">xxxxxxx</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">xxxxxxxxxx</span>.<span style="color:#a6e22e">net</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">chap</span> <span style="color:#a6e22e">password</span> <span style="color:#ae81ff">7</span> <span style="color:#a6e22e">xxxxxxxxxxxxx</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">pap</span> <span style="color:#a6e22e">sent</span><span style="color:#f92672">-</span><span style="color:#a6e22e">username</span> <span style="color:#a6e22e">xxxxxxxx</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">xxxxxxxxxx</span>.<span style="color:#a6e22e">net</span> <span style="color:#a6e22e">password</span> <span style="color:#ae81ff">7</span> <span style="color:#a6e22e">xxxxxxxxxxxx</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">ipcp</span> <span style="color:#a6e22e">dns</span> <span style="color:#a6e22e">request</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">translation</span> <span style="color:#a6e22e">timeout</span> <span style="color:#ae81ff">3600</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">translation</span> <span style="color:#a6e22e">tcp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">timeout</span> <span style="color:#ae81ff">1200</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">translation</span> <span style="color:#a6e22e">finrst</span><span style="color:#f92672">-</span><span style="color:#a6e22e">timeout</span> <span style="color:#ae81ff">15</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">translation</span> <span style="color:#a6e22e">syn</span><span style="color:#f92672">-</span><span style="color:#a6e22e">timeout</span> <span style="color:#ae81ff">45</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span> <span style="color:#a6e22e">source</span> <span style="color:#a6e22e">list</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Dialer1</span> <span style="color:#a6e22e">overload</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">http</span> <span style="color:#a6e22e">server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">http</span> <span style="color:#a6e22e">secure</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">flow</span><span style="color:#f92672">-</span><span style="color:#66d9ef">export</span> <span style="color:#a6e22e">destination</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.3</span> <span style="color:#ae81ff">2055</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">classless</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">route</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#a6e22e">Dialer1</span> <span style="color:#a6e22e">permanent</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">extended</span> <span style="color:#a6e22e">inbound</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">deny</span> <span style="color:#a6e22e">ip</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.255</span>.<span style="color:#ae81ff">255.255</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">log</span><span style="color:#f92672">-</span><span style="color:#a6e22e">input</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">deny</span> <span style="color:#a6e22e">ip</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.255</span>.<span style="color:#ae81ff">255.255</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">log</span><span style="color:#f92672">-</span><span style="color:#a6e22e">input</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">deny</span> <span style="color:#a6e22e">ip</span> <span style="color:#ae81ff">127.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.255</span>.<span style="color:#ae81ff">255.255</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">log</span><span style="color:#f92672">-</span><span style="color:#a6e22e">input</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">deny</span> <span style="color:#a6e22e">ip</span> <span style="color:#ae81ff">169.254</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">255.255</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">log</span><span style="color:#f92672">-</span><span style="color:#a6e22e">input</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">deny</span> <span style="color:#a6e22e">ip</span> <span style="color:#ae81ff">172.16</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.15</span>.<span style="color:#ae81ff">255.255</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">log</span><span style="color:#f92672">-</span><span style="color:#a6e22e">input</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">deny</span> <span style="color:#a6e22e">ip</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">255.255</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">log</span><span style="color:#f92672">-</span><span style="color:#a6e22e">input</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">deny</span> <span style="color:#a6e22e">ip</span> <span style="color:#ae81ff">224.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">15.255</span>.<span style="color:#ae81ff">255.255</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">log</span><span style="color:#f92672">-</span><span style="color:#a6e22e">input</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">logging</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">10</span> <span style="color:#a6e22e">permit</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.255</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">line</span> <span style="color:#a6e22e">con</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">password</span> <span style="color:#ae81ff">7</span> <span style="color:#a6e22e">xxxxxxxxxxx</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">line</span> <span style="color:#a6e22e">aux</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">line</span> <span style="color:#a6e22e">vty</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">password</span> <span style="color:#ae81ff">7</span> <span style="color:#a6e22e">xxxxxxxxxx</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">login</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">transport</span> <span style="color:#a6e22e">input</span> <span style="color:#a6e22e">telnet</span> <span style="color:#a6e22e">ssh</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">line</span> <span style="color:#a6e22e">vty</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">password</span> <span style="color:#ae81ff">7</span> <span style="color:#a6e22e">xxxxxxxxxxxx</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">login</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ntp</span> <span style="color:#a6e22e">clock</span><span style="color:#f92672">-</span><span style="color:#a6e22e">period</span> <span style="color:#ae81ff">17180335</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ntp</span> <span style="color:#a6e22e">server</span> <span style="color:#ae81ff">192.43</span>.<span style="color:#ae81ff">244.18</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ntp</span> <span style="color:#a6e22e">server</span> <span style="color:#ae81ff">129.6</span>.<span style="color:#ae81ff">15.28</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
 </span></span></code></pre></div><p>end</p>
 <p>The Following is the PPPOA Config:</p>
 <p>It is not the full config only a partial config.</p>
 <p>Notice how the dialer access-list is different and notice tha lack of the VPDN commands at the top of the config:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">version</span> <span class="mf">12.3</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">hostname</span> <span class="nx">Lord_Yu</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">boot</span><span class="o">-</span><span class="nx">start</span><span class="o">-</span><span class="nx">marker</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">boot</span><span class="o">-</span><span class="nx">end</span><span class="o">-</span><span class="nx">marker</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">logging</span> <span class="nx">buffered</span> <span class="mi">4096</span> <span class="nx">debugging</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">logging</span> <span class="nx">console</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">enable</span> <span class="nx">password</span> <span class="mi">7</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">memory</span><span class="o">-</span><span class="nx">size</span> <span class="nx">iomem</span> <span class="mi">15</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">clock</span> <span class="nx">timezone</span> <span class="nx">est</span> <span class="o">-</span><span class="mi">5</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">clock</span> <span class="nx">summer</span><span class="o">-</span><span class="nx">time</span> <span class="nx">est</span> <span class="nx">recurring</span> <span class="mi">4</span> <span class="nx">Sun</span> <span class="nx">Mar</span> <span class="mi">1</span><span class="o">:</span><span class="mi">00</span> <span class="mi">4</span> <span class="nx">Sat</span> <span class="nx">Oct</span> <span class="mi">1</span><span class="o">:</span><span class="mi">00</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">aaa</span> <span class="k">new</span><span class="o">-</span><span class="nx">model</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">subnet</span><span class="o">-</span><span class="nx">zero</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">cef</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">ip</span> <span class="nx">domain</span> <span class="nx">lookup</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">domain</span> <span class="nx">name</span> <span class="nx">techinvasion</span><span class="p">.</span><span class="nx">net</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">ATM0</span><span class="o">/</span><span class="mi">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">ip</span> <span class="nx">address</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">route</span><span class="o">-</span><span class="nx">cache</span> <span class="nx">flow</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">atm</span> <span class="nx">ilmi</span><span class="o">-</span><span class="nx">keepalive</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">bundle</span> <span class="nx">enable</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">dsl</span> <span class="nx">operating</span><span class="o">-</span><span class="nx">mode</span> <span class="nx">auto</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">pvc</span> <span class="mi">8</span><span class="o">/</span><span class="mi">35</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="nx">encapsulation</span> <span class="nx">aal5mux</span> <span class="nx">ppp</span> <span class="nx">dialer</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="nx">dialer</span> <span class="nx">pool</span><span class="o">-</span><span class="nx">member</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">FastEthernet0</span><span class="o">/</span><span class="mi">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">description</span> <span class="nx">LAN</span> <span class="nx">INTERFACE</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">address</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.254</span> <span class="mf">255.255</span><span class="p">.</span><span class="mf">255.0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">tcp</span> <span class="nx">adjust</span><span class="o">-</span><span class="nx">mss</span> <span class="mi">1460</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">duplex</span> <span class="nx">auto</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">speed</span> <span class="nx">auto</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ipv6</span> <span class="nx">address</span> <span class="nx">autoconfig</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ipv6</span> <span class="nx">enable</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Ethernet1</span><span class="o">/</span><span class="mi">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">ip</span> <span class="nx">address</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">shutdown</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">half</span><span class="o">-</span><span class="nx">duplex</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Dialer1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">description</span> <span class="nx">ADSL</span> <span class="nx">WAN</span> <span class="nx">DIALER</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">address</span> <span class="nx">negotiated</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">mtu</span> <span class="mi">1492</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">outside</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">encapsulation</span> <span class="nx">ppp</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">route</span><span class="o">-</span><span class="nx">cache</span> <span class="nx">flow</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">tcp</span> <span class="nx">adjust</span><span class="o">-</span><span class="nx">mss</span> <span class="mi">1452</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">dialer</span> <span class="nx">pool</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">cdp</span> <span class="nx">enable</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ppp</span> <span class="nx">authentication</span> <span class="nx">chap</span> <span class="nx">pap</span> <span class="nx">callin</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ppp</span> <span class="nx">chap</span> <span class="nx">hostname</span> <span class="nx">xxxxxxxxx</span><span class="err">@</span><span class="nx">xxxxxxxx</span><span class="p">.</span><span class="nx">net</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ppp</span> <span class="nx">chap</span> <span class="nx">password</span> <span class="mi">7</span> <span class="nx">xxxxxxxxx</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ppp</span> <span class="nx">pap</span> <span class="nx">sent</span><span class="o">-</span><span class="nx">username</span> <span class="nx">xxxxxxx</span><span class="err">@</span><span class="nx">xxxxxxxx</span><span class="p">.</span><span class="nx">net</span> <span class="nx">password</span> <span class="mi">7</span> <span class="nx">xxxxxxxx</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ppp</span> <span class="nx">ipcp</span> <span class="nx">dns</span> <span class="nx">request</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span> <span class="nx">source</span> <span class="nx">list</span> <span class="mi">10</span> <span class="kr">interface</span> <span class="nx">Dialer1</span> <span class="nx">overload</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">ip</span> <span class="nx">http</span> <span class="nx">server</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">no</span> <span class="nx">ip</span> <span class="nx">http</span> <span class="nx">secure</span><span class="o">-</span><span class="nx">server</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">flow</span><span class="o">-</span><span class="kr">export</span> <span class="nx">destination</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.3</span> <span class="mi">2055</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">classless</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="mi">10</span> <span class="nx">permit</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.255</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">dialer</span><span class="o">-</span><span class="nx">list</span> <span class="mi">1</span> <span class="nx">protocol</span> <span class="nx">ip</span> <span class="nx">permit</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">version</span> <span style="color:#ae81ff">12.3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hostname</span> <span style="color:#a6e22e">Lord_Yu</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">boot</span><span style="color:#f92672">-</span><span style="color:#a6e22e">start</span><span style="color:#f92672">-</span><span style="color:#a6e22e">marker</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">boot</span><span style="color:#f92672">-</span><span style="color:#a6e22e">end</span><span style="color:#f92672">-</span><span style="color:#a6e22e">marker</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">logging</span> <span style="color:#a6e22e">buffered</span> <span style="color:#ae81ff">4096</span> <span style="color:#a6e22e">debugging</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">logging</span> <span style="color:#a6e22e">console</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">enable</span> <span style="color:#a6e22e">password</span> <span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">memory</span><span style="color:#f92672">-</span><span style="color:#a6e22e">size</span> <span style="color:#a6e22e">iomem</span> <span style="color:#ae81ff">15</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">clock</span> <span style="color:#a6e22e">timezone</span> <span style="color:#a6e22e">est</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">clock</span> <span style="color:#a6e22e">summer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">time</span> <span style="color:#a6e22e">est</span> <span style="color:#a6e22e">recurring</span> <span style="color:#ae81ff">4</span> <span style="color:#a6e22e">Sun</span> <span style="color:#a6e22e">Mar</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">00</span> <span style="color:#ae81ff">4</span> <span style="color:#a6e22e">Sat</span> <span style="color:#a6e22e">Oct</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">00</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">aaa</span> <span style="color:#66d9ef">new</span><span style="color:#f92672">-</span><span style="color:#a6e22e">model</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">subnet</span><span style="color:#f92672">-</span><span style="color:#a6e22e">zero</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">cef</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">domain</span> <span style="color:#a6e22e">lookup</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">domain</span> <span style="color:#a6e22e">name</span> <span style="color:#a6e22e">techinvasion</span>.<span style="color:#a6e22e">net</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ATM0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">route</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cache</span> <span style="color:#a6e22e">flow</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">atm</span> <span style="color:#a6e22e">ilmi</span><span style="color:#f92672">-</span><span style="color:#a6e22e">keepalive</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bundle</span> <span style="color:#a6e22e">enable</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dsl</span> <span style="color:#a6e22e">operating</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">pvc</span> <span style="color:#ae81ff">8</span><span style="color:#f92672">/</span><span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">encapsulation</span> <span style="color:#a6e22e">aal5mux</span> <span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">dialer</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">dialer</span> <span style="color:#a6e22e">pool</span><span style="color:#f92672">-</span><span style="color:#a6e22e">member</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">description</span> <span style="color:#a6e22e">LAN</span> <span style="color:#a6e22e">INTERFACE</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.254</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">adjust</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mss</span> <span style="color:#ae81ff">1460</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">duplex</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">speed</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ipv6</span> <span style="color:#a6e22e">address</span> <span style="color:#a6e22e">autoconfig</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ipv6</span> <span style="color:#a6e22e">enable</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Ethernet1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">shutdown</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">half</span><span style="color:#f92672">-</span><span style="color:#a6e22e">duplex</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Dialer1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">description</span> <span style="color:#a6e22e">ADSL</span> <span style="color:#a6e22e">WAN</span> <span style="color:#a6e22e">DIALER</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#a6e22e">negotiated</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">mtu</span> <span style="color:#ae81ff">1492</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">outside</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">encapsulation</span> <span style="color:#a6e22e">ppp</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">route</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cache</span> <span style="color:#a6e22e">flow</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">adjust</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mss</span> <span style="color:#ae81ff">1452</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dialer</span> <span style="color:#a6e22e">pool</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">cdp</span> <span style="color:#a6e22e">enable</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">authentication</span> <span style="color:#a6e22e">chap</span> <span style="color:#a6e22e">pap</span> <span style="color:#a6e22e">callin</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">chap</span> <span style="color:#a6e22e">hostname</span> <span style="color:#a6e22e">xxxxxxxxx</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">xxxxxxxx</span>.<span style="color:#a6e22e">net</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">chap</span> <span style="color:#a6e22e">password</span> <span style="color:#ae81ff">7</span> <span style="color:#a6e22e">xxxxxxxxx</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">pap</span> <span style="color:#a6e22e">sent</span><span style="color:#f92672">-</span><span style="color:#a6e22e">username</span> <span style="color:#a6e22e">xxxxxxx</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">xxxxxxxx</span>.<span style="color:#a6e22e">net</span> <span style="color:#a6e22e">password</span> <span style="color:#ae81ff">7</span> <span style="color:#a6e22e">xxxxxxxx</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">ipcp</span> <span style="color:#a6e22e">dns</span> <span style="color:#a6e22e">request</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span> <span style="color:#a6e22e">source</span> <span style="color:#a6e22e">list</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Dialer1</span> <span style="color:#a6e22e">overload</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">http</span> <span style="color:#a6e22e">server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">http</span> <span style="color:#a6e22e">secure</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">flow</span><span style="color:#f92672">-</span><span style="color:#66d9ef">export</span> <span style="color:#a6e22e">destination</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.3</span> <span style="color:#ae81ff">2055</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">classless</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">10</span> <span style="color:#a6e22e">permit</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.255</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dialer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">protocol</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">permit</span>
 </span></span></code></pre></div>
 </div>
 
@@ -832,27 +833,12 @@ if (!doNotTrack) {
     
     
         <div class="container text-center">
-            <a href="https://github.com/bufo333/" title="By John Burns"><small>By John Burns</small></a>
+            <a href="https://github.com/bufo333/" title="By John Burns" ><small>By John Burns</small></a>
         </div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "\\[", right: "\\]", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\(", right: "\\)", display: false}
-            ]
-        });
-    });
-</script>
+    
 </div>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329465157209102"
     crossorigin="anonymous"></script>
+        
     </body>
 </html>

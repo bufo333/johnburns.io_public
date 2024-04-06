@@ -8,31 +8,32 @@
     <meta name="author" content='John Burns'>
 
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
-
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.3/css/academicons.min.css" integrity="sha512-vaoopdl+FJahyY2ddhsbDj8yDiRuyUYH/vIjF3z+cBg0sKc07NAQmUYli8volCGlW9OwlQyjVsr7Lh6qAManlw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/sass/researcher.min.css">
-
     
         <link rel="icon" type="image/ico" href="https://johnburns.io/favicon.ico">
     
 
-    
-        
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LQNL2E5MEL"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-LQNL2E5MEL', { 'anonymize_ip': false });
-}
-</script>
+    </head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" integrity="sha512-t2ALGTyUR6g1HJiHCmSTge2yGseGofdO88Q+zOWQx/N0ikecVw0YuyOet9xZDV8+Vx0Y0n1a3f3Qx3V9CcnsKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js" integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js" integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    
-</head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+        });
+    });
+</script>
 
     <body><div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
@@ -82,42 +83,42 @@ if (!doNotTrack) {
 Access-list 10</p>
 <p><strong>Original Configuration</strong></p>
 <p>ip nat inside source list 10 interface dialer1 overload</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="mi">10</span> <span class="nx">permit</span> <span class="nx">ip</span> <span class="mf">10.11</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.255</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="mi">10</span> <span class="nx">permit</span> <span class="nx">ip</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">10.0</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.255</span>   
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">10</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">ip</span> <span style="color:#ae81ff">10.11</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.255</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">10</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">ip</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">10.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.255</span>   
 </span></span></code></pre></div><p><strong>New Test Configuration</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"> <span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span> <span class="nx">source</span> <span class="kr">static</span> <span class="mf">10.11</span><span class="p">.</span><span class="mf">0.1</span> <span class="kr">interface</span> <span class="nx">dialer1</span>   
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span> <span style="color:#a6e22e">source</span> <span style="color:#66d9ef">static</span> <span style="color:#ae81ff">10.11</span>.<span style="color:#ae81ff">0.1</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">dialer1</span>   
 </span></span></code></pre></div><p>The problem with the above configuration is that it forwards all packets to the firewall.This means that packets from my VOIP provider destined for the call manager software on the router itself were being forwarded to the firewall.This is a big problem and one that stumped me for a while.In order to fix this problem I decided to use Destination Lists.Destination Lists allow the router to evaluate incoming connections based on an access-list and translate the packets matching the criteria to hosts in a specific pool.</p>
 <p>The interesting thing about this technique is that you can have as many pools and destination lists as you want, which means that you can use this technique to translate ranges of ports to different hosts.I know many newbies to Cisco routers look for a port range forwarding mechanism similar to what is available on consumer home gateways and routers like those from D-Link and Linksys.The following configuration allows all ports and protocols to be forwarded to the firewall except for any traffic from the VOIP provider.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"> <span class="nx">ip</span> <span class="nx">host</span> <span class="nx">sip</span><span class="p">.</span><span class="nx">broadvoice</span><span class="p">.</span><span class="nx">com</span> <span class="mf">98.98</span><span class="p">.</span><span class="mf">200.12</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span> <span class="nx">source</span> <span class="nx">list</span> <span class="mi">10</span> <span class="kr">interface</span> <span class="nx">Dialer1</span> <span class="nx">overload</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">pool</span> <span class="nx">nonvoip</span> <span class="mf">10.11</span><span class="p">.</span><span class="mf">0.1</span> <span class="mf">10.11</span><span class="p">.</span><span class="mf">0.1</span> <span class="nx">netmask</span> <span class="mf">255.255</span><span class="p">.</span><span class="mf">255.0</span> <span class="nx">type</span> <span class="nx">rotary</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span> <span class="nx">destination</span> <span class="nx">list</span> <span class="mi">101</span> <span class="nx">pool</span> <span class="nx">nonvoip</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="mi">10</span> <span class="nx">permit</span> <span class="nx">ip</span> <span class="mf">10.11</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.255</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="mi">10</span> <span class="nx">permit</span> <span class="nx">ip</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">10.0</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.255</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="nx">Access</span><span class="o">-</span><span class="nx">list</span> <span class="mi">101</span> <span class="nx">deny</span> <span class="nx">ip</span> <span class="nx">host</span> <span class="mf">98.98</span><span class="p">.</span><span class="mf">200.12</span> <span class="nx">any</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="nx">Access</span><span class="o">-</span><span class="nx">lsit</span> <span class="mi">101</span> <span class="nx">permit</span> <span class="nx">ip</span> <span class="nx">any</span> <span class="nx">any</span>   
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">host</span> <span style="color:#a6e22e">sip</span>.<span style="color:#a6e22e">broadvoice</span>.<span style="color:#a6e22e">com</span> <span style="color:#ae81ff">98.98</span>.<span style="color:#ae81ff">200.12</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span> <span style="color:#a6e22e">source</span> <span style="color:#a6e22e">list</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Dialer1</span> <span style="color:#a6e22e">overload</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">pool</span> <span style="color:#a6e22e">nonvoip</span> <span style="color:#ae81ff">10.11</span>.<span style="color:#ae81ff">0.1</span> <span style="color:#ae81ff">10.11</span>.<span style="color:#ae81ff">0.1</span> <span style="color:#a6e22e">netmask</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">rotary</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span> <span style="color:#a6e22e">destination</span> <span style="color:#a6e22e">list</span> <span style="color:#ae81ff">101</span> <span style="color:#a6e22e">pool</span> <span style="color:#a6e22e">nonvoip</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">10</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">ip</span> <span style="color:#ae81ff">10.11</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.255</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">10</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">ip</span> <span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">10.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.255</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">101</span> <span style="color:#a6e22e">deny</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">host</span> <span style="color:#ae81ff">98.98</span>.<span style="color:#ae81ff">200.12</span> <span style="color:#a6e22e">any</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lsit</span> <span style="color:#ae81ff">101</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span>   
 </span></span></code></pre></div><p>Lets take the above from the beginning.</p>
 <p>The first line above code, hard codes the ip address of the Broadvoice server.</p>
 <p>The second line configures the NAT for port address translation just like a normal PAT configuration.</p>
@@ -126,38 +127,38 @@ Access-list 10</p>
 <p><strong>Access-list 10</strong> is used to PAT the VOIP network And the <strong>10.11.0.0</strong> network which is used for the external interface on the firewall. <strong>Access-list 10</strong> is required for nat to function.</p>
 <p><strong>Access-list 101</strong> tells the router to exclude all traffic from the NAT process, but send every other protocol and port to the outside interface of the checkpoint firewall.</p>
 <p>The above configuration can also be easily modified to forward port ranges to different hosts on the network.Once you figure out that you can have as many destination pools as you want with as many access-lists as you want the combination of port forwarding options becomes almost endless.For instance the above can be modified as follows to forward a range of ports to two different hosts.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span> <span class="nx">source</span> <span class="nx">list</span> <span class="mi">10</span> <span class="kr">interface</span> <span class="nx">Dialer1</span> <span class="nx">overload</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">pool</span> <span class="nx">groupA</span> <span class="mf">10.11</span><span class="p">.</span><span class="mf">0.1</span> <span class="mf">10.11</span><span class="p">.</span><span class="mf">0.1</span> <span class="nx">netmask</span> <span class="mf">255.255</span><span class="p">.</span><span class="mf">255.0</span> <span class="nx">type</span> <span class="nx">rotary</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">pool</span> <span class="nx">groupB</span> <span class="mf">10.11</span><span class="p">.</span><span class="mf">0.2</span> <span class="mf">10.11</span><span class="p">.</span><span class="mf">0.2</span> <span class="nx">netmask</span> <span class="mf">255.255</span><span class="p">.</span><span class="mf">255.0</span> <span class="nx">type</span> <span class="nx">rotary</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span> <span class="nx">destination</span> <span class="nx">list</span> <span class="mi">101</span> <span class="nx">pool</span> <span class="nx">groupA</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">ip</span> <span class="nx">nat</span> <span class="nx">inside</span> <span class="nx">destination</span> <span class="nx">list</span> <span class="mi">101</span> <span class="nx">pool</span> <span class="nx">groupB</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="nx">access</span><span class="o">-</span><span class="nx">list</span> <span class="mi">10</span> <span class="nx">permit</span> <span class="nx">ip</span> <span class="mf">10.11</span><span class="p">.</span><span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.255</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="nx">Access</span><span class="o">-</span><span class="nx">lsit</span> <span class="mi">101</span> <span class="nx">permit</span> <span class="nx">tcp</span> <span class="nx">any</span> <span class="nx">any</span> <span class="nx">range</span> <span class="mi">8000</span> <span class="mi">9400</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="o">!</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">       <span class="nx">Access</span><span class="o">-</span><span class="nx">list</span> <span class="mi">102</span> <span class="nx">permit</span> <span class="nx">tcp</span> <span class="nx">any</span> <span class="nx">any</span> <span class="nx">range</span> <span class="mi">50</span> <span class="mi">1024</span>   
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span> <span style="color:#a6e22e">source</span> <span style="color:#a6e22e">list</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Dialer1</span> <span style="color:#a6e22e">overload</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">pool</span> <span style="color:#a6e22e">groupA</span> <span style="color:#ae81ff">10.11</span>.<span style="color:#ae81ff">0.1</span> <span style="color:#ae81ff">10.11</span>.<span style="color:#ae81ff">0.1</span> <span style="color:#a6e22e">netmask</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">rotary</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">pool</span> <span style="color:#a6e22e">groupB</span> <span style="color:#ae81ff">10.11</span>.<span style="color:#ae81ff">0.2</span> <span style="color:#ae81ff">10.11</span>.<span style="color:#ae81ff">0.2</span> <span style="color:#a6e22e">netmask</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">rotary</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span> <span style="color:#a6e22e">destination</span> <span style="color:#a6e22e">list</span> <span style="color:#ae81ff">101</span> <span style="color:#a6e22e">pool</span> <span style="color:#a6e22e">groupA</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span> <span style="color:#a6e22e">destination</span> <span style="color:#a6e22e">list</span> <span style="color:#ae81ff">101</span> <span style="color:#a6e22e">pool</span> <span style="color:#a6e22e">groupB</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">10</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">ip</span> <span style="color:#ae81ff">10.11</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.255</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lsit</span> <span style="color:#ae81ff">101</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">range</span> <span style="color:#ae81ff">8000</span> <span style="color:#ae81ff">9400</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">102</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">range</span> <span style="color:#ae81ff">50</span> <span style="color:#ae81ff">1024</span>   
 </span></span></code></pre></div>
 </div>
 
@@ -174,27 +175,12 @@ Access-list 10</p>
     
     
         <div class="container text-center">
-            <a href="https://github.com/bufo333/" title="By John Burns"><small>By John Burns</small></a>
+            <a href="https://github.com/bufo333/" title="By John Burns" ><small>By John Burns</small></a>
         </div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "\\[", right: "\\]", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\(", right: "\\)", display: false}
-            ]
-        });
-    });
-</script>
+    
 </div>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329465157209102"
     crossorigin="anonymous"></script>
+        
     </body>
 </html>

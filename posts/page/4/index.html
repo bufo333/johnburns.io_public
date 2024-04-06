@@ -8,32 +8,33 @@
     <meta name="author" content='John Burns'>
 
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
-
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.3/css/academicons.min.css" integrity="sha512-vaoopdl+FJahyY2ddhsbDj8yDiRuyUYH/vIjF3z+cBg0sKc07NAQmUYli8volCGlW9OwlQyjVsr7Lh6qAManlw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/sass/researcher.min.css">
-
     
         <link rel="icon" type="image/ico" href="https://johnburns.io/favicon.ico">
     
 
     <link rel="alternate" type="application/rss+xml" href="https://johnburns.io/posts/index.xml" title="The Colour of My Thoughts" />
-    
-        
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LQNL2E5MEL"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-LQNL2E5MEL', { 'anonymize_ip': false });
-}
-</script>
+    </head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" integrity="sha512-t2ALGTyUR6g1HJiHCmSTge2yGseGofdO88Q+zOWQx/N0ikecVw0YuyOet9xZDV8+Vx0Y0n1a3f3Qx3V9CcnsKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js" integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js" integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    
-</head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+        });
+    });
+</script>
 
     <body><div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
@@ -75,56 +76,114 @@ if (!doNotTrack) {
     <ul>
         
             <li>
-                <a href="https://johnburns.io/posts/send-me-questions-and-feedback/">2009-07-20 | send-me-questions-and-feedback</a>
+                <a href="https://johnburns.io/posts/checkpoint-juniper-vpn/">2008-09-04 | checkpoint-juniper-vpn</a>
                 <p></p><p>
                     
                     
-                    Send me questions and feedback! I see a lot of you out there find this site through various search engines and many of you are searching for information on gre tunnels. I just wanted to say how much I appreciate the traffic and I want to let everyone know that creating an account is free and I would love to hear your feedback on articles and any …
+                    Checkpoint &mdash;&gt; juniper VPN Recently at work we had a remote site go down. The site was on an ancient pix 506e vpn firewall router. We were in the proccess of switching to a different vpn solution. because of this we had a new Juniper ssg20 firewall device on site.
+Now I thought this would be an easy job, configure the Juniper to connect to …
                     
                 </p>
             </li>
 
         
             <li>
-                <a href="https://johnburns.io/posts/using-ip-sla-with-route-maps/">2009-07-19 | using-ip-sla-with-route-maps</a>
+                <a href="https://johnburns.io/posts/cisco-3640-and-wic-1adsl-speed-problems/">2008-09-02 | cisco-3640-and-wic-1adsl-speed-problems</a>
                 <p></p><p>
                     
                     
-                    Using IP SLA with Route-maps I recently came across a problem that is not an uncommon problem that small businesses face. I came up with several solutions to their problems and I thought I would take a minute to discuss one of those solutions. This customer has a business requirement to use a proxy server for all outgoing web traffic. This on the …
+                    Cisco 3640 and wic-1adsl speed problems I recently decided to plug my wic-1adsl card into a 3640 router because my 2620 had a power supply failure. I noticed that the cisco 3640 ran very slow, and speed tests topped out at 2.6mbps downlink speeds. For a while I couldn&rsquo;t figure out why a router that is faster with more memory would run slower …
                     
                 </p>
             </li>
 
         
             <li>
-                <a href="https://johnburns.io/posts/introduction-to-filter-list-for-junos/">2009-06-14 | introduction-to-filter-list-for-junos</a>
+                <a href="https://johnburns.io/posts/video-tutorial-on-ipv6/">2008-05-15 | video-tutorial-on-ipv6</a>
                 <p></p><p>
                     
                     
-                    Introduction to Filter list for JUNOS Junipers JUNOS is a very robust operating system, not only is the OS very advanced but the ASIC heavy design of Juniper hardware is akin to calorie free chocolate bars! Juniper Filter Lists which are non-stateful packet filters similar to Cisco Access-Lists are compiled and processed using hardware, what this …
+                    Video tutorial on IPV6 You can download or watch the full video at IPV6&lt;embed bgcolor=&quot;#FFFFFF&quot; 
                     
                 </p>
             </li>
 
         
             <li>
-                <a href="https://johnburns.io/posts/new-techcast-posted/">2009-06-13 | new-techcast-posted</a>
+                <a href="https://johnburns.io/posts/liveplasmacom/">2008-02-09 | liveplasmacom</a>
                 <p></p><p>
                     
                     
-                    New TechCast Posted I have been busy lately, I am in the middle of a Data Center migration at work, which is eating up hours of my personal time, and I have a million other projects on the burner. I have fresh content coming but in the mean time, I did a TechCast on Junos, please view the video at http://www.exiletv.com.
-Until Next time
+                    liveplasma.com I found a really cool site that displays related content in a visual way, so if for instance you type in an Artist name like Pinback, it will show all related artists in a very cool visual way, very similar to some of the visual displays for Digg.com
                     
                 </p>
             </li>
 
         
             <li>
-                <a href="https://johnburns.io/posts/gopher/">2009-02-04 | gopher</a>
+                <a href="https://johnburns.io/posts/outlook-2003-error-setting-up-profile-after-uninstalling-office-2007/">2008-02-06 | outlook-2003-error-setting-up-profile-after-uninstalling-office-2007</a>
                 <p></p><p>
                     
                     
-                    gopher I have been continuing to setup the bbs software on bbs.techinvasion.net. I have added irc, gopher, finger, and ident functionality. I encourage all of you to drop by and experience this neat software. The really neat thing about this BBS software is that it connects you to a world of forums and message boards that can only be accessed using …
+                    Outlook 2003 error setting up profile after uninstalling office 2007 This is a problem that I run into quite alot as most new PCs come with the Office 2007 trial pre-installed. When you try to setup Outlook 2003 for the first time you get the following error
+&ldquo;There was an error locating one of the items needed to complete this operation. It …
+                    
+                </p>
+            </li>
+
+        
+            <li>
+                <a href="https://johnburns.io/posts/new-forums/">2008-01-31 | new-forums</a>
+                <p></p><p>
+                    
+                    
+                    New Forums We have added a new forums section to techinvasion.net. We hope these forums will�become a big part of the site and allow all the users to participate, ask questions, and get answers. The link to the forums is along the left hand side of the page in the categories section. You can also go directly to the forums by going to /forum.
+We are …
+                    
+                </p>
+            </li>
+
+        
+            <li>
+                <a href="https://johnburns.io/posts/fixing-the-sku01acab-and-other-office-cab-file-issues/">2008-01-30 | fixing-the-sku01acab-and-other-office-cab-file-issues</a>
+                <p></p><p>
+                    
+                    
+                    Fixing the SKU01A.CAB and other office cab file issues Anyone who has used office 2003 has noticed that when switching domains or logging in as a new user Microsoft Office ask you to insert the cd to cache files needed to start. In some cases it asks for files from older office versions that have been upgraded, sometimes you don&rsquo;t even have …
+                    
+                </p>
+            </li>
+
+        
+            <li>
+                <a href="https://johnburns.io/posts/cisco-ios-firewall-security/">2008-01-29 | cisco-ios-firewall-security</a>
+                <p></p><p>
+                    
+                    
+                    An overview of CISCO IOS Security features as related to packet filtering. �The Cisco IOS has many powerful security features that enable network engineers to protect their internal network. The Cisco IOS is capable of intrusion detection, deep packet inspection, and stateful firewall features. Setting up IPS allows the admin to push intrusion …
+                    
+                </p>
+            </li>
+
+        
+            <li>
+                <a href="https://johnburns.io/posts/cisco-config-wic-1adsl-2/">2008-01-28 | cisco-config-wic-1adsl-2</a>
+                <p></p><p>
+                    
+                    
+                    Cisco WIC-1ADSL config for 1800 series router and ios 12.4 This config is for the Cisco 1800 series router running IOS 12.4. IOS 12.4 has some command and syntax changes in reguards to interfaces and configuration commands for PPPOE. This config was submitted by my good friend Pedro Rivera.
+version 12.4 service timestamps debug datetime msec …
+                    
+                </p>
+            </li>
+
+        
+            <li>
+                <a href="https://johnburns.io/posts/cisco-config-wic-1adsl/">2008-01-28 | cisco-config-wic-1adsl</a>
+                <p></p><p>
+                    
+                    
+                    Configuring WIC-1ADSL on Cisco 2600 with PPPOA and PPPOE Configuring a Cisco router to use the WIC-1ADSL card is one of the most commonly asked question by people in the Cisco forums. There are some interesting and compelling reasons to use a WIC card instead of connecting PPPOE through the ADSL modem in bridged mode. One of the most compelling …
                     
                 </p>
             </li>
@@ -153,27 +212,12 @@ Until Next time
     
     
         <div class="container text-center">
-            <a href="https://github.com/bufo333/" title="By John Burns"><small>By John Burns</small></a>
+            <a href="https://github.com/bufo333/" title="By John Burns" ><small>By John Burns</small></a>
         </div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "\\[", right: "\\]", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\(", right: "\\)", display: false}
-            ]
-        });
-    });
-</script>
+    
 </div>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329465157209102"
     crossorigin="anonymous"></script>
+        
     </body>
 </html>

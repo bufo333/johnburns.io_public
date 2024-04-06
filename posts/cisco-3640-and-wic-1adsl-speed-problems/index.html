@@ -8,31 +8,32 @@
     <meta name="author" content='John Burns'>
 
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
-
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.3/css/academicons.min.css" integrity="sha512-vaoopdl+FJahyY2ddhsbDj8yDiRuyUYH/vIjF3z+cBg0sKc07NAQmUYli8volCGlW9OwlQyjVsr7Lh6qAManlw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/sass/researcher.min.css">
-
     
         <link rel="icon" type="image/ico" href="https://johnburns.io/favicon.ico">
     
 
-    
-        
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LQNL2E5MEL"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-LQNL2E5MEL', { 'anonymize_ip': false });
-}
-</script>
+    </head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" integrity="sha512-t2ALGTyUR6g1HJiHCmSTge2yGseGofdO88Q+zOWQx/N0ikecVw0YuyOet9xZDV8+Vx0Y0n1a3f3Qx3V9CcnsKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js" integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js" integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    
-</head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+        });
+    });
+</script>
 
     <body><div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
@@ -72,32 +73,32 @@ if (!doNotTrack) {
 <div class="container">
     <h2 id="cisco-3640-and-wic-1adsl-speed-problems">Cisco 3640 and wic-1adsl speed problems</h2>
 <p>I recently decided to plug my wic-1adsl card into a 3640 router because my 2620 had a power supply failure. I noticed that the cisco 3640 ran very slow, and speed tests topped out at 2.6mbps downlink speeds. For a while I couldn&rsquo;t figure out why a router that is faster with more memory would run slower than my 2620 router. I later discovered the reason for the slowness was because of a bandwidth limit on the nm-1fe1r2w card I was using to give me wic slots.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">sh</span> <span class="nx">controller</span> <span class="nx">atm0</span><span class="o">/</span><span class="mi">0</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">sh</span> <span style="color:#a6e22e">controller</span> <span style="color:#a6e22e">atm0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
 </span></span></code></pre></div><p>you will see</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">DSCC4</span> <span class="nx">Clockrates</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">DSCC0</span> <span class="o">=</span> <span class="mi">2600000</span> <span class="p">(</span><span class="nx">ATM0</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">DSCC1</span> <span class="o">=</span> <span class="mi">1000000</span> <span class="p">(</span><span class="nx">ATM0</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">DSCC4</span> <span style="color:#a6e22e">Clockrates</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DSCC0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2600000</span> (<span style="color:#a6e22e">ATM0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DSCC1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000000</span> (<span style="color:#a6e22e">ATM0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>)
 </span></span></code></pre></div><p>Now This is why I am only getting about 2.5mbps download.</p>
 <p>If you change the setting ie:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">int</span> <span class="nx">atm0</span><span class="o">/</span><span class="mi">0</span> <span class="nx">clockrate</span> <span class="nx">aal5</span> <span class="mi">5300000</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">atm0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span> <span style="color:#a6e22e">clockrate</span> <span style="color:#a6e22e">aal5</span> <span style="color:#ae81ff">5300000</span>
 </span></span></code></pre></div><p>then do a</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">show</span> <span class="nx">controller</span> <span class="nx">atm0</span><span class="o">/</span><span class="mi">0</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">show</span> <span style="color:#a6e22e">controller</span> <span style="color:#a6e22e">atm0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
 </span></span></code></pre></div><p>you get :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">DSCC4</span> <span class="nx">Clockrates</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">DSCC0</span> <span class="o">=</span> <span class="mi">5300000</span> <span class="p">(</span><span class="nx">ATM0</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">DSCC1</span> <span class="o">=</span> <span class="mi">1000000</span> <span class="p">(</span><span class="nx">ATM0</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">DSCC4</span> <span style="color:#a6e22e">Clockrates</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DSCC0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5300000</span> (<span style="color:#a6e22e">ATM0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DSCC1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000000</span> (<span style="color:#a6e22e">ATM0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>)
 </span></span></code></pre></div><p>Now my speed tests are topping out at about 5.2mbps and change.</p>
 <p>Now here is the interesting part. On the 3640 53000 is as high as I can go, while on my 2620 the output is as follows.</p>
 <p>cisco 2620 (output of sh controller atm0/0)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">DSCC4</span> <span class="nx">Clockrates</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">DSCC0</span> <span class="o">=</span> <span class="mi">8000000</span> <span class="p">(</span><span class="nx">ATM0</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">DSCC1</span> <span class="o">=</span> <span class="mi">8000000</span> <span class="p">(</span><span class="nx">ATM0</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">DSCC4</span> <span style="color:#a6e22e">Clockrates</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DSCC0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8000000</span> (<span style="color:#a6e22e">ATM0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DSCC1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8000000</span> (<span style="color:#a6e22e">ATM0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>)
 </span></span></code></pre></div><p>My guess is that each nm card reserves a certain amount of bandwidth for the interfaces on each card. The card I was using had 1 fe port 1 tokenring port and 2 wic slots, my guess is that those other interfaces used or reserved some of the total bandwidth for the connection. I am thinking that a nm-2w card might solve the problem, however I have not yet tested this theory.</p>
 
 </div>
@@ -115,27 +116,12 @@ if (!doNotTrack) {
     
     
         <div class="container text-center">
-            <a href="https://github.com/bufo333/" title="By John Burns"><small>By John Burns</small></a>
+            <a href="https://github.com/bufo333/" title="By John Burns" ><small>By John Burns</small></a>
         </div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "\\[", right: "\\]", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\(", right: "\\)", display: false}
-            ]
-        });
-    });
-</script>
+    
 </div>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329465157209102"
     crossorigin="anonymous"></script>
+        
     </body>
 </html>

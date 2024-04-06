@@ -8,31 +8,32 @@
     <meta name="author" content='John Burns'>
 
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
-
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.3/css/academicons.min.css" integrity="sha512-vaoopdl+FJahyY2ddhsbDj8yDiRuyUYH/vIjF3z+cBg0sKc07NAQmUYli8volCGlW9OwlQyjVsr7Lh6qAManlw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/sass/researcher.min.css">
-
     
         <link rel="icon" type="image/ico" href="https://johnburns.io/favicon.ico">
     
 
-    
-        
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LQNL2E5MEL"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-LQNL2E5MEL', { 'anonymize_ip': false });
-}
-</script>
+    </head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" integrity="sha512-t2ALGTyUR6g1HJiHCmSTge2yGseGofdO88Q+zOWQx/N0ikecVw0YuyOet9xZDV8+Vx0Y0n1a3f3Qx3V9CcnsKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js" integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js" integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    
-</head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+        });
+    });
+</script>
 
     <body><div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
@@ -75,81 +76,81 @@ if (!doNotTrack) {
 <p>It is for situations just like these that Cisco changed the configure command. If you have ever used the copy startup-config running-config command you know that this command does not replace what is running but instead merges the two configurations which often times will create a bigger mess.</p>
 <p>Cisco has added the <em>configure replace</em> command. This command will go through the configuration line by line and replace your configuration with the configuration you specify and it will go through the config as many times as it takes to back out all of the differences and replace them with the file specified. The amazing thing about this command is that it does not interrupt the operation of the router, so you can rollback changes without affecting business continuity.</p>
 <p>Here is an excerpt from my router running the command to replace the running configuration with the startup configuration:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">Lord_Yu</span><span class="err">#</span> <span class="nx">configure</span> <span class="nx">replace</span> <span class="o">?</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">archive</span><span class="o">:</span>  <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">cns</span><span class="o">:</span>      <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">flash</span><span class="o">:</span>    <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">ftp</span><span class="o">:</span>      <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">http</span><span class="o">:</span>     <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">https</span><span class="o">:</span>    <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kc">null</span><span class="o">:</span>     <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">nvram</span><span class="o">:</span>    <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">pram</span><span class="o">:</span>     <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">rcp</span><span class="o">:</span>      <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">scp</span><span class="o">:</span>      <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">snmp</span><span class="o">:</span>     <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">system</span><span class="o">:</span>   <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">tftp</span><span class="o">:</span>     <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">xmodem</span><span class="o">:</span>   <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">ymodem</span><span class="o">:</span>   <span class="nx">URL</span> <span class="k">of</span> <span class="nx">config</span> <span class="nx">file</span> <span class="nx">that</span> <span class="nx">will</span> <span class="nx">replace</span> <span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">Lord_Yu</span><span class="err">#</span> <span class="nx">configure</span> <span class="nx">replace</span> <span class="nx">nv</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">Lord_Yu</span><span class="err">#</span> <span class="nx">configure</span> <span class="nx">replace</span> <span class="nx">nvram</span><span class="o">:?</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">nvram</span><span class="o">:</span><span class="nx">ifIndex</span><span class="o">-</span><span class="nx">table</span>   <span class="nx">nvram</span><span class="o">:</span><span class="nx">persistent</span><span class="o">-</span><span class="nx">data</span>  <span class="nx">nvram</span><span class="o">:</span><span class="kr">private</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">nvram</span><span class="o">:</span><span class="nx">startup</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">Lord_Yu</span><span class="err">#</span> <span class="nx">configure</span> <span class="nx">replace</span> <span class="nx">nvram</span><span class="o">:</span><span class="nx">sta</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">Lord_Yu</span><span class="err">#</span> <span class="nx">configure</span> <span class="nx">replace</span> <span class="nx">nvram</span><span class="o">:</span><span class="nx">startup</span><span class="o">-</span><span class="nx">config</span> <span class="o">?</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">force</span>       <span class="nx">Forcibly</span> <span class="nx">replace</span> <span class="nx">without</span> <span class="nx">prompting</span> <span class="k">for</span> <span class="nx">user</span> <span class="nx">input</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">ignorecase</span>  <span class="nx">Ignore</span> <span class="k">case</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">list</span>        <span class="nx">List</span> <span class="nx">the</span> <span class="nx">commands</span> <span class="nx">applied</span> <span class="k">in</span> <span class="nx">each</span> <span class="nx">pass</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">time</span>        <span class="nx">Time</span> <span class="k">for</span> <span class="nx">which</span> <span class="nx">to</span> <span class="nx">wait</span> <span class="k">for</span> <span class="nx">confirmation</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">Lord_Yu</span><span class="err">#</span> <span class="nx">configure</span> <span class="nx">replace</span> <span class="nx">nvram</span><span class="o">:</span><span class="nx">startup</span><span class="o">-</span><span class="nx">config</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">This</span> <span class="nx">will</span> <span class="nx">apply</span> <span class="nx">all</span> <span class="nx">necessary</span> <span class="nx">additions</span> <span class="nx">and</span> <span class="nx">deletions</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">to</span> <span class="nx">replace</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">running</span> <span class="nx">configuration</span> <span class="kd">with</span> <span class="nx">the</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">contents</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">specified</span> <span class="nx">configuration</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">which</span> <span class="nx">is</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">assumed</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">a</span> <span class="nx">complete</span> <span class="nx">configuration</span><span class="p">,</span> <span class="nx">not</span> <span class="nx">a</span> <span class="nx">partial</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">configuration</span><span class="p">.</span> <span class="nx">Enter</span> <span class="nx">Y</span> <span class="k">if</span> <span class="nx">you</span> <span class="nx">are</span> <span class="nx">sure</span> <span class="nx">you</span> <span class="nx">want</span> <span class="nx">to</span> <span class="nx">proceed</span><span class="p">.</span> <span class="o">?</span> <span class="p">[</span><span class="nx">no</span><span class="p">]</span><span class="o">:</span> <span class="nx">y</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">Total</span> <span class="nx">number</span> <span class="k">of</span> <span class="nx">passes</span><span class="o">:</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">Rollback</span> <span class="nx">Done</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">Lord_Yu</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">configure</span> <span style="color:#a6e22e">replace</span> <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">archive</span><span style="color:#f92672">:</span>  <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">cns</span><span style="color:#f92672">:</span>      <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">flash</span><span style="color:#f92672">:</span>    <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ftp</span><span style="color:#f92672">:</span>      <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">http</span><span style="color:#f92672">:</span>     <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span>    <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">null</span><span style="color:#f92672">:</span>     <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">nvram</span><span style="color:#f92672">:</span>    <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pram</span><span style="color:#f92672">:</span>     <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rcp</span><span style="color:#f92672">:</span>      <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">scp</span><span style="color:#f92672">:</span>      <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">snmp</span><span style="color:#f92672">:</span>     <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">system</span><span style="color:#f92672">:</span>   <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tftp</span><span style="color:#f92672">:</span>     <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">xmodem</span><span style="color:#f92672">:</span>   <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ymodem</span><span style="color:#f92672">:</span>   <span style="color:#a6e22e">URL</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">running</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Lord_Yu</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">configure</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">nv</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Lord_Yu</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">configure</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">nvram</span><span style="color:#f92672">:?</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nvram</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ifIndex</span><span style="color:#f92672">-</span><span style="color:#a6e22e">table</span>   <span style="color:#a6e22e">nvram</span><span style="color:#f92672">:</span><span style="color:#a6e22e">persistent</span><span style="color:#f92672">-</span><span style="color:#a6e22e">data</span>  <span style="color:#a6e22e">nvram</span><span style="color:#f92672">:</span><span style="color:#66d9ef">private</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nvram</span><span style="color:#f92672">:</span><span style="color:#a6e22e">startup</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Lord_Yu</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">configure</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">nvram</span><span style="color:#f92672">:</span><span style="color:#a6e22e">sta</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Lord_Yu</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">configure</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">nvram</span><span style="color:#f92672">:</span><span style="color:#a6e22e">startup</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span> <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">force</span>       <span style="color:#a6e22e">Forcibly</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">without</span> <span style="color:#a6e22e">prompting</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">user</span> <span style="color:#a6e22e">input</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ignorecase</span>  <span style="color:#a6e22e">Ignore</span> <span style="color:#66d9ef">case</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">list</span>        <span style="color:#a6e22e">List</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">commands</span> <span style="color:#a6e22e">applied</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">each</span> <span style="color:#a6e22e">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">time</span>        <span style="color:#a6e22e">Time</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">which</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">wait</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">confirmation</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Lord_Yu</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">configure</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">nvram</span><span style="color:#f92672">:</span><span style="color:#a6e22e">startup</span><span style="color:#f92672">-</span><span style="color:#a6e22e">config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">This</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">apply</span> <span style="color:#a6e22e">all</span> <span style="color:#a6e22e">necessary</span> <span style="color:#a6e22e">additions</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">deletions</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">to</span> <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">current</span> <span style="color:#a6e22e">running</span> <span style="color:#a6e22e">configuration</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">the</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">contents</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">specified</span> <span style="color:#a6e22e">configuration</span> <span style="color:#a6e22e">file</span>, <span style="color:#a6e22e">which</span> <span style="color:#a6e22e">is</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">assumed</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">complete</span> <span style="color:#a6e22e">configuration</span>, <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">partial</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">configuration</span>. <span style="color:#a6e22e">Enter</span> <span style="color:#a6e22e">Y</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">are</span> <span style="color:#a6e22e">sure</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">want</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">proceed</span>. <span style="color:#f92672">?</span> [<span style="color:#a6e22e">no</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">y</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Total</span> <span style="color:#a6e22e">number</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">passes</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Rollback</span> <span style="color:#a6e22e">Done</span>
 </span></span></code></pre></div>
 </div>
 
@@ -166,27 +167,12 @@ if (!doNotTrack) {
     
     
         <div class="container text-center">
-            <a href="https://github.com/bufo333/" title="By John Burns"><small>By John Burns</small></a>
+            <a href="https://github.com/bufo333/" title="By John Burns" ><small>By John Burns</small></a>
         </div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "\\[", right: "\\]", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\(", right: "\\)", display: false}
-            ]
-        });
-    });
-</script>
+    
 </div>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329465157209102"
     crossorigin="anonymous"></script>
+        
     </body>
 </html>

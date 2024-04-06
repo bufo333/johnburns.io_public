@@ -8,31 +8,32 @@
     <meta name="author" content='John Burns'>
 
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
-
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.3/css/academicons.min.css" integrity="sha512-vaoopdl+FJahyY2ddhsbDj8yDiRuyUYH/vIjF3z+cBg0sKc07NAQmUYli8volCGlW9OwlQyjVsr7Lh6qAManlw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/sass/researcher.min.css">
-
     
         <link rel="icon" type="image/ico" href="https://johnburns.io/favicon.ico">
     
 
-    
-        
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LQNL2E5MEL"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-LQNL2E5MEL', { 'anonymize_ip': false });
-}
-</script>
+    </head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" integrity="sha512-t2ALGTyUR6g1HJiHCmSTge2yGseGofdO88Q+zOWQx/N0ikecVw0YuyOet9xZDV8+Vx0Y0n1a3f3Qx3V9CcnsKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js" integrity="sha512-EKW5YvKU3hpyyOcN6jQnAxO/L8gts+YdYV6Yymtl8pk9YlYFtqJgihORuRoBXK8/cOIlappdU6Ms8KdK6yBCgA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js" integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    
-</head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+        });
+    });
+</script>
 
     <body><div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
@@ -223,176 +224,176 @@ Version 1.0</p>
 <ul>
 <li>cisco.j2</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">!</span><span class="n">Configure</span> <span class="n">GRE</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="err">{{ </span><span class="nc">loopback_interface</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">ip</span> <span class="n">address</span> <span class="o">{{</span> <span class="n">loopback_address</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="err">{{ </span><span class="nc">tunnel_interface</span><span class="o">}}</span>
-</span></span><span class="line"><span class="cl">  <span class="n">no</span> <span class="n">shutdown</span>
-</span></span><span class="line"><span class="cl">  <span class="n">ip</span> <span class="n">address</span> <span class="n">10</span><span class="o">.</span><span class="na">10</span><span class="o">.</span><span class="na">100</span><span class="o">.</span><span class="na">1</span> <span class="n">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">0</span>
-</span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">source</span> <span class="o">{{</span><span class="n">loopback_interface</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">destination</span> <span class="o">{{</span> <span class="n">tunnel_destination</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">path</span><span class="o">-</span><span class="n">mtu</span><span class="o">-</span><span class="n">discovery</span>
-</span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">protection</span> <span class="n">ipsec</span> <span class="n">profile</span> <span class="n">ikev2_TP</span>
-</span></span><span class="line"><span class="cl">  <span class="n">exit</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span><span class="n">Configure</span> <span class="n">Ike</span> <span class="n">Policy</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ikev2</span> <span class="n">keyring</span> <span class="o">{{</span> <span class="n">ike_keyring_name</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">peer</span> <span class="o">{{</span> <span class="n">ike_keyring_peer</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl">  <span class="n">address</span> <span class="o">{{</span> <span class="n">ike_keyring_address</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl">  <span class="n">pre</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">key</span> <span class="o">{{</span> <span class="n">ike_keyring_preshared_key</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ikev2</span> <span class="n">proposal</span> <span class="o">{{</span><span class="n">proposal_name</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">encryption</span> <span class="o">{{</span> <span class="n">proposal_encryption</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">integrity</span> <span class="o">{{</span> <span class="n">proposal_integrity</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">group</span> <span class="o">{{</span> <span class="n">proposal_group</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ikev2</span> <span class="n">profile</span> <span class="o">{{</span> <span class="n">profile_name</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">match</span> <span class="n">identity</span> <span class="n">remote</span> <span class="n">address</span> <span class="o">{{</span> <span class="n">profile_remote_address</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">authentication</span> <span class="n">local</span> <span class="o">{{</span> <span class="n">profile_authentication_local</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">authentication</span> <span class="n">remote</span> <span class="o">{{</span> <span class="n">profile_authentication_remote</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">keyring</span> <span class="n">local</span> <span class="o">{{</span> <span class="n">profile_keyring_local</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ikev2</span> <span class="n">policy</span> <span class="o">{{</span> <span class="n">crypto_policy_name</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">proposal</span> <span class="o">{{</span> <span class="n">crypto_policy_proposal</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">ip</span> <span class="n">access</span><span class="o">-</span><span class="n">list</span> <span class="n">extended</span> <span class="o">{{</span> <span class="n">crypto_match_acl_name</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">permit</span> <span class="n">ip</span> <span class="n">host</span> <span class="o">{{</span> <span class="n">crypto_match_acl_local</span> <span class="o">}}</span> <span class="n">host</span> <span class="o">{{</span> <span class="n">crypto_match_acl_remote</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">permit</span> <span class="n">ip</span> <span class="n">host</span> <span class="o">{{</span><span class="n">crypto_match_acl_remote</span> <span class="o">}}</span> <span class="n">host</span> <span class="o">{{</span> <span class="n">crypto_match_acl_local</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ipsec</span> <span class="n">transform</span><span class="o">-</span><span class="n">set</span> <span class="o">{{</span> <span class="n">transformset_data</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span> <span class="n">Define</span> <span class="n">Crypto</span> <span class="n">map</span> <span class="n">and</span> <span class="n">Ipsec</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">map</span> <span class="o">{{</span> <span class="n">cryptomap_name</span> <span class="o">}}</span> <span class="n">ipsec</span><span class="o">-</span><span class="n">isakmp</span>
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">peer</span> <span class="o">{{</span> <span class="n">cryptomap_peer</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">security</span><span class="o">-</span><span class="n">association</span> <span class="n">lifetime</span> <span class="n">seconds</span> <span class="n">3600</span>
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">transform</span><span class="o">-</span><span class="n">set</span> <span class="o">{{</span> <span class="n">cryptomap_tset</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">pfs</span> <span class="o">{{</span> <span class="n">cryptomap_group</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">ikev2</span><span class="o">-</span><span class="n">profile</span> <span class="o">{{</span> <span class="n">cryptomap_profile</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">match</span> <span class="n">address</span> <span class="o">{{</span> <span class="n">cryptomap_match</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="err">{{ </span><span class="nc">interface_name</span> <span class="o">}}</span>
-</span></span><span class="line"><span class="cl"> <span class="n">ip</span> <span class="n">address</span> <span class="n">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span> <span class="n">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">224</span>
-</span></span><span class="line"><span class="cl"> <span class="n">negotiation</span> <span class="n">auto</span>
-</span></span><span class="line"><span class="cl"> <span class="o">{{</span> <span class="n">interface_crypto</span> <span class="o">}}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">!</span>Configure GRE
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">{{ </span><span style="color:#a6e22e">loopback_interface</span> <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> ip address <span style="color:#f92672">{{</span> loopback_address <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">{{ </span><span style="color:#a6e22e">tunnel_interface</span><span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>  no shutdown
+</span></span><span style="display:flex;"><span>  ip address 10<span style="color:#f92672">.</span><span style="color:#a6e22e">10</span><span style="color:#f92672">.</span><span style="color:#a6e22e">100</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span> 255<span style="color:#f92672">.</span><span style="color:#a6e22e">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">0</span>
+</span></span><span style="display:flex;"><span>  tunnel source <span style="color:#f92672">{{</span>loopback_interface <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>  tunnel destination <span style="color:#f92672">{{</span> tunnel_destination <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>  tunnel path<span style="color:#f92672">-</span>mtu<span style="color:#f92672">-</span>discovery
+</span></span><span style="display:flex;"><span>  tunnel protection ipsec profile ikev2_TP
+</span></span><span style="display:flex;"><span>  exit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>Configure Ike Policy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crypto ikev2 keyring <span style="color:#f92672">{{</span> ike_keyring_name <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> peer <span style="color:#f92672">{{</span> ike_keyring_peer <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>  address <span style="color:#f92672">{{</span> ike_keyring_address <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>  pre<span style="color:#f92672">-</span>shared<span style="color:#f92672">-</span>key <span style="color:#f92672">{{</span> ike_keyring_preshared_key <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crypto ikev2 proposal <span style="color:#f92672">{{</span>proposal_name <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> encryption <span style="color:#f92672">{{</span> proposal_encryption <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> integrity <span style="color:#f92672">{{</span> proposal_integrity <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> group <span style="color:#f92672">{{</span> proposal_group <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crypto ikev2 profile <span style="color:#f92672">{{</span> profile_name <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> match identity remote address <span style="color:#f92672">{{</span> profile_remote_address <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> authentication local <span style="color:#f92672">{{</span> profile_authentication_local <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> authentication remote <span style="color:#f92672">{{</span> profile_authentication_remote <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> keyring local <span style="color:#f92672">{{</span> profile_keyring_local <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crypto ikev2 policy <span style="color:#f92672">{{</span> crypto_policy_name <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> proposal <span style="color:#f92672">{{</span> crypto_policy_proposal <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ip access<span style="color:#f92672">-</span>list extended <span style="color:#f92672">{{</span> crypto_match_acl_name <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> permit ip host <span style="color:#f92672">{{</span> crypto_match_acl_local <span style="color:#f92672">}}</span> host <span style="color:#f92672">{{</span> crypto_match_acl_remote <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> permit ip host <span style="color:#f92672">{{</span>crypto_match_acl_remote <span style="color:#f92672">}}</span> host <span style="color:#f92672">{{</span> crypto_match_acl_local <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crypto ipsec transform<span style="color:#f92672">-</span>set <span style="color:#f92672">{{</span> transformset_data <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span> Define Crypto map and Ipsec
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crypto map <span style="color:#f92672">{{</span> cryptomap_name <span style="color:#f92672">}}</span> ipsec<span style="color:#f92672">-</span>isakmp
+</span></span><span style="display:flex;"><span> set peer <span style="color:#f92672">{{</span> cryptomap_peer <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> set security<span style="color:#f92672">-</span>association lifetime seconds 3600
+</span></span><span style="display:flex;"><span> set transform<span style="color:#f92672">-</span>set <span style="color:#f92672">{{</span> cryptomap_tset <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> set pfs <span style="color:#f92672">{{</span> cryptomap_group <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> set ikev2<span style="color:#f92672">-</span>profile <span style="color:#f92672">{{</span> cryptomap_profile <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> match address <span style="color:#f92672">{{</span> cryptomap_match <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#960050;background-color:#1e0010">{{ </span><span style="color:#a6e22e">interface_name</span> <span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span> ip address 1<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span> 255<span style="color:#f92672">.</span><span style="color:#a6e22e">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">224</span>
+</span></span><span style="display:flex;"><span> negotiation auto
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">{{</span> interface_crypto <span style="color:#f92672">}}</span>
 </span></span></code></pre></div><ul>
 <li>Yaml Answer file</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">loopback_interface</span><span class="p">:</span><span class="w"> </span><span class="l">Loopback0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">loopback_address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;10.1.1.1 255.255.255.0&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tunnel_interface</span><span class="p">:</span><span class="w"> </span><span class="l">Tunnel100</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tunnel_destination</span><span class="p">:</span><span class="w"> </span><span class="m">10.2.2.2</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ike_keyring_name</span><span class="p">:</span><span class="w"> </span><span class="l">HQ</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ike_keyring_peer</span><span class="p">:</span><span class="w"> </span><span class="l">HQ</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ike_keyring_address</span><span class="p">:</span><span class="w"> </span><span class="m">2.2.2.2</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ike_keyring_preshared_key</span><span class="p">:</span><span class="w"> </span><span class="l">cisco1234</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">proposal_name</span><span class="p">:</span><span class="w"> </span><span class="l">Prop-HQ</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">proposal_encryption</span><span class="p">:</span><span class="w"> </span><span class="l">aes-cbc-256</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">proposal_integrity</span><span class="p">:</span><span class="w"> </span><span class="l">sha256</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">proposal_group</span><span class="p">:</span><span class="w"> </span><span class="m">19</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">profile_name</span><span class="p">:</span><span class="w"> </span><span class="l">PROFILE-HQ</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">profile_remote_address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2.2.2.2 255.255.255.255&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">profile_authentication_local</span><span class="p">:</span><span class="w"> </span><span class="l">pre-share</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">profile_authentication_remote</span><span class="p">:</span><span class="w"> </span><span class="l">pre-share</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">profile_keyring_local</span><span class="p">:</span><span class="w"> </span><span class="l">HQ</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">crypto_policy_name</span><span class="p">:</span><span class="w"> </span><span class="l">POL-HQ</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">crypto_policy_proposal</span><span class="p">:</span><span class="w"> </span><span class="l">Prop-HQ</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">crypto_match_acl_name</span><span class="p">:</span><span class="w"> </span><span class="l">VPNACL-HQ</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">crypto_match_acl_local</span><span class="p">:</span><span class="w"> </span><span class="m">10.2.2.2</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">crypto_match_acl_remote</span><span class="p">:</span><span class="w"> </span><span class="m">10.1.1.1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">transformset_data</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;TS-HQ esp-aes 256 esp-sha256-hmac&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">cryptomap_name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;CMAP-HQ 10&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">cryptomap_peer</span><span class="p">:</span><span class="w"> </span><span class="m">2.2.2.2</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">cryptomap_tset</span><span class="p">:</span><span class="w"> </span><span class="l">TS-HQ</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">cryptomap_pfs</span><span class="p">:</span><span class="w"> </span><span class="l">group19</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">cryptomap_profile</span><span class="p">:</span><span class="w"> </span><span class="l">PROFILE-HQ</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">cryptomap_match</span><span class="p">:</span><span class="w"> </span><span class="l">VPNACL-HQ</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">interface_name</span><span class="p">:</span><span class="w"> </span><span class="l">GigabitEthernet0/0/0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">interface_crypto</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;crypto map CMAP-HQ&#34;</span><span class="w">
-</span></span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">loopback_interface</span>: <span style="color:#ae81ff">Loopback0</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">loopback_address</span>: <span style="color:#e6db74">&#34;10.1.1.1 255.255.255.0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">tunnel_interface</span>: <span style="color:#ae81ff">Tunnel100</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">tunnel_destination</span>: <span style="color:#ae81ff">10.2.2.2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ike_keyring_name</span>: <span style="color:#ae81ff">HQ</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ike_keyring_peer</span>: <span style="color:#ae81ff">HQ</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ike_keyring_address</span>: <span style="color:#ae81ff">2.2.2.2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ike_keyring_preshared_key</span>: <span style="color:#ae81ff">cisco1234</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">proposal_name</span>: <span style="color:#ae81ff">Prop-HQ</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">proposal_encryption</span>: <span style="color:#ae81ff">aes-cbc-256</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">proposal_integrity</span>: <span style="color:#ae81ff">sha256</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">proposal_group</span>: <span style="color:#ae81ff">19</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">profile_name</span>: <span style="color:#ae81ff">PROFILE-HQ</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">profile_remote_address</span>: <span style="color:#e6db74">&#34;2.2.2.2 255.255.255.255&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">profile_authentication_local</span>: <span style="color:#ae81ff">pre-share</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">profile_authentication_remote</span>: <span style="color:#ae81ff">pre-share</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">profile_keyring_local</span>: <span style="color:#ae81ff">HQ</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">crypto_policy_name</span>: <span style="color:#ae81ff">POL-HQ</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">crypto_policy_proposal</span>: <span style="color:#ae81ff">Prop-HQ</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">crypto_match_acl_name</span>: <span style="color:#ae81ff">VPNACL-HQ</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">crypto_match_acl_local</span>: <span style="color:#ae81ff">10.2.2.2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">crypto_match_acl_remote</span>: <span style="color:#ae81ff">10.1.1.1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">transformset_data</span>: <span style="color:#e6db74">&#34;TS-HQ esp-aes 256 esp-sha256-hmac&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">cryptomap_name</span>: <span style="color:#e6db74">&#34;CMAP-HQ 10&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">cryptomap_peer</span>: <span style="color:#ae81ff">2.2.2.2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">cryptomap_tset</span>: <span style="color:#ae81ff">TS-HQ</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">cryptomap_pfs</span>: <span style="color:#ae81ff">group19</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">cryptomap_profile</span>: <span style="color:#ae81ff">PROFILE-HQ</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">cryptomap_match</span>: <span style="color:#ae81ff">VPNACL-HQ</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">interface_name</span>: <span style="color:#ae81ff">GigabitEthernet0/0/0</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">interface_crypto</span>: <span style="color:#e6db74">&#34;crypto map CMAP-HQ&#34;</span>
+</span></span></code></pre></div><ul>
 <li>script.py</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#Imports </span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">yaml</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">FileSystemLoader</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Load yaml template into memory</span>
-</span></span><span class="line"><span class="cl"><span class="n">config</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./answer.yaml&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">),</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">FullLoader</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Load jinja template into memory</span>
-</span></span><span class="line"><span class="cl"><span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">loader</span> <span class="o">=</span> <span class="n">FileSystemLoader</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">),</span> <span class="n">trim_blocks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lstrip_blocks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">template</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;cisco.j2&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Render template to file</span>
-</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;cisco-out.txt&#34;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Imports </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> yaml
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> jinja2 <span style="color:#f92672">import</span> Environment, FileSystemLoader
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load yaml template into memory</span>
+</span></span><span style="display:flex;"><span>config <span style="color:#f92672">=</span> yaml<span style="color:#f92672">.</span>load(open(<span style="color:#e6db74">&#39;./answer.yaml&#39;</span>,<span style="color:#e6db74">&#39;r&#39;</span>), Loader<span style="color:#f92672">=</span>yaml<span style="color:#f92672">.</span>FullLoader)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load jinja template into memory</span>
+</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> Environment(loader <span style="color:#f92672">=</span> FileSystemLoader(<span style="color:#e6db74">&#39;./&#39;</span>), trim_blocks<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, lstrip_blocks<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>template <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>get_template(<span style="color:#e6db74">&#39;cisco.j2&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Render template to file</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;cisco-out.txt&#34;</span>,<span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>  f<span style="color:#f92672">.</span>write(template<span style="color:#f92672">.</span>render(config))
 </span></span></code></pre></div><ul>
 <li>Output</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">!</span><span class="n">Configure</span> <span class="n">GRE</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="nc">Loopback0</span>
-</span></span><span class="line"><span class="cl"> <span class="n">ip</span> <span class="n">address</span> <span class="n">10</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span> <span class="n">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">0</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="nc">Tunnel100</span>
-</span></span><span class="line"><span class="cl">  <span class="n">no</span> <span class="n">shutdown</span>
-</span></span><span class="line"><span class="cl">  <span class="n">ip</span> <span class="n">address</span> <span class="n">10</span><span class="o">.</span><span class="na">10</span><span class="o">.</span><span class="na">100</span><span class="o">.</span><span class="na">1</span> <span class="n">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">0</span>
-</span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">source</span> <span class="n">Loopback0</span>
-</span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">destination</span> <span class="n">10</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span>
-</span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">path</span><span class="o">-</span><span class="n">mtu</span><span class="o">-</span><span class="n">discovery</span>
-</span></span><span class="line"><span class="cl">  <span class="n">tunnel</span> <span class="n">protection</span> <span class="n">ipsec</span> <span class="n">profile</span> <span class="n">ikev2_TP</span>
-</span></span><span class="line"><span class="cl">  <span class="n">exit</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span><span class="n">Configure</span> <span class="n">Ike</span> <span class="n">Policy</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ikev2</span> <span class="n">keyring</span> <span class="n">HQ</span>
-</span></span><span class="line"><span class="cl"> <span class="n">peer</span> <span class="n">HQ</span>
-</span></span><span class="line"><span class="cl">  <span class="n">address</span> <span class="n">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span>
-</span></span><span class="line"><span class="cl">  <span class="n">pre</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">key</span> <span class="n">cisco1234</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ikev2</span> <span class="n">proposal</span> <span class="n">Prop</span><span class="o">-</span><span class="n">HQ</span>
-</span></span><span class="line"><span class="cl"> <span class="n">encryption</span> <span class="n">aes</span><span class="o">-</span><span class="n">cbc</span><span class="o">-</span><span class="n">256</span>
-</span></span><span class="line"><span class="cl"> <span class="n">integrity</span> <span class="n">sha256</span>
-</span></span><span class="line"><span class="cl"> <span class="n">group</span> <span class="n">19</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ikev2</span> <span class="n">profile</span> <span class="n">PROFILE</span><span class="o">-</span><span class="n">HQ</span>
-</span></span><span class="line"><span class="cl"> <span class="n">match</span> <span class="n">identity</span> <span class="n">remote</span> <span class="n">address</span> <span class="n">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span> <span class="n">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span>
-</span></span><span class="line"><span class="cl"> <span class="n">authentication</span> <span class="n">local</span> <span class="n">pre</span><span class="o">-</span><span class="n">share</span>
-</span></span><span class="line"><span class="cl"> <span class="n">authentication</span> <span class="n">remote</span> <span class="n">pre</span><span class="o">-</span><span class="n">share</span>
-</span></span><span class="line"><span class="cl"> <span class="n">keyring</span> <span class="n">local</span> <span class="n">HQ</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ikev2</span> <span class="n">policy</span> <span class="n">POL</span><span class="o">-</span><span class="n">HQ</span>
-</span></span><span class="line"><span class="cl"> <span class="n">proposal</span> <span class="n">Prop</span><span class="o">-</span><span class="n">HQ</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">ip</span> <span class="n">access</span><span class="o">-</span><span class="n">list</span> <span class="n">extended</span> <span class="n">VPNACL</span><span class="o">-</span><span class="n">HQ</span>
-</span></span><span class="line"><span class="cl"> <span class="n">permit</span> <span class="n">ip</span> <span class="n">host</span> <span class="n">10</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span> <span class="n">host</span> <span class="n">10</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span>
-</span></span><span class="line"><span class="cl"> <span class="n">permit</span> <span class="n">ip</span> <span class="n">host</span> <span class="n">10</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span> <span class="n">host</span> <span class="n">10</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">ipsec</span> <span class="n">transform</span><span class="o">-</span><span class="n">set</span> <span class="n">TS</span><span class="o">-</span><span class="n">HQ</span> <span class="n">esp</span><span class="o">-</span><span class="n">aes</span> <span class="n">256</span> <span class="n">esp</span><span class="o">-</span><span class="n">sha256</span><span class="o">-</span><span class="n">hmac</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">!</span> <span class="n">Define</span> <span class="n">Crypto</span> <span class="n">map</span> <span class="n">and</span> <span class="n">Ipsec</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">crypto</span> <span class="n">map</span> <span class="n">CMAP</span><span class="o">-</span><span class="n">HQ</span> <span class="n">10</span> <span class="n">ipsec</span><span class="o">-</span><span class="n">isakmp</span>
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">peer</span> <span class="n">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span><span class="o">.</span><span class="na">2</span>
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">security</span><span class="o">-</span><span class="n">association</span> <span class="n">lifetime</span> <span class="n">seconds</span> <span class="n">3600</span>
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">transform</span><span class="o">-</span><span class="n">set</span> <span class="n">TS</span><span class="o">-</span><span class="n">HQ</span>
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">pfs</span> 
-</span></span><span class="line"><span class="cl"> <span class="n">set</span> <span class="n">ikev2</span><span class="o">-</span><span class="n">profile</span> <span class="n">PROFILE</span><span class="o">-</span><span class="n">HQ</span>
-</span></span><span class="line"><span class="cl"> <span class="n">match</span> <span class="n">address</span> <span class="n">VPNACL</span><span class="o">-</span><span class="n">HQ</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="nc">GigabitEthernet0</span><span class="o">/</span><span class="n">0</span><span class="o">/</span><span class="n">0</span>
-</span></span><span class="line"><span class="cl"> <span class="n">ip</span> <span class="n">address</span> <span class="n">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">1</span> <span class="n">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">255</span><span class="o">.</span><span class="na">224</span>
-</span></span><span class="line"><span class="cl"> <span class="n">negotiation</span> <span class="n">auto</span>
-</span></span><span class="line"><span class="cl"> <span class="n">crypto</span> <span class="n">map</span> <span class="n">CMAP</span><span class="o">-</span><span class="n">HQ</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">!</span>Configure GRE
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Loopback0</span>
+</span></span><span style="display:flex;"><span> ip address 10<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span> 255<span style="color:#f92672">.</span><span style="color:#a6e22e">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">0</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Tunnel100</span>
+</span></span><span style="display:flex;"><span>  no shutdown
+</span></span><span style="display:flex;"><span>  ip address 10<span style="color:#f92672">.</span><span style="color:#a6e22e">10</span><span style="color:#f92672">.</span><span style="color:#a6e22e">100</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span> 255<span style="color:#f92672">.</span><span style="color:#a6e22e">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">0</span>
+</span></span><span style="display:flex;"><span>  tunnel source Loopback0
+</span></span><span style="display:flex;"><span>  tunnel destination 10<span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2</span>
+</span></span><span style="display:flex;"><span>  tunnel path<span style="color:#f92672">-</span>mtu<span style="color:#f92672">-</span>discovery
+</span></span><span style="display:flex;"><span>  tunnel protection ipsec profile ikev2_TP
+</span></span><span style="display:flex;"><span>  exit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>Configure Ike Policy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crypto ikev2 keyring HQ
+</span></span><span style="display:flex;"><span> peer HQ
+</span></span><span style="display:flex;"><span>  address 2<span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2</span>
+</span></span><span style="display:flex;"><span>  pre<span style="color:#f92672">-</span>shared<span style="color:#f92672">-</span>key cisco1234
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crypto ikev2 proposal Prop<span style="color:#f92672">-</span>HQ
+</span></span><span style="display:flex;"><span> encryption aes<span style="color:#f92672">-</span>cbc<span style="color:#f92672">-</span>256
+</span></span><span style="display:flex;"><span> integrity sha256
+</span></span><span style="display:flex;"><span> group 19
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crypto ikev2 profile PROFILE<span style="color:#f92672">-</span>HQ
+</span></span><span style="display:flex;"><span> match identity remote address 2<span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2</span> 255<span style="color:#f92672">.</span><span style="color:#a6e22e">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">255</span>
+</span></span><span style="display:flex;"><span> authentication local pre<span style="color:#f92672">-</span>share
+</span></span><span style="display:flex;"><span> authentication remote pre<span style="color:#f92672">-</span>share
+</span></span><span style="display:flex;"><span> keyring local HQ
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crypto ikev2 policy POL<span style="color:#f92672">-</span>HQ
+</span></span><span style="display:flex;"><span> proposal Prop<span style="color:#f92672">-</span>HQ
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ip access<span style="color:#f92672">-</span>list extended VPNACL<span style="color:#f92672">-</span>HQ
+</span></span><span style="display:flex;"><span> permit ip host 10<span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2</span> host 10<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span>
+</span></span><span style="display:flex;"><span> permit ip host 10<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span> host 10<span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crypto ipsec transform<span style="color:#f92672">-</span>set TS<span style="color:#f92672">-</span>HQ esp<span style="color:#f92672">-</span>aes 256 esp<span style="color:#f92672">-</span>sha256<span style="color:#f92672">-</span>hmac
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span> Define Crypto map and Ipsec
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crypto map CMAP<span style="color:#f92672">-</span>HQ 10 ipsec<span style="color:#f92672">-</span>isakmp
+</span></span><span style="display:flex;"><span> set peer 2<span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2</span><span style="color:#f92672">.</span><span style="color:#a6e22e">2</span>
+</span></span><span style="display:flex;"><span> set security<span style="color:#f92672">-</span>association lifetime seconds 3600
+</span></span><span style="display:flex;"><span> set transform<span style="color:#f92672">-</span>set TS<span style="color:#f92672">-</span>HQ
+</span></span><span style="display:flex;"><span> set pfs 
+</span></span><span style="display:flex;"><span> set ikev2<span style="color:#f92672">-</span>profile PROFILE<span style="color:#f92672">-</span>HQ
+</span></span><span style="display:flex;"><span> match address VPNACL<span style="color:#f92672">-</span>HQ
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">GigabitEthernet0</span><span style="color:#f92672">/</span>0<span style="color:#f92672">/</span>0
+</span></span><span style="display:flex;"><span> ip address 1<span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span> 255<span style="color:#f92672">.</span><span style="color:#a6e22e">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">255</span><span style="color:#f92672">.</span><span style="color:#a6e22e">224</span>
+</span></span><span style="display:flex;"><span> negotiation auto
+</span></span><span style="display:flex;"><span> crypto map CMAP<span style="color:#f92672">-</span>HQ
 </span></span></code></pre></div>
 </div>
 
@@ -409,27 +410,12 @@ Version 1.0</p>
     
     
         <div class="container text-center">
-            <a href="https://github.com/bufo333/" title="By John Burns"><small>By John Burns</small></a>
+            <a href="https://github.com/bufo333/" title="By John Burns" ><small>By John Burns</small></a>
         </div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "\\[", right: "\\]", display: true},
-                {left: "$", right: "$", display: false},
-                {left: "\\(", right: "\\)", display: false}
-            ]
-        });
-    });
-</script>
+    
 </div>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329465157209102"
     crossorigin="anonymous"></script>
+        
     </body>
 </html>
