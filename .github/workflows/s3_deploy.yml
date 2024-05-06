@@ -18,6 +18,6 @@ jobs:
       - name: Delete github folders
         run: rm -rf ./.git*
       - name: Deploy app build to S3 bucket
-        run: aws s3 sync ./ s3://johnburns.io --delete
+        run: aws s3 sync ./ s3://85f6b258-5f88-45ef-ba37-ff2b101821bb --delete
       - name: cloudfront invalidate
-        run: aws cloudfront create-invalidation --distribution-id E2DX6K2X7IVSF2 --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id E3KDYPNRQ2HE6Z --paths "/*"
