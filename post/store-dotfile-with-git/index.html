@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Store dotfile with git | The Colour of My Thoughts</title>
+    <meta name="description"
+        content="Date: &lt;2022-08-23 Tue&gt;
+Version: 1.2
+
+Store all DotFiles in a bare git repository
+
+Setup
+
+git init &ndash;bare $HOME/.cfg
+alias config=&rsquo;usr/bin/git &ndash;git-dir=$HOME.cfg/ &ndash;work-tree=$HOME&#39;
+echo &ldquo;alias config=&rsquo;usr/local/bin/git &ndash;git-dir=$HOME.cfg/ &ndash;work-tree=$HOME&rsquo;&rdquo; &gt;&gt; $HOME/.zsh/aliases
+config config &ndash;local status.showUntrackedFiles no
+
+Adding files
+Manually add files to repository by using config add &lt;filename&gt;.
+Use this to add all your files manually, this way only updates to your tracked files will show
+Add the github repository
+
+config remote add origin &lt;remote-url&gt;
+config push -u origin main
+
+Restore files from github
+
+echo &ldquo;.cfg&rdquo; &gt;&gt; .gitignore
+git clone &lt;remote-git-repo-url&gt; $HOME/.cfg
+alias config=&rsquo;/usr/local/bin/git &ndash;git-dir=&lt;path to .cfg’s Git directory&gt; &ndash;work-tree=$HOME&#39;
+config config &ndash;local status.showUntrackedFiles no
+config checkout
+">
+    <link rel="canonical" href="https://johnburns.io/post/store-dotfile-with-git/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/post/store-dotfile-with-git/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="Store dotfile with git">
+  <meta property="og:description" content="Date: &lt;2022-08-23 Tue&gt;
+Version: 1.2
+Store all DotFiles in a bare git repository
+Setup git init –bare $HOME/.cfg alias config=’usr/bin/git –git-dir=$HOME.cfg/ –work-tree=$HOME&#39; echo “alias config=’usr/local/bin/git –git-dir=$HOME.cfg/ –work-tree=$HOME’” &gt;&gt; $HOME/.zsh/aliases config config –local status.showUntrackedFiles no Adding files Manually add files to repository by using config add &lt;filename&gt;. Use this to add all your files manually, this way only updates to your tracked files will show
+Add the github repository config remote add origin &lt;remote-url&gt; config push -u origin main Restore files from github echo “.cfg” &gt;&gt; .gitignore git clone &lt;remote-git-repo-url&gt; $HOME/.cfg alias config=’/usr/local/bin/git –git-dir=&lt;path to .cfg’s Git directory&gt; –work-tree=$HOME&#39; config config –local status.showUntrackedFiles no config checkout">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-04-04T21:14:30-04:00">
+    <meta property="article:modified_time" content="2024-04-04T21:14:30-04:00">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Store dotfile with git">
+  <meta name="twitter:description" content="Date: &lt;2022-08-23 Tue&gt;
+Version: 1.2
+Store all DotFiles in a bare git repository
+Setup git init –bare $HOME/.cfg alias config=’usr/bin/git –git-dir=$HOME.cfg/ –work-tree=$HOME&#39; echo “alias config=’usr/local/bin/git –git-dir=$HOME.cfg/ –work-tree=$HOME’” &gt;&gt; $HOME/.zsh/aliases config config –local status.showUntrackedFiles no Adding files Manually add files to repository by using config add &lt;filename&gt;. Use this to add all your files manually, this way only updates to your tracked files will show
+Add the github repository config remote add origin &lt;remote-url&gt; config push -u origin main Restore files from github echo “.cfg” &gt;&gt; .gitignore git clone &lt;remote-git-repo-url&gt; $HOME/.cfg alias config=’/usr/local/bin/git –git-dir=&lt;path to .cfg’s Git directory&gt; –work-tree=$HOME&#39; config config –local status.showUntrackedFiles no config checkout">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">Store dotfile with git</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column">
+                            <p>John Burns</p>
+                            <p><time>April 4, 2024</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#setup">Setup</a></li>
+    <li><a href="#adding-files">Adding files</a></li>
+    <li><a href="#add-the-github-repository">Add the github repository</a></li>
+    <li><a href="#restore-files-from-github">Restore files from github</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <p>Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2022-08-23 Tue&gt;</span></span></p>
+<p>Version: 1.2</p>
+<!--start-summary-->
+<p>Store all DotFiles in a bare git repository</p>
+<!--nomore-->
+<h2 id="setup">Setup</h2>
+<ol>
+<li>git init &ndash;bare $HOME/.cfg</li>
+<li>alias config=&rsquo;<em>usr/bin/git &ndash;git-dir=$HOME</em>.cfg/ &ndash;work-tree=$HOME'</li>
+<li>echo &ldquo;alias config=&rsquo;<em>usr/local/bin/git &ndash;git-dir=$HOME</em>.cfg/ &ndash;work-tree=$HOME&rsquo;&rdquo; &gt;&gt; $HOME/.zsh/aliases</li>
+<li>config config &ndash;local status.showUntrackedFiles no</li>
+</ol>
+<h2 id="adding-files">Adding files</h2>
+<p>Manually add files to repository by using config add &lt;filename&gt;.
+Use this to add all your files manually, this way only updates to your tracked files will show</p>
+<h2 id="add-the-github-repository">Add the github repository</h2>
+<ol>
+<li>config remote add origin &lt;remote-url&gt;</li>
+<li>config push -u origin main</li>
+</ol>
+<h2 id="restore-files-from-github">Restore files from github</h2>
+<ol>
+<li>echo &ldquo;.cfg&rdquo; &gt;&gt; .gitignore</li>
+<li>git clone &lt;remote-git-repo-url&gt; $HOME/.cfg</li>
+<li>alias config=&rsquo;/usr/local/bin/git &ndash;git-dir=&lt;path to .cfg’s Git directory&gt; &ndash;work-tree=$HOME'</li>
+<li>config config &ndash;local status.showUntrackedFiles no</li>
+<li>config checkout</li>
+</ol>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a>
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://johnburns.io/post/top-networking-trends-of-2024-a-network-engineer-s-perspective/">Top Networking Trends of 2024: A Network Engineer&#39;s Perspective</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

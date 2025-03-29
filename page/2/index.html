@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.145.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>The Colour of My Thoughts</title>
+    <meta name="description"
+        content="
+
+ Enter
+">
+    <link rel="canonical" href="https://johnburns.io/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="Welcome">
+  <meta property="og:description" content="Enter">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Welcome">
+  <meta name="twitter:description" content="Enter">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<article>
+    <div class="is-centered">
+            <div class="title subtitle heading is-6">
+                <div id="home-box" >
+                            
+                            <div class="avatar-container">
+                                <img src="/royal_kmm.jpg" class="author-avatar">
+
+                            </div>
+                            
+
+
+
+                        <h1 id="home-title" class="title is-1 "></h1>
+                    <div class="description column content typewriter-effect">
+                        <div class="text" id="typewriter-text"> </div>
+
+                    </div>
+                    <script>
+                        const typeWriter = document.getElementById('typewriter-text');
+                        typeWriter.style.setProperty('--characters', typeWriter.innerHTML.length);
+                    </script>
+
+                    <div class="social-icon">
+
+                        
+                        <a href="mailto:john@techinvasion.net" title="email"><span class="change-color icon">
+                                <svg height="32px" width="32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 21" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+    <polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+                            </span></a>
+                        
+                        <a href="https://github.com/bufo333/" title="Github"><span class="change-color icon">
+                                <svg height="32px" width="32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+                            </span></a>
+                        
+
+                    </div>
+
+                </div>
+            </div>
+
+    </div></article>
+<div class="summary">
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/new-route-server-available/">new-route-server-available</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="new-route-server-available">New route-server available!</h2>
+<div>
+<p>I have been working on a new project which is to provide a service that would allow you to peer with my router over BGP. My router would then advertise a list of bogons and known malicious networks including botnet command and control networks. You can then drop these networks at your border router thus protecting your network from attacks and saving precious router and firewall resources. Right now I am not offering the peering service but I do have a route-view server available that allows you to login and get a full list of the malicious ip networks for ipv6 and ipv4. To access the router please ssh to rviews.techinvasion.net. If you have ipv6 access there is a AAAA record as well, allowing you to access the router on both ipv4 and ipv6.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2010-09-03 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/new-mailing-list/">new-mailing-list</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="new-mailing-list">New mailing List</h2>
+<p>I started a new mailing list. this list is for anyone to ask questions about networking design and implimentation. We can help with configuration questions of all gear Juniper, cisco, hp, fortinet&hellip;..</p>
+<p>Also questions reguarding Linux, Solaris  and BSD are welcome as well</p>
+<p><a href="http://lists.techinvasion.net"><a href="http://lists.techinvasion.net">http://lists.techinvasion.net</a></a></p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2010-07-13 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/found-this-funny-banner-today/">found-this-funny-banner-today</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="found-this-funny-banner-today">Found This Funny Banner Today!</h2>
+<p><a href="/wp-content/uploads/2010/06/linuxusageamongterrorisvv8.gif"><img class="aligncenter size-full wp-image-240" title="linuxusageamongterrorisvv8" src="/wp-content/uploads/2010/06/linuxusageamongterrorisvv8.gif" alt="" width="300" height="250" /></a></p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2010-06-28 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/mpls-vpn-services/">mpls-vpn-services</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="mpls-vpn-services">MPLS VPN Services</h2>
+<p>This article with aim to take a in depth look at MPLS and explain how your packets get from one side of the MPLS cloud to another. Hopefully this will give you some perspective that will prove useful in troubleshooting issues in your own MPLS implementations.</p>
+<p>Most enterprise engineers MPLS experience goes something like this: The company needs to connect the office in Miami and the office in London with the corporate headquarters office in Chicago. The VPN design needs to be flexible, and most importantly the network connecting all 3 sites needs to be full mesh. By this I mean to say that any office should be able to talk to any other office using this MPLS VPN. At this point you contact your MPLS provider and ask them to provision 3 MPLS links, 1 for each of the above mentioned offices. The MPLS Sales team puts you in contact with their engineering department and they ask you a couple questions that they need answered in order to properly provision your lines. the number one question that they ask is &ldquo;How do you want to send us routes?&rdquo; ï¿½now depending on the size of your organization and the dynamic or static nature of your network you can opt for several options here are 3 of the most common.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2010-02-09 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/ssh-brute-force-mitigation-in-junos/">ssh-brute-force-mitigation-in-junos</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="ssh-brute-force-mitigation-in-junos">SSH Brute Force Mitigation in Junos</h2>
+<p>I have several Juniper SRX-210 devices configured in remote offices. One of the biggest problems I have is that there are a lot of people that are constantly running scripts against the ssh daemon. Now I could lock it down to only a specified list of allowed IP addresses. This would be the most secure method but i have a business requirement of being able to connect to this device from many different location. There is a command you can use to mitigate brute force attempts.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2009-11-11 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/public-dmvpn-network/">public-dmvpn-network</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="public-dmvpn-network">Public DMVPN network.</h2>
+<p>I was thinking about a new project idea. I was thinking of setting up a dynamic multipoint VPN concentrator. Put a small LAN behind it with a couple of servers. Put the configuration instructions on a webpage for Juniper and Cisco devices. I was thinking to run BGP routing protocol over the interface as it scales reasonably well.</p>
+<p>The important part here is I wanted to create a web form which requests the internal and external address ranges of anyones network. Once that person submits that information I will have a Peal script pull those messages from the web form, parse the information, insert the networks and IP addresses into a J-Script template and apply it to my Juniper SRX router automatically.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2009-10-03 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/send-me-questions-and-feedback/">send-me-questions-and-feedback</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="send-me-questions-and-feedback">Send me questions and feedback!</h2>
+<p>I see a lot of you out there find this site through various search engines and many of you are searching for information on gre tunnels. I just wanted to say how much I appreciate the traffic and I want to let everyone know that creating an account is free and I would love to hear your feedback on articles and any questions you might have.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2009-07-20 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/using-ip-sla-with-route-maps/">using-ip-sla-with-route-maps</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="using-ip-sla-with-route-maps">Using IP SLA with Route-maps</h2>
+<p>I recently came across a problem that is not an uncommon problem that small businesses face. I came up with several solutions to their problems and I thought I would take a minute to discuss one of those solutions. This customer has a business requirement to use a proxy server for all outgoing web traffic. This on the face of it seems like a simple problem, there are many good proxy vendors out their such as my favorite vendor Blue Coat. There are many free alternatives such as Squid Caching Proxy server.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2009-07-19 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/introduction-to-filter-list-for-junos/">introduction-to-filter-list-for-junos</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="introduction-to-filter-list-for-junos">Introduction to Filter list for JUNOS</h2>
+<p>Junipers JUNOS is a very robust operating system, not only is the OS very advanced but the ASIC heavy design of Juniper hardware is akin to calorie free chocolate bars! Juniper Filter Lists which are non-stateful packet filters similar to Cisco Access-Lists are compiled and processed using hardware, what this means is that you can have as many Filter-Lists as you want and as long as you want without degrading performance.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2009-06-14 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/new-techcast-posted/">new-techcast-posted</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="new-techcast-posted">New TechCast Posted</h2>
+<p>I have been busy lately, I am in the middle of a Data Center migration at work, which is eating up hours of my personal time, and I have a million other projects on the burner. I have fresh content coming but in the mean time, I did a TechCast on Junos, please view the video at <a href="http://www.exiletv.com"><a href="http://www.exiletv.com">http://www.exiletv.com</a></a>.</p>
+<p>Until Next time</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2009-06-13 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+    <hr>
+<section class="pagination" >
+    
+
+    <button class="button ">
+        <a href="/" class="pag-link"> Prev </a>
+    </button>
+    
+    <label class="pag-link">Page 2 of 6</label>
+    
+    <button class="button"  >
+        <a href="/page/3/" class="pag-link"> Next </a>
+    </button>
+    
+</section>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

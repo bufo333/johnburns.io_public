@@ -2,182 +2,184 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://johnburns.io/posts/store-dotfile-with-git/</loc>
+    <loc>https://johnburns.io/post/store-dotfile-with-git/</loc>
     <lastmod>2024-04-04T21:14:30-04:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/top-networking-trends-of-2024-a-network-engineer-s-perspective/</loc>
+    <loc>https://johnburns.io/post/top-networking-trends-of-2024-a-network-engineer-s-perspective/</loc>
     <lastmod>2024-03-05T01:02:52-04:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/transforming-enterprise-networking-the-impact-of-ai-technologies/</loc>
+    <loc>https://johnburns.io/post/transforming-enterprise-networking-the-impact-of-ai-technologies/</loc>
     <lastmod>2024-04-03T21:22:42-04:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/understanding-the-crystal-ball-function/</loc>
+    <loc>https://johnburns.io/post/understanding-the-crystal-ball-function/</loc>
     <lastmod>2024-04-05T21:14:42-04:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/</loc>
-    <lastmod>2024-04-05T21:14:42-04:00</lastmod>
-    <priority>0</priority>
+    <loc>https://johnburns.io/post/</loc>
+    <lastmod>2025-03-28T22:34:35+00:00</lastmod>
+  </url><url>
+    <loc>https://johnburns.io/post/building-stratum-1-time-source/</loc>
+    <lastmod>2025-03-28T22:34:35+00:00</lastmod>
   </url><url>
     <loc>https://johnburns.io/</loc>
-    <lastmod>2024-04-05T21:14:42-04:00</lastmod>
+    <lastmod>2025-03-28T22:34:35+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/beginner-network-templating/</loc>
+    <loc>https://johnburns.io/post/beginner-network-templating/</loc>
     <lastmod>2022-05-26T13:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/rename-accounts-in-freebsd/</loc>
+    <loc>https://johnburns.io/post/rename-accounts-in-freebsd/</loc>
     <lastmod>2018-03-14T13:53:12+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/bhyve-on-freebsd-10-1/</loc>
+    <loc>https://johnburns.io/post/bhyve-on-freebsd-10-1/</loc>
     <lastmod>2015-05-15T00:43:24+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/poem/</loc>
+    <loc>https://johnburns.io/post/poem/</loc>
     <lastmod>2013-10-20T18:10:50+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/slow-downloads-in-itunes/</loc>
+    <loc>https://johnburns.io/post/slow-downloads-in-itunes/</loc>
     <lastmod>2012-11-11T19:34:15+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/new-route-server-available/</loc>
+    <loc>https://johnburns.io/post/new-route-server-available/</loc>
     <lastmod>2010-09-03T21:02:43+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/new-mailing-list/</loc>
+    <loc>https://johnburns.io/post/new-mailing-list/</loc>
     <lastmod>2010-07-13T10:44:15+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/found-this-funny-banner-today/</loc>
+    <loc>https://johnburns.io/post/found-this-funny-banner-today/</loc>
     <lastmod>2010-06-28T18:05:35+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/mpls-vpn-services/</loc>
+    <loc>https://johnburns.io/post/mpls-vpn-services/</loc>
     <lastmod>2010-02-09T21:04:40+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/ssh-brute-force-mitigation-in-junos/</loc>
+    <loc>https://johnburns.io/post/ssh-brute-force-mitigation-in-junos/</loc>
     <lastmod>2009-11-11T20:20:38+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/public-dmvpn-network/</loc>
+    <loc>https://johnburns.io/post/public-dmvpn-network/</loc>
     <lastmod>2009-10-03T22:10:04+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/send-me-questions-and-feedback/</loc>
+    <loc>https://johnburns.io/post/send-me-questions-and-feedback/</loc>
     <lastmod>2009-07-20T15:57:31+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/using-ip-sla-with-route-maps/</loc>
+    <loc>https://johnburns.io/post/using-ip-sla-with-route-maps/</loc>
     <lastmod>2009-07-19T09:38:07+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/introduction-to-filter-list-for-junos/</loc>
+    <loc>https://johnburns.io/post/introduction-to-filter-list-for-junos/</loc>
     <lastmod>2009-06-14T21:10:02+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/new-techcast-posted/</loc>
+    <loc>https://johnburns.io/post/new-techcast-posted/</loc>
     <lastmod>2009-06-13T01:51:42+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/gopher/</loc>
+    <loc>https://johnburns.io/post/gopher/</loc>
     <lastmod>2009-02-04T14:19:14+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/blast-from-the-past-bbs-and-door-games/</loc>
+    <loc>https://johnburns.io/post/blast-from-the-past-bbs-and-door-games/</loc>
     <lastmod>2009-02-02T11:12:17+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/rotary-pools-for-semi-static-nat-port-range-forwarding/</loc>
+    <loc>https://johnburns.io/post/rotary-pools-for-semi-static-nat-port-range-forwarding/</loc>
     <lastmod>2008-12-22T16:23:41+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/content-based-access-control-cbac/</loc>
+    <loc>https://johnburns.io/post/content-based-access-control-cbac/</loc>
     <lastmod>2008-10-21T09:56:28+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/introduction-to-access-lists-part-2/</loc>
+    <loc>https://johnburns.io/post/introduction-to-access-lists-part-2/</loc>
     <lastmod>2008-10-16T12:47:21+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/introduction-to-access-lists-part-1/</loc>
+    <loc>https://johnburns.io/post/introduction-to-access-lists-part-1/</loc>
     <lastmod>2008-10-15T21:12:35+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/replace-a-running-config-without-reloading/</loc>
+    <loc>https://johnburns.io/post/replace-a-running-config-without-reloading/</loc>
     <lastmod>2008-10-04T12:03:20+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/working-a-lot/</loc>
+    <loc>https://johnburns.io/post/working-a-lot/</loc>
     <lastmod>2008-09-29T15:52:09+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/encrypting-gre-tunnels/</loc>
+    <loc>https://johnburns.io/post/encrypting-gre-tunnels/</loc>
     <lastmod>2008-09-08T14:21:11+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/create-a-gre-tunnel-between-endpoints/</loc>
+    <loc>https://johnburns.io/post/create-a-gre-tunnel-between-endpoints/</loc>
     <lastmod>2008-09-08T13:20:02+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/cisco-3750-switches-now-include-a-time-domain-reflectometer/</loc>
+    <loc>https://johnburns.io/post/cisco-3750-switches-now-include-a-time-domain-reflectometer/</loc>
     <lastmod>2008-09-08T10:43:11+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/checkpoint-juniper-vpn/</loc>
+    <loc>https://johnburns.io/post/checkpoint-juniper-vpn/</loc>
     <lastmod>2008-09-04T10:46:51+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/cisco-3640-and-wic-1adsl-speed-problems/</loc>
+    <loc>https://johnburns.io/post/cisco-3640-and-wic-1adsl-speed-problems/</loc>
     <lastmod>2008-09-02T14:03:39+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/video-tutorial-on-ipv6/</loc>
+    <loc>https://johnburns.io/post/video-tutorial-on-ipv6/</loc>
     <lastmod>2008-05-15T15:47:58+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/liveplasmacom/</loc>
+    <loc>https://johnburns.io/post/liveplasmacom/</loc>
     <lastmod>2008-02-09T22:16:44+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/outlook-2003-error-setting-up-profile-after-uninstalling-office-2007/</loc>
+    <loc>https://johnburns.io/post/outlook-2003-error-setting-up-profile-after-uninstalling-office-2007/</loc>
     <lastmod>2008-02-06T16:12:19+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/new-forums/</loc>
+    <loc>https://johnburns.io/post/new-forums/</loc>
     <lastmod>2008-01-31T18:33:19+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/fixing-the-sku01acab-and-other-office-cab-file-issues/</loc>
+    <loc>https://johnburns.io/post/fixing-the-sku01acab-and-other-office-cab-file-issues/</loc>
     <lastmod>2008-01-30T21:47:43+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/cisco-ios-firewall-security/</loc>
+    <loc>https://johnburns.io/post/cisco-ios-firewall-security/</loc>
     <lastmod>2008-01-29T22:30:27+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/cisco-config-wic-1adsl-2/</loc>
+    <loc>https://johnburns.io/post/cisco-config-wic-1adsl-2/</loc>
     <lastmod>2008-01-28T21:50:46+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/cisco-config-wic-1adsl/</loc>
+    <loc>https://johnburns.io/post/cisco-config-wic-1adsl/</loc>
     <lastmod>2008-01-28T20:59:12+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/vista-complete-pc-backup-to-network-share/</loc>
+    <loc>https://johnburns.io/post/vista-complete-pc-backup-to-network-share/</loc>
     <lastmod>2007-11-12T23:42:07+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/hacked-iphone-goodness/</loc>
+    <loc>https://johnburns.io/post/hacked-iphone-goodness/</loc>
     <lastmod>2007-10-30T20:05:32+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/iphone-fun/</loc>
+    <loc>https://johnburns.io/post/iphone-fun/</loc>
     <lastmod>2007-10-29T15:37:38+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/mit-student-arrested-for-fake-bomb/</loc>
+    <loc>https://johnburns.io/post/mit-student-arrested-for-fake-bomb/</loc>
     <lastmod>2007-09-22T13:20:18+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/2-m-moxon-project/</loc>
+    <loc>https://johnburns.io/post/2-m-moxon-project/</loc>
     <lastmod>2007-09-19T22:34:35+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/call-of-duty-4/</loc>
+    <loc>https://johnburns.io/post/call-of-duty-4/</loc>
     <lastmod>2007-07-22T19:21:23+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/life-the-universe-and-everything/</loc>
+    <loc>https://johnburns.io/post/life-the-universe-and-everything/</loc>
     <lastmod>2007-07-09T17:47:25+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/open-solaris-10-sandbox/</loc>
+    <loc>https://johnburns.io/post/open-solaris-10-sandbox/</loc>
     <lastmod>2007-07-02T21:54:50+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/first-production-zfs-server-today/</loc>
+    <loc>https://johnburns.io/post/first-production-zfs-server-today/</loc>
     <lastmod>2007-07-02T21:43:15+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/tv-networks-just-dont-get-it/</loc>
+    <loc>https://johnburns.io/post/tv-networks-just-dont-get-it/</loc>
     <lastmod>2007-07-02T20:11:52+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/things-i-wish-i-knew-about-solaris-when-i-first-started/</loc>
+    <loc>https://johnburns.io/post/things-i-wish-i-knew-about-solaris-when-i-first-started/</loc>
     <lastmod>2007-07-02T00:33:49+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/freaking-awesome-linux-distro-os-tan-wallpapers/</loc>
+    <loc>https://johnburns.io/post/freaking-awesome-linux-distro-os-tan-wallpapers/</loc>
     <lastmod>2007-06-26T02:21:09+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/ip-filter-and-freebsd/</loc>
+    <loc>https://johnburns.io/post/ip-filter-and-freebsd/</loc>
     <lastmod>2007-06-25T00:27:21+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/solaris-zones-part-1/</loc>
+    <loc>https://johnburns.io/post/solaris-zones-part-1/</loc>
     <lastmod>2007-06-24T16:25:52+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/solaris-zones/</loc>
+    <loc>https://johnburns.io/post/solaris-zones/</loc>
     <lastmod>2007-06-24T03:30:14+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/blog-migrated/</loc>
+    <loc>https://johnburns.io/post/blog-migrated/</loc>
     <lastmod>2007-06-24T03:15:01+00:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/posts/laptop-crashes-when-power-source-is-changed-fix/</loc>
+    <loc>https://johnburns.io/post/laptop-crashes-when-power-source-is-changed-fix/</loc>
     <lastmod>2004-01-31T21:40:22+00:00</lastmod>
   </url><url>
     <loc>https://johnburns.io/about/</loc>

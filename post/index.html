@@ -1,0 +1,781 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>The Colour of My Thoughts</title>
+    <meta name="description"
+        content="The desk of my mind.">
+    <link rel="canonical" href="https://johnburns.io/post/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/post/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="The Colour of My Thoughts">
+  <meta property="og:description" content="The desk of my mind.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Colour of My Thoughts">
+  <meta name="twitter:description" content="The desk of my mind.">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="container">
+    <div class="section">
+        <div class="content">
+            <h1 class="h1-title">Archives</h1>
+        </div>
+    </div>
+</div>
+
+    <div class="archive-container column is-centered">
+        <div class="archive">
+
+            
+            <h2 class="archive-title">2025</h2>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/building-stratum-1-time-source/" class="archive-item-link hover-underline-animation">Building a Stratum‑1 NTP Server on Raspberry Pi 5</a>
+                <span class="archive-item-date">
+                    March 28, 2025
+                </span>
+
+            </article>
+            
+            
+            <h2 class="archive-title">2024</h2>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/understanding-the-crystal-ball-function/" class="archive-item-link hover-underline-animation">Understanding the crystal Ball Function</a>
+                <span class="archive-item-date">
+                    April 5, 2024
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/store-dotfile-with-git/" class="archive-item-link hover-underline-animation">Store dotfile with git</a>
+                <span class="archive-item-date">
+                    April 4, 2024
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/transforming-enterprise-networking-the-impact-of-ai-technologies/" class="archive-item-link hover-underline-animation">Transforming Enterprise Networking: The Impact of AI Technologies</a>
+                <span class="archive-item-date">
+                    April 3, 2024
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/top-networking-trends-of-2024-a-network-engineer-s-perspective/" class="archive-item-link hover-underline-animation">Top Networking Trends of 2024: A Network Engineer&#39;s Perspective</a>
+                <span class="archive-item-date">
+                    March 5, 2024
+                </span>
+
+            </article>
+            
+            
+            <h2 class="archive-title">2022</h2>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/beginner-network-templating/" class="archive-item-link hover-underline-animation">beginner-network-templating</a>
+                <span class="archive-item-date">
+                    May 26, 2022
+                </span>
+
+            </article>
+            
+            
+            <h2 class="archive-title">2018</h2>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/rename-accounts-in-freebsd/" class="archive-item-link hover-underline-animation">rename-accounts-in-freebsd</a>
+                <span class="archive-item-date">
+                    March 14, 2018
+                </span>
+
+            </article>
+            
+            
+            <h2 class="archive-title">2015</h2>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/bhyve-on-freebsd-10-1/" class="archive-item-link hover-underline-animation">bhyve-on-freebsd-10-1</a>
+                <span class="archive-item-date">
+                    May 15, 2015
+                </span>
+
+            </article>
+            
+            
+            <h2 class="archive-title">2013</h2>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/poem/" class="archive-item-link hover-underline-animation">poem</a>
+                <span class="archive-item-date">
+                    October 20, 2013
+                </span>
+
+            </article>
+            
+            
+            <h2 class="archive-title">2012</h2>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/slow-downloads-in-itunes/" class="archive-item-link hover-underline-animation">slow-downloads-in-itunes</a>
+                <span class="archive-item-date">
+                    November 11, 2012
+                </span>
+
+            </article>
+            
+            
+            <h2 class="archive-title">2010</h2>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/new-route-server-available/" class="archive-item-link hover-underline-animation">new-route-server-available</a>
+                <span class="archive-item-date">
+                    September 3, 2010
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/new-mailing-list/" class="archive-item-link hover-underline-animation">new-mailing-list</a>
+                <span class="archive-item-date">
+                    July 13, 2010
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/found-this-funny-banner-today/" class="archive-item-link hover-underline-animation">found-this-funny-banner-today</a>
+                <span class="archive-item-date">
+                    June 28, 2010
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/mpls-vpn-services/" class="archive-item-link hover-underline-animation">mpls-vpn-services</a>
+                <span class="archive-item-date">
+                    February 9, 2010
+                </span>
+
+            </article>
+            
+            
+            <h2 class="archive-title">2009</h2>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/ssh-brute-force-mitigation-in-junos/" class="archive-item-link hover-underline-animation">ssh-brute-force-mitigation-in-junos</a>
+                <span class="archive-item-date">
+                    November 11, 2009
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/public-dmvpn-network/" class="archive-item-link hover-underline-animation">public-dmvpn-network</a>
+                <span class="archive-item-date">
+                    October 3, 2009
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/send-me-questions-and-feedback/" class="archive-item-link hover-underline-animation">send-me-questions-and-feedback</a>
+                <span class="archive-item-date">
+                    July 20, 2009
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/using-ip-sla-with-route-maps/" class="archive-item-link hover-underline-animation">using-ip-sla-with-route-maps</a>
+                <span class="archive-item-date">
+                    July 19, 2009
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/introduction-to-filter-list-for-junos/" class="archive-item-link hover-underline-animation">introduction-to-filter-list-for-junos</a>
+                <span class="archive-item-date">
+                    June 14, 2009
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/new-techcast-posted/" class="archive-item-link hover-underline-animation">new-techcast-posted</a>
+                <span class="archive-item-date">
+                    June 13, 2009
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/gopher/" class="archive-item-link hover-underline-animation">gopher</a>
+                <span class="archive-item-date">
+                    February 4, 2009
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/blast-from-the-past-bbs-and-door-games/" class="archive-item-link hover-underline-animation">blast-from-the-past-bbs-and-door-games</a>
+                <span class="archive-item-date">
+                    February 2, 2009
+                </span>
+
+            </article>
+            
+            
+            <h2 class="archive-title">2008</h2>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/rotary-pools-for-semi-static-nat-port-range-forwarding/" class="archive-item-link hover-underline-animation">rotary-pools-for-semi-static-nat-port-range-forwarding</a>
+                <span class="archive-item-date">
+                    December 22, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/content-based-access-control-cbac/" class="archive-item-link hover-underline-animation">content-based-access-control-cbac</a>
+                <span class="archive-item-date">
+                    October 21, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/introduction-to-access-lists-part-2/" class="archive-item-link hover-underline-animation">introduction-to-access-lists-part-2</a>
+                <span class="archive-item-date">
+                    October 16, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/introduction-to-access-lists-part-1/" class="archive-item-link hover-underline-animation">introduction-to-access-lists-part-1</a>
+                <span class="archive-item-date">
+                    October 15, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/replace-a-running-config-without-reloading/" class="archive-item-link hover-underline-animation">replace-a-running-config-without-reloading</a>
+                <span class="archive-item-date">
+                    October 4, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/working-a-lot/" class="archive-item-link hover-underline-animation">working-a-lot</a>
+                <span class="archive-item-date">
+                    September 29, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/encrypting-gre-tunnels/" class="archive-item-link hover-underline-animation">encrypting-gre-tunnels</a>
+                <span class="archive-item-date">
+                    September 8, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/create-a-gre-tunnel-between-endpoints/" class="archive-item-link hover-underline-animation">create-a-gre-tunnel-between-endpoints</a>
+                <span class="archive-item-date">
+                    September 8, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/cisco-3750-switches-now-include-a-time-domain-reflectometer/" class="archive-item-link hover-underline-animation">cisco-3750-switches-now-include-a-time-domain-reflectometer</a>
+                <span class="archive-item-date">
+                    September 8, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/checkpoint-juniper-vpn/" class="archive-item-link hover-underline-animation">checkpoint-juniper-vpn</a>
+                <span class="archive-item-date">
+                    September 4, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/cisco-3640-and-wic-1adsl-speed-problems/" class="archive-item-link hover-underline-animation">cisco-3640-and-wic-1adsl-speed-problems</a>
+                <span class="archive-item-date">
+                    September 2, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/video-tutorial-on-ipv6/" class="archive-item-link hover-underline-animation">video-tutorial-on-ipv6</a>
+                <span class="archive-item-date">
+                    May 15, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/liveplasmacom/" class="archive-item-link hover-underline-animation">liveplasmacom</a>
+                <span class="archive-item-date">
+                    February 9, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/outlook-2003-error-setting-up-profile-after-uninstalling-office-2007/" class="archive-item-link hover-underline-animation">outlook-2003-error-setting-up-profile-after-uninstalling-office-2007</a>
+                <span class="archive-item-date">
+                    February 6, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/new-forums/" class="archive-item-link hover-underline-animation">new-forums</a>
+                <span class="archive-item-date">
+                    January 31, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/fixing-the-sku01acab-and-other-office-cab-file-issues/" class="archive-item-link hover-underline-animation">fixing-the-sku01acab-and-other-office-cab-file-issues</a>
+                <span class="archive-item-date">
+                    January 30, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/cisco-ios-firewall-security/" class="archive-item-link hover-underline-animation">cisco-ios-firewall-security</a>
+                <span class="archive-item-date">
+                    January 29, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/cisco-config-wic-1adsl-2/" class="archive-item-link hover-underline-animation">cisco-config-wic-1adsl-2</a>
+                <span class="archive-item-date">
+                    January 28, 2008
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/cisco-config-wic-1adsl/" class="archive-item-link hover-underline-animation">cisco-config-wic-1adsl</a>
+                <span class="archive-item-date">
+                    January 28, 2008
+                </span>
+
+            </article>
+            
+            
+            <h2 class="archive-title">2007</h2>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/vista-complete-pc-backup-to-network-share/" class="archive-item-link hover-underline-animation">vista-complete-pc-backup-to-network-share</a>
+                <span class="archive-item-date">
+                    November 12, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/hacked-iphone-goodness/" class="archive-item-link hover-underline-animation">hacked-iphone-goodness</a>
+                <span class="archive-item-date">
+                    October 30, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/iphone-fun/" class="archive-item-link hover-underline-animation">iphone-fun</a>
+                <span class="archive-item-date">
+                    October 29, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/mit-student-arrested-for-fake-bomb/" class="archive-item-link hover-underline-animation">mit-student-arrested-for-fake-bomb</a>
+                <span class="archive-item-date">
+                    September 22, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/2-m-moxon-project/" class="archive-item-link hover-underline-animation">2-m-moxon-project</a>
+                <span class="archive-item-date">
+                    September 19, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/call-of-duty-4/" class="archive-item-link hover-underline-animation">call-of-duty-4</a>
+                <span class="archive-item-date">
+                    July 22, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/life-the-universe-and-everything/" class="archive-item-link hover-underline-animation">life-the-universe-and-everything</a>
+                <span class="archive-item-date">
+                    July 9, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/open-solaris-10-sandbox/" class="archive-item-link hover-underline-animation">open-solaris-10-sandbox</a>
+                <span class="archive-item-date">
+                    July 2, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/first-production-zfs-server-today/" class="archive-item-link hover-underline-animation">first-production-zfs-server-today</a>
+                <span class="archive-item-date">
+                    July 2, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/tv-networks-just-dont-get-it/" class="archive-item-link hover-underline-animation">tv-networks-just-dont-get-it</a>
+                <span class="archive-item-date">
+                    July 2, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/things-i-wish-i-knew-about-solaris-when-i-first-started/" class="archive-item-link hover-underline-animation">things-i-wish-i-knew-about-solaris-when-i-first-started</a>
+                <span class="archive-item-date">
+                    July 2, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/freaking-awesome-linux-distro-os-tan-wallpapers/" class="archive-item-link hover-underline-animation">freaking-awesome-linux-distro-os-tan-wallpapers</a>
+                <span class="archive-item-date">
+                    June 26, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/ip-filter-and-freebsd/" class="archive-item-link hover-underline-animation">ip-filter-and-freebsd</a>
+                <span class="archive-item-date">
+                    June 25, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/solaris-zones-part-1/" class="archive-item-link hover-underline-animation">solaris-zones-part-1</a>
+                <span class="archive-item-date">
+                    June 24, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/solaris-zones/" class="archive-item-link hover-underline-animation">solaris-zones</a>
+                <span class="archive-item-date">
+                    June 24, 2007
+                </span>
+
+            </article>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/blog-migrated/" class="archive-item-link hover-underline-animation">blog-migrated</a>
+                <span class="archive-item-date">
+                    June 24, 2007
+                </span>
+
+            </article>
+            
+            
+            <h2 class="archive-title">2004</h2>
+            
+            
+
+            <article class="archive-item">
+                <a href="https://johnburns.io/post/laptop-crashes-when-power-source-is-changed-fix/" class="archive-item-link hover-underline-animation">laptop-crashes-when-power-source-is-changed-fix</a>
+                <span class="archive-item-date">
+                    January 31, 2004
+                </span>
+
+            </article>
+            
+            
+        </div>
+
+    </div>
+
+
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

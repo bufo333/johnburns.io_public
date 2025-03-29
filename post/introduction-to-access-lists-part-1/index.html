@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>introduction-to-access-lists-part-1 | The Colour of My Thoughts</title>
+    <meta name="description"
+        content="Introduction to access-lists part 1
+Today I would like to take some time and talk about security. I want to discuss access-lists, extended access-lists, reflexive access-lists, and CBAC or content based access control. Learning how to properly use access-lists is so crucial to becoming a good network administrator. They are vital to securing your network and as you progress with your studies you will find that access-lists are used quite extensively in routing, QoS, and other important things.">
+    <link rel="canonical" href="https://johnburns.io/post/introduction-to-access-lists-part-1/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/post/introduction-to-access-lists-part-1/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="introduction-to-access-lists-part-1">
+  <meta property="og:description" content="Introduction to access-lists part 1 Today I would like to take some time and talk about security. I want to discuss access-lists, extended access-lists, reflexive access-lists, and CBAC or content based access control. Learning how to properly use access-lists is so crucial to becoming a good network administrator. They are vital to securing your network and as you progress with your studies you will find that access-lists are used quite extensively in routing, QoS, and other important things.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2008-10-15T21:12:35+00:00">
+    <meta property="article:modified_time" content="2008-10-15T21:12:35+00:00">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="introduction-to-access-lists-part-1">
+  <meta name="twitter:description" content="Introduction to access-lists part 1 Today I would like to take some time and talk about security. I want to discuss access-lists, extended access-lists, reflexive access-lists, and CBAC or content based access control. Learning how to properly use access-lists is so crucial to becoming a good network administrator. They are vital to securing your network and as you progress with your studies you will find that access-lists are used quite extensively in routing, QoS, and other important things.">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">introduction-to-access-lists-part-1</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column">
+                            <p>John Burns</p>
+                            <p><time>October 15, 2008</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction-to-access-lists-part-1">Introduction to access-lists part 1</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <h2 id="introduction-to-access-lists-part-1">Introduction to access-lists part 1</h2>
+<p>Today I would like to take some time and talk about security. I want to discuss access-lists, extended access-lists, reflexive access-lists, and CBAC or content based access control. Learning how to properly use access-lists is so crucial to becoming a good network administrator. They are vital to securing your network and as you progress with your studies you will find that access-lists are used quite extensively in routing, QoS, and other important things.</p>
+<p>Access-lists are used to match traffic and can be applied in either the in or out direction. It is important to note that the direction is from the perspective of the interface. For instance on a switch port <em>IN</em> would be coming into the switch or traffic being sent to the switch, whereas <em>OUT</em> would be the traffic the switch sends to the device connected to the port. So think of it like this: OUT means traffic flowing out of the switch, while IN means traffic flowing into the switch. See I knew you would get it, it&rsquo;s very easy stuff.</p>
+<p>There are two basic kinds of access-lists extended and standard. Access-lists over 100 inclusive are extended access lists, while access-lists numbered 99 and less are standard access-lists. Standard access lists can only filter based on ip address, while extended access-lists can filter based on layer 3 protocols such as tcp, udp, gre, and others. They can also filter based on tcp/udp port numbers. Lets take a look at an access list :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">2</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">host</span> <span style="color:#ae81ff">127.0</span>.<span style="color:#ae81ff">0.1</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.255</span>  <span style="color:#a6e22e">any</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">3</span> <span style="color:#a6e22e">deny</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.254</span>  <span style="color:#a6e22e">any</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#ae81ff">99</span>) (<span style="color:#a6e22e">permit</span><span style="color:#f92672">/</span><span style="color:#a6e22e">deny</span>) (<span style="color:#a6e22e">source</span>) (<span style="color:#a6e22e">destination</span>)
+</span></span></code></pre></div><p>All of these are standard access-lists, let*s take them apart in detail. The first part is the command <em>access-list</em> this is followed by either a <em>permit/deny</em> the next entry is the source and can be  <em>any</em>,  it can be a individual ip <em>host x.x.x.x</em> or it can be a network <em>192.168.1.0 0.0.0.255</em> The last part is a wild card mask which is the opposite of a subnet mask. Remember that standard access-lists  can only filter based on source and or destination, but not any other information. If you want to filter on more than source and destination you can choose extended access-lists. Extended access-lists can filter on much more and take a slightly different format.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">101</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">eq</span> <span style="color:#ae81ff">443</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">101</span> <span style="color:#a6e22e">deny</span> <span style="color:#a6e22e">udp</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">eq</span> <span style="color:#ae81ff">500</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">101</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">gre</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span>
+</span></span></code></pre></div><p>Lets have a look at some of the possible options that the Cisco IOS gives you to match packets, if you don&rsquo;t understand all of the options or know how to use them at first, don&rsquo;t worry. These kind of things look useless or seldom used at first, however as you progress you will make use of most of these options.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">102</span> <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">deny</span>              <span style="color:#a6e22e">Specify</span> <span style="color:#a6e22e">packets</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">reject</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dynamic</span>       <span style="color:#a6e22e">Specify</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">DYNAMIC</span> <span style="color:#a6e22e">list</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">PERMITs</span> <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">DENYs</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">permit</span>          <span style="color:#a6e22e">Specify</span> <span style="color:#a6e22e">packets</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">forward</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">remark</span>        <span style="color:#a6e22e">Access</span> <span style="color:#a6e22e">list</span> <span style="color:#a6e22e">entry</span> <span style="color:#a6e22e">comment</span>
+</span></span></code></pre></div><p>!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">102</span> <span style="color:#a6e22e">permit</span> <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">255</span><span style="color:#f92672">&gt;</span>  <span style="color:#a6e22e">An</span> <span style="color:#a6e22e">IP</span> <span style="color:#a6e22e">protocol</span> <span style="color:#a6e22e">number</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ahp</span>      <span style="color:#a6e22e">Authentication</span> <span style="color:#a6e22e">Header</span> <span style="color:#a6e22e">Protocol</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">eigrp</span>    <span style="color:#a6e22e">Cisco</span><span style="color:#e6db74">&#39;s EIGRP routing protocol
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  esp      Encapsulation Security Payload
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  gre      Cisco&#39;</span><span style="color:#a6e22e">s</span> <span style="color:#a6e22e">GRE</span> <span style="color:#a6e22e">tunneling</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">icmp</span>     <span style="color:#a6e22e">Internet</span> <span style="color:#a6e22e">Control</span> <span style="color:#a6e22e">Message</span> <span style="color:#a6e22e">Protocol</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">igmp</span>     <span style="color:#a6e22e">Internet</span> <span style="color:#a6e22e">Gateway</span> <span style="color:#a6e22e">Message</span> <span style="color:#a6e22e">Protocol</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ip</span>       <span style="color:#a6e22e">Any</span> <span style="color:#a6e22e">Internet</span> <span style="color:#a6e22e">Protocol</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ipinip</span>   <span style="color:#a6e22e">IP</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">IP</span> <span style="color:#a6e22e">tunneling</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">nos</span>      <span style="color:#a6e22e">KA9Q</span> <span style="color:#a6e22e">NOS</span> <span style="color:#a6e22e">compatible</span> <span style="color:#a6e22e">IP</span> <span style="color:#a6e22e">over</span> <span style="color:#a6e22e">IP</span> <span style="color:#a6e22e">tunneling</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ospf</span>     <span style="color:#a6e22e">OSPF</span> <span style="color:#a6e22e">routing</span> <span style="color:#a6e22e">protocol</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pcp</span>      <span style="color:#a6e22e">Payload</span> <span style="color:#a6e22e">Compression</span> <span style="color:#a6e22e">Protocol</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pim</span>      <span style="color:#a6e22e">Protocol</span> <span style="color:#a6e22e">Independent</span> <span style="color:#a6e22e">Multicast</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tcp</span>      <span style="color:#a6e22e">Transmission</span> <span style="color:#a6e22e">Control</span> <span style="color:#a6e22e">Protocol</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">udp</span>      <span style="color:#a6e22e">User</span> <span style="color:#a6e22e">Datagram</span> <span style="color:#a6e22e">Protocol</span>
+</span></span></code></pre></div><p>!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">102</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span> <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ack</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">ACK</span> <span style="color:#a6e22e">bit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dscp</span>         <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">given</span> <span style="color:#a6e22e">dscp</span> <span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">eq</span>           <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">only</span> <span style="color:#a6e22e">packets</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">given</span> <span style="color:#a6e22e">port</span> <span style="color:#a6e22e">number</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">established</span>  <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">established</span> <span style="color:#a6e22e">connections</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fin</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">FIN</span> <span style="color:#a6e22e">bit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fragments</span>    <span style="color:#a6e22e">Check</span> <span style="color:#a6e22e">non</span><span style="color:#f92672">-</span><span style="color:#a6e22e">initial</span> <span style="color:#a6e22e">fragments</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">gt</span>           <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">only</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">greater</span> <span style="color:#a6e22e">port</span> <span style="color:#a6e22e">number</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">log</span>          <span style="color:#a6e22e">Log</span> <span style="color:#a6e22e">matches</span> <span style="color:#a6e22e">against</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">entry</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">log</span><span style="color:#f92672">-</span><span style="color:#a6e22e">input</span>    <span style="color:#a6e22e">Log</span> <span style="color:#a6e22e">matches</span> <span style="color:#a6e22e">against</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">entry</span>, <span style="color:#a6e22e">including</span> <span style="color:#a6e22e">input</span> <span style="color:#66d9ef">interface</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">lt</span>           <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">only</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">lower</span> <span style="color:#a6e22e">port</span> <span style="color:#a6e22e">number</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">neq</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">only</span> <span style="color:#a6e22e">packets</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">given</span> <span style="color:#a6e22e">port</span> <span style="color:#a6e22e">number</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">option</span>       <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">given</span> <span style="color:#a6e22e">IP</span> <span style="color:#a6e22e">Options</span> <span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">precedence</span>   <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">given</span> <span style="color:#a6e22e">precedence</span> <span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">psh</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">PSH</span> <span style="color:#a6e22e">bit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">range</span>        <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">only</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">range</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">port</span> <span style="color:#a6e22e">numbers</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rst</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">RST</span> <span style="color:#a6e22e">bit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">syn</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">SYN</span> <span style="color:#a6e22e">bit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">time</span><span style="color:#f92672">-</span><span style="color:#a6e22e">range</span>   <span style="color:#a6e22e">Specify</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">time</span><span style="color:#f92672">-</span><span style="color:#a6e22e">range</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tos</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">given</span> <span style="color:#a6e22e">TOS</span> <span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">urg</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">URG</span> <span style="color:#a6e22e">bit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">cr</span><span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">102</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">eq</span> <span style="color:#ae81ff">80</span> <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ack</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">ACK</span> <span style="color:#a6e22e">bit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dscp</span>         <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">given</span> <span style="color:#a6e22e">dscp</span> <span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">established</span>  <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">established</span> <span style="color:#a6e22e">connections</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fin</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">FIN</span> <span style="color:#a6e22e">bit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">log</span>          <span style="color:#a6e22e">Log</span> <span style="color:#a6e22e">matches</span> <span style="color:#a6e22e">against</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">entry</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">log</span><span style="color:#f92672">-</span><span style="color:#a6e22e">input</span>    <span style="color:#a6e22e">Log</span> <span style="color:#a6e22e">matches</span> <span style="color:#a6e22e">against</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">entry</span>, <span style="color:#a6e22e">including</span> <span style="color:#a6e22e">input</span> <span style="color:#66d9ef">interface</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">option</span>       <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">given</span> <span style="color:#a6e22e">IP</span> <span style="color:#a6e22e">Options</span> <span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">precedence</span>   <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">given</span> <span style="color:#a6e22e">precedence</span> <span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">psh</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">PSH</span> <span style="color:#a6e22e">bit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rst</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">RST</span> <span style="color:#a6e22e">bit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">syn</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">SYN</span> <span style="color:#a6e22e">bit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">time</span><span style="color:#f92672">-</span><span style="color:#a6e22e">range</span>   <span style="color:#a6e22e">Specify</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">time</span><span style="color:#f92672">-</span><span style="color:#a6e22e">range</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tos</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">packets</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">given</span> <span style="color:#a6e22e">TOS</span> <span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">urg</span>          <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">URG</span> <span style="color:#a6e22e">bit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">cr</span><span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>!</p>
+<p>This has been a brief intro to access lists. In the next Installment we will talk a little bit about named access-lists and how they can be used to construct reflexive access lists. Reflexive access-lists can be used to create dynamic entries in an access-list based on some event or matching criteria, and can be really important tool for securing a network. Also named access-lists allow you to easily manage a large access-list more easily by allowing you to change an entry or change the order of the acl without rewriting removing and rewriting the entire access-list.</p>
+<p>One last thing*. Access-lists are applied to an interface by using the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">Config</span> <span style="color:#a6e22e">t</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">config</span> )<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">Int</span> <span style="color:#a6e22e">fastethernet</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">Config</span> <span style="color:#66d9ef">int</span>)<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">Ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">group</span> <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Or</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">Config</span> <span style="color:#66d9ef">int</span>)<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">Ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">group</span> <span style="color:#a6e22e">out</span>
+</span></span></code></pre></div>
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a>
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://johnburns.io/post/replace-a-running-config-without-reloading/">replace-a-running-config-without-reloading</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://johnburns.io/post/introduction-to-access-lists-part-2/">introduction-to-access-lists-part-2</a>
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

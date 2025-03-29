@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>cisco-config-wic-1adsl-2 | The Colour of My Thoughts</title>
+    <meta name="description"
+        content="Cisco WIC-1ADSL config for 1800 series router and ios 12.4
+This config is for the Cisco 1800 series router running IOS 12.4. IOS 12.4 has some command and syntax changes in reguards to interfaces and configuration commands for PPPOE. This config was submitted by my good friend Pedro Rivera.
+version 12.4
+
+service timestamps debug datetime msec
+
+service timestamps log datetime msec
+
+no service password-encryption
+
+!
+
+hostname Router
+
+!
+
+boot-start-marker
+
+boot-end-marker
+
+!
+
+!
+
+no aaa new-model
+
+!
+
+resource policy
+
+!
+
+mmi polling-interval 60
+
+no mmi auto-configure
+
+no mmi pvc
+
+mmi snmp-timeout 180
+
+ip subnet-zero
+
+ip cef
+
+!
+
+!
+
+!
+
+!
+
+ip name-server 205.152.144.23
+
+!
+
+!
+
+interface FastEthernet0/0
+
+ description Internal Lan
+
+ ip address 10.10.10.254 255.255.255.0
+
+ ip nat inside
+
+ ip virtual-reassembly
+
+ ip tcp adjust-mss 1452
+
+ duplex auto
+
+ speed auto
+
+!
+
+interface FastEthernet0/1
+
+ no ip address
+
+ shutdown
+
+ duplex auto
+
+ speed auto
+
+!
+
+interface ATM0/0/0
+
+ no ip address
+
+ no atm ilmi-keepalive
+
+ dsl operating-mode auto
+
+!
+
+interface ATM0/0/0.1 point-to-point
+
+ pvc 8/35
+
+  pppoe-client dial-pool-number 1
+
+ !
+
+!
+
+interface Dialer0
+
+ ip address negotiated
+
+ ip mtu 1452
+
+ ip nat outside
+
+ ip virtual-reassembly
+
+ encapsulation ppp
+
+ dialer pool 1
+
+ dialer-group 1
+
+ ppp authentication chap callin
+
+ ppp chap hostname xxxxxxxxxxxxx@xxxxxxxxxxxxxx.net
+
+ ppp chap password 0 xxxxxxxxxxxxxxx
+
+!
+
+ip classless
+
+ip route 0.0.0.0 0.0.0.0 Dialer0
+
+!
+
+ip http server
+
+no ip http secure-server
+
+ip nat inside source list 1 interface Dialer0 overload
+
+!
+
+access-list 1 remark INSIDE_IF=FastEthernet0/0
+
+access-list 1 remark SDM_ACL Category=2
+
+access-list 1 permit 10.10.10.0 0.0.0.255
+
+dialer-list 1 protocol ip permit
+
+!
+
+!
+
+control-plane
+
+!
+
+!
+
+line con 0
+
+line aux 0
+
+line vty 0 4
+
+ login
+111
+">
+    <link rel="canonical" href="https://johnburns.io/post/cisco-config-wic-1adsl-2/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/post/cisco-config-wic-1adsl-2/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="cisco-config-wic-1adsl-2">
+  <meta property="og:description" content="Cisco WIC-1ADSL config for 1800 series router and ios 12.4 This config is for the Cisco 1800 series router running IOS 12.4. IOS 12.4 has some command and syntax changes in reguards to interfaces and configuration commands for PPPOE. This config was submitted by my good friend Pedro Rivera.
+version 12.4 service timestamps debug datetime msec service timestamps log datetime msec no service password-encryption ! hostname Router ! boot-start-marker boot-end-marker ! ! no aaa new-model ! resource policy ! mmi polling-interval 60 no mmi auto-configure no mmi pvc mmi snmp-timeout 180 ip subnet-zero ip cef ! ! ! ! ip name-server 205.152.144.23 ! ! interface FastEthernet0/0 description Internal Lan ip address 10.10.10.254 255.255.255.0 ip nat inside ip virtual-reassembly ip tcp adjust-mss 1452 duplex auto speed auto ! interface FastEthernet0/1 no ip address shutdown duplex auto speed auto ! interface ATM0/0/0 no ip address no atm ilmi-keepalive dsl operating-mode auto ! interface ATM0/0/0.1 point-to-point pvc 8/35 pppoe-client dial-pool-number 1 ! ! interface Dialer0 ip address negotiated ip mtu 1452 ip nat outside ip virtual-reassembly encapsulation ppp dialer pool 1 dialer-group 1 ppp authentication chap callin ppp chap hostname xxxxxxxxxxxxx@xxxxxxxxxxxxxx.net ppp chap password 0 xxxxxxxxxxxxxxx ! ip classless ip route 0.0.0.0 0.0.0.0 Dialer0 ! ip http server no ip http secure-server ip nat inside source list 1 interface Dialer0 overload ! access-list 1 remark INSIDE_IF=FastEthernet0/0 access-list 1 remark SDM_ACL Category=2 access-list 1 permit 10.10.10.0 0.0.0.255 dialer-list 1 protocol ip permit ! ! control-plane ! ! line con 0 line aux 0 line vty 0 4 login 111">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2008-01-28T21:50:46+00:00">
+    <meta property="article:modified_time" content="2008-01-28T21:50:46+00:00">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="cisco-config-wic-1adsl-2">
+  <meta name="twitter:description" content="Cisco WIC-1ADSL config for 1800 series router and ios 12.4 This config is for the Cisco 1800 series router running IOS 12.4. IOS 12.4 has some command and syntax changes in reguards to interfaces and configuration commands for PPPOE. This config was submitted by my good friend Pedro Rivera.
+version 12.4 service timestamps debug datetime msec service timestamps log datetime msec no service password-encryption ! hostname Router ! boot-start-marker boot-end-marker ! ! no aaa new-model ! resource policy ! mmi polling-interval 60 no mmi auto-configure no mmi pvc mmi snmp-timeout 180 ip subnet-zero ip cef ! ! ! ! ip name-server 205.152.144.23 ! ! interface FastEthernet0/0 description Internal Lan ip address 10.10.10.254 255.255.255.0 ip nat inside ip virtual-reassembly ip tcp adjust-mss 1452 duplex auto speed auto ! interface FastEthernet0/1 no ip address shutdown duplex auto speed auto ! interface ATM0/0/0 no ip address no atm ilmi-keepalive dsl operating-mode auto ! interface ATM0/0/0.1 point-to-point pvc 8/35 pppoe-client dial-pool-number 1 ! ! interface Dialer0 ip address negotiated ip mtu 1452 ip nat outside ip virtual-reassembly encapsulation ppp dialer pool 1 dialer-group 1 ppp authentication chap callin ppp chap hostname xxxxxxxxxxxxx@xxxxxxxxxxxxxx.net ppp chap password 0 xxxxxxxxxxxxxxx ! ip classless ip route 0.0.0.0 0.0.0.0 Dialer0 ! ip http server no ip http secure-server ip nat inside source list 1 interface Dialer0 overload ! access-list 1 remark INSIDE_IF=FastEthernet0/0 access-list 1 remark SDM_ACL Category=2 access-list 1 permit 10.10.10.0 0.0.0.255 dialer-list 1 protocol ip permit ! ! control-plane ! ! line con 0 line aux 0 line vty 0 4 login 111">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">cisco-config-wic-1adsl-2</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column">
+                            <p>John Burns</p>
+                            <p><time>January 28, 2008</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#cisco-wic-1adsl-config-for-1800-series-router-and-ios-124">Cisco WIC-1ADSL config for 1800 series router and ios 12.4</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <h2 id="cisco-wic-1adsl-config-for-1800-series-router-and-ios-124">Cisco WIC-1ADSL config for 1800 series router and ios 12.4</h2>
+<p>This config is for the Cisco 1800 series router running IOS 12.4. IOS 12.4 has some command and syntax changes in reguards to interfaces and configuration commands for PPPOE. This config was submitted by my good friend Pedro Rivera.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">version</span> <span style="color:#ae81ff">12.4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">service</span> <span style="color:#a6e22e">timestamps</span> <span style="color:#a6e22e">debug</span> <span style="color:#a6e22e">datetime</span> <span style="color:#a6e22e">msec</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">service</span> <span style="color:#a6e22e">timestamps</span> <span style="color:#a6e22e">log</span> <span style="color:#a6e22e">datetime</span> <span style="color:#a6e22e">msec</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">service</span> <span style="color:#a6e22e">password</span><span style="color:#f92672">-</span><span style="color:#a6e22e">encryption</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hostname</span> <span style="color:#a6e22e">Router</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">boot</span><span style="color:#f92672">-</span><span style="color:#a6e22e">start</span><span style="color:#f92672">-</span><span style="color:#a6e22e">marker</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">boot</span><span style="color:#f92672">-</span><span style="color:#a6e22e">end</span><span style="color:#f92672">-</span><span style="color:#a6e22e">marker</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">aaa</span> <span style="color:#66d9ef">new</span><span style="color:#f92672">-</span><span style="color:#a6e22e">model</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">resource</span> <span style="color:#a6e22e">policy</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mmi</span> <span style="color:#a6e22e">polling</span><span style="color:#f92672">-</span><span style="color:#a6e22e">interval</span> <span style="color:#ae81ff">60</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">mmi</span> <span style="color:#a6e22e">auto</span><span style="color:#f92672">-</span><span style="color:#a6e22e">configure</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">mmi</span> <span style="color:#a6e22e">pvc</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mmi</span> <span style="color:#a6e22e">snmp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">timeout</span> <span style="color:#ae81ff">180</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">subnet</span><span style="color:#f92672">-</span><span style="color:#a6e22e">zero</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">cef</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span> <span style="color:#ae81ff">205.152</span>.<span style="color:#ae81ff">144.23</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">description</span> <span style="color:#a6e22e">Internal</span> <span style="color:#a6e22e">Lan</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">10.10</span>.<span style="color:#ae81ff">10.254</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">virtual</span><span style="color:#f92672">-</span><span style="color:#a6e22e">reassembly</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">adjust</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mss</span> <span style="color:#ae81ff">1452</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">duplex</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">speed</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">shutdown</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">duplex</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">speed</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ATM0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">no</span> <span style="color:#a6e22e">atm</span> <span style="color:#a6e22e">ilmi</span><span style="color:#f92672">-</span><span style="color:#a6e22e">keepalive</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">dsl</span> <span style="color:#a6e22e">operating</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ATM0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0.1</span> <span style="color:#a6e22e">point</span><span style="color:#f92672">-</span><span style="color:#a6e22e">to</span><span style="color:#f92672">-</span><span style="color:#a6e22e">point</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">pvc</span> <span style="color:#ae81ff">8</span><span style="color:#f92672">/</span><span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pppoe</span><span style="color:#f92672">-</span><span style="color:#a6e22e">client</span> <span style="color:#a6e22e">dial</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pool</span><span style="color:#f92672">-</span><span style="color:#a6e22e">number</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Dialer0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#a6e22e">negotiated</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">mtu</span> <span style="color:#ae81ff">1452</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">outside</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">virtual</span><span style="color:#f92672">-</span><span style="color:#a6e22e">reassembly</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">encapsulation</span> <span style="color:#a6e22e">ppp</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">dialer</span> <span style="color:#a6e22e">pool</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">dialer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">group</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">authentication</span> <span style="color:#a6e22e">chap</span> <span style="color:#a6e22e">callin</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">chap</span> <span style="color:#a6e22e">hostname</span> <span style="color:#a6e22e">xxxxxxxxxxxxx</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">xxxxxxxxxxxxxx</span>.<span style="color:#a6e22e">net</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">chap</span> <span style="color:#a6e22e">password</span> <span style="color:#ae81ff">0</span> <span style="color:#a6e22e">xxxxxxxxxxxxxxx</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">classless</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">route</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#a6e22e">Dialer0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">http</span> <span style="color:#a6e22e">server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">http</span> <span style="color:#a6e22e">secure</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span> <span style="color:#a6e22e">source</span> <span style="color:#a6e22e">list</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Dialer0</span> <span style="color:#a6e22e">overload</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">remark</span> <span style="color:#a6e22e">INSIDE_IF</span><span style="color:#f92672">=</span><span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">remark</span> <span style="color:#a6e22e">SDM_ACL</span> <span style="color:#a6e22e">Category</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">permit</span> <span style="color:#ae81ff">10.10</span>.<span style="color:#ae81ff">10.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.255</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dialer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">protocol</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">permit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">plane</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">line</span> <span style="color:#a6e22e">con</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">line</span> <span style="color:#a6e22e">aux</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">line</span> <span style="color:#a6e22e">vty</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">login</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">111</span>
+</span></span></code></pre></div>
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a>
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://johnburns.io/post/cisco-config-wic-1adsl/">cisco-config-wic-1adsl</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://johnburns.io/post/cisco-ios-firewall-security/">cisco-ios-firewall-security</a>
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

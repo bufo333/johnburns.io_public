@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>ip-filter-and-freebsd | The Colour of My Thoughts</title>
+    <meta name="description"
+        content="IP Filter and FreeBSD
+IPF is a very robust firewall included in FreeBSD by default. This is a statefull firewall with logging capabilities that can also be used to NAT a local network in situations where the FreeBSD box is the router. The best way to get IPF working is to compile the kernel with support built in. Although the default kernel has support through the use of loadable modules, compiling the options into the kernel provide a more flexible and robust system.">
+    <link rel="canonical" href="https://johnburns.io/post/ip-filter-and-freebsd/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/post/ip-filter-and-freebsd/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="ip-filter-and-freebsd">
+  <meta property="og:description" content="IP Filter and FreeBSD IPF is a very robust firewall included in FreeBSD by default. This is a statefull firewall with logging capabilities that can also be used to NAT a local network in situations where the FreeBSD box is the router. The best way to get IPF working is to compile the kernel with support built in. Although the default kernel has support through the use of loadable modules, compiling the options into the kernel provide a more flexible and robust system.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2007-06-25T00:27:21+00:00">
+    <meta property="article:modified_time" content="2007-06-25T00:27:21+00:00">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ip-filter-and-freebsd">
+  <meta name="twitter:description" content="IP Filter and FreeBSD IPF is a very robust firewall included in FreeBSD by default. This is a statefull firewall with logging capabilities that can also be used to NAT a local network in situations where the FreeBSD box is the router. The best way to get IPF working is to compile the kernel with support built in. Although the default kernel has support through the use of loadable modules, compiling the options into the kernel provide a more flexible and robust system.">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">ip-filter-and-freebsd</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column">
+                            <p>John Burns</p>
+                            <p><time>June 25, 2007</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#ip-filter-and-freebsd">IP Filter and FreeBSD</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <h2 id="ip-filter-and-freebsd">IP Filter and FreeBSD</h2>
+<p>IPF is a very robust firewall included in FreeBSD by default. This is a statefull firewall with logging capabilities that can also be used to NAT a local network in situations where the FreeBSD box is the router. The best way to get IPF working is to compile the kernel with support built in. Although the default kernel has support through the use of loadable modules, compiling the options into the kernel provide a more flexible and robust system.</p>
+<p>The first thing you want to do is download the FreeBSD source. This can be done by using the ports tree to install cvsup, and modifying the standard-supfile for your release. Once this is done you can run the following command:</p>
+<p>cvsup �g �L2 ./standard-supfile</p>
+<p>Once the source tree is installed you will want to add the options to the kernel source.</p>
+<p>#cd /usr/src/sys/conf/i386/</p>
+<blockquote>
+<h1 id="ee-generic">ee ./GENERIC</h1></blockquote>
+<p>You will want to add the following line for a secure and efficient?  IPF installation.</p>
+<p>options IPFILTER</p>
+<p>#turn on support for</p>
+<p>IP Filter options</p>
+<p>IPFILTER_LOG</p>
+<p>#Turn on logging by default options</p>
+<p>IPFILTER_DEFAULT_BLOCK</p>
+<p>#change state from default allow to default block</p>
+<p>The last command is very important as it tells the kernel to drop all packets on all interfaces by default. This means that you will have to explicitly allow all packets, even on loopback interfaces like LO</p>
+<p>After these commands are entered and the file is saved you can compile the kernel by using the following commands</p>
+<p>#cd /usr/src</p>
+<blockquote>
+<p>#make buildkernel KERNCONF=GENERIC</p></blockquote>
+<blockquote>
+<p>#make installkernel</p></blockquote>
+<blockquote>
+<p>#shutdown �r now</p></blockquote>
+<p>Once the machine reboots you will have to edit the rc.conf file in order to set some configuration settings for IPF.</p>
+<p>#ee /etc/rc.conf</p>
+<blockquote>
+<p>ipfilter_enable=&ldquo;YES&rdquo;</p></blockquote>
+<h1 id="start-ipf-firewall">Start ipf firewall</h1>
+<p>ipfilter_rules=&quot;/etc/ipf.rules&quot;</p>
+<h1 id="loads-rules-definition-text-file">loads rules definition text file</h1>
+<blockquote>
+<p>ipmon_enable=&ldquo;YES&rdquo;</p></blockquote>
+<h1 id="start-ip-monitor">Start IP monitor</h1>
+<p>logipmon_flags=&quot;-Ds&quot;</p>
+<h1 id="d--start-as-daemon">D = start as daemon</h1>
+<h1 id="s--log-to-syslog">s = log to syslog</h1>
+<h1 id="v--log-tcp-window-ack-seq">v = log tcp window, ack, seq</h1>
+<blockquote>
+<h1 id="n--map-ip--port-to-names">n = map IP &amp; port to names</h1></blockquote>
+<blockquote>
+<p>If you have a LAN behind this firewall that uses the reserved private IP address ranges, then you need to add the following to enable <acronym>NAT</acronym> functionality:</p></blockquote>
+<p>gateway_enable=&ldquo;YES&rdquo;</p>
+<h1 id="enable-as-lan-gateway">Enable as LAN gateway</h1>
+<blockquote>
+<p>ipnat_enable=&ldquo;YES&rdquo;</p></blockquote>
+<h1 id="start-ipnat-function">Start ipnat function</h1>
+<blockquote>
+<p>ipnat_rules=&quot;/etc/ipnat.rules&quot;</p></blockquote>
+<h1 id="rules-definition-file-for-ipnat">rules definition file for ipnat</h1>
+<p>Now it is time to look at a sample firewall rule file and see how IP Filter works. ? On a system with 1 network card, such as a web server or such.</p>
+<p>#cat /etc/ipf.rules</p>
+<p>#######################</p>
+<p>##loop back interface, do not restrict this interface it will break system!!!#####</p>
+<p>pass out quick on lo0</p>
+<p>pass in quick on lo0<tt><strong><em><span style="font-size: 10pt; line-height: 115%"></em></strong></tt></p>
+<p><tt><strong><em><span style="font-size: 10pt; line-height: 115%">###interface rl0 internet and lan interface#####</em></strong></tt></p>
+<p>Pass in quick on rl0</p>
+<p>#needed because of implicit block in kernel</p>
+<blockquote>
+<p>block in on rl0</p></blockquote>
+<p>#without the quick command it will match this rule but check to see if it matches others</p>
+<p>block in quick on rl0 from 192.168.0.0/16 to any</p>
+<p>#anti spoofing do not to use this if nic is on lan also</p>
+<p>block in quick on rl0 from 172.16.0.0/12 to any</p>
+<p>#anti spoofing do not to use this if nic is on lan also</p>
+<p>block in quick on rl0 from 10.0.0.0/8 to any</p>
+<p>#anti spoofing remember not to use this if nic is on lan also</p>
+<p>block in log quick on rl0 from 127.0.0.0/8 to any</p>
+<p>#anti spoofing loopback network</p>
+<p>block in log quick on rl0 from 20.20.20.0/24 to any       #anti ? spoofing</p>
+<p>block in log quick on rl0 from any to 20.20.20.0/32       #anti spoofing</p>
+<p>block in log quick on rl0 from any to 20.20.20.255/32   #anti� spoofing</p>
+<p>pass out quick on rl0 proto tcp from 10.0.0.1 to any keep state</p>
+<p>pass out quick on rl0 proto udp from 10.0.0.1 to any keep state</p>
+<p>pass out quick on rl0 proto icmp from 10.0.0.1 to any keep state</p>
+<p><em><font face="Calibri">#################################################</em><font face="Calibri"></p>
+<p>Now let�s break this file down one line at a time to understand what is does. Remember that we used the default block all command when we recompiled the kernel. This is secure by default because it operated on the bases that everything is blocked unless we specifically let in a packet or protocol. The first thing we have to do is tell IP Filter that it should allow everything in and out of the lo interface. Lo is the loopback interface and is used for interproccess communication. Lo is always 127.0.0.1.</p>
+<p>pass out quick on lo0</p>
+<p>pass in quick on lo0<font face="Calibri"></p>
+<p>The above two commands?  allow traffic to flow freely in and out of the loopback interface. Let me ask you a question for the sake of learning. Look at the rules below and think about what you think will happen when a user tries to connect to this web server.</p>
+<p>Block in on rl0 proto tcp from any to any&gt;</p>
+<p>Pass in on rl0 proto tcp from any to any port = 80<em><font face="Calibri"> </em></p>
+<p>Now if you are familiar with Cisco access-lists and other similar firewalls you may have said: the packet is a web request packet, a syn packet to be precise. This packet will match the first rule and be dropped since all www packets are tcp.</p>
+<p>Won�t you be surprised when the packet skips on past the first rule and connects to your web server. In IPF a packet?is evaluated against 1 rule at a time from top to bottom. But the fate of the packet is decided based on the last rule it matches. If you want a packet to match only a single rule and be passed or dropped, you need to add the keyword quick to your command. Such as �</p>
+<p>pass out quick on lo0</p>
+<p>pass in quick on lo0<font face="Calibri"></p>
+<p>Now you may ask �Why would this behavior be useful?� This behavior is useful for many situations but let�s consider one example. In this example the computer the firewall is protecting is a FreeBSD desktop computer which hosts� not services. So we want to block all incoming packets that have no state table entry(more on state tables later). In order to do this you have the following rule.</p>
+<p>block in quick on rl0</p>
+<p>The above command will work however it will not give you any information about the packet that was dropped. Now say for example you want to block all unsolicited packets but you also want to log any packets that are trying to carry out a spoof attack on your network. In this case the following commands would be more useful.</p>
+<p>block in on rl0<font face="Calibri"></p>
+<p><font face="Calibri"><strong><em>block in log quick on rl0 from 127.0.0.0/8 to any          </em></strong></p>
+<p><font face="Calibri"><strong><em>#anti spoofing loopback network</em></strong><strong><em><span style="font-size: 10pt; font-family: 'Courier New'"></em></strong><em><font face="Calibri"> </em></p>
+<p>In this situation the packet will be dropped but if the packet is a packet from the internet masquerading as a loopback packet it will be dropped and logged. This is why this behavior is so important, because it gives you the flexibility to have more control over your firewall with a minimum of effort.</p>
+<p><strong><font face="Calibri">Keep State</strong></p>
+<p>Now you will notice in our example config file above we had blocked all incoming connections. You may be asking yourself?  how the config works if every reply coming back is blocked. The key to that config working is in the <em>keep state</em> keyword. Let�s take a look at the following snippet of code:</p>
+<p>pass out quick on rl0 proto tcp from 10.0.0.1 to any keep state</p>
+<p>pass out quick on rl0 proto udp from 10.0.0.1 to any keep state</p>
+<p>pass out quick on rl0 proto icmp from 10.0.0.1 to any keep state</p>
+<p>You will notice in the above code that we allow all tcp, udp, and icmp packets to go to the internet. The important part of the above commands is the keep state command. What this does is tell the computer to track that tcp session and keep a table of all outgoing requests. When the packet hits the interface which is a reply to a session which we opened up. The computer will dynamically add a rule to allow this tcp stream to enter the computer. In this way all unsolicited ? packets are dropped except those packets responding to requests initiated by you.</p>
+<p>Now let�s say that you want to host an apache web server on your desktop for testing purposes. It is very simple to modify the?  config to allow incoming connections by adding the following line</p>
+<p>Pass in quick on rl0 proto tcp from any to any port = 80 flags S keep state</p>
+<p>Just make sure this line goes above the block in lines so that it is processed first to make sure that packet goes through. It is important to remember that this command can be modifies for any service you want to run. Here are some examples below</p>
+<p>Pass in quick on rl0 proto udp from any to any port = 53 keep state</p>
+<p>#dns server</p>
+<p><strong><em></em></strong>Pass in quick on rl0 proto tcp from any to any port = 22 flags S keep state</p>
+<p>It is also important to note that the <strong><em>flags S command </em></strong>only allows in lone syn flags on packets. What this means is that it will only let in the initial connection request not just any packet that is part of a stream. This helps protect against man in the middle attacks as well as keep packets that will be dropped from taking up resources in your tcp stack.</p>
+<p>Back to blocking ports, there is one keyword that can help us increase the stealth of our firewall. In a typical exchange when a packet is blocked we decrement the TTL like the RFC�s say we should. But what this does is show that there is a hop here and it announces to the world that we exist. Instead of using the above rule we could rewrite it such that it does not decrement the TTL of the packet. To the rest of the world it looks as if the computer does not exist.</p>
+<p>We can do this by changing the following commands from</p>
+<p>block in on rl0</p>
+<p><strong><em></em></strong><font face="Calibri"><strong><em>block in log quick on rl0 from 127.0.0.0/8 to any</em></strong></p>
+<p><font face="Calibri"><strong><em>#anti spoofing loopback network</em></strong><strong><em><span style="font-size: 10pt; font-family: 'Courier New'"></em></strong></p>
+<p>to</p>
+<p>block in on rl0</p>
+<p><strong><em></em></strong><font face="Calibri"><strong><em>block in log quick on rl0 fastroute from 127.0.0.0/8 to any  </em></strong></p>
+<p><font face="Calibri"><strong><em>#anti spoofing loopback network</em></strong><strong><em><span style="font-size: 10pt; font-family: 'Courier New'"></em></strong><font face="Calibri">?</p>
+<p>Notice I added the <strong><em>Fastroute </em></strong>keyword. This tells the firewall not to decrement TTL of a packet when it is blocked.</p>
+<p>Now let me show you how to activate the rule set for IPF once you have created your file. To activate a rule set issue the following command.</p>
+<p>The ipf command is used to load your rules file. Normally you create a file containing your custom rules and use this command to replace in mass the currently running firewall internal rules:</p>
+<h1 id="ipf--fa--f-etcipfrules">ipf -Fa -f /etc/ipf.rules</h1>
+<p>-Fa means flush all internal rules tables.</p>
+<p>-f means this is the file to read for the rules to load.</p>
+<p>This gives you the ability to make changes to your custom rules file, run the above IPF command, and thus update the running firewall with a fresh copy of all the rules without having to reboot the system. This method is very convenient for testing new rules as the procedure can be executed as many times as needed.</p>
+<font face="Calibri">
+<p>This is just a basic introduction to IPF rules. There are many more techniques and things that can be done such as rule groups which can speed up the rule processing on large access-lists. And variable substitution which can help make writing complex rules sets easy. I will cover NAT and the various commands to monitor the firewall such as ipfstat in another installment of the how-to. I hope you enjoyed it!</p>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a>
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://johnburns.io/post/solaris-zones-part-1/">solaris-zones-part-1</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://johnburns.io/post/freaking-awesome-linux-distro-os-tan-wallpapers/">freaking-awesome-linux-distro-os-tan-wallpapers</a>
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

@@ -2,31 +2,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.145.0">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>The Colour of My Thoughts</title>
+    <title>bhyve-on-freebsd-10-1 | The Colour of My Thoughts</title>
     <meta name="description"
-        content="
+        content="Bhyve on FreeBSD 10.1
+I recently started a new series of videos on YouTube about my favorite operating system FreeBSD. Below are the commands used in the video to setup the bhyve hypervisor on FreeBSD 10.1 with a virtualized Ubuntu 15 server.
+ 
+######## prerequisites for bhyve on FreeBSD ##########
 
- Enter
-">
-    <link rel="canonical" href="https://johnburns.io/" />
+pkg install grub2-bhyve
+
+mkdir /virtual_machines
+
+cd /virtual_machines
+
+mkdir iso
+
+cd iso
+
+fetch http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso
+
+
+
+######��� Load kernel modules and set sysctl values ######
+
+kldload if_tap
+
+kldload if_bridge
+
+kldload vmm
+
+kldload nmdm
+
+###### set sysctl values� #######3
+
+sysctl net.link.tap.up_on_open=1
+
+sysctl net.inet.ip.forwarding=1
+
+echo &#34;net.link.tap.up_on_open=1&#34; &amp;gt;&amp;gt; /etc/sysctl.conf
+
+echo &#34;vm1:dv=/dev/nmdm1B:br#9600:pa=none:&#34; &amp;gt;&amp;gt; /etc/remote
+
+##### create interfaces needed for the vm� ########
+
+
+
+ifconfig tap1 create
+
+ifconfig bridge0 create
+
+ifconfig bridge0 addm tap1 addm em0 up
+
+
+
+
+
+##### create the config files and virtual disk� ########
+
+
+
+truncate -s 10g vm1.img
+
+vi device.map
+
+(hd0) /virtual_machines/ubuntu_server/vm1.img
+
+(cd0) /virtual_machines/iso/ubuntu15server.iso
+
+
+
+####### Boot the virtual machines ###########
+
+grub-bhyve -r cd0 -m /virtual_machines/ubuntu_server/device.map -M 1024 vm1
+
+
+
+bhyve -c 1 -m 1024M -H -P -A \
+
+-l com1,/dev/nmdm0A \
+
+-s 0:0,hostbridge \
+
+-s 1:0,lpc -s 2:0,virtio-net,tap1 \
+
+-s 3,ahci-cd,/virtual_machines/iso/ubuntu15server.iso \
+
+-s 4,virtio-blk,/virtual_machines/ubuntu_server/vm1.img vm1 &amp;amp;
+########### boot into newly installed vm ################333">
+    <link rel="canonical" href="https://johnburns.io/post/bhyve-on-freebsd-10-1/" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
     
     <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
 
-    <meta property="og:url" content="https://johnburns.io/">
+    <meta property="og:url" content="https://johnburns.io/post/bhyve-on-freebsd-10-1/">
   <meta property="og:site_name" content="The Colour of My Thoughts">
-  <meta property="og:title" content="Welcome">
-  <meta property="og:description" content="Enter">
+  <meta property="og:title" content="bhyve-on-freebsd-10-1">
+  <meta property="og:description" content="Bhyve on FreeBSD 10.1 I recently started a new series of videos on YouTube about my favorite operating system FreeBSD. Below are the commands used in the video to setup the bhyve hypervisor on FreeBSD 10.1 with a virtualized Ubuntu 15 server.
+######## prerequisites for bhyve on FreeBSD ########## pkg install grub2-bhyve mkdir /virtual_machines cd /virtual_machines mkdir iso cd iso fetch http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso ######��� Load kernel modules and set sysctl values ###### kldload if_tap kldload if_bridge kldload vmm kldload nmdm ###### set sysctl values� #######3 sysctl net.link.tap.up_on_open=1 sysctl net.inet.ip.forwarding=1 echo &#34;net.link.tap.up_on_open=1&#34; &amp;gt;&amp;gt; /etc/sysctl.conf echo &#34;vm1:dv=/dev/nmdm1B:br#9600:pa=none:&#34; &amp;gt;&amp;gt; /etc/remote ##### create interfaces needed for the vm� ######## ifconfig tap1 create ifconfig bridge0 create ifconfig bridge0 addm tap1 addm em0 up ##### create the config files and virtual disk� ######## truncate -s 10g vm1.img vi device.map (hd0) /virtual_machines/ubuntu_server/vm1.img (cd0) /virtual_machines/iso/ubuntu15server.iso ####### Boot the virtual machines ########### grub-bhyve -r cd0 -m /virtual_machines/ubuntu_server/device.map -M 1024 vm1 bhyve -c 1 -m 1024M -H -P -A \ -l com1,/dev/nmdm0A \ -s 0:0,hostbridge \ -s 1:0,lpc -s 2:0,virtio-net,tap1 \ -s 3,ahci-cd,/virtual_machines/iso/ubuntu15server.iso \ -s 4,virtio-blk,/virtual_machines/ubuntu_server/vm1.img vm1 &amp;amp; ########### boot into newly installed vm ################333">
   <meta property="og:locale" content="en">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2015-05-15T00:43:24+00:00">
+    <meta property="article:modified_time" content="2015-05-15T00:43:24+00:00">
 
     
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Welcome">
-  <meta name="twitter:description" content="Enter">
+  <meta name="twitter:title" content="bhyve-on-freebsd-10-1">
+  <meta name="twitter:description" content="Bhyve on FreeBSD 10.1 I recently started a new series of videos on YouTube about my favorite operating system FreeBSD. Below are the commands used in the video to setup the bhyve hypervisor on FreeBSD 10.1 with a virtualized Ubuntu 15 server.
+######## prerequisites for bhyve on FreeBSD ########## pkg install grub2-bhyve mkdir /virtual_machines cd /virtual_machines mkdir iso cd iso fetch http://releases.ubuntu.com/15.04/ubuntu-15.04-server-amd64.iso ######��� Load kernel modules and set sysctl values ###### kldload if_tap kldload if_bridge kldload vmm kldload nmdm ###### set sysctl values� #######3 sysctl net.link.tap.up_on_open=1 sysctl net.inet.ip.forwarding=1 echo &#34;net.link.tap.up_on_open=1&#34; &amp;gt;&amp;gt; /etc/sysctl.conf echo &#34;vm1:dv=/dev/nmdm1B:br#9600:pa=none:&#34; &amp;gt;&amp;gt; /etc/remote ##### create interfaces needed for the vm� ######## ifconfig tap1 create ifconfig bridge0 create ifconfig bridge0 addm tap1 addm em0 up ##### create the config files and virtual disk� ######## truncate -s 10g vm1.img vi device.map (hd0) /virtual_machines/ubuntu_server/vm1.img (cd0) /virtual_machines/iso/ubuntu15server.iso ####### Boot the virtual machines ########### grub-bhyve -r cd0 -m /virtual_machines/ubuntu_server/device.map -M 1024 vm1 bhyve -c 1 -m 1024M -H -P -A \ -l com1,/dev/nmdm0A \ -s 0:0,hostbridge \ -s 1:0,lpc -s 2:0,virtio-net,tap1 \ -s 3,ahci-cd,/virtual_machines/iso/ubuntu15server.iso \ -s 4,virtio-blk,/virtual_machines/ubuntu_server/vm1.img vm1 &amp;amp; ########### boot into newly installed vm ################333">
 
     
     
@@ -137,300 +222,61 @@
 </script>
 
 </header><main>
-<article>
-    <div class="is-centered">
-            <div class="title subtitle heading is-6">
-                <div id="home-box" >
-                            
-                            <div class="avatar-container">
-                                <img src="/royal_kmm.jpg" class="author-avatar">
-
-                            </div>
-                            
-
-
-
-                        <h1 id="home-title" class="title is-1 "></h1>
-                    <div class="description column content typewriter-effect">
-                        <div class="text" id="typewriter-text"> </div>
-
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">bhyve-on-freebsd-10-1</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column">
+                            <p>John Burns</p>
+                            <p><time>May 15, 2015</time>
+                            </p>
+                        </div>
                     </div>
-                    <script>
-                        const typeWriter = document.getElementById('typewriter-text');
-                        typeWriter.style.setProperty('--characters', typeWriter.innerHTML.length);
-                    </script>
-
-                    <div class="social-icon">
-
-                        
-                        <a href="mailto:john@techinvasion.net" title="email"><span class="change-color icon">
-                                <svg height="32px" width="32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 21" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-    <polyline points="22,6 12,13 2,6"></polyline>
-</svg>
-                            </span></a>
-                        
-                        <a href="https://github.com/bufo333/" title="Github"><span class="change-color icon">
-                                <svg height="32px" width="32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path
-        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-    </path>
-</svg>
-                            </span></a>
-                        
-
-                    </div>
-
+                </div>
+                <div class="small-categories-container">
+                    
                 </div>
             </div>
-
-    </div></article>
-<div class="summary">
-    
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/store-dotfile-with-git/">Store dotfile with git</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <p>Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2022-08-23 Tue&gt;</span></span></p>
-<p>Version: 1.2</p>
-<!--start-summary-->
-<p>Store all DotFiles in a bare git repository</p>
-<!--nomore-->
-<h2 id="setup">Setup</h2>
-<ol>
-<li>git init &ndash;bare $HOME/.cfg</li>
-<li>alias config=&rsquo;<em>usr/bin/git &ndash;git-dir=$HOME</em>.cfg/ &ndash;work-tree=$HOME'</li>
-<li>echo &ldquo;alias config=&rsquo;<em>usr/local/bin/git &ndash;git-dir=$HOME</em>.cfg/ &ndash;work-tree=$HOME&rsquo;&rdquo; &gt;&gt; $HOME/.zsh/aliases</li>
-<li>config config &ndash;local status.showUntrackedFiles no</li>
-</ol>
-<h2 id="adding-files">Adding files</h2>
-<p>Manually add files to repository by using config add &lt;filename&gt;.
-Use this to add all your files manually, this way only updates to your tracked files will show</p>
-<h2 id="add-the-github-repository">Add the github repository</h2>
-<ol>
-<li>config remote add origin &lt;remote-url&gt;</li>
-<li>config push -u origin main</li>
-</ol>
-<h2 id="restore-files-from-github">Restore files from github</h2>
-<ol>
-<li>echo &ldquo;.cfg&rdquo; &gt;&gt; .gitignore</li>
-<li>git clone &lt;remote-git-repo-url&gt; $HOME/.cfg</li>
-<li>alias config=&rsquo;/usr/local/bin/git &ndash;git-dir=&lt;path to .cfg’s Git directory&gt; &ndash;work-tree=$HOME'</li>
-<li>config config &ndash;local status.showUntrackedFiles no</li>
-<li>config checkout</li>
-</ol>
         </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
         
-        <div class="post-time-container">
-          <span class="post-time"> 2024-04-04 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
-
-    
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/top-networking-trends-of-2024-a-network-engineer-s-perspective/">Top Networking Trends of 2024: A Network Engineer&#39;s Perspective</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <p>Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2024-01-28 Sun&gt;</span></span></p>
-<p>Version: 1.0</p>
-<!--start-summary-->
-<p>Welcome to 2024, a year that continues to witness revolutionary changes in the world of networking. As a network engineer, I&rsquo;ve seen firsthand the rapid evolution of technology in our field. This year is no exception, with several trends emerging that are reshaping how we think about and implement network infrastructure. Let&rsquo;s dive into some of the top trends in networking for 2024.</p>
-<!--nomore-->
-<h2 id="1-dot-the-rise-of-6g-technology">1. The Rise of 6G Technology</h2>
-<p>Although 5G has just recently become mainstream, the buzz around 6G technology is already gaining momentum. Expected to be commercially available by 2030, research and development in 6G are heating up in 2024. This next-generation technology promises even faster speeds, lower latency, and higher reliability, paving the way for more advanced applications like holographic communications and augmented reality.</p>
-        </div>
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#bhyve-on-freebsd-101">Bhyve on FreeBSD 10.1</a></li>
+  </ul>
+</nav></div>
+            </aside>
         
-        <div class="post-time-container">
-          <span class="post-time"> 2024-03-05 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
-
+    </div><script>
     
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/transforming-enterprise-networking-the-impact-of-ai-technologies/">Transforming Enterprise Networking: The Impact of AI Technologies</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <p>Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2024-04-03 Wed&gt;</span></span></p>
-<!--start-summary-->
-<h2 id="transforming-enterprise-networking">Transforming Enterprise Networking:</h2>
-<p>In the ever-evolving realm of enterprise networking, the integration of Artificial Intelligence (AI) technologies has become a game-changer. One of the most notable advancements in this area is Juniper Mist, a platform that leverages AI to revolutionize how networks are managed and operated. This article delves into how AI, particularly through solutions like Juniper Mist, is reshaping the enterprise networking landscape.</p>
-<!--nomore-->
-<h2 id="understanding-juniper-mist-and-its-ai-driven-approach">Understanding Juniper Mist and Its AI-Driven Approach</h2>
-<p>Juniper Mist is an AI-driven network solution that offers a unique combination of cloud management, advanced AI capabilities, and programmable APIs to deliver a full-stack solution for wireless, wired, and WAN networks. The platform is designed to simplify operations, improve user experiences, and provide unprecedented insight into network performance.</p>
-        </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2024-04-03 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
-
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
     
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/understanding-the-crystal-ball-function/">Understanding the crystal Ball Function</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <p>Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2024-04-07 Sun&gt;</span></span></p>
-<p>Subject: Understanding the crystal Ball Function</p>
-<p>Version: 1.0</p>
-<!--start-summary-->
-<p>Exploring the intricacies of the Crystal Ball Problem as it applies to arrays, this piece delves into the challenge of predicting future elements based on current sequences. It underscores the significance of pattern recognition and algorithmic forecasting in computational analysis and real-world applications.</p>
-<!--nomore-->
-<h2 id="introduction-to-the-crystal-ball-problem-with-arrays">Introduction to the Crystal Ball Problem with Arrays</h2>
-<p>The &ldquo;Crystal Ball Problem&rdquo; in the context of arrays is a metaphorical representation of the challenge of predicting future elements or trends based on a current sequence of data. Imagine you have an array of numbers representing data points over time. The task is to predict the next set of values the array will hold, using only the information currently available within it.</p>
-        </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2024-04-05 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
 
-    
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/building-stratum-1-time-source/">Building a Stratum‑1 NTP Server on Raspberry Pi 5</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <p>This guide explains how to transform a fresh installation of Raspberry Pi OS into a stratum‑1 NTP server. The project leverages a GPIO‑based GPS module with PPS, the PTP hardware timestamping capability of the Ethernet interface, Chrony for NTP synchronization, and Telegraf with InfluxDB for monitoring.</p>
-<hr>
-<h2 id="1-overview">1. Overview</h2>
-<p>In this project you&rsquo;ll build a stratum‑1 NTP server using:</p>
-<ul>
-<li><strong>Raspberry Pi 5</strong> as the host.</li>
-<li>A <strong>GPS module</strong> (via the serial UART port) for an absolute time reference.</li>
-<li>A <strong>PPS (Pulse Per Second) signal</strong> from the same GPS for sub-microsecond timing accuracy.</li>
-<li>The <strong>PTP hardware timestamping</strong> on the Ethernet interface for improved precision on PTP packets.</li>
-<li><strong>Chrony</strong> for NTP time synchronization.</li>
-<li><strong>gpsd</strong> to interface with your GPS receiver.</li>
-<li><strong>Telegraf</strong> for monitoring various metrics (including Chrony statistics) sent to an InfluxDB backend.</li>
-</ul>
-<hr>
-<h2 id="2-prerequisites-and-required-hardware">2. Prerequisites and Required Hardware</h2>
-<p>Before you begin, ensure you have the following:</p>
-        </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2025-03-28 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
 
-    
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/beginner-network-templating/">beginner-network-templating</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <h2 id="develop-and-deploy-network-templates-before-automating">Develop and Deploy Network Templates Before Automating</h2>
-<p>Date: 2022-05-26<br>
-Subject: Network Templating<br>
-Version 1.0</p>
-<!--start-summary-->
-<p>Automation is the number one topic in networking today. Automation allows a team to lean left, moving simple troubleshooting to the NOC, it allows the team to do more with less, and it allows for repeatable deployments. A good place to start is to think about many of the day to day work that gets done, how much of this work is simply applying the same changes over and over. These tasks are a great place to start with templating.</p>
-        </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2022-05-26 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
 
-    
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/rename-accounts-in-freebsd/">rename-accounts-in-freebsd</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <h2 id="rename-accounts-in-freebsd">Rename accounts in FreeBSD</h2>
-<p>pw usermod -n oldname -l newname -d /usr/home/newname</p>
-<p>pw groupmod -n oldname -l newname</p>
-<p>mv /usr/home/oldname /usr/home/newname</p>
-<p>chown -R newname:newname /usr/home/newname</p>
-        </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2018-03-14 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
 
-    
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/bhyve-on-freebsd-10-1/">bhyve-on-freebsd-10-1</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <h2 id="bhyve-on-freebsd-101">Bhyve on FreeBSD 10.1</h2>
+</script>
+            </div>
+            <h2 id="bhyve-on-freebsd-101">Bhyve on FreeBSD 10.1</h2>
 <p>I recently started a new series of videos on YouTube about my favorite operating system FreeBSD. Below are the commands used in the video to setup the bhyve hypervisor on FreeBSD 10.1 with a virtualized Ubuntu 15 server.</p>
 <p> </p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">########</span> <span style="color:#a6e22e">prerequisites</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">bhyve</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">FreeBSD</span> <span style="color:#960050;background-color:#1e0010">##########</span>
@@ -515,100 +361,56 @@ Version 1.0</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">4</span>,<span style="color:#a6e22e">virtio</span><span style="color:#f92672">-</span><span style="color:#a6e22e">blk</span>,<span style="color:#960050;background-color:#1e0010">/virtual_machines/ubuntu_server/vm1.img vm1 &amp;amp;</span>
 </span></span></code></pre></div><p>########### boot into newly installed vm ################333</p>
-        </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2015-05-15 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">rub</span><span style="color:#f92672">-</span><span style="color:#a6e22e">bhyve</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">r</span> <span style="color:#a6e22e">hd0</span>,<span style="color:#a6e22e">msdos1</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">m</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">virtual_machines</span><span style="color:#f92672">/</span><span style="color:#a6e22e">ubuntu_server</span><span style="color:#f92672">/</span><span style="color:#a6e22e">device</span>.<span style="color:#a6e22e">map</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">M</span> <span style="color:#ae81ff">1024</span> <span style="color:#a6e22e">vm1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bhyve</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">c</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">m</span> <span style="color:#ae81ff">1024</span><span style="color:#a6e22e">M</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">H</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">P</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">A</span> <span style="color:#f92672">\</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">l</span> <span style="color:#a6e22e">com1</span>,<span style="color:#960050;background-color:#1e0010">/dev/nmdm0A \</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">hostbridge</span> <span style="color:#f92672">\</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">lpc</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">virtio</span><span style="color:#f92672">-</span><span style="color:#a6e22e">net</span>,<span style="color:#a6e22e">tap1</span> <span style="color:#f92672">\</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span><span style="color:#a6e22e">s</span> <span style="color:#ae81ff">4</span>,<span style="color:#a6e22e">virtio</span><span style="color:#f92672">-</span><span style="color:#a6e22e">blk</span>,<span style="color:#960050;background-color:#1e0010">/virtual_machines/ubuntu_server/vm1.img vm1 &amp;amp;</span>
+</span></span></code></pre></div><p>#################3 bhyve commands and nice to haves ##########</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">kill</span> <span style="color:#a6e22e">running</span> <span style="color:#a6e22e">bhyve</span> <span style="color:#a6e22e">machines</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bhyvectl</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">destroy</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">vm</span><span style="color:#f92672">=</span><span style="color:#a6e22e">name_of_vm</span>
+</span></span></code></pre></div><p>create bridge and tap interfaces to provision at system boot</p>
 
-    
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/poem/">poem</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <h2 id="poem">poem</h2>
-<p>So live your life that the fear of death can never enter your heart.
-Trouble no one about their religion
-Respect others in their view
-And demand that they respect yours
-Love your life, perfect your life, beautify all things in your life
-Seek to make your life long and its purpose in the service of your people
-Prepare a noble death song for the day when you go over the great divide
-Always give a word or a sign of salute when meeting or passing a friend
-Even a stranger when in a lonely place
-Show respect to all people and grovel to none
-When you arise in the morning give thanks for the food and for the joy of living
-If you see no reason for giving thanks, the fault lies only in yourself
-Abuse no one and nothing
-For abuse turns the wise ones to fools and robs the spirit of its vision
-When it comes your time to die
-Be not like those whose hearts are filled with the fear of death
-So that when their time comes
-They weep and pray for a little more time
-To live their lives over again in a different way
-Sing your death song
-And die like a hero going home</p>
         </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2013-10-20 </span>
-        </div>
-      </div>
-      
     </div>
-  </div>
-</article>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a>
 
-    
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/slow-downloads-in-itunes/">slow-downloads-in-itunes</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <h2 id="slow-downloads-in-itunes">Slow Downloads in Itunes</h2>
-<p>If you are experiencing slow downloads in iTunes try this:</p>
-<p>Shut down iTunes</p>
-<p>Disable antivirus/internet security suite</p>
-<p>Open itunes and resume downloads.</p>
-<p>This is most often caused by the internet security suite which is not capable of scanning large files in real time. If this fixes your problem, you can usually make the fix permanent by disabling the piece of the antivirus that filters web traffic.</p>
-        </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2012-11-11 </span>
-        </div>
-      </div>
-      
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://johnburns.io/post/poem/">poem</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://johnburns.io/post/rename-accounts-in-freebsd/">rename-accounts-in-freebsd</a>
+                
+            </div>
+        </section>
     </div>
-  </div>
-</article>
-
-    
-    <hr>
-<section class="pagination" >
-    
-    <label class="pag-link">Page 1 of 6</label>
-    
-    <button class="button"  >
-        <a href="/page/2/" class="pag-link"> Next </a>
-    </button>
-    
-</section>
 
 </div>
 

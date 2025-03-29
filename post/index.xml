@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Welcome on The Colour of My Thoughts</title>
-    <link>https://johnburns.io/</link>
-    <description>Recent content in Welcome on The Colour of My Thoughts</description>
+    <title>The Colour of My Thoughts</title>
+    <link>https://johnburns.io/post/</link>
+    <description>Recent content on The Colour of My Thoughts</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Fri, 28 Mar 2025 22:34:35 +0000</lastBuildDate>
-    <atom:link href="https://johnburns.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://johnburns.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Store dotfile with git</title>
       <link>https://johnburns.io/post/store-dotfile-with-git/</link>
@@ -413,20 +413,6 @@
       <pubDate>Sat, 31 Jan 2004 21:40:22 +0000</pubDate>
       <guid>https://johnburns.io/post/laptop-crashes-when-power-source-is-changed-fix/</guid>
       <description>&lt;h2 id=&#34;laptop-crashes-when-power-source-is-changed-fix&#34;&gt;Laptop crashes when power source is changed fix&lt;/h2&gt;&#xA;&lt;p&gt;Like most people who have complained about this problem I had recently upgraded to mandrake 9.2 and was surprised by the lack of problems usually associated with upgrading distro&amp;rsquo;s. My surprise turned to horror when I realized the my laptop a &lt;a href=&#34;http://www.linuxquestions.org/questions/#&#34; id=&#34;KonaLink0&#34; target=&#34;_top&#34; class=&#34;kLink&#34; style=&#34;text-decoration: underline ! important; position: static&#34;&gt;&lt;font style=&#34;color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static&#34; color=&#34;blue&#34;&gt;&lt;span class=&#34;kLink&#34; style=&#34;color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static&#34;&gt;Dell &lt;/span&gt;&lt;span class=&#34;kLink&#34; style=&#34;color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static&#34;&gt;Inspiron&lt;/span&gt;&lt;/font&gt;&lt;/a&gt; 8000 would freeze as soon as I unplugged the a/c adapter or plugged in the a/c adapter.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>About</title>
-      <link>https://johnburns.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://johnburns.io/about/</guid>
-      <description>&lt;h2 id=&#34;about-me&#34;&gt;About Me&lt;/h2&gt;&#xA;&lt;p&gt;An enthusiastic troubleshooter, engineer, technologist, and team leader. I find myself constantly looking for the next challenge. I enjoy complex technological and social problem solving. Navigating the complexities of large organizations to create progress and forward momentum on complex projects are just some of the things I spend my days doing for organizations.&lt;/p&gt;&#xA;&lt;p&gt;Standard IT services to cloud first cutting edge organizations, leading teams to achieve excellence is a requirement for leaders in todays market. The modern associate wants to be part of a team with a clear mission and vision, and that requires leadership they can invest in to be successful. A leader of teams who design, manage, and implement large scale e-infrastructure and applications. My expertise is at the nexus of cloud, networking, and security infrastructure. I turn big ideas into secure infrastructure at scale,&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Contact</title>
-      <link>https://johnburns.io/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://johnburns.io/contact/</guid>
-      <description>&lt;ul&gt;&#xA;&lt;li&gt;Email: &lt;a href=&#34;mailto:John@techinvasion.net&#34;&gt;John@techinvasion.net&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;Phone: &lt;a href=&#34;tel:+01-3058783067&#34;&gt;+01-3058783067&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;websites-address&#34;&gt;Websites Address&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.hammap.org&#34;&gt;hammap.org&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.2bit.pro&#34;&gt;2bit.pro&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.techinvasion.net&#34;&gt;www.techinvasion.net&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;social&#34;&gt;Social&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/john-burns-299959a6/&#34;&gt;Linkedin&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.qrz.com/db/kg4olw&#34;&gt;QRZ&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/user/bufo333/featured&#34;&gt;Youtube&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
   </channel>
 </rss>

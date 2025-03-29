@@ -1,0 +1,652 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.145.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>The Colour of My Thoughts</title>
+    <meta name="description"
+        content="
+
+ Enter
+">
+    <link rel="canonical" href="https://johnburns.io/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="Welcome">
+  <meta property="og:description" content="Enter">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Welcome">
+  <meta name="twitter:description" content="Enter">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<article>
+    <div class="is-centered">
+            <div class="title subtitle heading is-6">
+                <div id="home-box" >
+                            
+                            <div class="avatar-container">
+                                <img src="/royal_kmm.jpg" class="author-avatar">
+
+                            </div>
+                            
+
+
+
+                        <h1 id="home-title" class="title is-1 "></h1>
+                    <div class="description column content typewriter-effect">
+                        <div class="text" id="typewriter-text"> </div>
+
+                    </div>
+                    <script>
+                        const typeWriter = document.getElementById('typewriter-text');
+                        typeWriter.style.setProperty('--characters', typeWriter.innerHTML.length);
+                    </script>
+
+                    <div class="social-icon">
+
+                        
+                        <a href="mailto:john@techinvasion.net" title="email"><span class="change-color icon">
+                                <svg height="32px" width="32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 21" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+    <polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+                            </span></a>
+                        
+                        <a href="https://github.com/bufo333/" title="Github"><span class="change-color icon">
+                                <svg height="32px" width="32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+                            </span></a>
+                        
+
+                    </div>
+
+                </div>
+            </div>
+
+    </div></article>
+<div class="summary">
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/cisco-3750-switches-now-include-a-time-domain-reflectometer/">cisco-3750-switches-now-include-a-time-domain-reflectometer</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="cisco-3750-switches-now-include-a-time-domain-reflectometer">Cisco 3750 Switches now include a time domain reflectometer!</h2>
+<p class="expanded-spacing">How many time have you wanted to know how long a cable run was? Now if you are running cisco 3750 switches you can find out by issuing the following commands you can see how long that cable run really is.</p>
+<pre class="prettyprint">
+Switch# test cable-diagnostics tdr interface gigabitethernet0/2
+TDR test started on interface Gi0/2
+
+A TDR test can take a few seconds to run on an interface. Use "show cable-diagnostics tdr" to read the TDR results.
+
+Switch#show cable-diagnostics tdr interface gigabitEthernet 0/2
+TDR test last run on: Dec 10 09:05:10
+
+         Interface Speed Local pair Pair length Remote pair Pair status 
+         --------- ------ ---------- ------------ ------------ ---------- 
+         Gi0/2 auto Pair A   22 +/- 4 m N/A Open 
+           Pair B    21 +/- 4 m N/A Open 
+           Pair C    5 +/- 4 m N/A Open 
+           Pair D    20 +/- 4 m N/A Open 
+</pre>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-09-08 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/checkpoint-juniper-vpn/">checkpoint-juniper-vpn</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="checkpoint--juniper-vpn">Checkpoint &mdash;&gt; juniper VPN</h2>
+<p>Recently at work we had a remote site go down. The site was on an ancient pix 506e vpn firewall router. We were in the proccess of switching to a different vpn solution. because of this we had a new Juniper ssg20 firewall device on site.</p>
+<p>Now I thought this would be an easy job, configure the Juniper to connect to our checkpoint r55 box the same as the pix had done before! Man was I surprised to realize that the Juniper did not like the r55. The r55 sends proxy id&rsquo;s through the tunnel for every device connecting. Now the interesting this is that the r55 uses the supernet for the address requesting access through the vpn. On the cisco pix and asa devices, this does not much matter. So for instance if you hav 10.0.0.0/24, 172.16.2.0/23 and 192.168.0.0/24 on 1 side all trying to access a remote site through the Juniper, the checkpoint send the juniper proxy id&rsquo;s for each of those networks. Now like I said the cisco determines what traffic matches the tunnel with access-lists and doesn&rsquo;t much care what the proxy ID says. The juniper on the other hand does! If it sees a proxy id for say a host that is not part of the tunnel, it will tear down the tunnel!!!!</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-09-04 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/cisco-3640-and-wic-1adsl-speed-problems/">cisco-3640-and-wic-1adsl-speed-problems</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="cisco-3640-and-wic-1adsl-speed-problems">Cisco 3640 and wic-1adsl speed problems</h2>
+<p>I recently decided to plug my wic-1adsl card into a 3640 router because my 2620 had a power supply failure. I noticed that the cisco 3640 ran very slow, and speed tests topped out at 2.6mbps downlink speeds. For a while I couldn&rsquo;t figure out why a router that is faster with more memory would run slower than my 2620 router. I later discovered the reason for the slowness was because of a bandwidth limit on the nm-1fe1r2w card I was using to give me wic slots.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-09-02 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/video-tutorial-on-ipv6/">video-tutorial-on-ipv6</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="video-tutorial-on-ipv6">Video tutorial on IPV6</h2>
+<p><code>You can download or watch the full video at <a href="http://www.veoh.com/videos/v9841093DECYazen">IPV6</a></code><code>&lt;embed bgcolor=&quot;#FFFFFF&quot; </code></p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-05-15 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/liveplasmacom/">liveplasmacom</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="liveplasmacom">liveplasma.com</h2>
+<p>I found a really cool site that displays related content in a visual way, so if for instance you type in an Artist name like Pinback, it will show all related artists in a very cool visual way, very similar to some of the visual displays for Digg.com</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-02-09 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/outlook-2003-error-setting-up-profile-after-uninstalling-office-2007/">outlook-2003-error-setting-up-profile-after-uninstalling-office-2007</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="outlook-2003-error-setting-up-profile-after-uninstalling-office-2007">Outlook 2003 error setting up profile after uninstalling office 2007</h2>
+<p>This is a problem that I run into quite alot as most new PCs come with the Office 2007 trial  pre-installed. When you try to setup Outlook 2003 for the first time you get the following error</p>
+<p>&ldquo;There was an error locating one of the items needed to complete this operation. It might have been deleted&rdquo;</p>
+<p>In order to fix this error you have to rename &lsquo;mapisvc.inf&rsquo; one in</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-02-06 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/new-forums/">new-forums</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="new-forums">New Forums</h2>
+<p>We have added a new forums section to techinvasion.net. We hope these forums will become a big part of the site and allow all the users to participate, ask questions, and get answers. The link to the forums is along the left hand side of the page in the categories section. You can also go directly to the forums by going to <a href="/forum">/forum</a>.</p>
+<p>We are also looking for writers to post relevant articles such as the ones that have been posted by our 3 writers so far. If you are interested in writing for techinvasion.net please send an email to <a href="mailto:admin@techinvasion.net"><a href="mailto:admin@techinvasion.net">admin@techinvasion.net</a></a>.  </p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-01-31 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/fixing-the-sku01acab-and-other-office-cab-file-issues/">fixing-the-sku01acab-and-other-office-cab-file-issues</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="fixing-the-sku01acab-and-other-office-cab-file-issues">Fixing the SKU01A.CAB and other office cab file issues</h2>
+<p>Anyone who has used office 2003 has noticed that when switching domains or logging in as a new user Microsoft Office ask you to insert the cd to cache files needed to start. In some cases it asks for files from older office versions that have been upgraded, sometimes you don&rsquo;t even have the original cd. To solve this problem you can make a simple change to the registry that tells office not to expect cached files off the installation cd.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-01-30 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/cisco-ios-firewall-security/">cisco-ios-firewall-security</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="an-overview-of-cisco-ios-security-features-as-related-to-packet-filtering">An overview of CISCO IOS Security features as related to packet filtering.</h2>
+<p>ï¿½The Cisco IOS has many powerful security features that enable network engineers to protect their internal network. The Cisco IOS is capable of intrusion detection, deep packet inspection, and stateful firewall features. Setting up IPS allows the admin to push intrusion detection to the network edge. The Cisco IPS feature set can scan for spyware, viruses, worms, Trojans, and network intrusions by receiving updated signature files from Cisco. If a packet or series of packets matches a particular signature the router can, send an alert, drop the packet, or reset the connection of the offending user. In this way the network engineer can better protect the network by acting on suspicious packets before they can pose a risk to the network infrastructure, another advantage of pushing IPS duties to the network edge is it allows offending packets to be dropped before they take up finite network resources. ï¿½In large networks as much as 10 percent of network resources could be consumed by packets that ultimately will be dropped for security reasons deeper in the network.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-01-29 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/cisco-config-wic-1adsl-2/">cisco-config-wic-1adsl-2</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="cisco-wic-1adsl-config-for-1800-series-router-and-ios-124">Cisco WIC-1ADSL config for 1800 series router and ios 12.4</h2>
+<p>This config is for the Cisco 1800 series router running IOS 12.4. IOS 12.4 has some command and syntax changes in reguards to interfaces and configuration commands for PPPOE. This config was submitted by my good friend Pedro Rivera.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">version</span> <span style="color:#ae81ff">12.4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">service</span> <span style="color:#a6e22e">timestamps</span> <span style="color:#a6e22e">debug</span> <span style="color:#a6e22e">datetime</span> <span style="color:#a6e22e">msec</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">service</span> <span style="color:#a6e22e">timestamps</span> <span style="color:#a6e22e">log</span> <span style="color:#a6e22e">datetime</span> <span style="color:#a6e22e">msec</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">service</span> <span style="color:#a6e22e">password</span><span style="color:#f92672">-</span><span style="color:#a6e22e">encryption</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hostname</span> <span style="color:#a6e22e">Router</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">boot</span><span style="color:#f92672">-</span><span style="color:#a6e22e">start</span><span style="color:#f92672">-</span><span style="color:#a6e22e">marker</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">boot</span><span style="color:#f92672">-</span><span style="color:#a6e22e">end</span><span style="color:#f92672">-</span><span style="color:#a6e22e">marker</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">aaa</span> <span style="color:#66d9ef">new</span><span style="color:#f92672">-</span><span style="color:#a6e22e">model</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">resource</span> <span style="color:#a6e22e">policy</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mmi</span> <span style="color:#a6e22e">polling</span><span style="color:#f92672">-</span><span style="color:#a6e22e">interval</span> <span style="color:#ae81ff">60</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">mmi</span> <span style="color:#a6e22e">auto</span><span style="color:#f92672">-</span><span style="color:#a6e22e">configure</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">mmi</span> <span style="color:#a6e22e">pvc</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mmi</span> <span style="color:#a6e22e">snmp</span><span style="color:#f92672">-</span><span style="color:#a6e22e">timeout</span> <span style="color:#ae81ff">180</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">subnet</span><span style="color:#f92672">-</span><span style="color:#a6e22e">zero</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">cef</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span> <span style="color:#ae81ff">205.152</span>.<span style="color:#ae81ff">144.23</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">description</span> <span style="color:#a6e22e">Internal</span> <span style="color:#a6e22e">Lan</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#ae81ff">10.10</span>.<span style="color:#ae81ff">10.254</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">virtual</span><span style="color:#f92672">-</span><span style="color:#a6e22e">reassembly</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">tcp</span> <span style="color:#a6e22e">adjust</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mss</span> <span style="color:#ae81ff">1452</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">duplex</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">speed</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">shutdown</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">duplex</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">speed</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ATM0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">no</span> <span style="color:#a6e22e">atm</span> <span style="color:#a6e22e">ilmi</span><span style="color:#f92672">-</span><span style="color:#a6e22e">keepalive</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">dsl</span> <span style="color:#a6e22e">operating</span><span style="color:#f92672">-</span><span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ATM0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0.1</span> <span style="color:#a6e22e">point</span><span style="color:#f92672">-</span><span style="color:#a6e22e">to</span><span style="color:#f92672">-</span><span style="color:#a6e22e">point</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">pvc</span> <span style="color:#ae81ff">8</span><span style="color:#f92672">/</span><span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pppoe</span><span style="color:#f92672">-</span><span style="color:#a6e22e">client</span> <span style="color:#a6e22e">dial</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pool</span><span style="color:#f92672">-</span><span style="color:#a6e22e">number</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Dialer0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#a6e22e">negotiated</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">mtu</span> <span style="color:#ae81ff">1452</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">outside</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">virtual</span><span style="color:#f92672">-</span><span style="color:#a6e22e">reassembly</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">encapsulation</span> <span style="color:#a6e22e">ppp</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">dialer</span> <span style="color:#a6e22e">pool</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">dialer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">group</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">authentication</span> <span style="color:#a6e22e">chap</span> <span style="color:#a6e22e">callin</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">chap</span> <span style="color:#a6e22e">hostname</span> <span style="color:#a6e22e">xxxxxxxxxxxxx</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">xxxxxxxxxxxxxx</span>.<span style="color:#a6e22e">net</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ppp</span> <span style="color:#a6e22e">chap</span> <span style="color:#a6e22e">password</span> <span style="color:#ae81ff">0</span> <span style="color:#a6e22e">xxxxxxxxxxxxxxx</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">classless</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">route</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#a6e22e">Dialer0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">http</span> <span style="color:#a6e22e">server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">no</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">http</span> <span style="color:#a6e22e">secure</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">nat</span> <span style="color:#a6e22e">inside</span> <span style="color:#a6e22e">source</span> <span style="color:#a6e22e">list</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Dialer0</span> <span style="color:#a6e22e">overload</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">remark</span> <span style="color:#a6e22e">INSIDE_IF</span><span style="color:#f92672">=</span><span style="color:#a6e22e">FastEthernet0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">remark</span> <span style="color:#a6e22e">SDM_ACL</span> <span style="color:#a6e22e">Category</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">permit</span> <span style="color:#ae81ff">10.10</span>.<span style="color:#ae81ff">10.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.255</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dialer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">protocol</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">permit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">plane</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">line</span> <span style="color:#a6e22e">con</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">line</span> <span style="color:#a6e22e">aux</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">line</span> <span style="color:#a6e22e">vty</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">login</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">111</span>
+</span></span></code></pre></div>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-01-28 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+    <hr>
+<section class="pagination" >
+    
+
+    <button class="button ">
+        <a href="/page/3/" class="pag-link"> Prev </a>
+    </button>
+    
+    <label class="pag-link">Page 4 of 6</label>
+    
+    <button class="button"  >
+        <a href="/page/5/" class="pag-link"> Next </a>
+    </button>
+    
+</section>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.145.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>The Colour of My Thoughts</title>
+    <meta name="description"
+        content="
+
+ Enter
+">
+    <link rel="canonical" href="https://johnburns.io/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="Welcome">
+  <meta property="og:description" content="Enter">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Welcome">
+  <meta name="twitter:description" content="Enter">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<article>
+    <div class="is-centered">
+            <div class="title subtitle heading is-6">
+                <div id="home-box" >
+                            
+                            <div class="avatar-container">
+                                <img src="/royal_kmm.jpg" class="author-avatar">
+
+                            </div>
+                            
+
+
+
+                        <h1 id="home-title" class="title is-1 "></h1>
+                    <div class="description column content typewriter-effect">
+                        <div class="text" id="typewriter-text"> </div>
+
+                    </div>
+                    <script>
+                        const typeWriter = document.getElementById('typewriter-text');
+                        typeWriter.style.setProperty('--characters', typeWriter.innerHTML.length);
+                    </script>
+
+                    <div class="social-icon">
+
+                        
+                        <a href="mailto:john@techinvasion.net" title="email"><span class="change-color icon">
+                                <svg height="32px" width="32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 21" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+    <polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+                            </span></a>
+                        
+                        <a href="https://github.com/bufo333/" title="Github"><span class="change-color icon">
+                                <svg height="32px" width="32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+                            </span></a>
+                        
+
+                    </div>
+
+                </div>
+            </div>
+
+    </div></article>
+<div class="summary">
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/gopher/">gopher</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="gopher">gopher</h2>
+<p>I have been continuing to setup the bbs software on bbs.techinvasion.net. I have added irc, gopher, finger, and ident functionality. I encourage all of you to drop by and experience this neat software. The really neat thing about this BBS software is that it connects you to a world of forums and message boards that can only be accessed using BBS software. If you are running firefox I encourage you all to go to <a href="gopher://bbs.techinvasion.net">gopher://bbs.techinvasion.net</a>. This will let you view the forums and posts, although it doesn&rsquo;t look the same as it does through a telnet session, it is still very interesting.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2009-02-04 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/blast-from-the-past-bbs-and-door-games/">blast-from-the-past-bbs-and-door-games</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="blast-from-the-past---bbstechinvasionnet">Blast From the Past - BBS.Techinvasion.net</h2>
+<p>Recently as a project cleaning up some old files and software, I came across a software disk for an old BBS I used to run. This got my interest peaked as I wondered if there were still BBS systems Alive and well on the internet. Information on BBS systems was few and far between in my research and it took me a while to make some headway. Eventually I came across <a href="http://synchro.net/"><a href="http://Synchro.net">http://Synchro.net</a></a>� BBS software. This software is very similar to old school dos BBS&rsquo;s. I installed the software which was no small feet�given the inadequate build instructions. Once the system was built and installed I had allot of fun setting up classic door games such as Trade wars and others.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2009-02-02 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/rotary-pools-for-semi-static-nat-port-range-forwarding/">rotary-pools-for-semi-static-nat-port-range-forwarding</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="rotary-pools-for-semi-static-nat--port-range-forwarding">Rotary Pools for Semi-Static NAT / Port range Forwarding</h2>
+<p><a href="/wp-content/uploads/2008/12/topology1.png"></a></p>
+<p>Cisco routers have a very robust network address translation feature set.The NAT software allows you to control translation with access-list, route-maps, and destination pools.With the wide array of commands, it is sometimes difficult for beginners and experts to figure out how to combine these elements to solve a problem.</p>
+<img class="alignnone size-full wp-image-83" title="topology1" src="/wp-content/uploads/2008/12/topology2.png" alt="" width="500" height="448" />
+<p>I have a small network at home for the computers in my house, and I find that some of the strangest configurations and explorations come about because I try to solve problems in a way that is cost affective with the limited broadband available to consumers.I recently purchased a CheckPoint UTM firewall appliance to add to my network.CheckPoint invented the stateful firewall and has one of the best firewalls in the market.I wanted to add this firewall to my network but I faced 2 main problems.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-12-22 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/content-based-access-control-cbac/">content-based-access-control-cbac</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="content-based-access-control-cbac">Content Based Access Control &ldquo;CBAC&rdquo;</h2>
+<p>In the beginning God created heaven and earth, and then he created routers, so packets could flow from one part of the earth to the other. As he rested he looked down on his creation and smiled for all was good. Packets were flowing from one interface to another. Then as he beheld his creation he watches as some pad packets decided to flow where they didn&rsquo;t belong! So God created access-lists and again everything was as it should be, packets only flowed to areas where they belonged. After some time naughty packets found out that they could sneak by God�s great protectors of the network by setting the ACK bit in their headers.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-10-21 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/introduction-to-access-lists-part-2/">introduction-to-access-lists-part-2</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="introduction-to-access-lists-part-2">Introduction to access-lists part 2</h2>
+<p>In the second installment of our guide to access-lists we are going to talk a little about named access-lists, how they work, what the benefits are, and how using them allows us to create reflexive access-lists. Named access-lists are exactly what they sound like, they are an extended access-list that has a name instead of a number. One of the nice features of named access-lists is that each line of the access-list has a number. this way you can delete just one line in an access-list without removing the whole access-list. You can create a named access list by using the following command.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-10-16 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/introduction-to-access-lists-part-1/">introduction-to-access-lists-part-1</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="introduction-to-access-lists-part-1">Introduction to access-lists part 1</h2>
+<p>Today I would like to take some time and talk about security. I want to discuss access-lists, extended access-lists, reflexive access-lists, and CBAC or content based access control. Learning how to properly use access-lists is so crucial to becoming a good network administrator. They are vital to securing your network and as you progress with your studies you will find that access-lists are used quite extensively in routing, QoS, and other important things.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-10-15 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/replace-a-running-config-without-reloading/">replace-a-running-config-without-reloading</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="replace-a-running-config-without-reloading">Replace a running config without reloading</h2>
+<p>The new Cisco IOS 12.4 train has many new features that any engineer will find useful; one of the features that fix a pain point for me is the new config options available in 12.4. Have you ever been in a situation where an entered configuration does not work as expected? Now usually you have to back out the configuration one command at a time and hope for the best. Sometimes you may even reach a point where you can not completely remove a configuration without reloading the device, this is the case sometimes when trying to remove sub interfaces. Now if this is a data center or work environment then you may not be able to reload the router.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-10-04 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/working-a-lot/">working-a-lot</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="working-a-lot">Working a lot!</h2>
+<p>I have been working a lot lately, we are in the proccess of designing a new data center with all the ifs ands and buts included in that ordeal. I am in the proccess of writing several write ups. On spanning tree:</p>
+<ol>
+<li>&ldquo;load balancing spanning tree using different trunks&rdquo;</li>
+<li>BGP implementation and design considerations.</li>
+<li>IGP routing protocol deep dive.</li>
+</ol>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-09-29 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/encrypting-gre-tunnels/">encrypting-gre-tunnels</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="encrypting-gre-tunnels">Encrypting GRE tunnels</h2>
+<p>In our Last article we looked at creating GRE tunnels between networks to allow non routable traffic to pass between remote offices.� GRE tunnels are a great solution however the traffic passing inside these tunnels is not encrypted and thus could be intercepted by unauthorized parties. In this article we are going to look at tunneling GRE inside of IPSEC. This will allow us to get the benefits of GRE and the security of IPSEC.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-09-08 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/create-a-gre-tunnel-between-endpoints/">create-a-gre-tunnel-between-endpoints</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="create-a-gre-tunnel-between-endpoints">Create a GRE tunnel between endpoints</h2>
+<p>Many time it is necessary to link a remote office to your main site and today we have many technologies to accomplish this task. We have IPSEC tunnels, IP-IN-IP tunnels, and GRE or Generic Routing Encapsulation Tunnels.</p>
+<p>Each type of connectivity offers advantages and disadvantages. Some of these tunnels can even be overlaid on top of one another. For instance IPSEC can be used in a transport mode, which allows you to use the encryption with other tunnels or protocols. For this article we are going to discuss GRE tunnels. GRE is unique as tunneling technologies go in that is started out as a proprietary protocol developed by Cisco and later adopted as a standard. GRE was invented as a way of encapsulating non routable protocols in IP which is a routable protocol. In this way protocols such as multicast (this include OSPF, EIGRP), and other protocols like IPX could be tunneled across routable links.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2008-09-08 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+    <hr>
+<section class="pagination" >
+    
+
+    <button class="button ">
+        <a href="/page/2/" class="pag-link"> Prev </a>
+    </button>
+    
+    <label class="pag-link">Page 3 of 6</label>
+    
+    <button class="button"  >
+        <a href="/page/4/" class="pag-link"> Next </a>
+    </button>
+    
+</section>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

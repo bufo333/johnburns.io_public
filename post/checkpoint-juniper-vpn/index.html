@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>checkpoint-juniper-vpn | The Colour of My Thoughts</title>
+    <meta name="description"
+        content="Checkpoint &mdash;&gt; juniper VPN
+Recently at work we had a remote site go down. The site was on an ancient pix 506e vpn firewall router. We were in the proccess of switching to a different vpn solution. because of this we had a new Juniper ssg20 firewall device on site.
+Now I thought this would be an easy job, configure the Juniper to connect to our checkpoint r55 box the same as the pix had done before! Man was I surprised to realize that the Juniper did not like the r55. The r55 sends proxy id&rsquo;s through the tunnel for every device connecting. Now the interesting this is that the r55 uses the supernet for the address requesting access through the vpn. On the cisco pix and asa devices, this does not much matter. So for instance if you hav 10.0.0.0/24, 172.16.2.0/23 and 192.168.0.0/24 on 1 side all trying to access a remote site through the Juniper, the checkpoint send the juniper proxy id&rsquo;s for each of those networks. Now like I said the cisco determines what traffic matches the tunnel with access-lists and doesn&rsquo;t much care what the proxy ID says. The juniper on the other hand does! If it sees a proxy id for say a host that is not part of the tunnel, it will tear down the tunnel!!!!">
+    <link rel="canonical" href="https://johnburns.io/post/checkpoint-juniper-vpn/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/post/checkpoint-juniper-vpn/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="checkpoint-juniper-vpn">
+  <meta property="og:description" content="Checkpoint —&gt; juniper VPN Recently at work we had a remote site go down. The site was on an ancient pix 506e vpn firewall router. We were in the proccess of switching to a different vpn solution. because of this we had a new Juniper ssg20 firewall device on site.
+Now I thought this would be an easy job, configure the Juniper to connect to our checkpoint r55 box the same as the pix had done before! Man was I surprised to realize that the Juniper did not like the r55. The r55 sends proxy id’s through the tunnel for every device connecting. Now the interesting this is that the r55 uses the supernet for the address requesting access through the vpn. On the cisco pix and asa devices, this does not much matter. So for instance if you hav 10.0.0.0/24, 172.16.2.0/23 and 192.168.0.0/24 on 1 side all trying to access a remote site through the Juniper, the checkpoint send the juniper proxy id’s for each of those networks. Now like I said the cisco determines what traffic matches the tunnel with access-lists and doesn’t much care what the proxy ID says. The juniper on the other hand does! If it sees a proxy id for say a host that is not part of the tunnel, it will tear down the tunnel!!!!">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2008-09-04T10:46:51+00:00">
+    <meta property="article:modified_time" content="2008-09-04T10:46:51+00:00">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="checkpoint-juniper-vpn">
+  <meta name="twitter:description" content="Checkpoint —&gt; juniper VPN Recently at work we had a remote site go down. The site was on an ancient pix 506e vpn firewall router. We were in the proccess of switching to a different vpn solution. because of this we had a new Juniper ssg20 firewall device on site.
+Now I thought this would be an easy job, configure the Juniper to connect to our checkpoint r55 box the same as the pix had done before! Man was I surprised to realize that the Juniper did not like the r55. The r55 sends proxy id’s through the tunnel for every device connecting. Now the interesting this is that the r55 uses the supernet for the address requesting access through the vpn. On the cisco pix and asa devices, this does not much matter. So for instance if you hav 10.0.0.0/24, 172.16.2.0/23 and 192.168.0.0/24 on 1 side all trying to access a remote site through the Juniper, the checkpoint send the juniper proxy id’s for each of those networks. Now like I said the cisco determines what traffic matches the tunnel with access-lists and doesn’t much care what the proxy ID says. The juniper on the other hand does! If it sees a proxy id for say a host that is not part of the tunnel, it will tear down the tunnel!!!!">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">checkpoint-juniper-vpn</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column">
+                            <p>John Burns</p>
+                            <p><time>September 4, 2008</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#checkpoint--juniper-vpn">Checkpoint &mdash;&gt; juniper VPN</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <h2 id="checkpoint--juniper-vpn">Checkpoint &mdash;&gt; juniper VPN</h2>
+<p>Recently at work we had a remote site go down. The site was on an ancient pix 506e vpn firewall router. We were in the proccess of switching to a different vpn solution. because of this we had a new Juniper ssg20 firewall device on site.</p>
+<p>Now I thought this would be an easy job, configure the Juniper to connect to our checkpoint r55 box the same as the pix had done before! Man was I surprised to realize that the Juniper did not like the r55. The r55 sends proxy id&rsquo;s through the tunnel for every device connecting. Now the interesting this is that the r55 uses the supernet for the address requesting access through the vpn. On the cisco pix and asa devices, this does not much matter. So for instance if you hav 10.0.0.0/24, 172.16.2.0/23 and 192.168.0.0/24 on 1 side all trying to access a remote site through the Juniper, the checkpoint send the juniper proxy id&rsquo;s for each of those networks. Now like I said the cisco determines what traffic matches the tunnel with access-lists and doesn&rsquo;t much care what the proxy ID says. The juniper on the other hand does! If it sees a proxy id for say a host that is not part of the tunnel, it will tear down the tunnel!!!!</p>
+<p>You can imagine this is a big problem. So what has to be done is that you have to go to autoike and add a gateway for each network that is on the other side. Make sure you also go to advanced and select the checkbox for proxy ID. Once this box is checked enter the information for source and destination. the best way to do this is to check the event logs on the junipers and put in exactly what it says the received proxy ID is.</p>
+<p>Once you do this the tunnel will come up. the only other issue is to go to the network &ndash;&gt; routing __&gt; destination tab and add a route for each network that you need to go to the tunnel interface.</p>
+<p>Thats it, 6 hours of work and the answer was very simple once you figure it out.</p>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a>
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://johnburns.io/post/cisco-3640-and-wic-1adsl-speed-problems/">cisco-3640-and-wic-1adsl-speed-problems</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://johnburns.io/post/cisco-3750-switches-now-include-a-time-domain-reflectometer/">cisco-3750-switches-now-include-a-time-domain-reflectometer</a>
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

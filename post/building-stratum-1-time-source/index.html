@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Building a Stratum‑1 NTP Server on Raspberry Pi 5 | The Colour of My Thoughts</title>
+    <meta name="description"
+        content="This guide explains how to transform a fresh installation of Raspberry Pi OS into a stratum‑1 NTP server. The project leverages a GPIO‑based GPS module with PPS, the PTP hardware timestamping capability of the Ethernet interface, Chrony for NTP synchronization, and Telegraf with InfluxDB for monitoring.
+
+1. Overview
+In this project you&rsquo;ll build a stratum‑1 NTP server using:
+
+Raspberry Pi 5 as the host.
+A GPS module (via the serial UART port) for an absolute time reference.
+A PPS (Pulse Per Second) signal from the same GPS for sub-microsecond timing accuracy.
+The PTP hardware timestamping on the Ethernet interface for improved precision on PTP packets.
+Chrony for NTP time synchronization.
+gpsd to interface with your GPS receiver.
+Telegraf for monitoring various metrics (including Chrony statistics) sent to an InfluxDB backend.
+
+
+2. Prerequisites and Required Hardware
+Before you begin, ensure you have the following:">
+    <link rel="canonical" href="https://johnburns.io/post/building-stratum-1-time-source/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/post/building-stratum-1-time-source/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="Building a Stratum‑1 NTP Server on Raspberry Pi 5">
+  <meta property="og:description" content="This guide explains how to transform a fresh installation of Raspberry Pi OS into a stratum‑1 NTP server. The project leverages a GPIO‑based GPS module with PPS, the PTP hardware timestamping capability of the Ethernet interface, Chrony for NTP synchronization, and Telegraf with InfluxDB for monitoring.
+1. Overview In this project you’ll build a stratum‑1 NTP server using:
+Raspberry Pi 5 as the host. A GPS module (via the serial UART port) for an absolute time reference. A PPS (Pulse Per Second) signal from the same GPS for sub-microsecond timing accuracy. The PTP hardware timestamping on the Ethernet interface for improved precision on PTP packets. Chrony for NTP time synchronization. gpsd to interface with your GPS receiver. Telegraf for monitoring various metrics (including Chrony statistics) sent to an InfluxDB backend. 2. Prerequisites and Required Hardware Before you begin, ensure you have the following:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-03-28T22:34:35+00:00">
+    <meta property="article:modified_time" content="2025-03-28T22:34:35+00:00">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Building a Stratum‑1 NTP Server on Raspberry Pi 5">
+  <meta name="twitter:description" content="This guide explains how to transform a fresh installation of Raspberry Pi OS into a stratum‑1 NTP server. The project leverages a GPIO‑based GPS module with PPS, the PTP hardware timestamping capability of the Ethernet interface, Chrony for NTP synchronization, and Telegraf with InfluxDB for monitoring.
+1. Overview In this project you’ll build a stratum‑1 NTP server using:
+Raspberry Pi 5 as the host. A GPS module (via the serial UART port) for an absolute time reference. A PPS (Pulse Per Second) signal from the same GPS for sub-microsecond timing accuracy. The PTP hardware timestamping on the Ethernet interface for improved precision on PTP packets. Chrony for NTP time synchronization. gpsd to interface with your GPS receiver. Telegraf for monitoring various metrics (including Chrony statistics) sent to an InfluxDB backend. 2. Prerequisites and Required Hardware Before you begin, ensure you have the following:">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">Building a Stratum‑1 NTP Server on Raspberry Pi 5</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column">
+                            <p>John Burns</p>
+                            <p><time>March 28, 2025</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-overview">1. Overview</a></li>
+    <li><a href="#2-prerequisites-and-required-hardware">2. Prerequisites and Required Hardware</a></li>
+    <li><a href="#3-software-packages-to-install">3. Software Packages to Install</a></li>
+    <li><a href="#4-kernel-and-firmware-configuration">4. Kernel and Firmware Configuration</a>
+      <ul>
+        <li><a href="#41-modify-the-boot-configuration">4.1. Modify the Boot Configuration</a></li>
+        <li><a href="#42-ensure-kernel-modules-load-at-boot">4.2. Ensure Kernel Modules Load at Boot</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-configuring-gpsd">5. Configuring gpsd</a></li>
+    <li><a href="#6-configuring-chrony">6. Configuring Chrony</a></li>
+    <li><a href="#7-verifying-ptp-hardware-timestamping">7. Verifying PTP Hardware Timestamping</a></li>
+    <li><a href="#8-configuring-telegraf-for-monitoring">8. Configuring Telegraf for Monitoring</a></li>
+    <li><a href="#9-testing-and-verification">9. Testing and Verification</a>
+      <ul>
+        <li><a href="#91-check-chrony-status">9.1. Check Chrony Status</a></li>
+        <li><a href="#92-verify-ntp-sources">9.2. Verify NTP Sources</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-conclusion">10. Conclusion</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <p>This guide explains how to transform a fresh installation of Raspberry Pi OS into a stratum‑1 NTP server. The project leverages a GPIO‑based GPS module with PPS, the PTP hardware timestamping capability of the Ethernet interface, Chrony for NTP synchronization, and Telegraf with InfluxDB for monitoring.</p>
+<hr>
+<h2 id="1-overview">1. Overview</h2>
+<p>In this project you&rsquo;ll build a stratum‑1 NTP server using:</p>
+<ul>
+<li><strong>Raspberry Pi 5</strong> as the host.</li>
+<li>A <strong>GPS module</strong> (via the serial UART port) for an absolute time reference.</li>
+<li>A <strong>PPS (Pulse Per Second) signal</strong> from the same GPS for sub-microsecond timing accuracy.</li>
+<li>The <strong>PTP hardware timestamping</strong> on the Ethernet interface for improved precision on PTP packets.</li>
+<li><strong>Chrony</strong> for NTP time synchronization.</li>
+<li><strong>gpsd</strong> to interface with your GPS receiver.</li>
+<li><strong>Telegraf</strong> for monitoring various metrics (including Chrony statistics) sent to an InfluxDB backend.</li>
+</ul>
+<hr>
+<h2 id="2-prerequisites-and-required-hardware">2. Prerequisites and Required Hardware</h2>
+<p>Before you begin, ensure you have the following:</p>
+<ul>
+<li><strong>Raspberry Pi 5</strong> running a fresh install of Raspberry Pi OS.</li>
+<li>A <strong>GPS module</strong> with serial (UART) output and PPS capability.</li>
+<li>An external <strong>GPIO connection</strong> for the PPS signal (typically connected to a dedicated GPIO pin, e.g. GPIO4).</li>
+<li>An Ethernet interface with PTP hardware timestamping support.</li>
+<li>A monitoring server running <strong>InfluxDB</strong> (or you can install InfluxDB locally if desired).</li>
+</ul>
+<hr>
+<h2 id="3-software-packages-to-install">3. Software Packages to Install</h2>
+<p>For a fully functional stratum‑1 NTP server, you&rsquo;ll need to install these packages:</p>
+<ul>
+<li><strong>chrony</strong> – Provides the NTP daemon with support for hardware timestamping and refclock interfaces.</li>
+<li><strong>gpsd</strong> – Daemon to interact with your GPS device.</li>
+<li><strong>gpsd-clients</strong> – Utilities to query the GPS data.</li>
+<li><strong>telegraf</strong> – For gathering system and application metrics and sending them to InfluxDB.</li>
+<li><strong>ethtool</strong> – For inspecting and verifying hardware timestamping support on the Ethernet interface.</li>
+<li>(Optionally) <strong>pps-tools</strong> – To assist with troubleshooting PPS signals.</li>
+</ul>
+<p>Install these packages using:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install chrony gpsd gpsd-clients telegraf ethtool pps-tools
+</span></span></code></pre></div><hr>
+<h2 id="4-kernel-and-firmware-configuration">4. Kernel and Firmware Configuration</h2>
+<p>To properly use the GPIO PPS and enable the UART for your GPS, update your boot configuration and load the required kernel modules.</p>
+<h3 id="41-modify-the-boot-configuration">4.1. Modify the Boot Configuration</h3>
+<p>Edit the <code>/boot/firmware/config.txt</code> file to enable the UART and configure the PPS overlay (using GPIO4):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[all]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dtparam</span><span style="color:#f92672">=</span><span style="color:#e6db74">uart0=on</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dtoverlay</span><span style="color:#f92672">=</span><span style="color:#e6db74">pps-gpio,gpiopin=4</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dtoverlay</span><span style="color:#f92672">=</span><span style="color:#e6db74">disable-wifi</span>
+</span></span></code></pre></div><h3 id="42-ensure-kernel-modules-load-at-boot">4.2. Ensure Kernel Modules Load at Boot</h3>
+<p>Edit <code>/etc/modules</code> to load the necessary kernel modules:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span> <span style="color:#75715e">#/etc/modules: kernel modules to load at boot time.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">pps-gpio</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">i2c-dev</span>
+</span></span></code></pre></div><p>This configuration ensures the PPS GPIO module and I2C support (if needed) are loaded during boot.</p>
+<hr>
+<h2 id="5-configuring-gpsd">5. Configuring gpsd</h2>
+<p>Configure <code>gpsd</code> to start at boot and use the correct devices. Edit <code>/etc/default/gpsd</code> as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#75715e"># Devices gpsd should collect to at boot time.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">DEVICES</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/dev/ttyAMA0 /dev/pps0&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Other options you want to pass to gpsd</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">GPSD_OPTIONS</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-n&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Automatically hot add/remove USB GPS devices via gpsdctl</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">USBAUTO</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>
+</span></span></code></pre></div><p>This configuration tells <code>gpsd</code> to open the UART device (for NMEA data from the GPS) and the PPS device for precise pulse timing.</p>
+<hr>
+<h2 id="6-configuring-chrony">6. Configuring Chrony</h2>
+<p>Chrony will serve as your NTP daemon. Its configuration utilizes the GPS and PPS refclocks and leverages PTP hardware timestamping on the Ethernet interface.</p>
+<p>Edit <code>/etc/chrony/chrony.conf</code> to include:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#a6e22e">confdir /etc/chrony/conf.d</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">server 0.us.pool.ntp.org iburst</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">server 1.us.pool.ntp.org iburst</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">server 2.us.pool.ntp.org iburst</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">server 3.us.pool.ntp.org iburst</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">keyfile /etc/chrony/chrony.keys</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">driftfile /var/lib/chrony/chrony.drift</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ntsdumpdir /var/lib/chrony</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#log tracking measurements statistics</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">logdir /var/log/chrony</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">maxupdateskew 100.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">rtcsync</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">makestep 1 3</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">leapsectz right/UTC</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">refclock SOCK /run/chrony.ttyAMA0.sock refid GPS precision 1e-3 noselect</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">refclock SOCK /run/chrony.pps0.sock refid PPS precision 1e-7 lock GPS</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">allow 192.168.109.0/24</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">allow fd79:605:8025:a109::/64</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ptpport 319</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hwtimestamp *</span>
+</span></span></code></pre></div><p><strong>Key Points:</strong></p>
+<ul>
+<li><strong>Refclock SOCK entries:</strong> These specify the Unix sockets where Chrony receives data from gpsd (for the serial GPS) and the PPS signal.</li>
+<li><strong>PTP support:</strong> The <code>ptpport 319</code> and <code>hwtimestamp *</code> lines enable PTP hardware timestamping, which improves timing accuracy.</li>
+<li><strong>Network access:</strong> The <code>allow</code> lines configure which subnets may query your NTP server.</li>
+</ul>
+<hr>
+<h2 id="7-verifying-ptp-hardware-timestamping">7. Verifying PTP Hardware Timestamping</h2>
+<p>To verify that your Ethernet interface supports hardware timestamping, run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ethtool -T eth0
+</span></span></code></pre></div><p>The output should indicate support for hardware transmit/receive timestamps and include details similar to:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PTP Hardware Clock: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>Hardware Transmit Timestamp Modes:
+</span></span><span style="display:flex;"><span>    off
+</span></span><span style="display:flex;"><span>    on
+</span></span><span style="display:flex;"><span>    onestep-sync
+</span></span><span style="display:flex;"><span>Hardware Receive Filter Modes:
+</span></span><span style="display:flex;"><span>    none
+</span></span><span style="display:flex;"><span>    all
+</span></span></code></pre></div><p>This confirms that your interface is correctly configured for precise timestamping.</p>
+<hr>
+<h2 id="8-configuring-telegraf-for-monitoring">8. Configuring Telegraf for Monitoring</h2>
+<p>Telegraf collects and sends system metrics to your InfluxDB instance. Edit <code>/etc/telegraf/telegraf.conf</code> to monitor Chrony statistics, GPS data, and general system metrics:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#75715e">## Minimal telegraf.conf for monitoring a Raspberry Pi with gpsd, chrony, and full system metrics</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">agent</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">interval</span> = <span style="color:#e6db74">&#34;10s&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">round_interval</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">metric_batch_size</span> = <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">metric_buffer_limit</span> = <span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">collection_jitter</span> = <span style="color:#e6db74">&#34;0s&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">flush_interval</span> = <span style="color:#e6db74">&#34;10s&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">flush_jitter</span> = <span style="color:#e6db74">&#34;0s&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">debug</span> = <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">quiet</span> = <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">outputs</span>.<span style="color:#a6e22e">influxdb</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">## URL of your InfluxDB instance using HTTPS</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">urls</span> = [<span style="color:#e6db74">&#34;https://192.168.109.7:8086&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">## Ignore certificate chain and host verification (not recommended for production)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">insecure_skip_verify</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">## The target database for metrics.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">database</span> = <span style="color:#e6db74">&#34;ntpserver&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">retention_policy</span> = <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">write_consistency</span> = <span style="color:#e6db74">&#34;any&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">timeout</span> = <span style="color:#e6db74">&#34;5s&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">## Uncomment and set credentials if authentication is required.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">username</span> = <span style="color:#e6db74">&#34;ntp&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">password</span> = <span style="color:#e6db74">&#34;022510&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Plugin for Chrony time synchronization data</span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">inputs</span>.<span style="color:#a6e22e">chrony</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">server</span> = <span style="color:#e6db74">&#34;udp://localhost:323&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">timeout</span> = <span style="color:#e6db74">&#34;5s&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">metrics</span> = [<span style="color:#e6db74">&#34;tracking&#34;</span>, <span style="color:#e6db74">&#34;activity&#34;</span>, <span style="color:#e6db74">&#34;serverstats&#34;</span>, <span style="color:#e6db74">&#34;sources&#34;</span>, <span style="color:#e6db74">&#34;sourcestats&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">socket_group</span> = <span style="color:#e6db74">&#34;chrony&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">socket_perms</span> = <span style="color:#e6db74">&#34;0660&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## CPU metrics: monitors CPU usage across cores and total CPU usage.</span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">inputs</span>.<span style="color:#a6e22e">cpu</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">percpu</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">totalcpu</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fielddrop</span> = [<span style="color:#e6db74">&#34;time_*&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Memory metrics: tracks usage, free memory, and swap.</span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">inputs</span>.<span style="color:#a6e22e">mem</span>]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Disk metrics: monitors disk usage; ignore temporary filesystems.</span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">inputs</span>.<span style="color:#a6e22e">disk</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ignore_fs</span> = [<span style="color:#e6db74">&#34;tmpfs&#34;</span>, <span style="color:#e6db74">&#34;devtmpfs&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Disk I/O metrics: measures read/write activity.</span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">inputs</span>.<span style="color:#a6e22e">diskio</span>]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Network metrics: captures network interface statistics.</span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">inputs</span>.<span style="color:#a6e22e">net</span>]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## System metrics: collects system-level stats such as uptime and load.</span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">inputs</span>.<span style="color:#a6e22e">system</span>]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Optional: Raspberry Pi specific temperature metric.</span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">inputs</span>.<span style="color:#a6e22e">exec</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">commands</span> = [<span style="color:#e6db74">&#34;vcgencmd measure_temp&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name_override</span> = <span style="color:#e6db74">&#34;rpi_temp&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">interval</span> = <span style="color:#e6db74">&#34;10s&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">timeout</span> = <span style="color:#e6db74">&#34;5s&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data_format</span> = <span style="color:#e6db74">&#34;value&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data_type</span> = <span style="color:#e6db74">&#34;float&#34;</span>
+</span></span></code></pre></div><hr>
+<h2 id="9-testing-and-verification">9. Testing and Verification</h2>
+<p>After rebooting your Pi to apply all changes, verify that everything is working correctly.</p>
+<h3 id="91-check-chrony-status">9.1. Check Chrony Status</h3>
+<p>Run the following command to check Chrony&rsquo;s synchronization status:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chronyc tracking
+</span></span></code></pre></div><p>A sample output might look like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>Reference ID    : 50505300 (PPS)
+</span></span><span style="display:flex;"><span>Stratum         : 1
+</span></span><span style="display:flex;"><span>Ref time (UTC)  : Sat Mar 29 05:35:12 2025
+</span></span><span style="display:flex;"><span>System time     : 0.000000086 seconds fast of NTP time
+</span></span><span style="display:flex;"><span>Last offset     : +0.000000175 seconds
+</span></span><span style="display:flex;"><span>RMS offset      : 0.000000729 seconds
+</span></span><span style="display:flex;"><span>Frequency       : 1.945 ppm slow
+</span></span><span style="display:flex;"><span>Residual freq   : +0.000 ppm
+</span></span><span style="display:flex;"><span>Skew            : 0.012 ppm
+</span></span><span style="display:flex;"><span>Root delay      : 0.000000001 seconds
+</span></span><span style="display:flex;"><span>Root dispersion : 0.000019379 seconds
+</span></span><span style="display:flex;"><span>Update interval : 16.0 seconds
+</span></span><span style="display:flex;"><span>Leap status     : Normal
+</span></span></code></pre></div><p>This output indicates that Chrony is synchronizing correctly with your GPS/PPS source.</p>
+<h3 id="92-verify-ntp-sources">9.2. Verify NTP Sources</h3>
+<p>To view the status of the NTP sources, run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chronyc sources -v
+</span></span></code></pre></div><p>This command displays the current state of all NTP sources, including the GPS and PPS inputs along with fallback servers.</p>
+<hr>
+<h2 id="10-conclusion">10. Conclusion</h2>
+<p>In this guide, you learned how to turn a Raspberry Pi 5 into a stratum‑1 NTP server by:</p>
+<ul>
+<li>Installing essential packages like <strong>chrony</strong>, <strong>gpsd</strong>, <strong>telegraf</strong>, and others.</li>
+<li>Configuring the kernel and boot settings to enable GPS and PPS support.</li>
+<li>Setting up <code>gpsd</code> for interfacing with the GPS module.</li>
+<li>Configuring Chrony to use both GPS and PPS for time synchronization, with the additional benefit of PTP hardware timestamping.</li>
+<li>Using Telegraf to monitor system and synchronization metrics, sending data to an InfluxDB instance.</li>
+</ul>
+<p>By following these steps, you can build a highly accurate time server that not only ensures precise network synchronization but also offers detailed monitoring of its performance. Happy time syncing!</p>
+<hr>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a>
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://johnburns.io/post/beginner-network-templating/">beginner-network-templating</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://johnburns.io/post/understanding-the-crystal-ball-function/">Understanding the crystal Ball Function</a>
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

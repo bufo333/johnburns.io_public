@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>using-ip-sla-with-route-maps | The Colour of My Thoughts</title>
+    <meta name="description"
+        content="Using IP SLA with Route-maps
+I recently came across a problem that is not an uncommon problem that small businesses face. I came up with several solutions to their problems and I thought I would take a minute to discuss one of those solutions. This customer has a business requirement to use a proxy server for all outgoing web traffic. This on the face of it seems like a simple problem, there are many good proxy vendors out their such as my favorite vendor Blue Coat. There are many free alternatives such as Squid Caching Proxy server.">
+    <link rel="canonical" href="https://johnburns.io/post/using-ip-sla-with-route-maps/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/post/using-ip-sla-with-route-maps/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="using-ip-sla-with-route-maps">
+  <meta property="og:description" content="Using IP SLA with Route-maps I recently came across a problem that is not an uncommon problem that small businesses face. I came up with several solutions to their problems and I thought I would take a minute to discuss one of those solutions. This customer has a business requirement to use a proxy server for all outgoing web traffic. This on the face of it seems like a simple problem, there are many good proxy vendors out their such as my favorite vendor Blue Coat. There are many free alternatives such as Squid Caching Proxy server.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2009-07-19T09:38:07+00:00">
+    <meta property="article:modified_time" content="2009-07-19T09:38:07+00:00">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="using-ip-sla-with-route-maps">
+  <meta name="twitter:description" content="Using IP SLA with Route-maps I recently came across a problem that is not an uncommon problem that small businesses face. I came up with several solutions to their problems and I thought I would take a minute to discuss one of those solutions. This customer has a business requirement to use a proxy server for all outgoing web traffic. This on the face of it seems like a simple problem, there are many good proxy vendors out their such as my favorite vendor Blue Coat. There are many free alternatives such as Squid Caching Proxy server.">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">using-ip-sla-with-route-maps</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column">
+                            <p>John Burns</p>
+                            <p><time>July 19, 2009</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#using-ip-sla-with-route-maps">Using IP SLA with Route-maps</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <h2 id="using-ip-sla-with-route-maps">Using IP SLA with Route-maps</h2>
+<p>I recently came across a problem that is not an uncommon problem that small businesses face. I came up with several solutions to their problems and I thought I would take a minute to discuss one of those solutions. This customer has a business requirement to use a proxy server for all outgoing web traffic. This on the face of it seems like a simple problem, there are many good proxy vendors out their such as my favorite vendor Blue Coat. There are many free alternatives such as Squid Caching Proxy server.</p>
+<p>Now this is where things get interesting, the office is still using novel e-directory, yes I know Novell is ancient but that is what they are using. The other interesting issue they have is that they went with a proxy server vendor that does not support WCCP. Enough with the limitations now lets talk requirements! The business requirements are as follows, using their existing IT resources and infrastructure they need a proxy solution that is simple to support and highly available, they also need a way of insuring all clients are using the proxy and they do not have the resources to run all over the network manually entering proxy setting or dealing with an overwhelming number of support calls related to incorrect proxy settings. Now that we are done with the limitations and requirements lets spend a little time talking about proxy solutions.</p>
+<p>The most popular solution today is to use some sort of interception caching mechanism such as WCCP. Now WCCP is a Cisco protocol that has been more or less adopted by many other vendors even though the name is different foundry supports this protocol in their layer 4 switches, juniper supports it although under a different name, as well as HP switch and router products. The way WCCP works is to grab packets matching either an access-list or the built in web-cache group and forward those packets to the proxy, their by intercepting the packets as they reach the routed interface upstream from the end user. Now Cisco routers do this by creating a one-way GRE tunnel while Cisco switches perform this by using L2 redirects. If you are configuring WCCP on a Catalyst 6500 switch you have a choice of using L2 redirects or GRE tunnels.</p>
+<p>The second most popular way to insure inform proxy setting across an enterprise is to use WPAD or (Web Proxy Auto Discovery Protocol) . Wpad works by writing a small JavaScript function in a text file, which tells the browser the proxy settings and what domains or subnets are excluded from the proxy such as local settings. Once you create your text file you save it to a web server on the local LAN in the root directory. An example would be <a href="http://webserver.mycompany.com/wpad.dat"><a href="http://webserver.mycompany.com/wpad.dat">http://webserver.mycompany.com/wpad.dat</a></a> .</p>
+<p>An example of the contents of the above file are as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">FindProxyForURL</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">host</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// our local URLs from the domains below example.com don&#39;t need a proxy:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">shExpMatch</span>(<span style="color:#a6e22e">url</span>,<span style="color:#e6db74">&#34;*.techinvasion.local/*&#34;</span>))   {<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;DIRECT&#34;</span>;}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// URLs within this network are accessed through
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// port 8080 on fastproxy.example.com:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isInNet</span>(<span style="color:#a6e22e">host</span>, <span style="color:#e6db74">&#34;10.0.0.0&#34;</span>,  <span style="color:#e6db74">&#34;255.255.255.0&#34;</span>))    {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;PROXY proxy.techinvasion.local:3128&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// All other requests go through port 3128 of proxy.example.com.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// should that fail to respond, go directly to the WWW:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;PROXY proxy.techinvasion.local:3128; DIRECT&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The next step would be to add option 252 to the dhcp scope with an ASCII text entry of the web server path to the wpad.dat file as listed above. On a Cisco router with DHCP the entry would look like the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">dhcp</span> <span style="color:#a6e22e">pool</span> <span style="color:#a6e22e">lan</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">network</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">255.255</span>.<span style="color:#ae81ff">255.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">update</span> <span style="color:#a6e22e">dns</span> <span style="color:#a6e22e">both</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">domain</span><span style="color:#f92672">-</span><span style="color:#a6e22e">name</span> <span style="color:#a6e22e">techinvasion</span>.<span style="color:#a6e22e">local</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">default</span><span style="color:#f92672">-</span><span style="color:#a6e22e">router</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.254</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">dns</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.9</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">option</span> <span style="color:#ae81ff">252</span> <span style="color:#a6e22e">ascii</span> <span style="color:#e6db74">&#34;http://stats.techinvasion.local/proxy.pac&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">lease</span> <span style="color:#a6e22e">infinite</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">!</span>
+</span></span></code></pre></div><p>After this is done you should be in business. The only problem with this approach is that if you do not have active directory to force enable automatic proxy detection in internet explorer you really have no way to force users to look for this pac file. This can create uniformity problems and generate more calls to the help desk.</p>
+<pre><code>        The final way we can configure the proxy is to use route-maps to redirect all web traffic to the proxy. The only problem with this approach is that if for some reason the proxy Is to go down the route-map will be directing traffic to a black hole!  To remedy this we can use the IP-SLA feature to monitor the proxy and deactivate the route-map if the proxy is unavailable.
+</code></pre>
+<p>Now some things to remember, the route-map is only sending the traffic on port 80 to the proxy on port 80, if your proxy runs on a different port you will need to do a port redirect using ipfilter on FreeBSD based proxies, or ipchains on Linux based proxies to change the traffic to the correct port. Ok let get started with our configuration.</p>
+<p>Step one create a http monitor that will use your proxy to pull an outside site like yahoo.com.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">sla</span> <span style="color:#a6e22e">monitor</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">type</span> <span style="color:#a6e22e">http</span> <span style="color:#a6e22e">operation</span> <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">url</span> <span style="color:#a6e22e">http</span><span style="color:#f92672">:</span><span style="color:#75715e">//www.yahoo.com name-server 10.0.0.9 proxy http://10.0.0.8/
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">timeout</span> <span style="color:#ae81ff">5000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">sla</span> <span style="color:#a6e22e">monitor</span> <span style="color:#a6e22e">schedule</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">start</span><span style="color:#f92672">-</span><span style="color:#a6e22e">time</span> <span style="color:#a6e22e">now</span>
+</span></span></code></pre></div><p>The above code polls yahoo.com every 60 seconds to verify that the proxy server is working. Once you have that turned on you can issue the following commands to test it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">sh</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">sla</span> <span style="color:#a6e22e">monitor</span> <span style="color:#a6e22e">statistics</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Round</span> <span style="color:#a6e22e">trip</span> <span style="color:#a6e22e">time</span> (<span style="color:#a6e22e">RTT</span>)            <span style="color:#a6e22e">Index</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Latest</span> <span style="color:#a6e22e">RTT</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">266</span> <span style="color:#a6e22e">ms</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Latest</span> <span style="color:#a6e22e">operation</span> <span style="color:#a6e22e">start</span> <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">04</span><span style="color:#f92672">:</span><span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">13.020</span> <span style="color:#a6e22e">edt</span> <span style="color:#a6e22e">Mon</span> <span style="color:#a6e22e">Jul</span> <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">2009</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Latest</span> <span style="color:#a6e22e">operation</span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">OK</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Latest</span> <span style="color:#a6e22e">DNS</span> <span style="color:#a6e22e">RTT</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span> <span style="color:#a6e22e">ms</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Latest</span> <span style="color:#a6e22e">TCP</span> <span style="color:#a6e22e">Connection</span> <span style="color:#a6e22e">RTT</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">18</span> <span style="color:#a6e22e">ms</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Latest</span> <span style="color:#a6e22e">HTTP</span> <span style="color:#a6e22e">Transaction</span> <span style="color:#a6e22e">RTT</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">248</span> <span style="color:#a6e22e">ms</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Number <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">successes</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">55</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Number <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">failures</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Operation</span> <span style="color:#a6e22e">time</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">live</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">If</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">see</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Last</span> <span style="color:#a6e22e">operation</span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">code</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">OK</span>
+</span></span></code></pre></div><p>Then that means everything is ok, it will say timeout if the proxy is down. Now I do the proxy test on port 80 because I want to verify that the ipchains port redirection rule is working as well, however you could specify a different port such as 3128 or 8080 if you wanted to.</p>
+<p>The next step is to build the route-map and the track object. The track object is what the route map references to check availability of the next hop, in this case the next hop is the proxy. You setup as track object as follows.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">Track</span> <span style="color:#a6e22e">option1</span> <span style="color:#a6e22e">option2</span> <span style="color:#a6e22e">option3</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Option</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">lt</span>;<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#ae81ff">500</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">gt</span>;     <span style="color:#a6e22e">Tracked</span> <span style="color:#a6e22e">object</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Option</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">interface</span>  <span style="color:#a6e22e">Select</span> <span style="color:#a6e22e">an</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">track</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">ip</span>         <span style="color:#a6e22e">IP</span> <span style="color:#a6e22e">protocol</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">list</span>       <span style="color:#a6e22e">Group</span> <span style="color:#a6e22e">objects</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">list</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">rtr</span>        <span style="color:#a6e22e">Response</span> <span style="color:#a6e22e">Time</span> <span style="color:#a6e22e">Reporter</span> (<span style="color:#a6e22e">RTR</span>) <span style="color:#a6e22e">entry</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Option</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">lt</span>;<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2147483647</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">gt</span>;  <span style="color:#a6e22e">Entry</span> <span style="color:#a6e22e">number</span>)  <span style="color:#960050;background-color:#1e0010">�</span> <span style="color:#66d9ef">this</span> <span style="color:#a6e22e">refers</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">monitor</span> <span style="color:#a6e22e">number</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">IP</span> <span style="color:#a6e22e">SLA</span> <span style="color:#a6e22e">command</span>
+</span></span></code></pre></div><p>In our case we want a response time reporter because we are interested in up/down information about the proxy.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">track</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">rtr</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>Now we need to build and apply the route-map.  First we need to build an access-list to specify the interesting traffic the route-map will be forwarding.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">list</span> <span style="color:#a6e22e">extended</span> <span style="color:#a6e22e">proxy</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span> <span style="color:#a6e22e">deny</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">host</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.8</span> <span style="color:#a6e22e">any</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">!</span> <span style="color:#a6e22e">Block</span> <span style="color:#a6e22e">proxy</span> <span style="color:#a6e22e">traffic</span>, <span style="color:#a6e22e">we</span> <span style="color:#66d9ef">do</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">want</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">routing</span> <span style="color:#a6e22e">loop</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">20</span> <span style="color:#a6e22e">permit</span> <span style="color:#a6e22e">tcp</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.0</span> <span style="color:#ae81ff">0.0</span>.<span style="color:#ae81ff">0.255</span> <span style="color:#a6e22e">any</span> <span style="color:#a6e22e">eq</span> <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><p>Here is the appropriate route-map below</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">route</span><span style="color:#f92672">-</span><span style="color:#a6e22e">map</span> <span style="color:#a6e22e">proxy</span> <span style="color:#a6e22e">permit</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">match</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> <span style="color:#a6e22e">proxy</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">next</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hop</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">-</span><span style="color:#a6e22e">availability</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.8</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">track</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/pre&gt;</span>
+</span></span></code></pre></div><p>To test this we can issue the command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">show</span> <span style="color:#a6e22e">route</span><span style="color:#f92672">-</span><span style="color:#a6e22e">map</span> <span style="color:#a6e22e">proxy</span>                                       
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">route</span><span style="color:#f92672">-</span><span style="color:#a6e22e">map</span> <span style="color:#a6e22e">proxy</span>, <span style="color:#a6e22e">permit</span>, <span style="color:#a6e22e">sequence</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Match</span> <span style="color:#a6e22e">clauses</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">address</span> (<span style="color:#a6e22e">access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">lists</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">proxy</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Set</span> <span style="color:#a6e22e">clauses</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ip</span> <span style="color:#a6e22e">next</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hop</span> <span style="color:#a6e22e">verify</span><span style="color:#f92672">-</span><span style="color:#a6e22e">availability</span> <span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">0.8</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">track</span> <span style="color:#ae81ff">1</span>  [<span style="color:#a6e22e">up</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Policy</span> <span style="color:#a6e22e">routing</span> <span style="color:#a6e22e">matches</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">41673</span> <span style="color:#a6e22e">packets</span>, <span style="color:#ae81ff">6145267</span> <span style="color:#a6e22e">bytes</span>
+</span></span></code></pre></div><p>You will notice the �UP� this means that it sees our track object and it is getting th response time code from the ip sla monitor that we setup.</p>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a>
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://johnburns.io/post/introduction-to-filter-list-for-junos/">introduction-to-filter-list-for-junos</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://johnburns.io/post/send-me-questions-and-feedback/">send-me-questions-and-feedback</a>
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

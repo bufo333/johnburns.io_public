@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.145.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>The Colour of My Thoughts</title>
+    <meta name="description"
+        content="
+
+ Enter
+">
+    <link rel="canonical" href="https://johnburns.io/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="Welcome">
+  <meta property="og:description" content="Enter">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Welcome">
+  <meta name="twitter:description" content="Enter">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<article>
+    <div class="is-centered">
+            <div class="title subtitle heading is-6">
+                <div id="home-box" >
+                            
+                            <div class="avatar-container">
+                                <img src="/royal_kmm.jpg" class="author-avatar">
+
+                            </div>
+                            
+
+
+
+                        <h1 id="home-title" class="title is-1 "></h1>
+                    <div class="description column content typewriter-effect">
+                        <div class="text" id="typewriter-text"> </div>
+
+                    </div>
+                    <script>
+                        const typeWriter = document.getElementById('typewriter-text');
+                        typeWriter.style.setProperty('--characters', typeWriter.innerHTML.length);
+                    </script>
+
+                    <div class="social-icon">
+
+                        
+                        <a href="mailto:john@techinvasion.net" title="email"><span class="change-color icon">
+                                <svg height="32px" width="32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 21" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+    <polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+                            </span></a>
+                        
+                        <a href="https://github.com/bufo333/" title="Github"><span class="change-color icon">
+                                <svg height="32px" width="32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+                            </span></a>
+                        
+
+                    </div>
+
+                </div>
+            </div>
+
+    </div></article>
+<div class="summary">
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/tv-networks-just-dont-get-it/">tv-networks-just-dont-get-it</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="tv-networks-just-dont-get-it">TV Networks Just Don&rsquo;t Get it</h2>
+<p>I t seems to me that the big four tv network either don&rsquo;t understand what people want or simply don&rsquo;t care. If you look at the cable networks you have stimulating things to watch like Nip Tuck, Dexter, Sleeper Cell, Battlestar Galactica, Monk, and too many other good dramas to mention. However when you turn to the major networks they simply show one copied worn out reality show after another.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2007-07-02 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/things-i-wish-i-knew-about-solaris-when-i-first-started/">things-i-wish-i-knew-about-solaris-when-i-first-started</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="things-i-wish-i-knew-about-solaris-when-i-first-started">Things I Wish I Knew About Solaris When I First Started.</h2>
+<p><font face="Calibri"><span></span></font></p>
+<p><font face="Calibri">Solaris 10 is a very powerful scalable operating system that feels tightly integrated and highly responsive. However for those of us with a strong Linux or FreeBSD background Solaris can feel a little unfamiliar and even downright confusing. This post is made up of a few things I wish I knew before I started my Solaris 10 adventure. I hope it will make things a little easier for those of you wanting to take the plunge into a true enterprise operating system.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2007-07-02 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/freaking-awesome-linux-distro-os-tan-wallpapers/">freaking-awesome-linux-distro-os-tan-wallpapers</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="linux-distro-os-tan-wallpapers">Linux Distro OS-tan Wallpapers</h2>
+<p>An OS-tan is an anime character representing a particular OS. Here is one artists rendition of a dozen Linux distro OS-tan made for desktop background use, including Linux-tan. The sizes are up to 1600X1200. The Ubuntu-tan is amazing!</p>
+<p><a href="http://www.jkhp.it/OS-tan/desktops.htm">read more</a> | <a href="http://digg.com/linux_unix/Freaking_Awesome_Linux_Distro_OS_tan_Wallpapers">digg story</a></p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2007-06-26 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/ip-filter-and-freebsd/">ip-filter-and-freebsd</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="ip-filter-and-freebsd">IP Filter and FreeBSD</h2>
+<p>IPF is a very robust firewall included in FreeBSD by default. This is a statefull firewall with logging capabilities that can also be used to NAT a local network in situations where the FreeBSD box is the router. The best way to get IPF working is to compile the kernel with support built in. Although the default kernel has support through the use of loadable modules, compiling the options into the kernel provide a more flexible and robust system.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2007-06-25 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/solaris-zones-part-1/">solaris-zones-part-1</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="solaris-zones--part-1">Solaris Zones  Part 1</h2>
+<p>So what is a zone?</p>
+<p>A zone is analogous to a VMware machine but with some distinct advantages as well as some disadvantages. To start explaining zones lets start by comparing it to VMware since most people are familiar with VMware. VMware is a software program that runs on a host operating system,. This could be Windows, Linux, or a custom kernel in the VMware ESX series. VMware provides a hardware abstraction layer which it uses to create mini virtual computers. The advantages of this setup are as follows: You can create a custom virtual computer designed for the operating system and application you want to run. This means that you have a very high level of customizability which allows you to tailor the virtual machine to provide the best performance for the program you want to run. VMware also supports ? many different operating systems. You could run VMware on a Linux box and then run Windows 2003 in one virtual machine, and a FreeBSD NFS server in another. From the point of view of the guest operating systems, they believe they are on standalone hardware and are unaware of the host OS and other guest OSs which may be running.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2007-06-24 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/solaris-zones/">solaris-zones</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="zfs-filesystem-on-solaris">ZFS filesystem on Solaris</h2>
+<p>Here is a flash video thanks to <a href="http://www.opensolaris.org/"><a href="http://www.opensolaris.org">http://www.opensolaris.org</a></a>, which I think explains some of the features of zfs very well. This video should have you wanting more! I am working on a comprehensive tutorial about zfs which should cover this great file system in more detail.</p>
+<p><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" id="Captivate1" height="450" width="610"></object></p>
+<param name="movie" value="zfs_demo_final.swf"></param>
+<param name="quality" value="high"></param>
+<param name="menu" value="false"></param>
+<param name="loop" value="0"></param>   <embed src="zfs_demo_final.swf" loop="0" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" ype="application/x-shockwave-flash" menu="false" height="450" width="610"></embed>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2007-06-24 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/blog-migrated/">blog-migrated</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="blog-migrated">Blog Migrated</h2>
+<p>I just upgraded the blog, It has been migrated from a 800mhz FreeBSD based system to a 2ghz Sun Solaris 10 based system with ZFS storage. The web server is also running in its own isolated container/zone. In migrating I have decided not to import all of the old articles, Instead?  I will go through them and pick the best ones to include here.</p>
+<p>Stay Tuned More to come!</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2007-06-24 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/laptop-crashes-when-power-source-is-changed-fix/">laptop-crashes-when-power-source-is-changed-fix</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="laptop-crashes-when-power-source-is-changed-fix">Laptop crashes when power source is changed fix</h2>
+<p>Like most people who have complained about this problem I had recently upgraded to mandrake 9.2 and was surprised by the lack of problems usually associated with upgrading distro&rsquo;s. My surprise turned to horror when I realized the my laptop a <a href="http://www.linuxquestions.org/questions/#" id="KonaLink0" target="_top" class="kLink" style="text-decoration: underline ! important; position: static"><font style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static" color="blue"><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">Dell </span><span class="kLink" style="color: blue ! important; font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: 400; font-size: 13.3333px; position: static">Inspiron</span></font></a> 8000 would freeze as soon as I unplugged the a/c adapter or plugged in the a/c adapter.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2004-01-31 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+    <hr>
+<section class="pagination" >
+    
+
+    <button class="button ">
+        <a href="/page/5/" class="pag-link"> Prev </a>
+    </button>
+    
+    <label class="pag-link">Page 6 of 6</label>
+    
+</section>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+

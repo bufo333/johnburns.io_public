@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>vista-complete-pc-backup-to-network-share | The Colour of My Thoughts</title>
+    <meta name="description"
+        content="Vista Complete-PC backup to network share
+The real magic of the new Vista backup tool is the second option Complete-PC backup. This feature takes advantage of the HAL independence of Vista and allows you to backup your entire system at one time using the magic of volume shadow copies to backup open files. The backup is also stored in a virtual machine file which means that you can boot, run, and extract files from your backup using Microsoft Virtual PC. This is a really neat feature! If the previous feature isn�t enough for you Microsoft will let you restore your pc by booting to the Windows Vista install DVD and selecting the restore option.">
+    <link rel="canonical" href="https://johnburns.io/post/vista-complete-pc-backup-to-network-share/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/post/vista-complete-pc-backup-to-network-share/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="vista-complete-pc-backup-to-network-share">
+  <meta property="og:description" content="Vista Complete-PC backup to network share The real magic of the new Vista backup tool is the second option Complete-PC backup. This feature takes advantage of the HAL independence of Vista and allows you to backup your entire system at one time using the magic of volume shadow copies to backup open files. The backup is also stored in a virtual machine file which means that you can boot, run, and extract files from your backup using Microsoft Virtual PC. This is a really neat feature! If the previous feature isn�t enough for you Microsoft will let you restore your pc by booting to the Windows Vista install DVD and selecting the restore option.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2007-11-12T23:42:07+00:00">
+    <meta property="article:modified_time" content="2007-11-12T23:42:07+00:00">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="vista-complete-pc-backup-to-network-share">
+  <meta name="twitter:description" content="Vista Complete-PC backup to network share The real magic of the new Vista backup tool is the second option Complete-PC backup. This feature takes advantage of the HAL independence of Vista and allows you to backup your entire system at one time using the magic of volume shadow copies to backup open files. The backup is also stored in a virtual machine file which means that you can boot, run, and extract files from your backup using Microsoft Virtual PC. This is a really neat feature! If the previous feature isn�t enough for you Microsoft will let you restore your pc by booting to the Windows Vista install DVD and selecting the restore option.">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">vista-complete-pc-backup-to-network-share</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column">
+                            <p>John Burns</p>
+                            <p><time>November 12, 2007</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#vista-complete-pc-backup-to-network-share">Vista Complete-PC backup to network share</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <h2 id="vista-complete-pc-backup-to-network-share">Vista Complete-PC backup to network share</h2>
+<p>The real magic of the new Vista backup tool is the second option Complete-PC backup. This feature takes advantage of the HAL independence of Vista and allows you to backup your entire system at one time using the magic of volume shadow copies to backup open files. The backup is also stored in a virtual machine file which means that you can boot, run, and extract files from your backup using Microsoft Virtual PC. This is a really neat feature! If the previous feature isn�t enough for you Microsoft will let you restore your pc by booting to the Windows Vista install DVD and selecting the restore option.</p>
+<p>This is the greatest reason to use the new Windows complete-pc backup feature over other third party backup solutions. As it lets you restore you pc intact with all software serial codes and files ready to rock. However Microsoft in their wisdom has added some obstacles to using what would otherwise be a great tool. When you select the complete pc backup feature you are not given the option to backup to a network drive. This is a big problem as most people do not have a spare hard drive sitting in their desktops waiting for a backup. It is also a problem from an IT administrative viewpoint. As an administrator I would like to have 1 centralized location to store all of my client PC backups. This is also a problem for people at home with nas storage devices as they may have opted for 1 drive without partitions as they expected to keep all backups and data files on the nas drive.</p>
+<p>In order to get around this problem Microsoft has provided a command line version of the windows backup utility called <strong>wbadmin.exe.</strong> This version of the utility is far more powerful than the generic GUI version intended for typical users and allows you to backup to a network drive among other things. Remember that although you can backup to a network drive the backup file must be on a local drive it is to be used by the  <strong>Windows bootable CD</strong> to restore the drive!Lets take a quick look at the switches available to us on the CLI version of the utility, but first lets cover a few caveats. The command line version of the utility does not prompt for credentials, it attempts to access the network share using the credentials of the current user. This means that if you are not backing up to a windows domain member server, in the case of a consumer Linux powered NAS drive, then you must have an account on the nas box that has the same username and password as you are using on the Vista machine. The CLI version of the command must be run from an elevated command window.Let�s take a look at the utility now that we have covered the basics.C:\Users\John&gt;wbadmin.exewbadmin 1.0 - Backup command-line tool(C) Copyright 2004 Microsoft Corp.ERROR - Command incomplete. See list below.For more help, type wbadmin &lt;command&gt; -help&mdash;- Commands Supported &mdash;-START BACKUP &ndash; Run a backup immediatelySTOP JOB &ndash; Stop currently running backup or recoveryGET VERSIONS &ndash; List details backups recoverable fromGET ITEMS &ndash; Lists items backed up for a backupGET STATUS &ndash; Lists status of currently running job</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">C</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">Users</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">John</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">gt</span>;<span style="color:#a6e22e">C</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">Windows</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">system32</span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">gt</span>; <span style="color:#a6e22e">wbadmin</span> <span style="color:#a6e22e">start</span> <span style="color:#a6e22e">backup</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">backuptarget</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">\\</span><span style="color:#a6e22e">server</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">share</span><span style="color:#960050;background-color:#1e0010">\</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">include</span> <span style="color:#f92672">**</span> <span style="color:#f92672">**:</span><span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">drive</span> <span style="color:#a6e22e">letter</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">backup</span> <span style="color:#f92672">**</span><span style="color:#a6e22e">wbadmin</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">Backup</span> <span style="color:#a6e22e">command</span><span style="color:#f92672">-</span><span style="color:#a6e22e">line</span> <span style="color:#a6e22e">tool</span>(<span style="color:#a6e22e">C</span>) <span style="color:#a6e22e">Copyright</span> <span style="color:#ae81ff">2004</span> <span style="color:#a6e22e">Microsoft</span> <span style="color:#a6e22e">Corp</span>.<span style="color:#a6e22e">Retrieving</span> <span style="color:#a6e22e">volume</span> <span style="color:#a6e22e">information</span>...<span style="color:#a6e22e">This</span> <span style="color:#a6e22e">would</span> <span style="color:#a6e22e">backup</span> <span style="color:#a6e22e">volume</span> <span style="color:#a6e22e">Local</span> <span style="color:#a6e22e">Disk</span>(<span style="color:#a6e22e">C</span><span style="color:#f92672">:</span>) <span style="color:#a6e22e">to</span> <span style="color:#960050;background-color:#1e0010">\\</span><span style="color:#a6e22e">server</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">share</span><span style="color:#960050;background-color:#1e0010">\</span>.<span style="color:#a6e22e">Do</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">want</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">start</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">backup</span> <span style="color:#a6e22e">operation</span><span style="color:#f92672">?</span>[<span style="color:#a6e22e">Y</span>] <span style="color:#a6e22e">Yes</span> [<span style="color:#a6e22e">N</span>] <span style="color:#a6e22e">No</span> <span style="color:#a6e22e">yBackup</span> <span style="color:#a6e22e">to</span> <span style="color:#960050;background-color:#1e0010">\\</span><span style="color:#a6e22e">server</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">share</span><span style="color:#960050;background-color:#1e0010">\</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">starting</span>.<span style="color:#a6e22e">Running</span> <span style="color:#a6e22e">shadow</span> <span style="color:#a6e22e">copy</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">volumes</span> <span style="color:#a6e22e">requested</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">backup</span>.<span style="color:#a6e22e">Running</span> <span style="color:#a6e22e">shadow</span> <span style="color:#a6e22e">copy</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">volumes</span> <span style="color:#a6e22e">requested</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">backup</span>.
+</span></span></code></pre></div>
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a>
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://johnburns.io/post/hacked-iphone-goodness/">hacked-iphone-goodness</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://johnburns.io/post/cisco-config-wic-1adsl/">cisco-config-wic-1adsl</a>
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
+    </span>
+    </div>
+  </footer></body>
+</html>
+
