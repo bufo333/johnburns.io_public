@@ -2,26 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://johnburns.io/post/store-dotfile-with-git/</loc>
-    <lastmod>2024-04-04T21:14:30-04:00</lastmod>
+    <loc>https://johnburns.io/</loc>
+    <lastmod>2025-03-28T22:34:35-05:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/post/top-networking-trends-of-2024-a-network-engineer-s-perspective/</loc>
-    <lastmod>2024-03-05T01:02:52-04:00</lastmod>
+    <loc>https://johnburns.io/post/</loc>
+    <lastmod>2025-03-28T22:34:35-05:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/post/transforming-enterprise-networking-the-impact-of-ai-technologies/</loc>
-    <lastmod>2024-04-03T21:22:42-04:00</lastmod>
+    <loc>https://johnburns.io/post/building-stratum-1-time-source/</loc>
+    <lastmod>2025-03-28T22:34:35-05:00</lastmod>
   </url><url>
     <loc>https://johnburns.io/post/understanding-the-crystal-ball-function/</loc>
     <lastmod>2024-04-05T21:14:42-04:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/post/</loc>
-    <lastmod>2025-03-28T22:34:35+00:00</lastmod>
+    <loc>https://johnburns.io/post/store-dotfile-with-git/</loc>
+    <lastmod>2024-04-04T21:14:30-04:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/post/building-stratum-1-time-source/</loc>
-    <lastmod>2025-03-28T22:34:35+00:00</lastmod>
+    <loc>https://johnburns.io/post/transforming-enterprise-networking-the-impact-of-ai-technologies/</loc>
+    <lastmod>2024-04-03T21:22:42-04:00</lastmod>
   </url><url>
-    <loc>https://johnburns.io/</loc>
-    <lastmod>2025-03-28T22:34:35+00:00</lastmod>
+    <loc>https://johnburns.io/post/top-networking-trends-of-2024-a-network-engineer-s-perspective/</loc>
+    <lastmod>2024-03-05T01:02:52-04:00</lastmod>
+  </url><url>
+    <loc>https://johnburns.io/post/gnupg-cheat-sheet/</loc>
+    <lastmod>2022-08-24T18:21:26-04:00</lastmod>
   </url><url>
     <loc>https://johnburns.io/post/beginner-network-templating/</loc>
     <lastmod>2022-05-26T13:00:00+00:00</lastmod>

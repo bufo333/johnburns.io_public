@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>GnuPG Cheat Sheet | The Colour of My Thoughts</title>
+    <meta name="description"
+        content="GnuPG Cheatsheet
+Quick list of the most common GnuPG commands that I need most often. Encrypt, decrypt, signing, key management, key servers, and special features.
+Encrypt and decrypt
+Encrypt a file with your key
+gpg -er me@example.org diary.txt
+
+
+
+Options
+-r encrypts the file for the user specified as argument. The output is written to diary.txt.gpg.
+
+
+Encrypt a file for another person
+gpg -er alice@example.org diary.txt
+Encrypt a file with passphrase
+gpg -c diary.txt
+Decrypt a file
+gpg -do diary.txt diary.txt.gpg
+Encrypt and sign
+Encrypt a file and sign with your key
+gpg -esr alice@example.orge diary.txt
+Sign and encrypt the file, output is written to diary.txt.gpg.">
+    <link rel="canonical" href="https://johnburns.io/post/gnupg-cheat-sheet/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/post/gnupg-cheat-sheet/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="GnuPG Cheat Sheet">
+  <meta property="og:description" content="GnuPG Cheatsheet Quick list of the most common GnuPG commands that I need most often. Encrypt, decrypt, signing, key management, key servers, and special features.
+Encrypt and decrypt Encrypt a file with your key gpg -er me@example.org diary.txt Options
+-r encrypts the file for the user specified as argument. The output is written to diary.txt.gpg.
+Encrypt a file for another person gpg -er alice@example.org diary.txt Encrypt a file with passphrase gpg -c diary.txt Decrypt a file gpg -do diary.txt diary.txt.gpg Encrypt and sign Encrypt a file and sign with your key gpg -esr alice@example.orge diary.txt Sign and encrypt the file, output is written to diary.txt.gpg.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-08-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-08-24T18:21:26-04:00">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GnuPG Cheat Sheet">
+  <meta name="twitter:description" content="GnuPG Cheatsheet Quick list of the most common GnuPG commands that I need most often. Encrypt, decrypt, signing, key management, key servers, and special features.
+Encrypt and decrypt Encrypt a file with your key gpg -er me@example.org diary.txt Options
+-r encrypts the file for the user specified as argument. The output is written to diary.txt.gpg.
+Encrypt a file for another person gpg -er alice@example.org diary.txt Encrypt a file with passphrase gpg -c diary.txt Decrypt a file gpg -do diary.txt diary.txt.gpg Encrypt and sign Encrypt a file and sign with your key gpg -esr alice@example.orge diary.txt Sign and encrypt the file, output is written to diary.txt.gpg.">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">GnuPG Cheat Sheet</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column">
+                            <p>John Burns</p>
+                            <p><time>August 21, 2022</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    <a href="/categories/emacs">emacs</a>
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#gnupg-cheatsheet">GnuPG Cheatsheet</a>
+      <ul>
+        <li><a href="#encrypt-and-decrypt">Encrypt and decrypt</a></li>
+        <li><a href="#encrypt-and-sign">Encrypt and sign</a></li>
+        <li><a href="#signing">Signing</a></li>
+        <li><a href="#public-key-management">Public key management</a></li>
+        <li><a href="#secret-key-management">Secret key management</a></li>
+        <li><a href="#deleting-keys">Deleting keys</a></li>
+        <li><a href="#signing-parties">Signing parties</a></li>
+        <li><a href="#key-servers">Key servers</a></li>
+        <li><a href="#fancy-features">Fancy features</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <h2 id="gnupg-cheatsheet">GnuPG Cheatsheet</h2>
+<p>Quick list of the most common GnuPG commands that I need most often. Encrypt, decrypt, signing, key management, key servers, and special features.</p>
+<h3 id="encrypt-and-decrypt">Encrypt and decrypt</h3>
+<h4 id="encrypt-a-file-with-your-key">Encrypt a file with your key</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -er me@example.org diary.txt
+</span></span></code></pre></div><!--list-separator-->
+<ul>
+<li>
+<p>Options</p>
+<p><strong>-r</strong> encrypts the file for the user specified as argument. The output is written to <strong>diary.txt.gpg</strong>.</p>
+</li>
+</ul>
+<h4 id="encrypt-a-file-for-another-person">Encrypt a file for another person</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -er alice@example.org diary.txt
+</span></span></code></pre></div><h4 id="encrypt-a-file-with-passphrase">Encrypt a file with passphrase</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -c diary.txt
+</span></span></code></pre></div><h4 id="decrypt-a-file">Decrypt a file</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -do diary.txt diary.txt.gpg
+</span></span></code></pre></div><h3 id="encrypt-and-sign">Encrypt and sign</h3>
+<h4 id="encrypt-a-file-and-sign-with-your-key">Encrypt a file and sign with your key</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -esr alice@example.orge diary.txt
+</span></span></code></pre></div><p>Sign and encrypt the file, output is written to <strong>diary.txt.gpg</strong>.</p>
+<h4 id="decrypt-and-verify-a-file">Decrypt and verify a file</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -do diary.txt diary.txt.gpg
+</span></span></code></pre></div><h4 id="signing-and-verification">Signing and verification</h4>
+<!--list-separator-->
+<ul>
+<li>Signing compresses the file and append a signature.</li>
+</ul>
+<h3 id="signing">Signing</h3>
+<h4 id="sign-a-file">Sign a file</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -s diary.txt
+</span></span></code></pre></div><p>The signature is written to <strong>diary.txt.gpg</strong>.</p>
+<h4 id="verify-a-signature">Verify a signature</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --verify diary.txt.gpg
+</span></span></code></pre></div><h4 id="verify-a-signature-and-restore-the-file">Verify a signature and restore the file</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -do diary.txt diary.txt.gpg
+</span></span></code></pre></div><p><strong>-d</strong> is for decryption, this works for signature files as well.</p>
+<h4 id="special-forms-of-signing">Special forms of signing</h4>
+<p>With <strong>clearsign</strong>, the output is wrapped in an ASCII-armored signature.</p>
+<!--list-separator-->
+<ul>
+<li>
+<p>Clearsign a file</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --clearsign diary.txt
+</span></span></code></pre></div><p>The signature is written to <strong>diary.txt.asc</strong>.</p>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>Verify a clearsign signature</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --verify diary.txt.asc
+</span></span></code></pre></div></li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>Verify a signature and restore the file</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -do diary.txt diary.txt.asc
+</span></span></code></pre></div><p><strong>-d</strong> is for decryption, this works for signature files as well.</p>
+<p><strong>Detached signatures</strong> are just signatures without any data</p>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>sign a file using detached signature</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -o diary.txt.sig --detach-sig diary.txt
+</span></span></code></pre></div></li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>Verify a detached signature</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --verify diary.txt.sig diary.txt
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="public-key-management">Public key management</h3>
+<h4 id="list-all-public-keys-in-keyring">List all public keys in keyring</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -k
+</span></span></code></pre></div><h4 id="export-a-public-key">Export a public key</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -ao alice\_pub.asc --export alice@example.org
+</span></span></code></pre></div><h4 id="import-a-public-key">Import a public key</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --import alice\_pub.asc
+</span></span></code></pre></div><h4 id="verify-a-public-key-fingerprint">Verify a public key fingerprint</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --fingerprint alice@example.org
+</span></span></code></pre></div><h3 id="secret-key-management">Secret key management</h3>
+<h4 id="generate-key-pair--rsa-dsa-ecc-like-curve-25519">Generate key pair (RSA,DSA, ECC like Curve 25519)</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --expert --full-gen-key
+</span></span></code></pre></div><p>Using <strong>expert mode</strong> for key generation enables the choice of different key types.</p>
+<h4 id="edit-secret-key">Edit secret key</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --expert --edit-key me@example.org
+</span></span></code></pre></div><!--list-separator-->
+<ul>
+<li>Most interesting commands:
+<table>
+  <thead>
+      <tr>
+          <th>adduid</th>
+          <th>Create an additional user ID</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>revuid</td>
+          <td>Revoke a user ID or photographic user ID</td>
+      </tr>
+      <tr>
+          <td>primary</td>
+          <td>Flag the current user id as the primary one</td>
+      </tr>
+      <tr>
+          <td>addkey</td>
+          <td>Add a subkey to this key</td>
+      </tr>
+      <tr>
+          <td>expire</td>
+          <td>Change the key or subkey expiration time</td>
+      </tr>
+      <tr>
+          <td>passwd</td>
+          <td>Change the passphrase of the secret key</td>
+      </tr>
+      <tr>
+          <td>save</td>
+          <td>Save all changes to the keyrings and quit</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+</ul>
+<h4 id="list-all-secret-keys">List all secret keys</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -K
+</span></span></code></pre></div><h4 id="generate-revocation-certificate">Generate revocation certificate</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -ao revoke-key.asc --gen-revoke A767285029E8882A
+</span></span></code></pre></div><h3 id="deleting-keys">Deleting keys</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --delete-secret-key A767285029E8882A
+</span></span><span style="display:flex;"><span>gpg --delete-key A767285029E8882A
+</span></span></code></pre></div><p>Make sure you have published a revocation certificate, if your key was uploaded to a key server!</p>
+<h3 id="signing-parties">Signing parties</h3>
+<h4 id="show-the-public-key-fingerprint">Show the public key fingerprint</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --fingerprint 00AA11BB22CC33DD
+</span></span></code></pre></div><h4 id="sign-a-public-key">Sign a public key</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --sign-key 00AA11BB22CC33DD
+</span></span></code></pre></div><h4 id="list-keys-with-signatures">List keys with signatures</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --list-sigs
+</span></span></code></pre></div><h4 id="generate-fingerprint-paper-slips">Generate fingerprint paper slips</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg-key2latex --show-qrcode 00AA11BB22CC33DD
+</span></span></code></pre></div><h3 id="key-servers">Key servers</h3>
+<h4 id="send-public-key-to-a-keyserver">Send public key to a keyserver</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --keyserver hkp://pgp.mit.edu --send-keys A767285029E8882A
+</span></span></code></pre></div><p><span class="underline"><em>Remember it&rsquo;s not possible to remove a key from any keyserver!</em></span></p>
+<h4 id="get-public-key-from-a-keyserver">Get public key from a keyserver</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --keyserver hkp://pgp.mit.edu --recv-key A767285029E8882A
+</span></span></code></pre></div><h4 id="search-public-key-on-a-keyserver">Search public key on a keyserver</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --keyserver hkp://pgp.mit.edu --search-keys Alice
+</span></span></code></pre></div><h4 id="refresh-all-keys-from-keyserver">Refresh all keys from keyserver</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --keyserver hkp://pgp.mit.edu --refresh-keys
+</span></span></code></pre></div><p><strong>Useful for updating a key with the latest signatures, user IDs, etc. Calling this with no
+arguments will refresh the entire keyring.</strong></p>
+<h3 id="fancy-features">Fancy features</h3>
+<h4 id="export-ssh-compatible-public-key">Export SSH compatible public key</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --export-ssh-key me@example.org
+</span></span></code></pre></div><p>Export a key in the OpenSSH public key format. You need a subkey for authentication purposes <strong>[A]</strong>.</p>
+<h4 id="get-keygrip">Get keygrip</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --list-secret-keys --with-keygrip
+</span></span></code></pre></div><p>The keygrip can be put in <strong>~/.gnupg/sshcontrol</strong> to use GnuPG for ssh authentication.</p>
+<h4 id="export-subkeys">Export subkeys</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -o my\_subkey.gpg --export-secret-subkey F988A393A99DB2F3!
+</span></span></code></pre></div><p>Export only one or more subkeys for a stripped keyring. Remember the required <strong>!</strong> at the end.</p>
+<h4 id="update-trust-db">Update trust db</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg --update-trustdb
+</span></span></code></pre></div>
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "bufo333\/johnburns.io_public",
+            "data-repo-id": "R_kgDOHYBJIg",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHYBJIs4Cokmt",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://johnburns.io/post/beginner-network-templating/">beginner-network-templating</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://johnburns.io/post/top-networking-trends-of-2024-a-network-engineer-s-perspective/">Top Networking Trends of 2024: A Network Engineer&#39;s Perspective</a>
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+    </span>
+    </div>
+  </footer></body>
+</html>
+

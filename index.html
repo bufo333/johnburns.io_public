@@ -7,10 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>The Colour of My Thoughts</title>
     <meta name="description"
-        content="
-
- Enter
-">
+        content="The desk of my mind.">
     <link rel="canonical" href="https://johnburns.io/" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
     
@@ -18,15 +15,15 @@
 
     <meta property="og:url" content="https://johnburns.io/">
   <meta property="og:site_name" content="The Colour of My Thoughts">
-  <meta property="og:title" content="Welcome">
-  <meta property="og:description" content="Enter">
+  <meta property="og:title" content="The Colour of My Thoughts">
+  <meta property="og:description" content="The desk of my mind.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
 
     
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Welcome">
-  <meta name="twitter:description" content="Enter">
+  <meta name="twitter:title" content="The Colour of My Thoughts">
+  <meta name="twitter:description" content="The desk of my mind.">
 
     
     
@@ -135,7 +132,14 @@
 
 
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
 
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
 </header><main>
 <article>
     <div class="is-centered">
@@ -152,7 +156,7 @@
 
                         <h1 id="home-title" class="title is-1 "></h1>
                     <div class="description column content typewriter-effect">
-                        <div class="text" id="typewriter-text"> </div>
+                        <div class="text" id="typewriter-text"> Innovate, disrupt, code the future. 💻🔐🚀</div>
 
                     </div>
                     <script>
@@ -193,14 +197,81 @@
   <div class="single-container column is-centered">
     <div class="archive" id="post-container">
       <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/building-stratum-1-time-source/">Stratum‑1 NTP Server on Raspberry Pi 5</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <p>This guide explains how to transform a fresh installation of Raspberry Pi OS into a stratum‑1 NTP server. The project leverages a GPIO‑based GPS module with PPS, the PTP hardware timestamping capability of the Ethernet interface, Chrony for NTP synchronization, and Telegraf with InfluxDB for monitoring.</p>
+<hr>
+<h2 id="1-overview">1. Overview</h2>
+<p>In this project you&rsquo;ll build a stratum‑1 NTP server using:</p>
+<ul>
+<li><strong>Raspberry Pi 5</strong> as the host.</li>
+<li>A <strong>GPS module</strong> (via the serial UART port) for an absolute time reference.</li>
+<li>A <strong>PPS (Pulse Per Second) signal</strong> from the same GPS for sub-microsecond timing accuracy.</li>
+<li>The <strong>PTP hardware timestamping</strong> on the Ethernet interface for improved precision on PTP packets.</li>
+<li><strong>Chrony</strong> for NTP time synchronization.</li>
+<li><strong>gpsd</strong> to interface with your GPS receiver.</li>
+<li><strong>Telegraf</strong> for monitoring various metrics (including Chrony statistics) sent to an InfluxDB backend.</li>
+</ul>
+<hr>
+<h2 id="2-prerequisites-and-required-hardware">2. Prerequisites and Required Hardware</h2>
+<p>Before you begin, ensure you have the following:</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2025-03-28 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/understanding-the-crystal-ball-function/">Understanding the Crystal Ball Function</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <p>Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2024-04-07 Sun&gt;</span></span></p>
+<p>Subject: Understanding the Crystal Ball Function</p>
+<p>Version: 1.0</p>
+<!--start-summary-->
+<p>Exploring the intricacies of the Crystal Ball Problem as it applies to arrays, this piece delves into the challenge of predicting future elements based on current sequences. It underscores the significance of pattern recognition and algorithmic forecasting in computational analysis and real-world applications.</p>
+<!--nomore-->
+<h2 id="introduction-to-the-crystal-ball-problem-with-arrays">Introduction to the Crystal Ball Problem with Arrays</h2>
+<p>The <em>Crystal Ball Problem</em> in the context of arrays is a metaphorical representation of the challenge of predicting future elements or trends based on a current sequence of data. Imagine you have an array of numbers representing data points over time. The task is to predict the next set of values the array will hold using only the information currently available.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2024-04-05 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
         <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/store-dotfile-with-git/">Store dotfile with git</a></h1>
        
        
       </header>
       <div class="post-content">
         <div class="excerpt post-summary">
-          <p>Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2022-08-23 Tue&gt;</span></span></p>
-<p>Version: 1.2</p>
+          <p>Version: 1.2</p>
 <!--start-summary-->
 <p>Store all DotFiles in a bare git repository</p>
 <!--nomore-->
@@ -243,35 +314,6 @@ Use this to add all your files manually, this way only updates to your tracked f
   <div class="single-container column is-centered">
     <div class="archive" id="post-container">
       <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/top-networking-trends-of-2024-a-network-engineer-s-perspective/">Top Networking Trends of 2024: A Network Engineer&#39;s Perspective</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <p>Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2024-01-28 Sun&gt;</span></span></p>
-<p>Version: 1.0</p>
-<!--start-summary-->
-<p>Welcome to 2024, a year that continues to witness revolutionary changes in the world of networking. As a network engineer, I&rsquo;ve seen firsthand the rapid evolution of technology in our field. This year is no exception, with several trends emerging that are reshaping how we think about and implement network infrastructure. Let&rsquo;s dive into some of the top trends in networking for 2024.</p>
-<!--nomore-->
-<h2 id="1-dot-the-rise-of-6g-technology">1. The Rise of 6G Technology</h2>
-<p>Although 5G has just recently become mainstream, the buzz around 6G technology is already gaining momentum. Expected to be commercially available by 2030, research and development in 6G are heating up in 2024. This next-generation technology promises even faster speeds, lower latency, and higher reliability, paving the way for more advanced applications like holographic communications and augmented reality.</p>
-        </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2024-03-05 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
-
-    
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
         <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/transforming-enterprise-networking-the-impact-of-ai-technologies/">Transforming Enterprise Networking: The Impact of AI Technologies</a></h1>
        
        
@@ -301,24 +343,23 @@ Use this to add all your files manually, this way only updates to your tracked f
   <div class="single-container column is-centered">
     <div class="archive" id="post-container">
       <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/understanding-the-crystal-ball-function/">Understanding the crystal Ball Function</a></h1>
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/top-networking-trends-of-2024-a-network-engineer-s-perspective/">Top Networking Trends of 2024: A Network Engineer&#39;s Perspective</a></h1>
        
        
       </header>
       <div class="post-content">
         <div class="excerpt post-summary">
-          <p>Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2024-04-07 Sun&gt;</span></span></p>
-<p>Subject: Understanding the crystal Ball Function</p>
+          <p>Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2024-01-28 Sun&gt;</span></span></p>
 <p>Version: 1.0</p>
 <!--start-summary-->
-<p>Exploring the intricacies of the Crystal Ball Problem as it applies to arrays, this piece delves into the challenge of predicting future elements based on current sequences. It underscores the significance of pattern recognition and algorithmic forecasting in computational analysis and real-world applications.</p>
+<p>Welcome to 2024, a year that continues to witness revolutionary changes in the world of networking. As a network engineer, I&rsquo;ve seen firsthand the rapid evolution of technology in our field. This year is no exception, with several trends emerging that are reshaping how we think about and implement network infrastructure. Let&rsquo;s dive into some of the top trends in networking for 2024.</p>
 <!--nomore-->
-<h2 id="introduction-to-the-crystal-ball-problem-with-arrays">Introduction to the Crystal Ball Problem with Arrays</h2>
-<p>The &ldquo;Crystal Ball Problem&rdquo; in the context of arrays is a metaphorical representation of the challenge of predicting future elements or trends based on a current sequence of data. Imagine you have an array of numbers representing data points over time. The task is to predict the next set of values the array will hold, using only the information currently available within it.</p>
+<h2 id="1-dot-the-rise-of-6g-technology">1. The Rise of 6G Technology</h2>
+<p>Although 5G has just recently become mainstream, the buzz around 6G technology is already gaining momentum. Expected to be commercially available by 2030, research and development in 6G are heating up in 2024. This next-generation technology promises even faster speeds, lower latency, and higher reliability, paving the way for more advanced applications like holographic communications and augmented reality.</p>
         </div>
         
         <div class="post-time-container">
-          <span class="post-time"> 2024-04-05 </span>
+          <span class="post-time"> 2024-03-05 </span>
         </div>
       </div>
       
@@ -331,32 +372,38 @@ Use this to add all your files manually, this way only updates to your tracked f
   <div class="single-container column is-centered">
     <div class="archive" id="post-container">
       <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/building-stratum-1-time-source/">Building a Stratum‑1 NTP Server on Raspberry Pi 5</a></h1>
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/gnupg-cheat-sheet/">GnuPG Cheat Sheet</a></h1>
        
        
       </header>
       <div class="post-content">
         <div class="excerpt post-summary">
-          <p>This guide explains how to transform a fresh installation of Raspberry Pi OS into a stratum‑1 NTP server. The project leverages a GPIO‑based GPS module with PPS, the PTP hardware timestamping capability of the Ethernet interface, Chrony for NTP synchronization, and Telegraf with InfluxDB for monitoring.</p>
-<hr>
-<h2 id="1-overview">1. Overview</h2>
-<p>In this project you&rsquo;ll build a stratum‑1 NTP server using:</p>
+          <h2 id="gnupg-cheatsheet">GnuPG Cheatsheet</h2>
+<p>Quick list of the most common GnuPG commands that I need most often. Encrypt, decrypt, signing, key management, key servers, and special features.</p>
+<h3 id="encrypt-and-decrypt">Encrypt and decrypt</h3>
+<h4 id="encrypt-a-file-with-your-key">Encrypt a file with your key</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -er me@example.org diary.txt
+</span></span></code></pre></div><!--list-separator-->
 <ul>
-<li><strong>Raspberry Pi 5</strong> as the host.</li>
-<li>A <strong>GPS module</strong> (via the serial UART port) for an absolute time reference.</li>
-<li>A <strong>PPS (Pulse Per Second) signal</strong> from the same GPS for sub-microsecond timing accuracy.</li>
-<li>The <strong>PTP hardware timestamping</strong> on the Ethernet interface for improved precision on PTP packets.</li>
-<li><strong>Chrony</strong> for NTP time synchronization.</li>
-<li><strong>gpsd</strong> to interface with your GPS receiver.</li>
-<li><strong>Telegraf</strong> for monitoring various metrics (including Chrony statistics) sent to an InfluxDB backend.</li>
+<li>
+<p>Options</p>
+<p><strong>-r</strong> encrypts the file for the user specified as argument. The output is written to <strong>diary.txt.gpg</strong>.</p>
+</li>
 </ul>
-<hr>
-<h2 id="2-prerequisites-and-required-hardware">2. Prerequisites and Required Hardware</h2>
-<p>Before you begin, ensure you have the following:</p>
+<h4 id="encrypt-a-file-for-another-person">Encrypt a file for another person</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -er alice@example.org diary.txt
+</span></span></code></pre></div><h4 id="encrypt-a-file-with-passphrase">Encrypt a file with passphrase</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -c diary.txt
+</span></span></code></pre></div><h4 id="decrypt-a-file">Decrypt a file</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -do diary.txt diary.txt.gpg
+</span></span></code></pre></div><h3 id="encrypt-and-sign">Encrypt and sign</h3>
+<h4 id="encrypt-a-file-and-sign-with-your-key">Encrypt a file and sign with your key</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>gpg -esr alice@example.orge diary.txt
+</span></span></code></pre></div><p>Sign and encrypt the file, output is written to <strong>diary.txt.gpg</strong>.</p>
         </div>
         
         <div class="post-time-container">
-          <span class="post-time"> 2025-03-28 </span>
+          <span class="post-time"> 2022-08-21 </span>
         </div>
       </div>
       
@@ -571,34 +618,6 @@ And die like a hero going home</p>
 </article>
 
     
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/slow-downloads-in-itunes/">slow-downloads-in-itunes</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <h2 id="slow-downloads-in-itunes">Slow Downloads in Itunes</h2>
-<p>If you are experiencing slow downloads in iTunes try this:</p>
-<p>Shut down iTunes</p>
-<p>Disable antivirus/internet security suite</p>
-<p>Open itunes and resume downloads.</p>
-<p>This is most often caused by the internet security suite which is not capable of scanning large files in real time. If this fixes your problem, you can usually make the fix permanent by disabling the piece of the antivirus that filters web traffic.</p>
-        </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2012-11-11 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
-
-    
     <hr>
 <section class="pagination" >
     
@@ -618,7 +637,6 @@ And die like a hero going home</p>
     <span>
         Powered by
         <a href="https://gohugo.io/" target="_blank">Hugo</a> &
-        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
     </span>
     </div>
   </footer></body>

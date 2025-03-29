@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Store dotfile with git | The Colour of My Thoughts</title>
     <meta name="description"
-        content="Date: &lt;2022-08-23 Tue&gt;
-Version: 1.2
+        content="Version: 1.2
 
 Store all DotFiles in a bare git repository
 
@@ -42,8 +41,7 @@ config checkout
     <meta property="og:url" content="https://johnburns.io/post/store-dotfile-with-git/">
   <meta property="og:site_name" content="The Colour of My Thoughts">
   <meta property="og:title" content="Store dotfile with git">
-  <meta property="og:description" content="Date: &lt;2022-08-23 Tue&gt;
-Version: 1.2
+  <meta property="og:description" content="Version: 1.2
 Store all DotFiles in a bare git repository
 Setup git init –bare $HOME/.cfg alias config=’usr/bin/git –git-dir=$HOME.cfg/ –work-tree=$HOME&#39; echo “alias config=’usr/local/bin/git –git-dir=$HOME.cfg/ –work-tree=$HOME’” &gt;&gt; $HOME/.zsh/aliases config config –local status.showUntrackedFiles no Adding files Manually add files to repository by using config add &lt;filename&gt;. Use this to add all your files manually, this way only updates to your tracked files will show
 Add the github repository config remote add origin &lt;remote-url&gt; config push -u origin main Restore files from github echo “.cfg” &gt;&gt; .gitignore git clone &lt;remote-git-repo-url&gt; $HOME/.cfg alias config=’/usr/local/bin/git –git-dir=&lt;path to .cfg’s Git directory&gt; –work-tree=$HOME&#39; config config –local status.showUntrackedFiles no config checkout">
@@ -56,8 +54,7 @@ Add the github repository config remote add origin &lt;remote-url&gt; config pus
     
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Store dotfile with git">
-  <meta name="twitter:description" content="Date: &lt;2022-08-23 Tue&gt;
-Version: 1.2
+  <meta name="twitter:description" content="Version: 1.2
 Store all DotFiles in a bare git repository
 Setup git init –bare $HOME/.cfg alias config=’usr/bin/git –git-dir=$HOME.cfg/ –work-tree=$HOME&#39; echo “alias config=’usr/local/bin/git –git-dir=$HOME.cfg/ –work-tree=$HOME’” &gt;&gt; $HOME/.zsh/aliases config config –local status.showUntrackedFiles no Adding files Manually add files to repository by using config add &lt;filename&gt;. Use this to add all your files manually, this way only updates to your tracked files will show
 Add the github repository config remote add origin &lt;remote-url&gt; config push -u origin main Restore files from github echo “.cfg” &gt;&gt; .gitignore git clone &lt;remote-git-repo-url&gt; $HOME/.cfg alias config=’/usr/local/bin/git –git-dir=&lt;path to .cfg’s Git directory&gt; –work-tree=$HOME&#39; config config –local status.showUntrackedFiles no config checkout">
@@ -169,7 +166,14 @@ Add the github repository config remote add origin &lt;remote-url&gt; config pus
 
 
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
 
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
 </header><main>
 <div class="single-container">
     <div class="archive">
@@ -228,8 +232,7 @@ Add the github repository config remote add origin &lt;remote-url&gt; config pus
 
 </script>
             </div>
-            <p>Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2022-08-23 Tue&gt;</span></span></p>
-<p>Version: 1.2</p>
+            <p>Version: 1.2</p>
 <!--start-summary-->
 <p>Store all DotFiles in a bare git repository</p>
 <!--nomore-->
@@ -269,17 +272,66 @@ Use this to add all your files manually, this way only updates to your tracked f
                 d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
                 p-id="3990" fill="#363636"></path>
         </svg>
-    </a>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "bufo333\/johnburns.io_public",
+            "data-repo-id": "R_kgDOHYBJIg",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHYBJIs4Cokmt",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
 
 <div class="pp-container">
         <section class="pre-and-post">
             <div class="has-text-left">
                 
                 <p>Previous post</p>
-                <a href="https://johnburns.io/post/top-networking-trends-of-2024-a-network-engineer-s-perspective/">Top Networking Trends of 2024: A Network Engineer&#39;s Perspective</a>
+                <a href="https://johnburns.io/post/transforming-enterprise-networking-the-impact-of-ai-technologies/">Transforming Enterprise Networking: The Impact of AI Technologies</a>
                 
             </div>
             <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://johnburns.io/post/understanding-the-crystal-ball-function/">Understanding the Crystal Ball Function</a>
                 
             </div>
         </section>
@@ -293,7 +345,6 @@ Use this to add all your files manually, this way only updates to your tracked f
     <span>
         Powered by
         <a href="https://gohugo.io/" target="_blank">Hugo</a> &
-        <a href="https://github.com/hotjuicew/hugo-JuiceBar" target="_blank">JuiceBar</a>
     </span>
     </div>
   </footer></body>
