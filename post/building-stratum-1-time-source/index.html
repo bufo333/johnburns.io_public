@@ -220,7 +220,21 @@ Raspberry Pi 5 as the host. A GPS module (via the serial UART port) for an absol
         <li><a href="#92-verify-ntp-sources">9.2. Verify NTP Sources</a></li>
       </ul>
     </li>
-    <li><a href="#10-conclusion">10. Conclusion</a></li>
+    <li><a href="#10-configuring-ptp-as-a-grandmaster-clock">10. Configuring PTP as a Grandmaster Clock</a>
+      <ul>
+        <li><a href="#101-install-linux-ptp">10.1. Install Linux PTP</a></li>
+        <li><a href="#102-create-a-ptp-configuration-file">10.2. Create a PTP Configuration File</a></li>
+        <li><a href="#103-start-ptp4l-in-grandmaster-mode">10.3. Start ptp4l in Grandmaster Mode</a></li>
+        <li><a href="#104-optional-create-systemd-service-files">10.4. (Optional) Create Systemd Service Files</a></li>
+      </ul>
+    </li>
+    <li><a href="#11-verifying-the-ptp-grandmaster-status">11. Verifying the PTP Grandmaster Status</a>
+      <ul>
+        <li><a href="#111-use-the-pmc-tool">11.1. Use the PMC Tool</a></li>
+        <li><a href="#112-monitor-ptp4l-logs">11.2. Monitor ptp4l Logs</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-conclusion">12. Conclusion</a></li>
   </ul>
 </nav></div>
             </aside>
@@ -448,16 +462,85 @@ Raspberry Pi 5 as the host. A GPS module (via the serial UART port) for an absol
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chronyc sources -v
 </span></span></code></pre></div><p>This command displays the current state of all NTP sources, including the GPS and PPS inputs along with fallback servers.</p>
 <hr>
-<h2 id="10-conclusion">10. Conclusion</h2>
-<p>In this guide, you learned how to turn a Raspberry Pi 5 into a stratum‑1 NTP server by:</p>
+<h2 id="10-configuring-ptp-as-a-grandmaster-clock">10. Configuring PTP as a Grandmaster Clock</h2>
+<p>To use your Raspberry Pi as a PTP grandmaster clock, you&rsquo;ll need to run the PTP daemon (ptp4l) in master mode so it broadcasts precise timing over the network. Follow these steps:</p>
+<h3 id="101-install-linux-ptp">10.1. Install Linux PTP</h3>
+<p>Make sure the Linux PTP package is installed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install linuxptp
+</span></span></code></pre></div><h3 id="102-create-a-ptp-configuration-file">10.2. Create a PTP Configuration File</h3>
+<p>Create a configuration file for ptp4l (for example, <code>/etc/linuxptp/ptp4l.conf</code>) with the following content:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[global]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">masterOnly 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">priority1 128</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">priority2 128</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">logAnnounceInterval 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">logSyncInterval 0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">logMinDelayReqInterval 0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">time_stamping hardware</span>
+</span></span></code></pre></div><p><strong>Key Points:</strong></p>
+<ul>
+<li><strong>masterOnly 1:</strong> Forces the PTP daemon to run in grandmaster mode.</li>
+<li><strong>time_stamping hardware:</strong> Uses the Ethernet interface’s hardware timestamping for best accuracy.</li>
+<li>The priority settings help determine your device’s preference as a master if multiple grandmasters exist.</li>
+</ul>
+<h3 id="103-start-ptp4l-in-grandmaster-mode">10.3. Start ptp4l in Grandmaster Mode</h3>
+<p>You can test the configuration by running:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ptp4l -f /etc/linuxptp/ptp4l.conf -i eth0 -m
+</span></span></code></pre></div><p>Replace <code>eth0</code> with the name of your Ethernet interface if different.</p>
+<h3 id="104-optional-create-systemd-service-files">10.4. (Optional) Create Systemd Service Files</h3>
+<p>To ensure ptp4l starts automatically at boot as a grandmaster, create a systemd service file.</p>
+<h4 id="create-the-ptp4l-service-file">Create the ptp4l Service File</h4>
+<p>Create <code>/etc/systemd/system/ptp4l.service</code> with the following content:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[Unit]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Description</span><span style="color:#f92672">=</span><span style="color:#e6db74">PTP Grandmaster Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">After</span><span style="color:#f92672">=</span><span style="color:#e6db74">network.target</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Service]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Type</span><span style="color:#f92672">=</span><span style="color:#e6db74">simple</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ExecStart</span><span style="color:#f92672">=</span><span style="color:#e6db74">/usr/sbin/ptp4l -f /etc/linuxptp/ptp4l.conf -i eth0 -m</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Restart</span><span style="color:#f92672">=</span><span style="color:#e6db74">always</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">RestartSec</span><span style="color:#f92672">=</span><span style="color:#e6db74">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Install]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">WantedBy</span><span style="color:#f92672">=</span><span style="color:#e6db74">multi-user.target</span>
+</span></span></code></pre></div><p>Reload the systemd daemon and enable the service:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span><span style="display:flex;"><span>sudo systemctl enable ptp4l.service
+</span></span><span style="display:flex;"><span>sudo systemctl start ptp4l.service
+</span></span></code></pre></div><hr>
+<h2 id="11-verifying-the-ptp-grandmaster-status">11. Verifying the PTP Grandmaster Status</h2>
+<p>After configuring ptp4l in master mode, you can verify that your Raspberry Pi is functioning as the PTP grandmaster.</p>
+<h3 id="111-use-the-pmc-tool">11.1. Use the PMC Tool</h3>
+<p>The <code>pmc</code> utility helps check PTP status. Run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pmc -u -b <span style="color:#ae81ff">0</span> <span style="color:#e6db74">&#39;GET CURRENT_DATA_SET&#39;</span>
+</span></span></code></pre></div><p>A successful output might look similar to:</p>
+<pre tabindex="0"><code>stepsRemoved     0
+offsetFromMaster 0
+meanPathDelay    2000.0
+</code></pre><ul>
+<li><strong>stepsRemoved:</strong> Should be 0, indicating the device is not acting as a slave.</li>
+<li><strong>offsetFromMaster:</strong> Near 0 when operating as a grandmaster.</li>
+<li><strong>meanPathDelay:</strong> Shows the average network delay measured.</li>
+</ul>
+<h3 id="112-monitor-ptp4l-logs">11.2. Monitor ptp4l Logs</h3>
+<p>Check the service logs for any errors:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo journalctl -u ptp4l.service -f
+</span></span></code></pre></div><p>This helps ensure that ptp4l is correctly broadcasting time over your network.</p>
+<hr>
+<h2 id="12-conclusion">12. Conclusion</h2>
+<p>In this guide, you learned how to build stratum‑1 NTP server by:</p>
 <ul>
 <li>Installing essential packages like <strong>chrony</strong>, <strong>gpsd</strong>, <strong>telegraf</strong>, and others.</li>
 <li>Configuring the kernel and boot settings to enable GPS and PPS support.</li>
 <li>Setting up <code>gpsd</code> for interfacing with the GPS module.</li>
 <li>Configuring Chrony to use both GPS and PPS for time synchronization, with the additional benefit of PTP hardware timestamping.</li>
 <li>Using Telegraf to monitor system and synchronization metrics, sending data to an InfluxDB instance.</li>
+<li><strong>NTP Service:</strong> Using Chrony to provide precise NTP time synchronization with GPS/PPS support.</li>
+<li><strong>PTP Grandmaster:</strong> Running ptp4l in master mode to offer precise time distribution via PTP on the local network.</li>
 </ul>
-<p>By following these steps, you can build a highly accurate time server that not only ensures precise network synchronization but also offers detailed monitoring of its performance. Happy time syncing!</p>
+<p>By following these steps, you can build a highly accurate time server that not only ensures precise network synchronization but also offers detailed monitoring of its performance.</p>
+<p>Happy time syncing!</p>
 <hr>
 
         </div>
