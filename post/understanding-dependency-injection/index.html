@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Understanding Dependency Injection in Python | The Colour of My Thoughts</title>
+    <meta name="description"
+        content="Dependency Injection (DI) is a software design pattern that helps create loosely coupled, testable, and maintainable code. Instead of having classes create their own dependencies, those dependencies are &ldquo;injected&rdquo; from the outside. This blog post will walk you through a concrete Python example that demonstrates DI, along with alternate techniques like the Service Locator and Factory patterns.
+What Is Dependency Injection?
+At its core, dependency injection involves passing (or &ldquo;injecting&rdquo;) an object’s dependencies rather than instantiating them internally. The main benefits include:">
+    <link rel="canonical" href="https://johnburns.io/post/understanding-dependency-injection/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/post/understanding-dependency-injection/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="Understanding Dependency Injection in Python">
+  <meta property="og:description" content="Dependency Injection (DI) is a software design pattern that helps create loosely coupled, testable, and maintainable code. Instead of having classes create their own dependencies, those dependencies are “injected” from the outside. This blog post will walk you through a concrete Python example that demonstrates DI, along with alternate techniques like the Service Locator and Factory patterns.
+What Is Dependency Injection? At its core, dependency injection involves passing (or “injecting”) an object’s dependencies rather than instantiating them internally. The main benefits include:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-03-30T12:34:35-05:00">
+    <meta property="article:modified_time" content="2025-03-30T12:34:35-05:00">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Understanding Dependency Injection in Python">
+  <meta name="twitter:description" content="Dependency Injection (DI) is a software design pattern that helps create loosely coupled, testable, and maintainable code. Instead of having classes create their own dependencies, those dependencies are “injected” from the outside. This blog post will walk you through a concrete Python example that demonstrates DI, along with alternate techniques like the Service Locator and Factory patterns.
+What Is Dependency Injection? At its core, dependency injection involves passing (or “injecting”) an object’s dependencies rather than instantiating them internally. The main benefits include:">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LQNL2E5MEL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LQNL2E5MEL');
+</script>
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">Understanding Dependency Injection in Python</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column">
+                            <p>John Burns</p>
+                            <p><time>March 30, 2025</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-dependency-injection">What Is Dependency Injection?</a></li>
+    <li><a href="#example-overview">Example Overview</a></li>
+    <li><a href="#defining-an-abstraction">Defining an Abstraction</a></li>
+    <li><a href="#concrete-implementations">Concrete Implementations</a></li>
+    <li><a href="#using-dependency-injection-in-the-mailer">Using Dependency Injection in the Mailer</a></li>
+    <li><a href="#resolving-dependencies-with-a-service-locator">Resolving Dependencies with a Service Locator</a>
+      <ul>
+        <li><a href="#using-the-service-locator">Using the Service Locator</a></li>
+      </ul>
+    </li>
+    <li><a href="#an-alternate-the-factory-method">An Alternate: The Factory Method</a>
+      <ul>
+        <li><a href="#using-the-factory">Using the Factory</a></li>
+      </ul>
+    </li>
+    <li><a href="#when-and-why-to-use-dependency-injection">When and Why to Use Dependency Injection</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <p>Dependency Injection (DI) is a software design pattern that helps create loosely coupled, testable, and maintainable code. Instead of having classes create their own dependencies, those dependencies are &ldquo;injected&rdquo; from the outside. This blog post will walk you through a concrete Python example that demonstrates DI, along with alternate techniques like the Service Locator and Factory patterns.</p>
+<h2 id="what-is-dependency-injection">What Is Dependency Injection?</h2>
+<p>At its core, dependency injection involves passing (or &ldquo;injecting&rdquo;) an object’s dependencies rather than instantiating them internally. The main benefits include:</p>
+<ul>
+<li><strong>Decoupling:</strong> Classes do not need to know about the construction details of their dependencies.</li>
+<li><strong>Testability:</strong> You can easily substitute real implementations with mocks or stubs for testing.</li>
+<li><strong>Flexibility:</strong> You can change the behavior of your system at runtime by providing different implementations.</li>
+</ul>
+<h2 id="example-overview">Example Overview</h2>
+<p>In the provided code, the email sending functionality is abstracted through an interface and implemented by multiple services. The central concepts include:</p>
+<ul>
+<li><strong>Abstraction with an Interface:</strong> The <code>IEmailService</code> abstract base class defines the contract for sending emails.</li>
+<li><strong>Concrete Implementations:</strong> Classes such as <code>SMTPEmailService</code>, <code>SendGridEmailService</code>, and <code>MockEmailService</code> implement the interface.</li>
+<li><strong>Injection via the Constructor:</strong> The <code>Mailer</code> class accepts an <code>IEmailService</code> implementation, demonstrating constructor injection.</li>
+<li><strong>Service Locator &amp; Factory:</strong> Two different patterns to resolve and obtain dependencies are shown.</li>
+</ul>
+<p>Let’s break these down with code snippets.</p>
+<h2 id="defining-an-abstraction">Defining an Abstraction</h2>
+<p>The foundation of dependency injection in this example is the abstract base class <code>IEmailService</code>, which defines the method every email service must implement.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> abc <span style="color:#f92672">import</span> ABC, abstractmethod
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">IEmailService</span>(ABC):
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@abstractmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">send_email</span>(self, message: str) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span></code></pre></div><p>This interface allows any implementation of an email service to be interchangeable as long as it conforms to this contract.</p>
+<h2 id="concrete-implementations">Concrete Implementations</h2>
+<p>There are three implementations provided in the example:</p>
+<ul>
+<li><strong>SMTPEmailService:</strong> Sends emails via SMTP.</li>
+<li><strong>SendGridEmailService:</strong> Sends emails via SendGrid.</li>
+<li><strong>MockEmailService:</strong> A mock version used primarily for testing.</li>
+</ul>
+<p>Here’s how one of them is implemented:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SMTPEmailService</span>(IEmailService):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">send_email</span>(self, message: str) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Sending email via SMTP: </span><span style="color:#e6db74">{</span>message<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>Each service follows the same interface but implements the sending logic differently. This is a classic case where DI shines—you can easily swap one implementation for another without changing the dependent code.</p>
+<h2 id="using-dependency-injection-in-the-mailer">Using Dependency Injection in the Mailer</h2>
+<p>The <code>Mailer</code> class is where DI is put into practice. It accepts an instance of <code>IEmailService</code> through its constructor:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Mailer</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, email_service: IEmailService):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>email_service <span style="color:#f92672">=</span> email_service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">send_message</span>(self, message: str) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>email_service<span style="color:#f92672">.</span>send_email(message)
+</span></span></code></pre></div><p>Here, the <code>Mailer</code> doesn’t care which email service it uses—it only knows that it can send emails by calling the <code>send_email</code> method. This makes it flexible and easy to test.</p>
+<h2 id="resolving-dependencies-with-a-service-locator">Resolving Dependencies with a Service Locator</h2>
+<p>One way to manage and inject dependencies is by using a Service Locator. In this example, a simple registry of services is maintained:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ServiceLocator</span>:
+</span></span><span style="display:flex;"><span>    services <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SMTP&#34;</span>: SMTPEmailService(),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SendGrid&#34;</span>: SendGridEmailService(),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Mock&#34;</span>: MockEmailService()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@staticmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_email_service</span>(service_type: str) <span style="color:#f92672">-&gt;</span> IEmailService:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ServiceLocator<span style="color:#f92672">.</span>services<span style="color:#f92672">.</span>get(service_type, MockEmailService())
+</span></span></code></pre></div><p>The <code>ServiceLocator</code> holds pre-created instances of email services. When a specific service is needed, it is retrieved by its key. This approach centralizes the dependency management but can hide class dependencies if overused.</p>
+<h3 id="using-the-service-locator">Using the Service Locator</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>service_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SendGrid&#34;</span>  <span style="color:#75715e"># This could be determined dynamically</span>
+</span></span><span style="display:flex;"><span>email_service <span style="color:#f92672">=</span> ServiceLocator<span style="color:#f92672">.</span>get_email_service(service_type)
+</span></span><span style="display:flex;"><span>mailer <span style="color:#f92672">=</span> Mailer(email_service)
+</span></span><span style="display:flex;"><span>mailer<span style="color:#f92672">.</span>send_message(<span style="color:#e6db74">&#34;Message for the selected service.&#34;</span>)
+</span></span></code></pre></div><p>In this snippet, the <code>Mailer</code> gets its dependency resolved through the locator, demonstrating how DI is facilitated indirectly.</p>
+<h2 id="an-alternate-the-factory-method">An Alternate: The Factory Method</h2>
+<p>Another common technique to resolve dependencies is using a Factory. The factory method encapsulates the logic to decide which concrete class to instantiate:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmailServiceFactory</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_email_service</span>(self, service_type: str) <span style="color:#f92672">-&gt;</span> IEmailService:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> service_type <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;SMTP&#34;</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> SMTPEmailService()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> service_type <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;SendGrid&#34;</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> SendGridEmailService()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> MockEmailService()
+</span></span></code></pre></div><h3 id="using-the-factory">Using the Factory</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>service_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SMTP&#34;</span>  <span style="color:#75715e"># Determined at runtime based on factors such as configuration</span>
+</span></span><span style="display:flex;"><span>factory <span style="color:#f92672">=</span> EmailServiceFactory()
+</span></span><span style="display:flex;"><span>email_service <span style="color:#f92672">=</span> factory<span style="color:#f92672">.</span>get_email_service(service_type)
+</span></span><span style="display:flex;"><span>mailer <span style="color:#f92672">=</span> Mailer(email_service)
+</span></span><span style="display:flex;"><span>mailer<span style="color:#f92672">.</span>send_message(<span style="color:#e6db74">&#34;This is a message sent using the chosen service.&#34;</span>)
+</span></span></code></pre></div><p>Here, the factory encapsulates the decision-making process, making it easier to extend or modify without affecting the <code>Mailer</code> class.</p>
+<h2 id="when-and-why-to-use-dependency-injection">When and Why to Use Dependency Injection</h2>
+<ul>
+<li><strong>Flexibility:</strong> Easily swap components without altering the client code.</li>
+<li><strong>Testability:</strong> Inject mock implementations during unit testing to avoid external dependencies.</li>
+<li><strong>Decoupling:</strong> Reduce tight coupling between components, making the system more modular and easier to maintain.</li>
+<li><strong>Configuration Management:</strong> Change behavior at runtime based on configuration, environment, or user input.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>This example clearly demonstrates the advantages of dependency injection in Python. By defining a common interface (<code>IEmailService</code>), implementing multiple services, and injecting these services into the <code>Mailer</code> class, the code remains flexible, maintainable, and testable. The use of both a Service Locator and a Factory Method shows two different ways to manage dependencies, each with its own trade-offs.</p>
+<p>Understanding these patterns not only improves code quality but also sets a foundation for building scalable applications where components can be managed independently.</p>
+<hr>
+<p><em>References: Code example from <a href="https://github.com/bufo333/python-di/blob/main/app.py">bufo333/python-di/app.py</a> cite60†</em></p>
+
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "bufo333\/johnburns.io_public",
+            "data-repo-id": "R_kgDOHYBJIg",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHYBJIs4Cokmt",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://johnburns.io/post/building-stratum-1-time-source/">Stratum‑1 NTP Server on Raspberry Pi 5</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://johnburns.io/post/dns-exfiltration-in-python/">DNS Exfiltration With Python</a>
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+    </span>
+    </div>
+  </footer></body>
+</html>
+

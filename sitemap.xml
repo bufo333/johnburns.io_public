@@ -3,10 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://johnburns.io/</loc>
-    <lastmod>2025-03-28T22:34:35-05:00</lastmod>
+    <lastmod>2025-04-01T14:22:35-05:00</lastmod>
+  </url><url>
+    <loc>https://johnburns.io/post/dns-exfiltration-in-python/</loc>
+    <lastmod>2025-04-01T14:22:35-05:00</lastmod>
   </url><url>
     <loc>https://johnburns.io/post/</loc>
-    <lastmod>2025-03-28T22:34:35-05:00</lastmod>
+    <lastmod>2025-04-01T14:22:35-05:00</lastmod>
+  </url><url>
+    <loc>https://johnburns.io/post/understanding-dependency-injection/</loc>
+    <lastmod>2025-03-30T12:34:35-05:00</lastmod>
   </url><url>
     <loc>https://johnburns.io/post/building-stratum-1-time-source/</loc>
     <lastmod>2025-03-28T22:34:35-05:00</lastmod>

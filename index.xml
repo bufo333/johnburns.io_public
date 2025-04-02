@@ -6,8 +6,22 @@
     <description>Recent content on The Colour of My Thoughts</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 28 Mar 2025 22:34:35 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 01 Apr 2025 14:22:35 -0500</lastBuildDate>
     <atom:link href="https://johnburns.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNS Exfiltration With Python</title>
+      <link>https://johnburns.io/post/dns-exfiltration-in-python/</link>
+      <pubDate>Tue, 01 Apr 2025 14:22:35 -0500</pubDate>
+      <guid>https://johnburns.io/post/dns-exfiltration-in-python/</guid>
+      <description>&lt;p&gt;Below is a detailed blog post in Markdown that uses real snippets from your repository and explains how your DNS exfiltration client‑server works and why you chose specific options.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;In this post, we dive into the mechanics behind a DNS exfiltration tool written in Python. This project demonstrates how data can be covertly transmitted via DNS queries. I built this client‑server system to study DNS exfiltration techniques in a controlled, educational environment. Below, I detail the architecture, key design decisions, and provide annotated code snippets from both the client and server implementations.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Understanding Dependency Injection in Python</title>
+      <link>https://johnburns.io/post/understanding-dependency-injection/</link>
+      <pubDate>Sun, 30 Mar 2025 12:34:35 -0500</pubDate>
+      <guid>https://johnburns.io/post/understanding-dependency-injection/</guid>
+      <description>&lt;p&gt;Dependency Injection (DI) is a software design pattern that helps create loosely coupled, testable, and maintainable code. Instead of having classes create their own dependencies, those dependencies are &amp;ldquo;injected&amp;rdquo; from the outside. This blog post will walk you through a concrete Python example that demonstrates DI, along with alternate techniques like the Service Locator and Factory patterns.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-dependency-injection&#34;&gt;What Is Dependency Injection?&lt;/h2&gt;&#xA;&lt;p&gt;At its core, dependency injection involves passing (or &amp;ldquo;injecting&amp;rdquo;) an object’s dependencies rather than instantiating them internally. The main benefits include:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Stratum‑1 NTP Server on Raspberry Pi 5</title>
       <link>https://johnburns.io/post/building-stratum-1-time-source/</link>
