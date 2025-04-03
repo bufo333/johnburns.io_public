@@ -78,7 +78,18 @@
 
     </div>
 </nav>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "\\(", right: "\\)", display: false},
+          {left: "$", right: "$", display: false},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "$$", right: "$$", display: true}
+        ]
+      });
+    });
+  </script>
 <script>
     
     document.addEventListener('DOMContentLoaded', function() {
@@ -204,6 +215,31 @@
 
     </div></article>
 <div class="summary">
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/public-dmvpn-network/">public-dmvpn-network</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="public-dmvpn-network">Public DMVPN network.</h2>
+<p>I was thinking about a new project idea. I was thinking of setting up a dynamic multipoint VPN concentrator. Put a small LAN behind it with a couple of servers. Put the configuration instructions on a webpage for Juniper and Cisco devices. I was thinking to run BGP routing protocol over the interface as it scales reasonably well.</p>
+<p>The important part here is I wanted to create a web form which requests the internal and external address ranges of anyones network. Once that person submits that information I will have a Peal script pull those messages from the web form, parse the information, insert the networks and IP addresses into a J-Script template and apply it to my Juniper SRX router automatically.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2009-10-03 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
     
         <article class="post">
   <div class="single-container column is-centered">
@@ -417,30 +453,6 @@
         
         <div class="post-time-container">
           <span class="post-time"> 2008-10-16 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
-
-    
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/introduction-to-access-lists-part-1/">introduction-to-access-lists-part-1</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <h2 id="introduction-to-access-lists-part-1">Introduction to access-lists part 1</h2>
-<p>Today I would like to take some time and talk about security. I want to discuss access-lists, extended access-lists, reflexive access-lists, and CBAC or content based access control. Learning how to properly use access-lists is so crucial to becoming a good network administrator. They are vital to securing your network and as you progress with your studies you will find that access-lists are used quite extensively in routing, QoS, and other important things.</p>
-        </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2008-10-15 </span>
         </div>
       </div>
       

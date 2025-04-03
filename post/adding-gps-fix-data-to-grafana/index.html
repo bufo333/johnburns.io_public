@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Adding GPS Signal Fix Status to Grafana with Telegraf and InfluxDB | The Colour of My Thoughts</title>
+    <meta name="description"
+        content="If you&rsquo;re running a Raspberry Pi-based time server or GPS-equipped system and want visibility into the GPS signal status (2D, 3D fix, or no lock), you can use a simple Bash script and Telegraf to bring that data into your InfluxDB time series database — and visualize it in Grafana.
+In this post, we’ll walk through how to:
+
+Create a lightweight GPS fix monitoring script
+Use Telegraf’s inputs.exec plugin to ingest the data
+Store it in InfluxDB
+Visualize GPS lock status in Grafana
+
+
+🚀 Why Monitor GPS Fix Status?
+When using GPS for time synchronization (especially with chrony or ntpd), it&rsquo;s useful to know whether the GPS module actually has a signal lock:">
+    <link rel="canonical" href="https://johnburns.io/post/adding-gps-fix-data-to-grafana/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    
+    <link rel="stylesheet" href="https://johnburns.io/scss/style.min.aa7209164f013c6883aa54384ea45a46e582eacf9a17e9565badebd557dd1059.css">
+
+    <meta property="og:url" content="https://johnburns.io/post/adding-gps-fix-data-to-grafana/">
+  <meta property="og:site_name" content="The Colour of My Thoughts">
+  <meta property="og:title" content="Adding GPS Signal Fix Status to Grafana with Telegraf and InfluxDB">
+  <meta property="og:description" content="If you’re running a Raspberry Pi-based time server or GPS-equipped system and want visibility into the GPS signal status (2D, 3D fix, or no lock), you can use a simple Bash script and Telegraf to bring that data into your InfluxDB time series database — and visualize it in Grafana.
+In this post, we’ll walk through how to:
+Create a lightweight GPS fix monitoring script Use Telegraf’s inputs.exec plugin to ingest the data Store it in InfluxDB Visualize GPS lock status in Grafana 🚀 Why Monitor GPS Fix Status? When using GPS for time synchronization (especially with chrony or ntpd), it’s useful to know whether the GPS module actually has a signal lock:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-04-02T17:22:35-05:00">
+    <meta property="article:modified_time" content="2025-04-02T17:22:35-05:00">
+
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Adding GPS Signal Fix Status to Grafana with Telegraf and InfluxDB">
+  <meta name="twitter:description" content="If you’re running a Raspberry Pi-based time server or GPS-equipped system and want visibility into the GPS signal status (2D, 3D fix, or no lock), you can use a simple Bash script and Telegraf to bring that data into your InfluxDB time series database — and visualize it in Grafana.
+In this post, we’ll walk through how to:
+Create a lightweight GPS fix monitoring script Use Telegraf’s inputs.exec plugin to ingest the data Store it in InfluxDB Visualize GPS lock status in Grafana 🚀 Why Monitor GPS Fix Status? When using GPS for time synchronization (especially with chrony or ntpd), it’s useful to know whether the GPS module actually has a signal lock:">
+
+    
+    
+
+</head><body><nav class="navbar is-light" role="navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" title="home" class="navbar-item">
+                <span class="logo">
+                    <h1>The Colour of My Thoughts</h1>
+                </span>
+            </a>
+
+            
+            <a id="theme-toggle" class="theme-toggle" href="#">
+                <img src="https://johnburns.io/svg/sun.svg" alt="sun icon" class="theme-icon" />
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                
+                <a href="/about/" class="navbar-item">About</a>
+                
+                <a href="/resume.pdf" class="navbar-item">Resume</a>
+                
+                <a href="/contact/" class="navbar-item">Contact</a>
+                
+            </div>
+
+        </div>
+        <div class="search">
+            <div id="fastSearch">
+                <input id="searchInput" tabindex="0" placeholder="Search..">
+                <ul id="searchResults">
+
+                </ul>
+            </div>
+            <a id="search-btn" style="display: inline-block;" href="# ">
+                <div class="icon-search"><svg class="search-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            </a>
+        </div>
+
+        <script src="/js/fuse.min.js"></script> 
+        <script src="/js/fastsearch.js"></script>
+
+    </div>
+</nav>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "\\(", right: "\\)", display: false},
+          {left: "$", right: "$", display: false},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "$$", right: "$$", display: true}
+        ]
+      });
+    });
+  </script>
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.querySelector('.navbar-burger');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            document.querySelector('.navbar-menu').classList.toggle('is-active');
+        });
+    });
+
+    
+    function setTheme(theme) {
+        let body = document.body;
+        let themeIcon = document.querySelector(".theme-icon");
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/moon.svg";
+            themeIcon.alt = "moon icon";
+        } else {
+            body.classList.remove("dark-mode");
+            themeIcon.src = "https:\/\/johnburns.io\/svg/sun.svg";
+            themeIcon.alt = "sun icon";
+        }
+        
+        localStorage.setItem("theme", theme);
+    }
+
+    
+    let theme = localStorage.getItem("theme") || "light";
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+        
+        setTheme('dark');
+
+    } else {
+        
+        setTheme('light');
+    }
+    setTheme(theme);
+
+    
+    document.getElementById("theme-toggle").addEventListener("click", function() {
+        if (theme === "light") {
+            theme = "dark";
+        } else {
+            theme = "light";
+        }
+        setTheme(theme);
+    });
+
+
+
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LQNL2E5MEL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LQNL2E5MEL');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329465157209102"
+     crossorigin="anonymous"></script>
+</header><main>
+<div class="single-container">
+    <div class="archive">
+        <h1 class="title is-1">Adding GPS Signal Fix Status to Grafana with Telegraf and InfluxDB</h1>
+        <div class="title subtitle heading is-6">
+            <div class="author-info columns is-vcentered">
+                <div class="column">
+                    <div class="columns is-vcentered is-mobile">
+                        
+                        <div class="column">
+                            <p>John Burns</p>
+                            <p><time>April 2, 2025</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-categories-container">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="content article-content">
+            <div class="toc-container">
+                
+    <div class="post-toc">
+        
+            <aside>
+                <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
+                <div id="hide"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#-why-monitor-gps-fix-status">🚀 Why Monitor GPS Fix Status?</a></li>
+    <li><a href="#-step-1-the-gps-fix-monitoring-script">🔧 Step 1: The GPS Fix Monitoring Script</a></li>
+    <li><a href="#-step-2-configure-telegraf-to-use-the-script">📡 Step 2: Configure Telegraf to Use the Script</a></li>
+    <li><a href="#-step-3-verify-influxdb-is-receiving-data">📥 Step 3: Verify InfluxDB is Receiving Data</a></li>
+    <li><a href="#-step-4-create-a-grafana-panel">📊 Step 4: Create a Grafana Panel</a></li>
+    <li><a href="#-summary">✅ Summary</a></li>
+  </ul>
+</nav></div>
+            </aside>
+        
+    </div><script>
+    
+        let button = document.getElementById('tocButton');
+        let hide = document.getElementById("hide");
+        let contents=document.getElementById("contents");
+        button.addEventListener("click", function() {
+        if (hide.style.display!='block') {
+            hide.style.display='block'
+        } else {
+            hide.style.display='none'
+            contents.style.color='rgb(96, 134, 180)'
+        }
+        });
+    
+
+
+
+
+</script>
+            </div>
+            <p>If you&rsquo;re running a Raspberry Pi-based time server or GPS-equipped system and want visibility into the GPS signal status (2D, 3D fix, or no lock), you can use a simple Bash script and Telegraf to bring that data into your InfluxDB time series database — and visualize it in Grafana.</p>
+<p>In this post, we’ll walk through how to:</p>
+<ul>
+<li>Create a lightweight GPS fix monitoring script</li>
+<li>Use Telegraf’s <code>inputs.exec</code> plugin to ingest the data</li>
+<li>Store it in InfluxDB</li>
+<li>Visualize GPS lock status in Grafana</li>
+</ul>
+<hr>
+<h2 id="-why-monitor-gps-fix-status">🚀 Why Monitor GPS Fix Status?</h2>
+<p>When using GPS for time synchronization (especially with <code>chrony</code> or <code>ntpd</code>), it&rsquo;s useful to know whether the GPS module actually has a signal lock:</p>
+<ul>
+<li><strong>No lock</strong> = No reliable time source</li>
+<li><strong>2D fix</strong> = Partial satellite coverage</li>
+<li><strong>3D fix (locked)</strong> = Full GPS fix — ideal for timekeeping</li>
+</ul>
+<p>You can surface this data with a simple integration between <code>gpsd</code>, <code>gpspipe</code>, and Telegraf.</p>
+<hr>
+<h2 id="-step-1-the-gps-fix-monitoring-script">🔧 Step 1: The GPS Fix Monitoring Script</h2>
+<p>Create a Bash script to run <code>gpspipe</code> and parse the signal fix mode:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Read 10 messages from gpsd in JSON format</span>
+</span></span><span style="display:flex;"><span>GPS_OUTPUT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>gpspipe -w -n <span style="color:#ae81ff">10</span> 2&gt;/dev/null<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Determine GPS lock status from &#34;mode&#34; field</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> echo <span style="color:#e6db74">&#34;</span>$GPS_OUTPUT<span style="color:#e6db74">&#34;</span> | grep -q <span style="color:#e6db74">&#39;&#34;mode&#34;:3&#39;</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    STATUS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;LOCKED&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> echo <span style="color:#e6db74">&#34;</span>$GPS_OUTPUT<span style="color:#e6db74">&#34;</span> | grep -q <span style="color:#e6db74">&#39;&#34;mode&#34;:2&#39;</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    STATUS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2D&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    STATUS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;NOLOCK&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Output in InfluxDB line protocol</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;gps_status status=\&#34;</span>$STATUS<span style="color:#e6db74">\&#34;&#34;</span>
+</span></span></code></pre></div><p>Save it as <code>/usr/local/bin/gps_status.sh</code> and make it executable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x /usr/local/bin/gps_status.sh
+</span></span></code></pre></div><hr>
+<h2 id="-step-2-configure-telegraf-to-use-the-script">📡 Step 2: Configure Telegraf to Use the Script</h2>
+<p>Edit your <code>telegraf.conf</code> and add the following section:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[[<span style="color:#a6e22e">inputs</span>.<span style="color:#a6e22e">exec</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">commands</span> = [<span style="color:#e6db74">&#34;/usr/local/bin/gps_status.sh&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">timeout</span> = <span style="color:#e6db74">&#34;5s&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">interval</span> = <span style="color:#e6db74">&#34;60s&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data_format</span> = <span style="color:#e6db74">&#34;influx&#34;</span>
+</span></span></code></pre></div><p>This tells Telegraf to:</p>
+<ul>
+<li>Run the script every 60 seconds</li>
+<li>Expect output in Influx line protocol (e.g., <code>gps_status status=&quot;LOCKED&quot;</code>)</li>
+<li>Forward that data to InfluxDB</li>
+</ul>
+<p>Restart Telegraf:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl restart telegraf
+</span></span></code></pre></div><hr>
+<h2 id="-step-3-verify-influxdb-is-receiving-data">📥 Step 3: Verify InfluxDB is Receiving Data</h2>
+<p>Use the Influx CLI or query it from Grafana:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#34;gps_status&#34;</span> <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> time <span style="color:#66d9ef">DESC</span> <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p>You should see something like:</p>
+<pre tabindex="0"><code>time                status
+----                ------
+2024-04-02T12:00:00Z  LOCKED
+2024-04-02T11:59:00Z  2D
+2024-04-02T11:58:00Z  NOLOCK
+</code></pre><hr>
+<h2 id="-step-4-create-a-grafana-panel">📊 Step 4: Create a Grafana Panel</h2>
+<p>In Grafana:</p>
+<ol>
+<li>
+<p>Create a new dashboard and add a <strong>Stat</strong> or <strong>Table</strong> panel.</p>
+</li>
+<li>
+<p>Set the data source to InfluxDB.</p>
+</li>
+<li>
+<p>Use a query like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">last</span>(<span style="color:#e6db74">&#34;status&#34;</span>) <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#34;gps_status&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Set value mappings:</p>
+<ul>
+<li><code>LOCKED</code> → ✅ Green</li>
+<li><code>2D</code> → ⚠️ Yellow</li>
+<li><code>NOLOCK</code> → ❌ Red</li>
+</ul>
+</li>
+</ol>
+<p>You now have a live GPS lock status display on your dashboard!</p>
+<hr>
+<h2 id="-summary">✅ Summary</h2>
+<p>This small script and Telegraf integration lets you monitor GPS status in real time, with no Python or heavy dependencies — just Bash, gpsd, Telegraf, and InfluxDB.</p>
+<p>It&rsquo;s a great fit for Raspberry Pi-based time servers or GPS tracking systems where knowing the GPS fix status is critical for reliability.</p>
+<hr>
+<p><em>Thanks for reading! If you have questions or want to expand this to include other gpsd metrics, let me know!</em></p>
+<pre tabindex="0"><code>
+---
+</code></pre>
+        </div>
+    </div>
+    <a href="#" id="scrollToTopButton">
+        <svg t="1686753152588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3988" width="48" height="48">
+            <path
+                d="M518.5 360.3c-3.2-4.4-9.7-4.4-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z"
+                p-id="3989" fill="#363636"></path>
+            <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                p-id="3990" fill="#363636"></path>
+        </svg>
+    </a><hr style="border-top: 1px solid #EEEEEE;">
+<div id="comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("theme") === "dark" ? "dark" : "light";
+
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "bufo333\/johnburns.io_public",
+            "data-repo-id": "R_kgDOHYBJIg",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOHYBJIs4Cokmt",
+            "data-mapping": "og:title",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-theme": getStoredTheme(),
+            "data-lang": "en",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+            ([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("comment").appendChild(giscusScript);
+
+        
+        const themeToggle = document.querySelector(".theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", setGiscusTheme);
+        }
+    });
+
+</script>
+
+
+<div class="pp-container">
+        <section class="pre-and-post">
+            <div class="has-text-left">
+                
+                <p>Previous post</p>
+                <a href="https://johnburns.io/post/dns-exfiltration-in-python/">DNS Exfiltration With Python</a>
+                
+            </div>
+            <div class="has-text-right">
+                
+            </div>
+        </section>
+    </div>
+
+</div>
+
+        </main><footer class="footer">
+    <div class="content has-text-centered">
+    <span>&copy; 2025 <a href="https://johnburns.io/">The Colour of My Thoughts</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" target="_blank">Hugo</a> &
+    </span>
+    </div>
+  </footer></body>
+</html>
+

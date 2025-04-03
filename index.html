@@ -78,7 +78,18 @@
 
     </div>
 </nav>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "\\(", right: "\\)", display: false},
+          {left: "$", right: "$", display: false},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "$$", right: "$$", display: true}
+        ]
+      });
+    });
+  </script>
 <script>
     
     document.addEventListener('DOMContentLoaded', function() {
@@ -209,6 +220,39 @@
   <div class="single-container column is-centered">
     <div class="archive" id="post-container">
       <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/adding-gps-fix-data-to-grafana/">Adding GPS Signal Fix Status to Grafana with Telegraf and InfluxDB</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <p>If you&rsquo;re running a Raspberry Pi-based time server or GPS-equipped system and want visibility into the GPS signal status (2D, 3D fix, or no lock), you can use a simple Bash script and Telegraf to bring that data into your InfluxDB time series database — and visualize it in Grafana.</p>
+<p>In this post, we’ll walk through how to:</p>
+<ul>
+<li>Create a lightweight GPS fix monitoring script</li>
+<li>Use Telegraf’s <code>inputs.exec</code> plugin to ingest the data</li>
+<li>Store it in InfluxDB</li>
+<li>Visualize GPS lock status in Grafana</li>
+</ul>
+<hr>
+<h2 id="-why-monitor-gps-fix-status">🚀 Why Monitor GPS Fix Status?</h2>
+<p>When using GPS for time synchronization (especially with <code>chrony</code> or <code>ntpd</code>), it&rsquo;s useful to know whether the GPS module actually has a signal lock:</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2025-04-02 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
         <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/dns-exfiltration-in-python/">DNS Exfiltration With Python</a></h1>
        
        
@@ -332,8 +376,8 @@
           <!--start-summary-->
 <p>Exploring the intricacies of the Crystal Ball Problem as it applies to arrays, this piece delves into the challenge of predicting future elements based on current sequences. It underscores the significance of pattern recognition and algorithmic forecasting in computational analysis and real-world applications.</p>
 <!--nomore-->
-<h2 id="introduction-to-the-crystal-ball-problem-with-arrays">Introduction to the Crystal Ball Problem with Arrays</h2>
-<p>The <em>Crystal Ball Problem</em> in the context of arrays is a metaphorical representation of the challenge of predicting future elements or trends based on a current sequence of data. Imagine you have an array of numbers representing data points over time. The task is to predict the next set of values the array will hold using only the information currently available.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The <strong>Crystal Ball Problem</strong> is a metaphor for predicting future elements or trends in an array based solely on its current sequence. Imagine you have an array of numbers representing data points over time—such as stock prices or weather data—and your task is to forecast the upcoming values. The “crystal ball” is our metaphor for the ability to foresee these future values.</p>
         </div>
         
         <div class="post-time-container">
@@ -489,34 +533,6 @@ Use this to add all your files manually, this way only updates to your tracked f
         
         <div class="post-time-container">
           <span class="post-time"> 2022-08-21 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
-
-    
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/beginner-network-templating/">beginner-network-templating</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <h2 id="develop-and-deploy-network-templates-before-automating">Develop and Deploy Network Templates Before Automating</h2>
-<p>Date: 2022-05-26<br>
-Subject: Network Templating<br>
-Version 1.0</p>
-<!--start-summary-->
-<p>Automation is the number one topic in networking today. Automation allows a team to lean left, moving simple troubleshooting to the NOC, it allows the team to do more with less, and it allows for repeatable deployments. A good place to start is to think about many of the day to day work that gets done, how much of this work is simply applying the same changes over and over. These tasks are a great place to start with templating.</p>
-        </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2022-05-26 </span>
         </div>
       </div>
       

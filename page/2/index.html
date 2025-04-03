@@ -78,7 +78,18 @@
 
     </div>
 </nav>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "\\(", right: "\\)", display: false},
+          {left: "$", right: "$", display: false},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "$$", right: "$$", display: true}
+        ]
+      });
+    });
+  </script>
 <script>
     
     document.addEventListener('DOMContentLoaded', function() {
@@ -204,6 +215,34 @@
 
     </div></article>
 <div class="summary">
+    
+        <article class="post">
+  <div class="single-container column is-centered">
+    <div class="archive" id="post-container">
+      <header class="post-header">
+        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/beginner-network-templating/">beginner-network-templating</a></h1>
+       
+       
+      </header>
+      <div class="post-content">
+        <div class="excerpt post-summary">
+          <h2 id="develop-and-deploy-network-templates-before-automating">Develop and Deploy Network Templates Before Automating</h2>
+<p>Date: 2022-05-26<br>
+Subject: Network Templating<br>
+Version 1.0</p>
+<!--start-summary-->
+<p>Automation is the number one topic in networking today. Automation allows a team to lean left, moving simple troubleshooting to the NOC, it allows the team to do more with less, and it allows for repeatable deployments. A good place to start is to think about many of the day to day work that gets done, how much of this work is simply applying the same changes over and over. These tasks are a great place to start with templating.</p>
+        </div>
+        
+        <div class="post-time-container">
+          <span class="post-time"> 2022-05-26 </span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</article>
+
     
         <article class="post">
   <div class="single-container column is-centered">
@@ -527,31 +566,6 @@ And die like a hero going home</p>
         
         <div class="post-time-container">
           <span class="post-time"> 2009-11-11 </span>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</article>
-
-    
-        <article class="post">
-  <div class="single-container column is-centered">
-    <div class="archive" id="post-container">
-      <header class="post-header">
-        <h1 class="post-title hover-underline-animation"><a class="post-link" href="/post/public-dmvpn-network/">public-dmvpn-network</a></h1>
-       
-       
-      </header>
-      <div class="post-content">
-        <div class="excerpt post-summary">
-          <h2 id="public-dmvpn-network">Public DMVPN network.</h2>
-<p>I was thinking about a new project idea. I was thinking of setting up a dynamic multipoint VPN concentrator. Put a small LAN behind it with a couple of servers. Put the configuration instructions on a webpage for Juniper and Cisco devices. I was thinking to run BGP routing protocol over the interface as it scales reasonably well.</p>
-<p>The important part here is I wanted to create a web form which requests the internal and external address ranges of anyones network. Once that person submits that information I will have a Peal script pull those messages from the web form, parse the information, insert the networks and IP addresses into a J-Script template and apply it to my Juniper SRX router automatically.</p>
-        </div>
-        
-        <div class="post-time-container">
-          <span class="post-time"> 2009-10-03 </span>
         </div>
       </div>
       

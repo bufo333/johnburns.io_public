@@ -85,7 +85,18 @@ The project is divided into two main components:">
 
     </div>
 </nav>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "\\(", right: "\\)", display: false},
+          {left: "$", right: "$", display: false},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "$$", right: "$$", display: true}
+        ]
+      });
+    });
+  </script>
 <script>
     
     document.addEventListener('DOMContentLoaded', function() {
@@ -442,6 +453,9 @@ The project is divided into two main components:">
                 
             </div>
             <div class="has-text-right">
+                
+                <p>Next post</p>
+                <a href="https://johnburns.io/post/adding-gps-fix-data-to-grafana/">Adding GPS Signal Fix Status to Grafana with Telegraf and InfluxDB</a>
                 
             </div>
         </section>
