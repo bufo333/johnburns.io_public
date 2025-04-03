@@ -6,8 +6,15 @@
     <description>Recent content on The Colour of My Thoughts</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 01 Apr 2025 14:22:35 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 02 Apr 2025 17:22:35 -0500</lastBuildDate>
     <atom:link href="https://johnburns.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Adding GPS Signal Fix Status to Grafana with Telegraf and InfluxDB</title>
+      <link>https://johnburns.io/post/adding-gps-fix-data-to-grafana/</link>
+      <pubDate>Wed, 02 Apr 2025 17:22:35 -0500</pubDate>
+      <guid>https://johnburns.io/post/adding-gps-fix-data-to-grafana/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;re running a Raspberry Pi-based time server or GPS-equipped system and want visibility into the GPS signal status (2D, 3D fix, or no lock), you can use a simple Bash script and Telegraf to bring that data into your InfluxDB time series database — and visualize it in Grafana.&lt;/p&gt;&#xA;&lt;p&gt;In this post, we’ll walk through how to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Create a lightweight GPS fix monitoring script&lt;/li&gt;&#xA;&lt;li&gt;Use Telegraf’s &lt;code&gt;inputs.exec&lt;/code&gt; plugin to ingest the data&lt;/li&gt;&#xA;&lt;li&gt;Store it in InfluxDB&lt;/li&gt;&#xA;&lt;li&gt;Visualize GPS lock status in Grafana&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-why-monitor-gps-fix-status&#34;&gt;🚀 Why Monitor GPS Fix Status?&lt;/h2&gt;&#xA;&lt;p&gt;When using GPS for time synchronization (especially with &lt;code&gt;chrony&lt;/code&gt; or &lt;code&gt;ntpd&lt;/code&gt;), it&amp;rsquo;s useful to know whether the GPS module actually has a signal lock:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>DNS Exfiltration With Python</title>
       <link>https://johnburns.io/post/dns-exfiltration-in-python/</link>
