@@ -81,7 +81,18 @@ An MIT student was arrested in Logan intl Airport for wearing a sweatshirt with 
 
     </div>
 </nav>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "\\(", right: "\\)", display: false},
+          {left: "$", right: "$", display: false},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "$$", right: "$$", display: true}
+        ]
+      });
+    });
+  </script>
 <script>
     
     document.addEventListener('DOMContentLoaded', function() {
