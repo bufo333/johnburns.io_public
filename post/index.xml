@@ -13,7 +13,7 @@
       <link>https://johnburns.io/post/dns-exfiltration-in-python/</link>
       <pubDate>Tue, 01 Apr 2025 14:22:35 -0500</pubDate>
       <guid>https://johnburns.io/post/dns-exfiltration-in-python/</guid>
-      <description>&lt;p&gt;Below is a detailed blog post in Markdown that uses real snippets from your repository and explains how your DNS exfiltration client‑server works and why you chose specific options.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;In this post, we dive into the mechanics behind a DNS exfiltration tool written in Python. This project demonstrates how data can be covertly transmitted via DNS queries. I built this client‑server system to study DNS exfiltration techniques in a controlled, educational environment. Below, I detail the architecture, key design decisions, and provide annotated code snippets from both the client and server implementations.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this post, we dive into the mechanics behind a DNS exfiltration tool written in Python. This project demonstrates how data can be covertly transmitted via DNS queries. I built this client‑server system to study DNS exfiltration techniques in a controlled, educational environment. Below, I detail the architecture, key design decisions, and provide annotated code snippets from both the client and server implementations.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-overview-and-architecture&#34;&gt;1. Overview and Architecture&lt;/h2&gt;&#xA;&lt;p&gt;The project is divided into two main components:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Understanding Dependency Injection in Python</title>
