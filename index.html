@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.145.0">
+	<meta name="generator" content="Hugo 0.146.1">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>The Colour of My Thoughts</title>
@@ -78,7 +78,18 @@
 
     </div>
 </nav>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "\\(", right: "\\)", display: false},
+          {left: "$", right: "$", display: false},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "$$", right: "$$", display: true}
+        ]
+      });
+    });
+  </script>
 <script>
     
     document.addEventListener('DOMContentLoaded', function() {
@@ -150,8 +161,14 @@
 
   gtag('config', 'G-LQNL2E5MEL');
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329465157209102"
-     crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    mermaid.initialize({ startOnLoad: true });
+  });
+</script>
 </header><main>
 <article>
     <div class="is-centered">
@@ -365,8 +382,8 @@
           <!--start-summary-->
 <p>Exploring the intricacies of the Crystal Ball Problem as it applies to arrays, this piece delves into the challenge of predicting future elements based on current sequences. It underscores the significance of pattern recognition and algorithmic forecasting in computational analysis and real-world applications.</p>
 <!--nomore-->
-<h2 id="introduction-to-the-crystal-ball-problem-with-arrays">Introduction to the Crystal Ball Problem with Arrays</h2>
-<p>The <em>Crystal Ball Problem</em> in the context of arrays is a metaphorical representation of the challenge of predicting future elements or trends based on a current sequence of data. Imagine you have an array of numbers representing data points over time. The task is to predict the next set of values the array will hold using only the information currently available.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The <strong>Crystal Ball Problem</strong> is a metaphor for predicting future elements or trends in an array based solely on its current sequence. Imagine you have an array of numbers representing data points over time—such as stock prices or weather data—and your task is to forecast the upcoming values. The “crystal ball” is our metaphor for the ability to foresee these future values.</p>
         </div>
         
         <div class="post-time-container">

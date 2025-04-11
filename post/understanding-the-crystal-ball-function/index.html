@@ -9,8 +9,8 @@
         content="
 Exploring the intricacies of the Crystal Ball Problem as it applies to arrays, this piece delves into the challenge of predicting future elements based on current sequences. It underscores the significance of pattern recognition and algorithmic forecasting in computational analysis and real-world applications.
 
-Introduction to the Crystal Ball Problem with Arrays
-The Crystal Ball Problem in the context of arrays is a metaphorical representation of the challenge of predicting future elements or trends based on a current sequence of data. Imagine you have an array of numbers representing data points over time. The task is to predict the next set of values the array will hold using only the information currently available.">
+Introduction
+The Crystal Ball Problem is a metaphor for predicting future elements or trends in an array based solely on its current sequence. Imagine you have an array of numbers representing data points over time—such as stock prices or weather data—and your task is to forecast the upcoming values. The “crystal ball” is our metaphor for the ability to foresee these future values.">
     <link rel="canonical" href="https://johnburns.io/post/understanding-the-crystal-ball-function/" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
     
@@ -20,7 +20,7 @@ The Crystal Ball Problem in the context of arrays is a metaphorical representati
   <meta property="og:site_name" content="The Colour of My Thoughts">
   <meta property="og:title" content="Understanding the Crystal Ball Function">
   <meta property="og:description" content="Exploring the intricacies of the Crystal Ball Problem as it applies to arrays, this piece delves into the challenge of predicting future elements based on current sequences. It underscores the significance of pattern recognition and algorithmic forecasting in computational analysis and real-world applications.
-Introduction to the Crystal Ball Problem with Arrays The Crystal Ball Problem in the context of arrays is a metaphorical representation of the challenge of predicting future elements or trends based on a current sequence of data. Imagine you have an array of numbers representing data points over time. The task is to predict the next set of values the array will hold using only the information currently available.">
+Introduction The Crystal Ball Problem is a metaphor for predicting future elements or trends in an array based solely on its current sequence. Imagine you have an array of numbers representing data points over time—such as stock prices or weather data—and your task is to forecast the upcoming values. The “crystal ball” is our metaphor for the ability to foresee these future values.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -31,7 +31,7 @@ Introduction to the Crystal Ball Problem with Arrays The Crystal Ball Problem in
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Understanding the Crystal Ball Function">
   <meta name="twitter:description" content="Exploring the intricacies of the Crystal Ball Problem as it applies to arrays, this piece delves into the challenge of predicting future elements based on current sequences. It underscores the significance of pattern recognition and algorithmic forecasting in computational analysis and real-world applications.
-Introduction to the Crystal Ball Problem with Arrays The Crystal Ball Problem in the context of arrays is a metaphorical representation of the challenge of predicting future elements or trends based on a current sequence of data. Imagine you have an array of numbers representing data points over time. The task is to predict the next set of values the array will hold using only the information currently available.">
+Introduction The Crystal Ball Problem is a metaphor for predicting future elements or trends in an array based solely on its current sequence. Imagine you have an array of numbers representing data points over time—such as stock prices or weather data—and your task is to forecast the upcoming values. The “crystal ball” is our metaphor for the ability to foresee these future values.">
 
     
     
@@ -86,7 +86,18 @@ Introduction to the Crystal Ball Problem with Arrays The Crystal Ball Problem in
 
     </div>
 </nav>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "\\(", right: "\\)", display: false},
+          {left: "$", right: "$", display: false},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "$$", right: "$$", display: true}
+        ]
+      });
+    });
+  </script>
 <script>
     
     document.addEventListener('DOMContentLoaded', function() {
@@ -158,8 +169,14 @@ Introduction to the Crystal Ball Problem with Arrays The Crystal Ball Problem in
 
   gtag('config', 'G-LQNL2E5MEL');
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329465157209102"
-     crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    mermaid.initialize({ startOnLoad: true });
+  });
+</script>
 </header><main>
 <div class="single-container">
     <div class="archive">
@@ -190,8 +207,8 @@ Introduction to the Crystal Ball Problem with Arrays The Crystal Ball Problem in
                 <button id="tocButton" ><h4 id="contents" style="margin-left: 1vw;color:rgb(96, 134, 180);margin-bottom: 0;">CONTENTS</h4></button>
                 <div id="hide"><nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction-to-the-crystal-ball-problem-with-arrays">Introduction to the Crystal Ball Problem with Arrays</a></li>
-    <li><a href="#why-square-root-of-n">Why Square Root of ( n )?</a>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#why-square-root-of-n">Why Square Root of <em>n</em>?</a>
       <ul>
         <li><a href="#optimization-balance">Optimization Balance</a></li>
         <li><a href="#trade-off-between-jump-and-search">Trade-off Between Jump and Search</a></li>
@@ -203,12 +220,11 @@ Introduction to the Crystal Ball Problem with Arrays The Crystal Ball Problem in
       <ul>
         <li><a href="#setting-up-the-problem">Setting Up the Problem</a></li>
         <li><a href="#total-search-steps">Total Search Steps</a></li>
-        <li><a href="#finding-the-optimal-m">Finding the Optimal ( m )</a></li>
-        <li><a href="#example-with-n-100">Example with ( n = 100 )</a></li>
-        <li><a href="#explanation">Explanation</a></li>
-        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#finding-the-optimal-m">Finding the Optimal <em>m</em></a></li>
+        <li><a href="#example-with-n--100">Example with <em>n = 100</em></a></li>
       </ul>
     </li>
+    <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav></div>
             </aside>
@@ -236,71 +252,109 @@ Introduction to the Crystal Ball Problem with Arrays The Crystal Ball Problem in
             <!--start-summary-->
 <p>Exploring the intricacies of the Crystal Ball Problem as it applies to arrays, this piece delves into the challenge of predicting future elements based on current sequences. It underscores the significance of pattern recognition and algorithmic forecasting in computational analysis and real-world applications.</p>
 <!--nomore-->
-<h2 id="introduction-to-the-crystal-ball-problem-with-arrays">Introduction to the Crystal Ball Problem with Arrays</h2>
-<p>The <em>Crystal Ball Problem</em> in the context of arrays is a metaphorical representation of the challenge of predicting future elements or trends based on a current sequence of data. Imagine you have an array of numbers representing data points over time. The task is to predict the next set of values the array will hold using only the information currently available.</p>
-<p>This problem encapsulates many real-world scenarios—from stock market predictions to weather forecasting—where accurately foreseeing future data points can lead to significant advantages. In computational terms, it often relates to the development of algorithms that efficiently analyze patterns within an array and extrapolate them to predict future outcomes.</p>
-<p>Given an array ( A ) of length ( n ), with elements $$ A[1], A[2], \dots, A[n] $$, the challenge is to predict $$ A[n+1], A[n+2], \dots $$, assuming there are underlying patterns or rules governing the progression of the array&rsquo;s elements. The &ldquo;crystal ball&rdquo; here symbolizes the hypothetical ability to see into the future of the array&rsquo;s values.</p>
-<p>The complexity of the Crystal Ball Problem can vary widely depending on the nature of the data and its inherent patterns. It might involve simple linear extrapolation, complex machine learning models, or even chaotic systems where accurate predictions are inherently difficult. The key lies in identifying and leveraging the mathematical or statistical relationships within the array to make informed predictions.</p>
-<h2 id="why-square-root-of-n">Why Square Root of ( n )?</h2>
+<h2 id="introduction">Introduction</h2>
+<p>The <strong>Crystal Ball Problem</strong> is a metaphor for predicting future elements or trends in an array based solely on its current sequence. Imagine you have an array of numbers representing data points over time—such as stock prices or weather data—and your task is to forecast the upcoming values. The “crystal ball” is our metaphor for the ability to foresee these future values.</p>
+<p>In computational terms, this problem relates to creating algorithms that analyze and extrapolate patterns from arrays. Given an array $ A $ of length $ n $ with elements</p>
+<p>$$
+A[1], A[2], \dots, A[n],
+$$</p>
+<p>the challenge is to predict</p>
+<p>$$
+A[n+1], A[n+2], \dots
+$$</p>
+<p>based on the underlying patterns or rules governing the progression of the array’s elements.</p>
+<hr>
+<h2 id="why-square-root-of-n">Why Square Root of <em>n</em>?</h2>
 <h3 id="optimization-balance">Optimization Balance</h3>
-<p>The choice of ( m ) (the block size) as the square root of ( n ) comes from optimizing the sum of the number of steps taken to jump to the block containing the target element and the steps taken to perform a linear search within the block. Mathematically, when you differentiate the total steps function with respect to ( m ) and set it to zero to find the minimum, you end up with ( m ) being proportional to $$ \sqrt{n} $$.</p>
+<p>When using Jump Search in a sorted array, the search is divided into two phases:</p>
+<ol>
+<li><strong>Jump Phase:</strong> Jump in fixed blocks until you find a block that may contain the target.</li>
+<li><strong>Linear Search Phase:</strong> Perform a linear search within that block.</li>
+</ol>
+<p>The total number of steps can be roughly modeled as the sum of the number of jumps and the number of steps in the linear search. By choosing a block size $ m $ proportional to $\sqrt{n}$, we optimize this sum.</p>
 <h3 id="trade-off-between-jump-and-search">Trade-off Between Jump and Search</h3>
-<p>If the jump size is too large (e.g., using the cube root of ( n )), you minimize the number of jumps but potentially increase the length of the linear search within a block, leading to inefficiency. Conversely, smaller jumps (e.g., smaller than $$ \sqrt{n} $$ ) reduce the linear search phase but increase the number of jumps, also leading to inefficiency.</p>
+<ul>
+<li><strong>Large Jump Size (e.g., using $ n^{1/3} $)</strong>: Fewer jumps but a longer linear search.</li>
+<li><strong>Small Jump Size (less than $\sqrt{n}$)</strong>: More jumps but a shorter linear search.</li>
+</ul>
+<p>The square root of $ n $ balances the two phases so that neither dominates the total search time.</p>
 <h3 id="theoretical-justification">Theoretical Justification</h3>
-<p>From a theoretical standpoint, using the square root of ( n ) ensures that the maximum number of jumps (to find the right block) and the maximum number of linear searches within a block are balanced, thus optimizing the search time.</p>
+<p>Mathematically, when you differentiate the total search steps with respect to $ m $ and set the derivative to zero, you find that the optimal $ m $ is proportional to $\sqrt{n}$. This balance minimizes the worst-case scenario search time.</p>
+<hr>
 <h2 id="alternative-roots">Alternative Roots</h2>
-<p>Using a cube root or another root of ( n ) would skew the balance between the number of jumps and the linear search phase, potentially increasing the total search time. The square root of ( n ) optimally balances the algorithm, leading to a time complexity of
-$$
-O(\sqrt{n}),
-$$
-which is better than linear search’s $$ O(n) $$ but not as efficient as binary search’s $$ O(\log n) $$ for sorted arrays.</p>
-<p>This explanation assumes a uniform distribution of search keys and does not take into account specific characteristics of the data, which might slightly affect the optimal block size in practice. However, for general purposes, the square root of ( n ) is a mathematically justified and practically effective choice.</p>
+<p>Using an alternative root such as the cube root of $ n $ would disturb this balance. It might reduce the number of jumps but at the expense of increasing the number of elements checked in the linear search phase—or vice versa. The square root remains the most effective choice in general because it equally balances both components of the search.</p>
+<hr>
 <h2 id="mathematical-justification">Mathematical Justification</h2>
 <h3 id="setting-up-the-problem">Setting Up the Problem</h3>
-<p>Jump Search involves jumping through an ordered list in increments of ( m ) (the jump size) and then performing a linear search within a block of size ( m ) once you&rsquo;ve jumped past the target element. The objective is to minimize the total search time, which is a function of ( m ).</p>
+<p>In <strong>Jump Search</strong>, you jump through an ordered list in increments of $ m $ until you overshoot the target value. Then, you perform a linear search in the identified block. The key is to minimize the total number of steps.</p>
 <ul>
-<li><strong>Maximum number of jumps:</strong> $$ \frac{n}{m} $$</li>
-<li><strong>Maximum number of steps in a linear search within a block:</strong> ( m - 1 ) (since after jumping, we might need to check up to ( m ) elements)</li>
+<li><strong>Maximum number of jumps:</strong> $ \frac{n}{m} $</li>
+<li><strong>Maximum number of linear search steps:</strong> $ m - 1 $ (or simply $ m $ for simplicity)</li>
 </ul>
-<h3 id="total-search-steps">Total Search Steps</h3>
-<p>The total number of steps in the worst-case scenario can be approximated as the sum of the jumps and the linear search steps. We add 1 to the jump term to account for the final block where the linear search is performed:
-$$
-T(m) = \frac{n}{m} + (m - 1) + 1.
-$$
-Simplifying, we obtain:
-$$
+<p>Thus, the total number of steps $ T(m) $ can be approximated by:</p>
+<p>$$
 T(m) = \frac{n}{m} + m.
 $$</p>
-<h3 id="finding-the-optimal-m">Finding the Optimal ( m )</h3>
-<p>To minimize ( T(m) ), we take the derivative of ( T(m) ) with respect to ( m ) and set it to zero:
-$$
-\frac{d}{dm}T(m) = -\frac{n}{m^2} + 1 = 0.
-$$
-Solving for ( m ):
-$$
-m^2 = n,
-$$
-which implies
-$$
+<h3 id="total-search-steps">Total Search Steps</h3>
+<p>The function</p>
+<p>$$
+T(m) = \frac{n}{m} + m
+$$</p>
+<p>captures the trade-off: decreasing $ m $ increases the jump count, while increasing $ m $ lengthens the linear search.</p>
+<h3 id="finding-the-optimal-m">Finding the Optimal <em>m</em></h3>
+<p>To find the optimal block size $ m $, differentiate $ T(m) $ with respect to $ m $:</p>
+<p>$$
+\frac{d}{dm}T(m) = -\frac{n}{m^2} + 1.
+$$</p>
+<p>Setting the derivative to zero gives:</p>
+<p>$$
+-\frac{n}{m^2} + 1 = 0 \quad \Longrightarrow \quad m^2 = n,
+$$</p>
+<p>which implies:</p>
+<p>$$
 m = \sqrt{n}.
 $$</p>
-<h3 id="example-with-n-100">Example with ( n = 100 )</h3>
-<p>Substituting ( n = 100 ):
-$$
+<h3 id="example-with-n--100">Example with <em>n = 100</em></h3>
+<p>For an array of 100 elements:</p>
+<p>$$
 m = \sqrt{100} = 10.
 $$</p>
-<h3 id="explanation">Explanation</h3>
+<p>This means:</p>
 <ul>
-<li><strong>Jump Size:</strong> The optimal jump size is 10 for an array of 100 elements. This means we jump every 10 elements (i.e., 0, 10, 20, …, 90), ensuring that we make at most 10 jumps.</li>
-<li><strong>Linear Search:</strong> Once we&rsquo;ve jumped past the target element, we perform a linear search in a block of up to 10 elements, which, in the worst case, requires checking 9 additional elements.</li>
+<li><strong>Jump Size:</strong> Jump every 10 elements (i.e., indices 0, 10, 20, …, 90).</li>
+<li><strong>Linear Search:</strong> After jumping, perform a linear search in a block of up to 10 elements.</li>
 </ul>
-<p>This method strikes a balance between the number of jumps and the size of the linear search, minimizing the total steps required in the worst case.</p>
-<h3 id="conclusion">Conclusion</h3>
-<p>The choice of the square root of ( n ) optimizes the Jump Search by equally balancing the potential number of jumps with the maximum size of the linear search. For an array of 100 elements, this theoretical justification shows why jumping in steps of 10 is optimal. This balance ensures that the algorithm achieves its best possible efficiency, with a time complexity of
-$$
-O(\sqrt{n}),
-$$
-where ( n ) is the length of the array.</p>
+<h4 id="illustration-with-python-code">Illustration with Python Code</h4>
+<p>Below is a Python code snippet that plots the total search steps $ T(m) $ against different block sizes $ m $ for a given $ n $. The plot highlights the optimal block size at $ m = \sqrt{n} $.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set array length</span>
+</span></span><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate a range of possible m values</span>
+</span></span><span style="display:flex;"><span>m_values <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">1</span>, n, <span style="color:#ae81ff">1000</span>)
+</span></span><span style="display:flex;"><span>T <span style="color:#f92672">=</span> n <span style="color:#f92672">/</span> m_values <span style="color:#f92672">+</span> m_values
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate optimal m</span>
+</span></span><span style="display:flex;"><span>optimal_m <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(n)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Plot the total search steps vs. block size</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">6</span>))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(m_values, T, label<span style="color:#f92672">=</span><span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;$T(m)=\frac</span><span style="color:#e6db74">{n}{m}</span><span style="color:#e6db74">+m$&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Block Size (m)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Total Search Steps T(m)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Total Search Steps vs. Block Size for n=</span><span style="color:#e6db74">{</span>n<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>axvline(x<span style="color:#f92672">=</span>optimal_m, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;red&#39;</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Optimal m = sqrt(n) ≈ </span><span style="color:#e6db74">{</span>optimal_m<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend()
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>grid(<span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p><img src="/crystal_1_0.png" alt="png"></p>
+<p><em>Explanation:</em><br>
+The code above computes and plots $ T(m) $ for $ n = 1000 $ over a range of $ m $ values. The vertical dashed line indicates the optimal block size $ m = \sqrt{1000} $.</p>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>The use of $ m = \sqrt{n} $ in the Jump Search algorithm optimally balances the number of jumps and the linear search steps, leading to a worst-case time complexity of $ O(\sqrt{n}) $. This balance is crucial for efficient search in unsorted or partially ordered arrays, and the mathematical justification confirms the effectiveness of this approach.</p>
 
         </div>
     </div>

@@ -81,7 +81,18 @@ Recently as a project cleaning up some old files and software, I came across a s
 
     </div>
 </nav>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "\\(", right: "\\)", display: false},
+          {left: "$", right: "$", display: false},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "$$", right: "$$", display: true}
+        ]
+      });
+    });
+  </script>
 <script>
     
     document.addEventListener('DOMContentLoaded', function() {
@@ -153,8 +164,14 @@ Recently as a project cleaning up some old files and software, I came across a s
 
   gtag('config', 'G-LQNL2E5MEL');
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329465157209102"
-     crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    mermaid.initialize({ startOnLoad: true });
+  });
+</script>
 </header><main>
 <div class="single-container">
     <div class="archive">

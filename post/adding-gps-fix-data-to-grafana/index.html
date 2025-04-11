@@ -94,7 +94,18 @@ Create a lightweight GPS fix monitoring script Use Telegraf’s inputs.exec plug
 
     </div>
 </nav>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "\\(", right: "\\)", display: false},
+          {left: "$", right: "$", display: false},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "$$", right: "$$", display: true}
+        ]
+      });
+    });
+  </script>
 <script>
     
     document.addEventListener('DOMContentLoaded', function() {
@@ -166,8 +177,14 @@ Create a lightweight GPS fix monitoring script Use Telegraf’s inputs.exec plug
 
   gtag('config', 'G-LQNL2E5MEL');
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329465157209102"
-     crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    mermaid.initialize({ startOnLoad: true });
+  });
+</script>
 </header><main>
 <div class="single-container">
     <div class="archive">
@@ -287,12 +304,110 @@ Create a lightweight GPS fix monitoring script Use Telegraf’s inputs.exec plug
 <p>Use the Influx CLI or query it from Grafana:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#34;gps_status&#34;</span> <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> time <span style="color:#66d9ef">DESC</span> <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">5</span>
 </span></span></code></pre></div><p>You should see something like:</p>
-<pre tabindex="0"><code>time                status
-----                ------
-2024-04-02T12:00:00Z  LOCKED
-2024-04-02T11:59:00Z  2D
-2024-04-02T11:58:00Z  NOLOCK
-</code></pre><hr>
+
+
+
+<div class="goat svg-container ">
+  
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      font-family="Menlo,Lucida Console,monospace"
+      
+        viewBox="0 0 232 89"
+      >
+      <g transform='translate(8,16)'>
+<path d='M 0,16 L 24,16' fill='none' stroke='currentColor'></path>
+<path d='M 160,16 L 200,16' fill='none' stroke='currentColor'></path>
+<text text-anchor='middle' x='0' y='4' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='0' y='36' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='0' y='52' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='0' y='68' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='8' y='4' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='8' y='36' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='8' y='52' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='8' y='68' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='16' y='4' fill='currentColor' style='font-size:1em'>m</text>
+<text text-anchor='middle' x='16' y='36' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='16' y='52' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='16' y='68' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='24' y='4' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='24' y='36' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='24' y='52' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='24' y='68' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='32' y='36' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='32' y='52' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='32' y='68' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='40' y='36' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='40' y='52' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='40' y='68' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='48' y='36' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='48' y='52' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='48' y='68' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='56' y='36' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='56' y='52' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='56' y='68' fill='currentColor' style='font-size:1em'>-</text>
+<text text-anchor='middle' x='64' y='36' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='64' y='52' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='64' y='68' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='72' y='36' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='72' y='52' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='72' y='68' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='80' y='36' fill='currentColor' style='font-size:1em'>T</text>
+<text text-anchor='middle' x='80' y='52' fill='currentColor' style='font-size:1em'>T</text>
+<text text-anchor='middle' x='80' y='68' fill='currentColor' style='font-size:1em'>T</text>
+<text text-anchor='middle' x='88' y='36' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='88' y='52' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='88' y='68' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='96' y='36' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='96' y='52' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='96' y='68' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='104' y='36' fill='currentColor' style='font-size:1em'>:</text>
+<text text-anchor='middle' x='104' y='52' fill='currentColor' style='font-size:1em'>:</text>
+<text text-anchor='middle' x='104' y='68' fill='currentColor' style='font-size:1em'>:</text>
+<text text-anchor='middle' x='112' y='36' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='112' y='52' fill='currentColor' style='font-size:1em'>5</text>
+<text text-anchor='middle' x='112' y='68' fill='currentColor' style='font-size:1em'>5</text>
+<text text-anchor='middle' x='120' y='36' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='120' y='52' fill='currentColor' style='font-size:1em'>9</text>
+<text text-anchor='middle' x='120' y='68' fill='currentColor' style='font-size:1em'>8</text>
+<text text-anchor='middle' x='128' y='36' fill='currentColor' style='font-size:1em'>:</text>
+<text text-anchor='middle' x='128' y='52' fill='currentColor' style='font-size:1em'>:</text>
+<text text-anchor='middle' x='128' y='68' fill='currentColor' style='font-size:1em'>:</text>
+<text text-anchor='middle' x='136' y='36' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='136' y='52' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='136' y='68' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='144' y='36' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='144' y='52' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='144' y='68' fill='currentColor' style='font-size:1em'>0</text>
+<text text-anchor='middle' x='152' y='36' fill='currentColor' style='font-size:1em'>Z</text>
+<text text-anchor='middle' x='152' y='52' fill='currentColor' style='font-size:1em'>Z</text>
+<text text-anchor='middle' x='152' y='68' fill='currentColor' style='font-size:1em'>Z</text>
+<text text-anchor='middle' x='160' y='4' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='168' y='4' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='176' y='4' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='176' y='36' fill='currentColor' style='font-size:1em'>L</text>
+<text text-anchor='middle' x='176' y='52' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='176' y='68' fill='currentColor' style='font-size:1em'>N</text>
+<text text-anchor='middle' x='184' y='4' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='184' y='36' fill='currentColor' style='font-size:1em'>O</text>
+<text text-anchor='middle' x='184' y='52' fill='currentColor' style='font-size:1em'>D</text>
+<text text-anchor='middle' x='184' y='68' fill='currentColor' style='font-size:1em'>O</text>
+<text text-anchor='middle' x='192' y='4' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='192' y='36' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='192' y='68' fill='currentColor' style='font-size:1em'>L</text>
+<text text-anchor='middle' x='200' y='4' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='200' y='36' fill='currentColor' style='font-size:1em'>K</text>
+<text text-anchor='middle' x='200' y='68' fill='currentColor' style='font-size:1em'>O</text>
+<text text-anchor='middle' x='208' y='36' fill='currentColor' style='font-size:1em'>E</text>
+<text text-anchor='middle' x='208' y='68' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='216' y='36' fill='currentColor' style='font-size:1em'>D</text>
+<text text-anchor='middle' x='216' y='68' fill='currentColor' style='font-size:1em'>K</text>
+</g>
+
+    </svg>
+  
+</div>
+<hr>
 <h2 id="-step-4-create-a-grafana-panel">📊 Step 4: Create a Grafana Panel</h2>
 <p>In Grafana:</p>
 <ol>
@@ -322,9 +437,25 @@ Create a lightweight GPS fix monitoring script Use Telegraf’s inputs.exec plug
 <p>It&rsquo;s a great fit for Raspberry Pi-based time servers or GPS tracking systems where knowing the GPS fix status is critical for reliability.</p>
 <hr>
 <p><em>Thanks for reading! If you have questions or want to expand this to include other gpsd metrics, let me know!</em></p>
-<pre tabindex="0"><code>
----
-</code></pre>
+
+
+
+<div class="goat svg-container ">
+  
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      font-family="Menlo,Lucida Console,monospace"
+      
+        viewBox="0 0 32 41"
+      >
+      <g transform='translate(8,16)'>
+<path d='M 0,16 L 16,16' fill='none' stroke='currentColor'></path>
+</g>
+
+    </svg>
+  
+</div>
+
         </div>
     </div>
     <a href="#" id="scrollToTopButton">
